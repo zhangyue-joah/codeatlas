@@ -1,0 +1,117 @@
+---
+slug: augment-code-getting-started
+title: Augment Code 入门：面向大型代码库的 AI 编程助手
+description: 15 分钟完成 Augment Code 安装配置，体验大仓库级别的代码理解和补全。
+type: getting-started
+difficulty: beginner
+goal: 在 15 分钟内完成 Augment Code 安装，并体验其代码库理解和补全能力。
+requiredTools:
+  - Augment Code
+  - VS Code 或 JetBrains IDE
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 15-20 分钟
+stepsOverview:
+  - 安装 Augment Code 扩展
+  - 登录并配置
+  - 让工具索引代码库
+  - 体验代码补全和问答
+steps:
+  - step: 1
+    title: 安装扩展
+    description: 在 IDE 扩展市场搜索 "Augment" 并安装。
+    tips:
+      - 支持 VS Code 和 JetBrains 系列 IDE
+      - 官网：https://www.augmentcode.com
+  - step: 2
+    title: 登录配置
+    description: 首次使用需要登录 Augment 账号。
+    tips:
+      - 支持 GitHub/Google 账号登录
+      - 团队版需要管理员邀请
+  - step: 3
+    title: 索引代码库
+    description: 打开项目后，Augment 会自动索引代码库。
+    tips:
+      - 大型项目首次索引可能需要几分钟
+      - 索引完成后 AI 才能理解整个代码库上下文
+  - step: 4
+    title: 体验代码补全
+    description: 开始编码，观察 AI 补全建议。
+    tips:
+      - Augment 的补全会考虑整个代码库的上下文
+      - 对大型项目的理解能力较强
+  - step: 5
+    title: 尝试代码问答
+    description: 使用 Chat 功能针对代码库提问。
+    tips:
+      - 可以问"这个函数在哪里被调用"等跨文件问题
+      - 支持代码解释、重构建议等
+keyTips:
+  - Augment 的核心优势是大型代码库的上下文理解
+  - 适合多模块、大仓库的团队使用
+  - 补全质量与索引完整度相关
+safety:
+  checklist:
+    - 了解团队的数据安全策略
+    - AI 生成的代码仍需人工审查
+    - 敏感代码谨慎使用
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 索引时间过长
+    solution: 检查项目大小；可以配置排除不需要索引的目录
+  - problem: 补全不够准确
+    solution: 确保索引完成；提供更多上下文
+  - problem: 登录或授权问题
+    solution: 检查网络连接；联系团队管理员
+acceptanceCriteria:
+  - Augment Code 安装成功并完成索引
+  - 至少体验一次代码补全或问答
+  - 了解其大型代码库理解能力
+relatedTools:
+  - augment-code
+  - sourcegraph-cody
+relatedTemplates:
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Augment Code
+  - 大型代码库
+  - 代码补全
+  - 企业
+  - 入门
+---
+
+## Augment Code 是什么
+
+Augment Code 是一款面向团队和企业的 AI 编程助手，核心优势是**大型代码库的上下文理解**。它可以：
+
+- 理解整个代码库的结构和依赖关系
+- 提供基于全局上下文的代码补全
+- 回答跨文件、跨模块的代码问题
+- 帮助快速定位和理解代码
+
+## 适用场景
+
+- **大型项目**：多模块、大仓库的代码理解
+- **团队协作**：快速理解他人代码
+- **代码导航**：定位函数调用、依赖关系
+- **知识沉淀**：代码库级别的问答
+
+## 与其他工具对比
+
+| 维度 | Augment Code | GitHub Copilot | Sourcegraph Cody |
+|------|--------------|----------------|------------------|
+| 定位 | 大型代码库 | 通用补全 | 代码搜索+AI |
+| 上下文 | 全仓库 | 当前文件为主 | 全仓库 |
+| 团队功能 | 强 | 中 | 强 |
+| 价格 | 企业定价 | $10-19/月 | 免费/企业 |
+
+## 下一步
+
+- 对比 [Sourcegraph Cody](/tools/sourcegraph-cody) 的代码搜索能力
+- 了解 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

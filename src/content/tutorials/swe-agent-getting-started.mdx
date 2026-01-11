@@ -1,0 +1,141 @@
+---
+slug: swe-agent-getting-started
+title: SWE-agent 入门：用开源 Agent 自动修复 GitHub Issue
+description: 30 分钟搭建 SWE-agent 环境，跑通一次基于 Issue 的自动修复流程。
+type: getting-started
+difficulty: intermediate
+goal: 在 30 分钟内完成 SWE-agent 环境搭建，并让它尝试修复一个简单 Issue。
+requiredTools:
+  - SWE-agent
+  - Docker
+  - Git
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+estimatedTime: 30-60 分钟
+stepsOverview:
+  - 克隆 SWE-agent 仓库并安装依赖
+  - 配置 API Key（OpenAI/Anthropic）
+  - 准备一个测试 Issue
+  - 运行 Agent 并观察执行过程
+  - 审查生成的补丁
+steps:
+  - step: 1
+    title: 克隆仓库并安装依赖
+    description: 从 GitHub 克隆 SWE-agent 并安装 Python 依赖。
+    code: |
+      git clone https://github.com/SWE-agent/SWE-agent.git
+      cd SWE-agent
+      pip install -e .
+    tips:
+      - 建议使用 Python 3.10+
+      - 推荐在虚拟环境中安装
+  - step: 2
+    title: 配置 API Key
+    description: 设置环境变量或配置文件，提供模型 API Key。
+    code: |
+      export OPENAI_API_KEY="your-key-here"
+      # 或使用 Anthropic
+      export ANTHROPIC_API_KEY="your-key-here"
+    warnings:
+      - API Key 不要提交到版本控制
+      - 注意 API 调用成本
+  - step: 3
+    title: 准备测试 Issue
+    description: 选择一个简单的 GitHub Issue 作为测试目标。
+    tips:
+      - 建议从简单的 bug fix 开始
+      - 确保 Issue 有清晰的复现步骤
+      - 可以用 SWE-bench 提供的测试用例
+  - step: 4
+    title: 运行 Agent
+    description: 执行 SWE-agent，让它尝试修复 Issue。
+    code: |
+      python run.py \
+        --model_name gpt-4o \
+        --data_path path/to/issue.json \
+        --config_file config/default.yaml
+    tips:
+      - 首次运行建议开启详细日志观察执行过程
+      - 可以设置最大步数限制成本
+  - step: 5
+    title: 审查补丁
+    description: 检查 Agent 生成的补丁，验证是否正确修复问题。
+    code: |
+      # 查看生成的补丁
+      cat trajectories/*/patches/*.patch
+
+      # 应用补丁测试
+      git apply patch.patch
+      pytest tests/
+keyTips:
+  - SWE-agent 是研究项目，适合学习 Agent 工作原理
+  - 执行环境建议隔离（Docker），避免影响本地系统
+  - 效果高度依赖 Issue 描述质量和模型能力
+safety:
+  checklist:
+    - 在隔离环境（Docker/VM）中运行
+    - 不要让 Agent 访问生产环境或敏感数据
+    - 所有补丁必须人工审查后再合并
+    - 注意 API 调用成本
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: Agent 陷入循环或超时
+    solution: 设置合理的最大步数；检查 Issue 描述是否清晰
+  - problem: 生成的补丁无法应用
+    solution: 确保 Agent 基于正确的代码版本；检查补丁格式
+  - problem: 修复不正确或引入新问题
+    solution: 这是常见情况，Agent 输出仅供参考，必须人工审查
+acceptanceCriteria:
+  - SWE-agent 环境搭建成功
+  - 至少运行一次完整的修复流程
+  - 理解 Agent 的执行过程和局限性
+relatedTools:
+  - swe-agent
+  - openhands
+relatedTemplates:
+  - agent-rules-coding-general
+relatedTutorials:
+  - ai-coding-product-map
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - SWE-agent
+  - 开源
+  - Agent
+  - 自动修复
+  - GitHub Issue
+---
+
+## SWE-agent 是什么
+
+SWE-agent 是普林斯顿大学开源的软件工程 Agent，专门用于自动修复 GitHub Issue。它在 SWE-bench 基准测试中表现优异，是学习 AI Agent 工作原理的好项目。
+
+## 适用场景
+
+- **研究与学习**：理解 Agent 如何与代码库交互
+- **基准测试**：对比不同模型/策略的效果
+- **工程化探索**：作为团队 Agent 化的参考实现
+
+## 不适用场景
+
+- 生产环境的自动化修复（风险太高）
+- 复杂的跨模块重构
+- 需要人工判断的设计决策
+
+## 与其他 Agent 工具对比
+
+| 工具 | 定位 | 特点 |
+|------|------|------|
+| SWE-agent | 研究/基准 | 开源、可复现、学术背景 |
+| OpenHands | 通用 Agent | 更完整的工程化封装 |
+| Devin | 商业产品 | 端到端、闭源 |
+| Claude Code | CLI Agent | 交互式、人在环 |
+
+## 下一步
+
+- 尝试 [OpenHands](/tutorials/openhands-getting-started) 获得更工程化的体验
+- 了解 [Agent 编程的安全边界](/tutorials/ai-coding-product-map)

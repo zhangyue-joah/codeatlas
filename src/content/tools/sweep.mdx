@@ -1,0 +1,81 @@
+---
+slug: sweep
+title: Sweep
+description: "Issue/需求到 PR 的自动化 Agent：把问题描述转成代码改动与 PR（以官方信息与权限配置为准）。"
+logo: /logos/placeholder.svg
+website: "https://sweep.dev"
+productType:
+  - web-app
+category:
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - agent-execution
+  - external-system
+  - read-write
+useCases:
+  - "Issue → PR：把小需求/小修复自动变成可审查的 PR"
+  - "维护自动化：处理重复性小改动、文档修补与配置更新（按规则）"
+  - "团队协作：把“需求描述与验收”标准化后再交给 Agent 产出"
+pros:
+  - "更贴近 GitHub 工作流：产出以 PR 形式交付，便于审查"
+  - "适合把碎片化小任务批量化处理"
+  - "把执行过程收敛到可追溯的协作流程"
+cons:
+  - "需要严格的权限边界与审计（避免误改/误触发）"
+  - "复杂任务仍需要人工拆解与验收"
+  - "效果与稳定性依赖问题描述、仓库质量与规则配置"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: subscription
+  free: true
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://sweep.dev"
+  sources:
+    -
+      label: "Sweep 官网"
+      url: "https://sweep.dev"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance: []
+  policyUrl: "https://sweep.dev/privacy"
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Sweep
+  - "Issue to PR"
+  - Agent
+  - "AI 编程"
+---
+
+
+
+## 适合用 Sweep 的一个判断
+
+如果你的痛点是“GitHub issue 很多但都是小修小补”，并且你愿意用 PR 审查来兜底，Issue→PR 形态的 Agent 往往更容易落地。
+
+## 使用建议（团队落地）
+
+- 先把权限与触发条件收紧：只允许特定仓库/目录/标签触发
+- 所有产出必须走 PR Review，并对关键目录启用额外检查（测试/CI/保护分支）

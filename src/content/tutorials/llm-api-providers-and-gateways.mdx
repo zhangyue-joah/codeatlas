@@ -1,0 +1,161 @@
+---
+slug: llm-api-providers-and-gateways
+title: LLM 接口怎么选？官方/云平台/聚合/自托管，一篇讲清（2025）
+description: 从合规与数据策略出发，给你“主渠道 + 备选渠道”的选择法；附入口链接、成本控制与密钥管理检查清单。
+type: quality-control
+difficulty: intermediate
+goal: 选出 1 个主要接口渠道 + 1 个备选渠道，并建立最小的成本/安全/稳定性控制。
+requiredTools:
+  - 任意 AI 编程工具（IDE/插件/CLI）
+  - 一个可用的 LLM 账号或合规渠道
+requiredCapabilities: []
+estimatedTime: 20-40 分钟
+stepsOverview:
+  - 先把“合规与数据策略”当作硬约束
+  - 选官方/云平台作为主渠道，第三方聚合作为备选或网关
+  - 设定成本上限与告警（限额、监控、日志脱敏）
+  - 为团队准备“密钥管理与权限边界”
+steps:
+  - step: 1
+    title: 明确硬约束（合规/数据/地域/审计）
+    description: 先确定能不能用、能不能过审、日志能不能留、数据能不能出域。
+  - step: 2
+    title: 选主渠道：官方 API 或云平台托管
+    description: 追求稳定性与可追溯性，优先官方或主流云平台托管方案。
+  - step: 3
+    title: 选备选渠道：第三方聚合/网关（常被称为中转）
+    description: 用于多模型统一、计费整合、限流、观测；但必须确认 ToS、数据策略与授权边界。
+    warnings:
+      - 避免来源不明的“代充/共享 Key/绕过限制”渠道
+  - step: 4
+    title: 成本控制：限额 + 告警 + 预算
+    description: 不管用哪家，都要先做限额与告警，不要让“默认无限制”跑到月底。
+  - step: 5
+    title: 落地密钥与权限：最小权限 + 可撤销
+    description: 用环境变量/密钥管理服务，禁用把 Key 写入仓库与日志。
+keyTips:
+  - 主渠道优先官方/云平台；第三方聚合优先“网关能力”而不是“绕路”
+  - 任何第三方渠道都要先确认：ToS、数据留存、日志策略、账单可追溯
+  - 开发工具里优先用“项目级别 Key”而不是个人主 Key
+safety:
+  checklist:
+    - Key 只放密钥管理/环境变量，不进仓库不进日志
+    - 给每个项目设置限额、告警与审计（按团队策略）
+    - 避免使用不明来源的共享 Key/代充/绕过渠道
+    - 对外部请求日志做脱敏（prompt/代码片段/URL/令牌）
+  notes:
+    - “中转/聚合/网关”是正常的工程形态，但必须在授权与 ToS 允许范围内使用
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 只看价格，不看 ToS/数据策略
+    solution: 先做合规检查清单，再比较价格
+  - problem: Key 泄露（写入仓库/截图/日志）
+    solution: 统一用密钥管理与扫描；撤销旧 Key 并轮换
+  - problem: 账单失控
+    solution: 先限额再上量，配合告警与按项目拆分 Key
+acceptanceCriteria:
+  - 你选定 1 个主渠道（官方或云平台）与 1 个备选渠道
+  - 你启用了限额/告警，并能解释数据与日志策略
+  - 你的密钥管理满足“可撤销、可轮换、最小权限”
+relatedTools: []
+relatedTemplates: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: true
+author: CodeAtlas
+keywords:
+  - 质量控制
+  - 成本
+  - 合规
+  - 安全
+  - AI 编程
+---
+
+## 四类渠道怎么选（先看结论）
+
+1. **官方 API（首选）**：稳定、可追溯、文档清晰；缺点是多模型管理与观测能力需要自己补。
+2. **云平台托管（企业常用）**：更贴合企业网络/合规/审计；缺点是价格与可用模型受平台限制。
+3. **第三方聚合/网关（常被称为中转）**：统一接口、多模型路由、计费整合、观测与限流；缺点是需要额外的 ToS/数据策略审查，且要避免不明来源渠道。
+4. **自托管（内网/自控）**：数据与部署自控；缺点是运维成本、模型质量与吞吐成本要自己承担。
+
+## 官方与云平台（常见）
+
+| 类别 | 常见渠道（示例） | 备注 |
+| --- | --- | --- |
+| 官方 API | OpenAI、Anthropic、Google Gemini、Mistral、Cohere、xAI、DeepSeek 等 | 以各家官方文档与 ToS 为准 |
+| 云平台托管 | Azure OpenAI、Google Vertex AI、AWS Bedrock 等 | 常见于企业网络、统一审计与计费 |
+
+### 常见官方/云平台入口（链接）
+
+- 说明：以下是“模型/接口渠道”入口清单；站内 `/tools` 也会收录其中一部分（用于选型/对比），这里以“集中链接 + 风险与成本检查清单”为主。
+- [OpenAI API](https://platform.openai.com/)
+- [Azure OpenAI](https://azure.microsoft.com/products/ai-services/openai-service)
+- [Anthropic API](https://www.anthropic.com/api)
+- [Google AI Studio（Gemini API）](https://aistudio.google.com/)
+- [Google Vertex AI](https://cloud.google.com/vertex-ai)
+- [AWS Bedrock](https://aws.amazon.com/bedrock/)
+- [Mistral API](https://mistral.ai/)
+- [Cohere](https://cohere.com/)
+- xAI API：https://x.ai/
+- [DeepSeek](https://www.deepseek.com/)
+
+（国内常见官方入口，按各家政策与 ToS 使用）
+
+- [阿里云百炼 / DashScope（通义）](https://dashscope.aliyun.com/)
+- [智谱 AI（BigModel）](https://open.bigmodel.cn/)
+- [百度智能云千帆](https://cloud.baidu.com/product/wenxinworkshop)
+- 腾讯混元：https://cloud.tencent.com/product/hunyuan
+- [Moonshot（Kimi）](https://platform.moonshot.cn/)
+
+## 第三方聚合/网关（常见）
+
+这些服务通常提供“统一接口、多模型路由、限流、观测、按项目计费”等能力。它们是工程上合理的“网关形态”，但请确保你的使用方式在授权与 ToS 允许范围内。
+
+| 类型 | 常见平台（示例） | 你需要重点确认 |
+| --- | --- | --- |
+| 多模型聚合 | OpenRouter 等 | ToS、数据留存、日志策略、账单可追溯 |
+| 托管推理 | Together.ai、Fireworks.ai、GroqCloud、Replicate、Hugging Face Inference、Cloudflare Workers AI、DeepInfra、Anyscale Endpoints 等 | 模型来源、SLA、限额/告警、合规声明 |
+
+### 常见第三方聚合/托管推理入口（链接）
+
+- [OpenRouter](https://openrouter.ai/)
+- [Together.ai](https://www.together.ai/)
+- [Fireworks.ai](https://fireworks.ai/)
+- [GroqCloud](https://groq.com/)
+- [Replicate](https://replicate.com/)
+- [Hugging Face Inference](https://huggingface.co/inference-api)
+- [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
+- [DeepInfra](https://deepinfra.com/)
+- [Anyscale Endpoints](https://www.anyscale.com/endpoints)
+
+### 常见“统一网关/可观测”（可选）
+
+这类工具常用于统一多模型调用、做限流/重试/日志与可观测（不等同于“绕过限制”）。
+
+- [LiteLLM](https://docs.litellm.ai/docs/proxy/quick_start)（开源：https://github.com/BerriAI/litellm）
+- [Helicone](https://www.helicone.ai/)
+- [Portkey](https://portkey.ai/)
+- [Langfuse](https://langfuse.com/)
+
+## 自托管（常见）
+
+| 类型 | 常见方案（示例） | 适合 |
+| --- | --- | --- |
+| 本地推理 | Ollama、LM Studio、llama.cpp 等 | 个人/小团队快速起步 |
+| 服务化推理 | vLLM、TGI（Text Generation Inference）等 | 需要多用户/高并发/可观测 |
+
+### 常见自托管入口（链接）
+
+- Ollama：https://ollama.com/
+- LM Studio：https://lmstudio.ai/
+- llama.cpp：https://github.com/ggerganov/llama.cpp
+- vLLM：https://github.com/vllm-project/vllm
+- TGI（Text Generation Inference）：https://github.com/huggingface/text-generation-inference
+
+## 选择检查清单（拿去直接用）
+
+- **合规**：数据是否可出域？是否允许第三方处理？是否提供企业合规说明？
+- **隐私**：是否用于训练？日志保留多久？能否关闭日志或做脱敏？
+- **可追溯**：账单是否按项目拆分？是否可导出审计日志？
+- **稳定性**：SLA、限流、区域可用性、失败重试策略？
+- **成本控制**：限额、告警、预算封顶、不同模型的单价与吞吐？

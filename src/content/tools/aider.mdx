@@ -1,0 +1,87 @@
+---
+slug: aider
+title: Aider
+description: "面向 Git 工作流的 CLI 编程助手：以 git diff 为中心，适合可审计、可回滚的小步改动与重构。"
+logo: /logos/default.svg
+website: "https://aider.chat/"
+productType:
+  - cli
+category:
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+  - read-write
+  - execute
+useCases:
+  - "对话生成 git 补丁：把改动变成可审计/可回滚的提交"
+  - "多文件重构：在限定文件范围内做结构性调整并保持可控"
+  - "基于错误日志迭代：解释报错 → 提出最小修复 → 再验证"
+pros:
+  - "git 天然可审计/可回滚，适合可控落地"
+  - "CLI 形态易于脚本化与集成到个人/团队流程"
+  - "适合在“少而精”的上下文里做高质量改动"
+cons:
+  - "上下文与提示词要求更高：需要你明确范围与验收标准"
+  - "仍需人工 review diff 与跑验证命令"
+  - "效果与成本取决于你选择的模型渠道"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: free
+  free: true
+  hasEducation: false
+  hasTeam: false
+  hasEnterprise: false
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://aider.chat/"
+  sources:
+    -
+      label: "Aider 官网"
+      url: "https://aider.chat/"
+    -
+      label: "Aider GitHub"
+      url: "https://github.com/paul-gauthier/aider"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "取决于你所使用的模型/服务"
+  localProcessing: true
+  enterpriseCompliance: []
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - aider-cli-getting-started
+  - openai-compatible-setup
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Aider
+  - CLI
+  - git
+  - "AI 编程"
+  - "开源"
+---
+
+
+
+## 适合用 Aider 的一个判断
+
+如果你偏好终端工作流，并且希望 AI 产出直接落在 git 变更里（可审计、可回滚），Aider 这类 CLI 工具通常更合适。
+
+## 使用建议（更可控）
+
+- 每次只给必要文件：先总结现状再改动，避免误改不相关区域
+- diff 先 review 再验证：把“证据”（lint/test/build 日志）当作闭环的一部分

@@ -1,0 +1,68 @@
+---
+slug: vscode-copilot-chatmodes
+title: VS Code Copilot Chat Modes
+description: 用 `.chatmode.md` 把 PR Review / 写测试 / 修 Bug 等工作流固化成“模式”，减少重复输入提示词。
+type: agent-instruction
+applicableTools:
+  - GitHub Copilot
+scenarios:
+  - 模式固化
+  - PR Review
+placeholders: []
+dependencies:
+  - VS Code Copilot Chat Modes
+example: |
+  # 最小用法
+  1) 新建 `pr-reviewer.chatmode.md`
+  2) 把模板中对应段落粘贴进去，然后在 VS Code 里选择该模式运行
+template: |
+  # Example: pr-reviewer.chatmode.md
+  # 说明：Chat Modes 的文件格式/字段以 VS Code 官方文档为准；下面重点给“模式内容”，可按你当前版本补齐头部字段。
+
+  ## Role
+  You are a strict PR reviewer. Your goal is to find correctness, security, and maintainability issues.
+
+  ## Workflow (must follow)
+  1) Ask for missing context (scope, acceptance criteria, how to reproduce).
+  2) Review diff in small chunks; call out risks and edge cases.
+  3) For each finding: explain impact, propose minimal fix, and suggest a verification command.
+  4) Never claim you ran tests unless you actually did.
+
+  ## Output format
+  - Summary
+  - High risk issues (must fix)
+  - Medium/low issues (should fix)
+  - Suggested verification
+
+  ---
+  # Example: test-writer.chatmode.md
+  ## Role
+  You are a test engineer. You write the smallest tests that catch regressions.
+
+  ## Rules
+  - Prefer existing test framework and patterns.
+  - Tests must be deterministic; no network calls; use fakes/mocks if needed.
+  - Keep coverage focused on acceptance criteria and edge cases.
+notes:
+  - Chat Modes 适合把“提示词/规则”固化为可切换的工作模式；团队可统一放在仓库里，减少新人上手成本。
+  - 功能可能依赖 VS Code / Copilot 的版本与渠道（如 Insiders）；以官方文档为准。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - GitHub Copilot
+  - VS Code
+  - Chat Modes
+  - 提示词
+  - PR Review
+  - 测试
+---
+
+## 放到哪里（常见做法）
+
+把 `.chatmode.md` 文件放到仓库的 `.github/chatmodes/`，然后在 VS Code 里选择对应模式（路径/加载方式以官方文档为准）。
+
+## 参考链接（官方/权威 + GitHub 清单）
+
+- VS Code：Copilot Chat Modes 文档：`https://code.visualstudio.com/docs/copilot/chat/chat-modes`
+- Awesome Copilot Chat Modes（大量现成模式）：`https://github.com/dfinke/awesome-copilot-chatmodes`

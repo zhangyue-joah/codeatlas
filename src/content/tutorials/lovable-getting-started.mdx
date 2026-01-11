@@ -1,0 +1,161 @@
+---
+slug: lovable-getting-started
+title: Lovable 入门：用自然语言快速生成可运行的 Web 应用
+description: 15 分钟在 Lovable 中从需求描述生成一个可运行的 Web 应用原型。
+type: getting-started
+difficulty: beginner
+goal: 在 15 分钟内用 Lovable 生成一个可运行的 Web 应用，并了解如何迭代优化。
+requiredTools:
+  - Lovable
+requiredCapabilities:
+  - read-write
+  - agent-execution
+estimatedTime: 15-25 分钟
+stepsOverview:
+  - 注册 Lovable 账号
+  - 描述你想要的应用
+  - 观察 AI 生成过程
+  - 预览和测试应用
+  - 迭代优化
+steps:
+  - step: 1
+    title: 注册账号
+    description: 访问 Lovable 官网注册账号。
+    tips:
+      - 官网：https://lovable.dev
+      - 支持 GitHub 账号登录
+      - 有免费额度可以试用
+  - step: 2
+    title: 描述你的应用
+    description: 用自然语言描述你想要构建的应用。
+    tips:
+      - 描述越具体，生成效果越好
+      - 可以指定技术栈、UI 风格、功能点
+      - 从简单应用开始，逐步增加复杂度
+  - step: 3
+    title: 观察生成过程
+    description: Lovable 会实时展示代码生成过程。
+    tips:
+      - 可以看到 AI 的思考过程
+      - 生成过程中可以随时调整方向
+  - step: 4
+    title: 预览和测试
+    description: 生成完成后，在内置预览中测试应用。
+    tips:
+      - 实时预览，修改即时生效
+      - 测试主要功能流程
+      - 记录需要调整的地方
+  - step: 5
+    title: 迭代优化
+    description: 通过对话继续优化应用。
+    tips:
+      - 用自然语言描述需要修改的地方
+      - 可以上传设计稿作为参考
+      - 逐步完善功能和 UI
+keyTips:
+  - Lovable 适合快速原型验证，不适合直接用于生产
+  - 生成的代码需要后续工程化处理
+  - 先做 MVP，再逐步完善
+safety:
+  checklist:
+    - 生成的代码需要安全审查
+    - 不要在生成的应用中存储敏感数据
+    - 部署前需要完善安全措施
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 生成的应用与预期不符
+    solution: 优化描述，添加更多细节；分步骤生成
+  - problem: UI 样式不满意
+    solution: 提供参考设计稿；明确指定 UI 框架和风格
+  - problem: 功能逻辑有问题
+    solution: 拆分复杂功能；逐个功能点调试
+acceptanceCriteria:
+  - 成功生成一个可运行的应用
+  - 了解如何通过对话迭代优化
+  - 理解 Lovable 的能力边界
+relatedTools:
+  - lovable
+  - bolt-new
+  - vercel-v0
+relatedTemplates:
+  - agent-rules-coding-general
+relatedTutorials:
+  - ai-coding-product-map
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Lovable
+  - Web 应用生成
+  - 原型
+  - 无代码
+  - 入门
+---
+
+## Lovable 是什么
+
+Lovable 是一个 AI 驱动的 Web 应用生成平台，你可以：
+
+- **用自然语言描述**：告诉 AI 你想要什么应用
+- **实时生成代码**：看着 AI 一步步构建应用
+- **即时预览**：生成的应用可以立即运行和测试
+- **对话式迭代**：通过对话不断优化应用
+
+## 适用场景
+
+- **快速原型**：验证产品想法，快速生成 MVP
+- **UI 设计**：快速生成页面和交互原型
+- **学习参考**：看 AI 如何构建完整应用
+- **需求澄清**：用可运行的结果推动需求收敛
+
+## 不适用场景
+
+- **生产级应用**：生成的代码需要大量工程化处理
+- **复杂业务逻辑**：需要深度领域知识的系统
+- **高性能要求**：需要精细优化的场景
+
+## 与其他工具对比
+
+| 工具 | 定位 | 特点 |
+|------|------|------|
+| Lovable | Web 应用生成 | 对话式、实时预览、托管部署 |
+| Bolt.new | 全栈应用 | StackBlitz 出品、WebContainer |
+| v0 | UI 组件 | Vercel 出品、专注前端组件 |
+| GPT Engineer | 项目生成 | 开源、CLI、本地运行 |
+
+## 需求描述技巧
+
+好的需求描述应该包含：
+
+```
+# 示例：待办事项应用
+创建一个现代风格的待办事项应用：
+
+功能：
+- 添加、删除、标记完成待办事项
+- 按优先级排序
+- 支持截止日期
+- 数据持久化到 localStorage
+
+UI：
+- 使用 Tailwind CSS
+- 简洁现代的设计
+- 支持暗色模式
+- 移动端适配
+```
+
+## 从原型到生产
+
+Lovable 生成的代码是起点，不是终点。后续需要：
+
+1. **代码审查**：检查安全问题和代码质量
+2. **工程化**：添加测试、CI/CD、错误处理
+3. **性能优化**：优化加载速度和运行效率
+4. **安全加固**：添加认证、授权、数据验证
+
+## 下一步
+
+- 尝试 [Bolt.new](/tools/bolt-new) 对比体验
+- 了解 [v0](/tools/vercel-v0) 专注 UI 组件生成
+- 查看 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

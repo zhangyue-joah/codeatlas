@@ -1,0 +1,100 @@
+---
+slug: agent-instruction-repo-instructions-pack
+title: Agent 指令套件
+description: 把“通用行为准则”落地为两份可直接放进仓库的指令样例：范围、风格、验证与安全边界。
+type: agent-instruction
+applicableTools:
+  - Cursor
+  - GitHub Copilot
+  - GitHub Copilot Chat
+  - Windsurf
+  - Continue
+  - Cline
+scenarios:
+  - 团队规范
+  - 仓库指令
+placeholders: []
+dependencies:
+  - 支持仓库指令/规则的工具
+example: |
+  # 最小用法
+  1) 把 A) 通用行为准则 贴到工具的全局指令
+  2) Cursor：把 B) 段落存为 `/.cursorrules`
+  3) Copilot：把 C) 段落设置为仓库级 Custom Instructions
+template: |
+  # AI Coding Agent Instructions Pack
+  目标：让 AI 的改动“可控、可审查、可验证、可追溯”。
+
+  ---
+  ## A) 通用行为准则（所有工具通用）
+  1) 先确认任务：复述目标、约束、验收标准；不清楚就先问 1–5 个关键问题。
+  2) 先给计划：列出将改的文件/原因/风险/验证命令；得到确认后再写入。
+  3) 小步提交：默认只改必要文件；避免无关重构、批量格式化、重命名与“顺手优化”。
+  4) 证据优先：不要编造运行结果；没跑命令就明确说明，并给出建议命令与预期。
+  5) 安全合规：不输出/不写入任何密钥、token、账号、私有链接；只建议官方/授权/自建合规接入。
+
+  ---
+  ## B) Cursor 项目规则示例（Project Rules / .cursorrules）
+  # Scope
+  - Only implement the requested change. Do not refactor unrelated code.
+  - If a wider refactor is needed, explain why and wait for approval.
+
+  # Quality Gate
+  - Always propose a minimal verification command (lint/test/build).
+  - If you cannot run commands, say so explicitly.
+
+  # Safety
+  - Never add secrets to code or docs. Use env placeholders.
+  - Be careful with filesystem/exec permissions and suggest rollback steps.
+
+  # Output
+  - Plan → Changes (by file) → Verification → Risks/Follow-ups
+
+  ---
+  ## C) GitHub Copilot 仓库指令示例（Repo Custom Instructions）
+  # Scope
+  - Keep changes minimal and relevant to the request.
+  - Do not rename files or change APIs unless asked.
+
+  # Style
+  - Follow existing conventions (lint/format/naming/patterns).
+  - Prefer small, reviewable diffs.
+
+  # Testing
+  - Suggest the smallest relevant verification command.
+  - If you did not run commands, say so.
+
+  # Security & privacy
+  - Never output or store credentials/tokens.
+  - Do not suggest account sharing, top-ups, price bypassing, or untraceable keys.
+notes:
+  - 指令要“短而硬”：只写边界、质量门、输出格式；不要写长篇产品介绍。
+  - 团队场景建议把指令与 CI（lint/test/build）和 PR 模板绑定，形成闭环。
+relatedTutorials:
+  - cursor-getting-started
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Agent
+  - Instructions
+  - 仓库指令
+  - Cursor
+  - Copilot
+  - 可追溯
+---
+
+## 怎么用（推荐）
+
+1. 把模板里的 **A) 通用准则** 作为“全局指令”（或每次任务开头贴一次）。
+2. 根据你使用的工具，把 **B) Cursor** 或 **C) Copilot** 的段落落到仓库里（路径/文件名以官方文档为准）。
+3. 在团队里把“先计划 + 最小验证 + 可追溯输出”写进 PR 流程：不满足就不合并。
+
+## 不收录 / 不建议
+
+- 共享账号、代充、绕价、不可追溯 key、来源不明的中高风险灰色中转。
+- 指令中要求 AI “跳过 review/跳过测试/直接推送到主干”等高风险流程。
+
+## 参考链接（官方/权威）
+
+- Cursor 文档：`https://cursor.com/docs`
+- GitHub Copilot 文档：`https://docs.github.com/en/copilot`

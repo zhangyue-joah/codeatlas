@@ -1,0 +1,78 @@
+---
+slug: autodoc
+title: Autodoc
+description: "开源的代码库文档自动生成工具：对仓库做结构化梳理并产出可阅读的文档，适合作为“代码理解/文档补齐”的工程化能力。"
+logo: /logos/default.svg
+website: "https://github.com/context-labs/autodoc"
+productType:
+  - cli
+category:
+  - doc-generation
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "对代码/文档出域有严格限制但无法合规接入的团队"
+capabilities:
+  - repo-context
+  - local-command
+  - read-only
+  - execute
+useCases:
+  - "生成代码库概览：模块、依赖、关键入口"
+  - "补齐文档：为关键目录/组件生成说明"
+  - "交接与上手：把隐性知识变成可检索文档"
+pros:
+  - "开源可自托管，便于合规与可控部署"
+  - "更适合工程化“持续生成/持续更新”文档"
+  - "可作为 CI/脚本的一部分（按团队策略）"
+cons:
+  - "生成内容仍需人工校对与维护"
+  - "效果取决于仓库结构与命名质量"
+  - "运行时需要处理密钥/日志脱敏与权限边界"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作"
+pricing:
+  model: free
+  free: true
+  startingPrice: ''
+  currency: ''
+  billingCycle: monthly
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://github.com/context-labs/autodoc"
+  updatedAt: "2025-12-31"
+  sources:
+    -
+      label: "Autodoc（GitHub）"
+      url: "https://github.com/context-labs/autodoc"
+privacy:
+  dataRetention: "本地/自托管为主（以你的部署与配置为准）"
+  localProcessing: true
+  enterpriseCompliance: []
+  policyUrl: "https://github.com/context-labs/autodoc"
+  updatedAt: "2025-12-31"
+relatedTools: []
+relatedTutorials: []
+relatedCompares: []
+updatedAt: "2025-12-31"
+version: "2025-12"
+keywords:
+  - Autodoc
+  - "文档生成"
+  - "代码理解"
+  - "AI 编程"
+---
+
+## 使用建议（稳一点）
+
+- 先在非敏感仓库验证输出质量，再决定是否接入生产仓库。
+- 默认把生成结果当作“草稿”，用评审/CI 兜底。
+

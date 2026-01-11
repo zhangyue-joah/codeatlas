@@ -1,0 +1,76 @@
+---
+slug: mcp-server-discovery
+title: MCP Server 发现清单
+description: 用 MCP Registry 找到合适的 server，并以“最小权限/最小暴露面/可审计”方式接入 Claude Desktop、Cursor 等客户端。
+type: mcp-config
+applicableTools:
+  - Cursor
+  - Continue
+  - Cline
+  - Claude
+scenarios:
+  - Server 发现
+  - 最小权限
+placeholders:
+  - GITHUB_TOKEN
+  - /ABSOLUTE/PATH/TO/PROJECT
+dependencies:
+  - MCP Registry
+  - 支持 MCP 的客户端
+example: |
+  # 最小流程
+  1) 去 Registry 搜索：github / filesystem
+  2) 先用只读 token + 单目录授权跑通一次
+  3) 复制第 3) 段的 mcpServers 配置粘贴到客户端
+template: |
+  # MCP Server Discovery & Setup Checklist
+  ## 1) 先选 server（优先 Registry）
+  - 在 MCP Registry 搜索：按“我需要的能力”而不是按热度。
+  - 只选你信任的发布主体；能看源码就更好。
+
+  ## 2) 先定权限边界（默认只读）
+  - Filesystem：只授权单个项目目录（不要授权 ~ 或 /）。
+  - GitHub：从只读 token 开始，必要时再逐步放开写权限。
+  - 数据库：优先只读账号 + 限定 schema；先跑最小查询再扩大范围。
+
+  ## 3) 最小可用配置（示例：GitHub + Filesystem）
+  {
+    "mcpServers": {
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+        }
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/ABSOLUTE/PATH/TO/PROJECT"]
+      }
+    }
+  }
+
+  ## 4) 上线前验收（必须可追溯）
+  - 记录：谁配置的、配置文件位置、授权目录、token 范围、回滚方式
+  - 最小验证：列出一次“只读”操作并记录结果（例如列目录/读文件/列 PR）
+notes:
+  - MCP 的价值是“把外部工具/数据接进对话”，风险也在于此：先从只读与单目录授权开始。
+  - 建议把配置与密钥纳入团队治理：统一版本、统一审计、统一撤销/轮换机制。
+relatedTutorials:
+  - mcp-starter-kit
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - MCP
+  - Registry
+  - mcpServers
+  - 最小权限
+  - GitHub
+  - Filesystem
+---
+
+## 参考链接（官方/权威）
+
+- MCP Registry：`https://registry.modelcontextprotocol.io/`
+- MCP Servers（参考实现/资源）：`https://github.com/modelcontextprotocol/servers`
+- MCP 官方站：`https://modelcontextprotocol.io/`

@@ -1,0 +1,214 @@
+---
+slug: ai-codebase-understanding
+title: 用 AI 工具理解陌生代码库：新人快速上手的 SOP
+description: 一套可复制的 AI 辅助代码库理解流程，帮助你快速熟悉陌生项目。
+type: how-to
+difficulty: beginner
+goal: 掌握用 AI 工具快速理解陌生代码库的完整工作流。
+requiredTools:
+  - Cursor 或 Claude Code 或其他支持 @codebase 的 AI 工具
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 30-60 分钟
+stepsOverview:
+  - 获取项目概览
+  - 理解项目结构
+  - 追踪关键流程
+  - 理解核心模块
+  - 建立知识地图
+steps:
+  - step: 1
+    title: 获取项目概览
+    description: 让 AI 帮你快速了解项目的整体情况。
+    tips:
+      - 先读 README 和文档
+      - 让 AI 总结项目的核心功能
+      - 了解技术栈和依赖
+  - step: 2
+    title: 理解项目结构
+    description: 了解代码的组织方式和模块划分。
+    tips:
+      - 让 AI 解释目录结构
+      - 识别核心模块和入口文件
+      - 理解模块间的依赖关系
+  - step: 3
+    title: 追踪关键流程
+    description: 选择一个关键功能，追踪其完整流程。
+    tips:
+      - 从用户操作开始追踪
+      - 让 AI 解释调用链
+      - 理解数据流向
+  - step: 4
+    title: 理解核心模块
+    description: 深入理解最重要的几个模块。
+    tips:
+      - 让 AI 解释核心类和函数
+      - 理解关键算法和逻辑
+      - 注意设计模式和架构决策
+  - step: 5
+    title: 建立知识地图
+    description: 整理学到的知识，建立自己的理解框架。
+    tips:
+      - 记录关键文件和函数
+      - 画出模块关系图
+      - 标注不理解的地方
+keyTips:
+  - 从宏观到微观，先整体后细节
+  - 带着问题去探索，而不是漫无目的地阅读
+  - AI 的解释可能不完全准确，需要验证
+safety:
+  checklist:
+    - AI 的解释需要验证
+    - 不要完全依赖 AI 的理解
+    - 重要逻辑要自己阅读代码确认
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: AI 对代码的理解不准确
+    solution: 交叉验证；阅读关键代码；询问团队成员
+  - problem: 信息过载，不知道从哪开始
+    solution: 聚焦一个具体功能；从入口文件开始
+  - problem: 理解了代码但记不住
+    solution: 做笔记；画图；写文档
+acceptanceCriteria:
+  - 能说出项目的核心功能
+  - 能描述主要模块的职责
+  - 能追踪一个完整的功能流程
+relatedTools:
+  - cursor
+  - claude-code
+  - sourcegraph-cody
+relatedTemplates:
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+author: CodeAtlas
+keywords:
+  - 代码理解
+  - 新人上手
+  - AI 辅助
+  - SOP
+---
+
+## 为什么用 AI 理解代码库
+
+AI 工具在代码理解中的价值：
+
+- **快速概览**：几分钟了解项目整体结构
+- **解释代码**：用自然语言解释复杂逻辑
+- **追踪调用**：快速找到函数的调用关系
+- **回答问题**：针对代码库提问
+
+## 提示词模板
+
+### 获取项目概览
+
+```
+请帮我了解这个项目：
+1. 这个项目是做什么的？
+2. 使用了哪些主要技术栈？
+3. 核心功能有哪些？
+4. 项目的入口文件在哪里？
+```
+
+### 理解目录结构
+
+```
+请解释这个项目的目录结构：
+1. 每个主要目录的职责是什么？
+2. 核心代码在哪些目录？
+3. 配置文件在哪里？
+4. 测试代码在哪里？
+```
+
+### 追踪功能流程
+
+```
+我想理解 [功能名称] 的实现：
+1. 用户操作从哪里开始？
+2. 请追踪完整的调用链
+3. 数据是如何流转的？
+4. 涉及哪些关键文件？
+```
+
+### 理解具体代码
+
+```
+请解释这段代码：
+@file [文件路径]
+
+1. 这个函数/类的作用是什么？
+2. 输入和输出是什么？
+3. 关键逻辑是什么？
+4. 有什么需要注意的地方？
+```
+
+## 探索策略
+
+### 自顶向下
+
+```
+项目概览
+├── 核心功能
+│   ├── 功能 A 的实现
+│   ├── 功能 B 的实现
+│   └── ...
+├── 技术架构
+│   ├── 前端架构
+│   ├── 后端架构
+│   └── 数据层
+└── 关键模块
+    ├── 模块 A
+    ├── 模块 B
+    └── ...
+```
+
+### 问题驱动
+
+1. 我要修改的功能在哪里？
+2. 这个 Bug 可能在哪里？
+3. 这个 API 是怎么实现的？
+4. 数据是怎么存储的？
+
+## 常见项目结构
+
+### 前端项目（React/Vue）
+
+```
+src/
+├── components/    # UI 组件
+├── pages/         # 页面
+├── hooks/         # 自定义 Hooks
+├── services/      # API 调用
+├── store/         # 状态管理
+├── utils/         # 工具函数
+└── types/         # 类型定义
+```
+
+### 后端项目（Node.js）
+
+```
+src/
+├── controllers/   # 请求处理
+├── services/      # 业务逻辑
+├── models/        # 数据模型
+├── routes/        # 路由定义
+├── middlewares/   # 中间件
+└── utils/         # 工具函数
+```
+
+## 理解代码的检查清单
+
+- [ ] 知道项目是做什么的
+- [ ] 了解主要技术栈
+- [ ] 能找到入口文件
+- [ ] 理解目录结构
+- [ ] 能追踪一个完整功能
+- [ ] 知道核心模块的职责
+- [ ] 能找到配置和测试
+
+## 下一步
+
+- 学习 [用 AI 工具改 Bug](/tutorials/ai-bug-fixing-workflow) 开始实际开发
+- 了解 [Cursor 入门](/tutorials/cursor-getting-started) 提升效率

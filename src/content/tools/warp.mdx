@@ -1,0 +1,81 @@
+---
+slug: warp
+title: Warp
+description: "带 AI 辅助的现代终端体验（以官方信息为准）：适合把常用命令、排障与脚本执行流程更顺滑地串起来。"
+logo: /logos/default.svg
+website: "https://www.warp.dev/"
+productType:
+  - cli
+category:
+  - devops
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强内网/离线环境且无法合规接入的团队"
+capabilities:
+  - local-command
+  - execute
+useCases:
+  - "作为编程工具/Agent 的模型后端或聚合入口"
+  - "统一管理模型调用、权限与成本"
+  - "为团队接入提供更可控的工程化路径"
+pros:
+  - "统一入口，方便多工具复用"
+  - "更适合团队做权限、审计与成本治理"
+  - "可作为多模型策略的抽象层"
+cons:
+  - "合规与数据策略需要结合具体模型/地区核对"
+  - "成本与性能取决于调用模式与模型选择"
+  - "需要团队做好密钥与权限管理"
+onboardingTime: "20-40 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作"
+pricing:
+  model: usage-based
+  free: false
+  startingPrice: ''
+  currency: ''
+  billingCycle: monthly
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://www.warp.dev/"
+  updatedAt: "2025-12-28"
+  sources:
+    -
+      label: "Warp 官方入口/定价页"
+      url: "https://www.warp.dev/"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance: []
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - warp-getting-started
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Warp
+  - "AI 编程"
+  - devops
+---
+
+
+
+## 适合用 Warp 的一个判断
+
+如果你的目标是“为多个编程工具/Agent 提供统一的模型调用入口”，并希望把权限、审计与成本治理工程化，这类平台通常更合适。
+
+## 使用建议（稳一点）
+
+- 先明确合规边界：数据是否可出域、是否需要企业协议/审计
+- 对关键密钥做权限分级与轮换策略
+- 用一套最低可行工作流跑通，再逐步扩大模型与工具接入

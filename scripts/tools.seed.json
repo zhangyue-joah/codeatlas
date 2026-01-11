@@ -1,0 +1,508 @@
+[
+  {
+    "slug": "amazon-q-developer",
+    "title": "Amazon Q Developer",
+    "website": "https://aws.amazon.com/q/developer/",
+    "description": "AWS 生态的 AI 编程助手：代码补全、生成与基于仓库上下文的建议，适合 AWS 工作负载与企业团队落地。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["code-completion", "agent-coding"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "gemini-code-assist",
+    "title": "Gemini Code Assist",
+    "website": "https://cloud.google.com/products/gemini/code-assist",
+    "description": "Google 提供的代码补全与编程助手，面向企业与云上开发场景，适合在 Google Cloud 生态内协作。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "jetbrains-ai-assistant",
+    "title": "JetBrains AI Assistant",
+    "website": "https://www.jetbrains.com/ai/",
+    "description": "JetBrains IDE 内置 AI 助手：代码补全、解释、重构建议与文档生成，适合 JetBrains 用户无缝接入。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion", "doc-generation"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "jetbrains-junie",
+    "title": "JetBrains Junie",
+    "website": "https://www.jetbrains.com/junie/",
+    "description": "JetBrains 的 Agent 形态编程能力（以官方信息为准）：更偏向把任务跑通到可提交改动的工作流。",
+    "productType": ["ide-extension"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "tabnine",
+    "title": "Tabnine",
+    "website": "https://www.tabnine.com/",
+    "description": "面向团队的代码补全/生成工具，强调企业落地与开发者效率提升，适合需要可控接入与管理能力的组织。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "codeium",
+    "title": "Codeium",
+    "website": "https://codeium.com/",
+    "description": "覆盖多 IDE 的代码补全与聊天式编程助手，适合以低成本把 AI 编程能力铺到团队日常开发。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "windsurf",
+    "title": "Windsurf",
+    "website": "https://windsurf.com/",
+    "description": "偏 Agent 的 AI-first 编辑器/工作流（以官方信息为准）：强调多步任务完成与代码修改闭环。",
+    "productType": ["ide"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "replit-ghostwriter",
+    "title": "Replit Ghostwriter",
+    "website": "https://replit.com/site/ghostwriter",
+    "description": "Replit 平台内的 AI 编程助手：补全、解释与生成，适合在线开发/教学/快速原型。",
+    "productType": ["web-app"],
+    "category": ["code-completion", "doc-generation"],
+    "capabilities": ["repo-context", "read-write"]
+  },
+  {
+    "slug": "sourcegraph-cody",
+    "title": "Sourcegraph Cody",
+    "website": "https://sourcegraph.com/cody",
+    "description": "以代码搜索与仓库上下文见长的编程助手，适合大型代码库理解、问答与变更建议。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["repo-chat", "code-review"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "continue",
+    "title": "Continue",
+    "website": "https://www.continue.dev/",
+    "description": "开源的 IDE 编程助手框架：可接入多模型/多供应商，适合希望自定义与可控落地的团队。",
+    "productType": ["ide-extension"],
+    "category": ["repo-chat", "code-completion"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "aider",
+    "title": "Aider",
+    "website": "https://aider.chat/",
+    "description": "面向 Git 工作流的 CLI 编程助手：通过对话驱动改代码、生成补丁与提交，适合命令行重度用户。",
+    "productType": ["cli"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "cline",
+    "title": "Cline",
+    "website": "https://cline.bot/",
+    "description": "VS Code 里的 Agent 编程扩展：可调用模型与工具，把多步改动串成可验证的工作流（以官方信息为准）。",
+    "productType": ["ide-extension"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "roo-code",
+    "title": "Roo Code",
+    "website": "https://roocode.com/",
+    "description": "面向 VS Code 的 Agent 编程扩展（以官方信息为准）：强调任务拆解、工具调用与代码变更闭环。",
+    "productType": ["ide-extension"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "openai-codex",
+    "title": "OpenAI Codex",
+    "website": "https://openai.com/",
+    "description": "面向编程任务的 AI 助手能力（以 OpenAI 最新产品形态为准）：适合把需求转化为可运行/可提交的改动。",
+    "productType": ["web-app"],
+    "category": ["agent-coding", "repo-chat"],
+    "capabilities": ["repo-context", "agent-execution", "read-only"]
+  },
+  {
+    "slug": "claude-code",
+    "title": "Claude Code",
+    "website": "https://www.anthropic.com/claude-code",
+    "description": "Claude 的命令行/Agent 编程形态（以官方信息为准）：适合在终端里做多步任务与代码修改闭环。",
+    "productType": ["cli"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "devin",
+    "title": "Devin",
+    "website": "https://www.cognition.ai/",
+    "description": "偏“软件工程代理”的产品形态（以官方信息为准）：目标是从任务到 PR 的多步闭环与交付。",
+    "productType": ["web-app"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "external-system", "read-write", "execute"]
+  },
+  {
+    "slug": "swe-agent",
+    "title": "SWE-agent",
+    "website": "https://github.com/SWE-agent/SWE-agent",
+    "description": "开源的代码代理/自动修复框架：面向 issue/bugfix 的自动化工作流，适合研究与工程化改造。",
+    "productType": ["cli"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "openhands",
+    "title": "OpenHands",
+    "website": "https://github.com/All-Hands-AI/OpenHands",
+    "description": "开源的通用软件工程 Agent（以项目说明为准）：强调可复现的工具调用与任务执行闭环。",
+    "productType": ["web-app"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "sweep-ai",
+    "title": "Sweep",
+    "website": "https://sweep.dev/",
+    "description": "面向 GitHub 的自动改代码/开 PR 工具：适合把 issue/需求快速转化为可审查的变更。",
+    "productType": ["web-app"],
+    "category": ["agent-coding", "devops"],
+    "capabilities": ["repo-context", "external-system", "read-write", "execute"]
+  },
+  {
+    "slug": "coderabbit",
+    "title": "CodeRabbit",
+    "website": "https://coderabbit.ai/",
+    "description": "PR Review 专用的 AI 助手：在代码审查中给出风险点、改进建议与讨论摘要（仍需人工复核）。",
+    "productType": ["web-app"],
+    "category": ["code-review"],
+    "capabilities": ["repo-context", "external-system", "read-only"]
+  },
+  {
+    "slug": "qodo",
+    "title": "Qodo (CodiumAI)",
+    "website": "https://www.qodo.ai/",
+    "description": "强调测试生成与代码质量的 AI 编程工具（以官方信息为准）：适合把“可验证”作为默认交付标准的团队。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["testing", "code-review"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"],
+    "keywords": ["Qodo", "CodiumAI", "测试生成", "AI 编程", "代码质量"]
+  },
+  {
+    "slug": "tabby",
+    "title": "Tabby",
+    "website": "https://tabby.tabbyml.com/",
+    "description": "可自托管的开源代码补全/助手：强调本地/私有化部署与可控的数据策略，适合合规敏感团队。",
+    "productType": ["web-app"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "read-only"],
+    "keywords": ["Tabby", "TabbyML", "自托管", "代码补全", "AI 编程"]
+  },
+  {
+    "slug": "zed-ai",
+    "title": "Zed (AI)",
+    "website": "https://zed.dev/",
+    "description": "高性能编辑器 + AI 辅助能力（以官方信息为准）：适合追求编辑器体验与轻量 AI 辅助的开发者。",
+    "productType": ["ide"],
+    "category": ["code-completion"],
+    "capabilities": ["repo-context", "read-only"]
+  },
+  {
+    "slug": "tongyi-lingma",
+    "title": "通义灵码",
+    "website": "https://tongyi.aliyun.com/lingma",
+    "description": "阿里云/通义体系的 AI 编程助手（以官方信息为准）：覆盖补全、解释与代码生成，适合国内企业接入。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "baidu-comate",
+    "title": "Baidu Comate",
+    "website": "https://comate.baidu.com/",
+    "description": "百度的 AI 编程助手（以官方信息为准）：面向企业与开发者场景，强调落地与协作效率。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "codegeex",
+    "title": "CodeGeeX",
+    "website": "https://codegeex.cn/",
+    "description": "智谱系的 AI 编程助手产品（以官方信息为准）：覆盖代码生成、解释与补全，适合中文语境开发协作。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "marscode",
+    "title": "MarsCode",
+    "website": "https://www.marscode.com/",
+    "description": "字节系 AI 编程工具/平台（以官方信息为准）：覆盖补全、对话与工程化能力，适合中文开发场景。",
+    "productType": ["ide", "web-app"],
+    "category": ["code-completion", "agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "read-write"]
+  },
+  {
+    "slug": "gitlab-duo",
+    "title": "GitLab Duo",
+    "website": "https://about.gitlab.com/gitlab-duo/",
+    "description": "GitLab 内置的 AI 能力套件（以官方信息为准）：覆盖代码建议、解释、审查与 DevSecOps 场景。",
+    "productType": ["web-app"],
+    "category": ["code-review", "code-completion", "devops"],
+    "capabilities": ["repo-context", "external-system", "read-only"]
+  },
+  {
+    "slug": "blackbox-ai",
+    "title": "Blackbox AI",
+    "website": "https://www.blackbox.ai/",
+    "description": "以代码搜索/问答与生成见长的 AI 工具（以官方信息为准）：适合快速查找实现思路与片段代码。",
+    "productType": ["web-app"],
+    "category": ["repo-chat", "code-completion"],
+    "capabilities": ["read-only"]
+  },
+  {
+    "slug": "bito",
+    "title": "Bito",
+    "website": "https://bito.ai/",
+    "description": "面向 IDE 的 AI 编程助手：提供补全、解释与生成，适合不更换编辑器的日常效率提升。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "phind",
+    "title": "Phind",
+    "website": "https://www.phind.com/",
+    "description": "面向开发者的问题解决/搜索式问答产品（以官方信息为准）：适合快速定位资料与生成可运行的示例。",
+    "productType": ["web-app"],
+    "category": ["repo-chat", "doc-generation"],
+    "capabilities": ["read-only"]
+  },
+  {
+    "slug": "codegpt",
+    "title": "CodeGPT",
+    "website": "https://codegpt.co/",
+    "description": "第三方 IDE/编辑器扩展：统一接入多模型做代码补全与对话式编程（以官方信息为准）。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "askcodi",
+    "title": "AskCodi",
+    "website": "https://www.askcodi.com/",
+    "description": "Web 侧的代码生成与辅助工具：适合快速产出片段代码、文档与常见开发模板。",
+    "productType": ["web-app"],
+    "category": ["code-completion", "doc-generation"],
+    "capabilities": ["read-only"]
+  },
+  {
+    "slug": "refact-ai",
+    "title": "Refact.ai",
+    "website": "https://refact.ai/",
+    "description": "偏工程化落地的代码补全/助手产品（以官方信息为准）：适合团队在既有 IDE/仓库流程中接入。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "copilot-workspace",
+    "title": "GitHub Copilot Workspace",
+    "website": "https://githubnext.com/projects/copilot-workspace/",
+    "description": "GitHub 的任务式/工作区形态 AI 辅助（以官方信息为准）：把 issue/需求转成计划、改动与可审查产物。",
+    "productType": ["web-app"],
+    "category": ["agent-coding", "code-review"],
+    "capabilities": ["repo-context", "external-system", "read-write"]
+  },
+  {
+    "slug": "bolt-new",
+    "title": "Bolt.new",
+    "website": "https://bolt.new/",
+    "description": "面向快速原型与全栈生成的 Web 产品（以官方信息为准）：适合把想法快速变成可运行应用并迭代。",
+    "productType": ["web-app"],
+    "category": ["agent-coding"],
+    "capabilities": ["read-write"]
+  },
+  {
+    "slug": "vercel-v0",
+    "title": "v0 by Vercel",
+    "website": "https://v0.dev/",
+    "description": "面向 UI/前端代码生成的产品：适合快速产出组件与页面草稿，再由工程化流程接管落地。",
+    "productType": ["web-app"],
+    "category": ["doc-generation", "agent-coding"],
+    "capabilities": ["read-only"]
+  },
+  {
+    "slug": "lovable",
+    "title": "Lovable",
+    "website": "https://lovable.dev/",
+    "description": "面向应用生成与快速迭代的 Web 产品（以官方信息为准）：适合快速产出可运行版本并持续调整。",
+    "productType": ["web-app"],
+    "category": ["agent-coding"],
+    "capabilities": ["read-write"]
+  },
+  {
+    "slug": "visual-studio-intellicode",
+    "title": "Visual Studio IntelliCode",
+    "website": "https://visualstudio.microsoft.com/services/intellicode/",
+    "description": "Visual Studio 的智能建议/补全能力：适合在微软 IDE 生态内获得更好的补全与推荐（以官方信息为准）。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion"],
+    "capabilities": ["read-only"]
+  },
+  {
+    "slug": "pieces",
+    "title": "Pieces for Developers",
+    "website": "https://pieces.app/",
+    "description": "面向开发者的知识/片段管理与 AI 辅助工具（以官方信息为准）：适合沉淀代码片段、上下文与复用资产。",
+    "productType": ["web-app"],
+    "category": ["repo-chat", "doc-generation"],
+    "capabilities": ["read-only"]
+  },
+  {
+    "slug": "warp",
+    "title": "Warp",
+    "website": "https://www.warp.dev/",
+    "description": "带 AI 辅助的现代终端体验（以官方信息为准）：适合把常用命令、排障与脚本执行流程更顺滑地串起来。",
+    "productType": ["cli"],
+    "category": ["devops"],
+    "capabilities": ["local-command", "execute"]
+  },
+  {
+    "slug": "fauxpilot",
+    "title": "FauxPilot",
+    "website": "https://github.com/fauxpilot/fauxpilot",
+    "description": "开源可自托管的 Copilot 风格代码补全方案：适合在私有环境里做代码补全与可控接入（以项目说明为准）。",
+    "productType": ["web-app"],
+    "category": ["code-completion"],
+    "capabilities": ["repo-context", "read-only"]
+  },
+  {
+    "slug": "codecomplete",
+    "title": "CodeComplete",
+    "website": "https://codecomplete.ai/",
+    "description": "面向企业的自托管/可控接入代码补全产品（以官方信息为准）：适合强调合规、权限与审计的组织。",
+    "productType": ["web-app"],
+    "category": ["code-completion"],
+    "capabilities": ["repo-context", "read-only"]
+  },
+  {
+    "slug": "gitlab-code-suggestions",
+    "title": "GitLab Code Suggestions",
+    "website": "https://docs.gitlab.com/ee/user/project/repository/code_suggestions.html",
+    "description": "GitLab 工作流内的代码建议/补全能力（以官方信息为准）：适合在 GitLab 平台内统一接入与管理。",
+    "productType": ["web-app"],
+    "category": ["code-completion"],
+    "capabilities": ["repo-context", "external-system", "read-only"]
+  },
+  {
+    "slug": "safurai",
+    "title": "Safurai",
+    "website": "https://www.safurai.com/",
+    "description": "面向生成、重构与调试的 AI 编程助手（以官方信息为准）：适合日常开发中快速获得实现与排障建议。",
+    "productType": ["ide-extension", "web-app"],
+    "category": ["repo-chat", "code-completion"],
+    "capabilities": ["repo-context", "read-only"]
+  },
+  {
+    "slug": "kilo-code",
+    "title": "Kilo Code",
+    "website": "https://kilocode.ai/",
+    "description": "开源的 VS Code 内 AI 编程助手（以官方信息为准）：覆盖规划、实现与修复等多步任务。",
+    "productType": ["ide-extension"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "augment-code",
+    "title": "Augment Code",
+    "website": "https://www.augmentcode.com/",
+    "description": "面向团队/企业的上下文代码补全产品（以官方信息为准）：适合大仓库与工程化协作场景。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "read-only"]
+  },
+  {
+    "slug": "poolside",
+    "title": "Poolside",
+    "website": "https://poolside.ai/",
+    "description": "面向软件工程任务的 AI 产品形态（以官方信息为准）：适合关注端到端工程效率与交付闭环的团队。",
+    "productType": ["web-app"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "external-system", "read-write", "execute"]
+  },
+  {
+    "slug": "sourcegraph-amp",
+    "title": "Sourcegraph Amp",
+    "website": "https://ampcode.com/",
+    "description": "偏 Agent 的工程助手（以官方信息为准）：面向构建、调试与理解代码等任务型工作流。",
+    "productType": ["web-app"],
+    "category": ["agent-coding", "repo-chat"],
+    "capabilities": ["repo-context", "agent-execution", "read-write"]
+  },
+  {
+    "slug": "pixee",
+    "title": "Pixee",
+    "website": "https://pixee.ai",
+    "description": "偏代码质量/安全的自动化助手（以官方信息为准）：可在 PR/仓库工作流中提出可合并的改进建议。",
+    "productType": ["web-app"],
+    "category": ["code-review", "testing"],
+    "capabilities": ["repo-context", "external-system", "read-only"]
+  },
+  {
+    "slug": "plandex",
+    "title": "Plandex",
+    "website": "https://github.com/plandex-ai/plandex",
+    "description": "开源的多文件任务引擎（以项目说明为准）：适合把复杂改动拆解、规划并与版本控制协作。",
+    "productType": ["cli"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "local-command", "read-write", "execute"]
+  },
+  {
+    "slug": "supermaven",
+    "title": "Supermaven",
+    "website": "https://supermaven.com/",
+    "description": "面向开发者的代码补全产品（以官方信息为准）：强调更顺滑的补全体验与日常编码效率提升。",
+    "productType": ["ide-extension"],
+    "category": ["code-completion"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "qoder",
+    "title": "Qoder",
+    "website": "https://qoder.com/",
+    "description": "面向任务闭环的 Agentic Coding 平台（以官方信息为准）：集成代码补全、Repo 级理解与自动化改动能力。",
+    "productType": ["ide", "ide-extension", "cli"],
+    "category": ["agent-coding", "code-completion"],
+    "capabilities": ["repo-context", "agent-execution", "skills-plugins", "read-write"]
+  },
+  {
+    "slug": "codebuddy",
+    "title": "CodeBuddy",
+    "website": "https://codebuddy.ai/",
+    "description": "腾讯云 AI 编程助手（以官方信息为准）：覆盖代码补全、解释与生成，适合国内团队快速接入。",
+    "productType": ["ide", "ide-extension"],
+    "category": ["code-completion", "repo-chat"],
+    "capabilities": ["repo-context", "skills-plugins", "read-only"]
+  },
+  {
+    "slug": "atlassian-rovo",
+    "title": "Atlassian Rovo (Rovo Dev)",
+    "website": "https://www.atlassian.com/blog/announcements/rovo-dev-command-line-interface",
+    "description": "Atlassian 的开发者助手（以官方信息为准）：在终端工作流里串联 Jira/Confluence 等上下文，加速从任务到改动的闭环。",
+    "productType": ["cli"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "external-system", "read-only"]
+  },
+  {
+    "slug": "magic",
+    "title": "Magic",
+    "website": "https://magic.dev/",
+    "description": "AI 软件工程师平台（以官方信息为准）：理解代码库并协助完成多步开发任务，适合需要端到端推进的团队。",
+    "productType": ["web-app"],
+    "category": ["agent-coding"],
+    "capabilities": ["repo-context", "agent-execution", "read-only"]
+  }
+]

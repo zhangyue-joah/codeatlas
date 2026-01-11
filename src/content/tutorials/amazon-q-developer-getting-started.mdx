@@ -1,0 +1,73 @@
+---
+slug: amazon-q-developer-getting-started
+title: Amazon Q Developer 上手实操：在 IDE 里完成一次小改动（30 分钟）
+description: 适合 AWS/企业场景：验收标准 → 文件清单与风险 → 小步改动 → 最小验证，同时把权限与审计边界讲清楚。
+type: getting-started
+difficulty: beginner
+goal: 30 分钟内完成一次可提交的小改动，并明确团队权限与审计边界。
+requiredTools:
+  - 支持 Amazon Q 的 IDE（按官方支持列表）
+  - Amazon Q Developer
+requiredCapabilities:
+  - repo-context
+  - read-write
+estimatedTime: 20-40 分钟
+stepsOverview:
+  - 确认 IDE 集成与账号权限
+  - 写清需求与验收标准
+  - 先要计划（文件清单 + 风险）
+  - 小步改动 + 最小验证
+  - 团队场景补齐审计与权限边界
+steps:
+  - step: 1
+    title: 确认账号与权限
+    description: 先确认你能正常使用 Q，并了解组织/团队策略（权限、审计、数据）。
+  - step: 2
+    title: 写验收标准（可验证）
+    description: 3 条以内，避免模糊需求导致生成偏离。
+  - step: 3
+    title: 先要计划
+    description: 让 AI 列出要改的文件/符号与风险点，你确认后再写入。
+  - step: 4
+    title: 小步实现 + 最小验证
+    description: 用 lint/test/build 任意一个命令作为证据。
+    code: |
+      npm run lint
+  - step: 5
+    title: 提交前复查与复盘
+    description: 对照验收标准，检查变更范围与回滚路径。
+keyTips:
+  - 企业落地优先明确：权限、审计、数据留存策略
+  - 让 AI 引用具体代码位置（文件/方法）而不是泛泛输出
+safety:
+  checklist:
+    - 不要把密钥/访问令牌贴进对话或日志
+    - 默认只读/建议，逐步开放写入
+    - 跑最小验证并保留日志摘要
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 权限/网络导致功能不可用
+    solution: 先把“账号、订阅、网络策略”验证清楚，再开始写代码
+  - problem: 生成代码与项目结构不一致
+    solution: 让 AI 先总结项目结构与约定，再给计划与改动
+acceptanceCriteria:
+  - 改动符合验收标准并通过最小验证
+  - 团队场景下明确权限边界与审计策略
+relatedTools:
+  - amazon-q-developer
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - Amazon Q Developer
+  - 写功能
+  - 改 Bug
+  - 补测试
+---
+
+## 小提醒
+
+如果你的任务需要“多步闭环 + 自动跑命令”，可以考虑把 Q 用作“建议/解释层”，再叠加一个可控的 Agent 工具完成闭环。

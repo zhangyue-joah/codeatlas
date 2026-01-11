@@ -1,0 +1,87 @@
+---
+slug: mcp-config-starter-kit
+title: MCP 入门套件
+description: 把两个最常用的 MCP Server（GitHub/Filesystem）与 Claude Desktop 的 `mcpServers` 配置串起来，并附最小权限与审计要点。
+type: mcp-config
+applicableTools:
+  - MCP
+  - Claude Desktop
+  - Cursor
+  - Continue
+  - Cline
+scenarios:
+  - MCP Starter
+  - 最小权限
+placeholders:
+  - GITHUB_TOKEN
+  - /ABSOLUTE/PATH/TO/THIS/PROJECT
+dependencies:
+  - 支持 MCP 的客户端
+  - Node.js（npx）
+example: |
+  # 1) 环境变量（示例）
+  export GITHUB_TOKEN="YOUR_GITHUB_TOKEN"
+
+  # 2) 粘贴 mcpServers 配置后重启客户端，再尝试一次只读操作（列 PR / 读文件）
+template: |
+  # MCP Starter Kit (GitHub + Filesystem + Claude Desktop)
+  # 目标：最小权限、最小暴露面、可审计。
+
+  ## 1) 准备环境变量（不要写进仓库）
+  # macOS/Linux (example)
+  export GITHUB_TOKEN="YOUR_GITHUB_TOKEN"
+
+  ## 2) Claude Desktop: claude_desktop_config.json 示例
+  # 注意：路径与命令以你的系统/官方文档为准
+  {
+    "mcpServers": {
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+        }
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "/ABSOLUTE/PATH/TO/THIS/PROJECT"
+        ]
+      }
+    }
+  }
+
+  ## 3) 最小权限确认（上线前必做）
+  - GitHub：从只读权限开始；确认确有需要再逐步放开写权限。
+  - Filesystem：只授权“一个项目目录”，不要授权 home/根目录。
+  - 审计：确保请求可追溯（谁、何时、做了什么、改了哪些文件/资源）。
+notes:
+  - MCP Server 具备访问外部系统的能力：先从只读与单目录授权开始，逐步扩大权限。
+  - 企业/团队环境建议固定版本号、统一分发配置，并启用日志与密钥管理（避免散落在个人机器）。
+relatedTutorials:
+  - mcp-starter-kit
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - MCP
+  - mcpServers
+  - Claude Desktop
+  - GitHub
+  - Filesystem
+  - 最小权限
+---
+
+## 常见坑（避免踩）
+
+- 把 token 写进仓库、PR、截图或聊天记录。
+- Filesystem 一次性授权整个磁盘（尤其是 `~`、`/`、含凭据的目录）。
+- 默认让 Agent “能写就写”：没有 review/审计时，权限越大风险越大。
+
+## 参考链接（官方/权威）
+
+- MCP 官方站：`https://modelcontextprotocol.io/`
+- MCP Servers（参考实现，GitHub）：`https://github.com/modelcontextprotocol/servers`
+- MCP Registry（找服务器）：`https://registry.modelcontextprotocol.io/`
+- GitHub：创建个人访问令牌（PAT）：`https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token`

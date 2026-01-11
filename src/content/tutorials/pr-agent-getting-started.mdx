@@ -1,0 +1,148 @@
+---
+slug: pr-agent-getting-started
+title: PR-Agent 入门：用 AI 自动化 PR Review 工作流
+description: 20 分钟完成 PR-Agent 配置，跑通一次自动 PR 审查和描述生成。
+type: getting-started
+difficulty: beginner
+goal: 在 20 分钟内完成 PR-Agent 配置，并让它自动审查一个 Pull Request。
+requiredTools:
+  - PR-Agent
+  - GitHub/GitLab/Bitbucket
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 20-30 分钟
+stepsOverview:
+  - 选择部署方式（GitHub App / CLI / 自托管）
+  - 配置 API Key 和仓库权限
+  - 在 PR 上触发自动审查
+  - 理解审查结果并调整配置
+steps:
+  - step: 1
+    title: 选择部署方式
+    description: PR-Agent 支持多种部署方式，选择最适合你的。
+    tips:
+      - GitHub App：最简单，直接安装即可
+      - CLI：本地运行，适合试用
+      - 自托管：完全控制，适合企业
+  - step: 2
+    title: 安装 GitHub App（推荐）
+    description: 访问 GitHub Marketplace 安装 PR-Agent App。
+    code: |
+      # 或使用 CLI 方式
+      pip install pr-agent
+
+      # 配置环境变量
+      export OPENAI_API_KEY="your-key"
+      export GITHUB_TOKEN="your-token"
+    tips:
+      - GitHub App 地址：https://github.com/apps/qodo-merge-pro
+      - 免费版功能已足够个人使用
+  - step: 3
+    title: 触发 PR 审查
+    description: 在 PR 评论中使用命令触发 AI 审查。
+    code: |
+      # 在 PR 评论中输入以下命令
+      /review        # 代码审查
+      /describe      # 生成 PR 描述
+      /improve       # 代码改进建议
+      /ask "问题"    # 针对 PR 提问
+    tips:
+      - 也可配置为自动触发，无需手动输入命令
+  - step: 4
+    title: 理解审查结果
+    description: PR-Agent 会生成结构化的审查报告。
+    tips:
+      - 报告包含：风险评估、代码问题、改进建议
+      - 可以配置审查的严格程度和关注点
+  - step: 5
+    title: 自定义配置
+    description: 根据团队需求调整 PR-Agent 行为。
+    code: |
+      # .pr_agent.toml 配置示例
+      [pr_reviewer]
+      require_focused_review = true
+      require_tests = true
+
+      [pr_description]
+      publish_labels = true
+keyTips:
+  - PR-Agent 是辅助工具，不能替代人工审查
+  - 建议先在小项目试用，熟悉后再推广到团队
+  - 可以自定义审查规则，匹配团队代码规范
+safety:
+  checklist:
+    - API Key 不要提交到版本控制
+    - 注意仓库权限范围，遵循最小权限原则
+    - 敏感代码仓库需评估数据安全
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 审查结果不准确或过于宽泛
+    solution: 调整配置文件，明确审查重点；提供更多上下文
+  - problem: 命令无响应
+    solution: 检查 App 安装状态和仓库权限；查看 GitHub Actions 日志
+  - problem: API 调用超限
+    solution: 检查 API Key 配额；考虑自托管方案
+acceptanceCriteria:
+  - PR-Agent 安装/配置成功
+  - 至少在一个 PR 上跑通自动审查
+  - 理解基本命令和配置选项
+relatedTools:
+  - codium-pr-agent
+  - coderabbit
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - PR-Agent
+  - Qodo
+  - PR Review
+  - 代码审查
+  - 自动化
+---
+
+## PR-Agent 是什么
+
+PR-Agent 是 Qodo（原 Codium AI）开源的 PR 自动化工具。它可以：
+
+- **自动审查代码**：识别潜在问题、安全风险、代码异味
+- **生成 PR 描述**：自动总结改动内容和影响
+- **提供改进建议**：基于最佳实践给出优化建议
+- **回答问题**：针对 PR 内容进行问答
+
+## 核心命令
+
+| 命令 | 功能 | 使用场景 |
+|------|------|----------|
+| `/review` | 代码审查 | 每个 PR 必用 |
+| `/describe` | 生成描述 | PR 创建时 |
+| `/improve` | 改进建议 | 代码优化 |
+| `/ask` | 问答 | 理解改动 |
+| `/update_changelog` | 更新日志 | 版本发布 |
+
+## 与 CodeRabbit 对比
+
+| 维度 | PR-Agent | CodeRabbit |
+|------|----------|------------|
+| 开源 | ✅ 完全开源 | 部分开源 |
+| 自托管 | ✅ 支持 | 需企业版 |
+| 价格 | 免费/Pro | 免费/付费 |
+| 功能 | 聚焦 PR | 更全面 |
+
+如果你需要完全控制或自托管，PR-Agent 是更好的选择。
+
+## 团队落地建议
+
+1. **试点阶段**：先在 1-2 个项目试用
+2. **配置调优**：根据团队规范调整审查规则
+3. **渐进推广**：从建议模式开始，逐步增加自动化
+4. **持续优化**：收集反馈，迭代配置
+
+## 下一步
+
+- 了解 [CodeRabbit](/tools/coderabbit) 对比选择
+- 配置 [PR Review 检查清单](/templates/pr-review-checklist)
+- 学习 [用 AI 工具做 PR Review](/tutorials/ai-pr-review-workflow) 的完整工作流

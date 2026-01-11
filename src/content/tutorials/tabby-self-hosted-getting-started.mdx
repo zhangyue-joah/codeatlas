@@ -1,0 +1,71 @@
+---
+slug: tabby-self-hosted-getting-started
+title: Tabby 自托管落地：内网搭一个可控的代码助手（试点 SOP）
+description: 面向合规/内网：先把数据边界、日志脱敏与审计写清楚，再部署接入，从只读/补全开始逐步扩大能力。
+type: team-practice
+difficulty: intermediate
+goal: 在自控环境中跑通一次“安装/接入/验证”，并建立最小的权限与审计边界。
+requiredTools:
+  - Tabby（自托管服务）
+  - 支持的编辑器插件（按官方支持列表）
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 40-90 分钟
+stepsOverview:
+  - 明确数据边界与网络拓扑（内网/出网/审计）
+  - 部署 Tabby 并验证服务可用
+  - 选择编辑器插件并接入
+  - 从只读/补全开始，逐步开放能力
+  - 建立监控、日志脱敏与轮换策略
+steps:
+  - step: 1
+    title: 明确合规与数据边界
+    description: 先写清哪些仓库/数据允许进入模型上下文，哪些必须隔离。
+  - step: 2
+    title: 部署并验证服务可用
+    description: 先确认服务健康、网络可达、资源足够，再接入 IDE。
+  - step: 3
+    title: 接入编辑器插件
+    description: 先从单个项目试点，避免全员同时接入导致排障困难。
+  - step: 4
+    title: 从只读能力开始
+    description: 先补全/解释，观察效果与风险，再评估是否需要读写/执行类能力。
+  - step: 5
+    title: 监控与轮换
+    description: 建立限额/告警/日志脱敏与访问控制，确保可持续运营。
+keyTips:
+  - 自托管的价值是“数据与访问自控”，代价是“运维与成本”
+  - 先试点再推广，避免一上来全员接入
+safety:
+  checklist:
+    - 明确哪些数据可进入上下文，默认最小化
+    - 日志脱敏与访问控制（按团队策略）
+    - 建立轮换、告警与审计
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 试图一次性覆盖所有仓库导致不稳定
+    solution: 先选 1-2 个项目试点，验证性能与策略后再扩展
+  - problem: 忽略日志与访问控制导致合规风险
+    solution: 上线前先补齐脱敏、审计、最小权限
+acceptanceCriteria:
+  - 自托管服务与编辑器插件可用，能完成一次基本补全/解释
+  - 权限、日志与审计边界明确且可执行
+relatedTools:
+  - tabby
+relatedTemplates: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - Tabby
+  - 内网
+  - 合规
+  - 团队实践
+---
+
+## 什么时候该考虑自托管？
+
+- 你有明确的“数据不出域/必须内网”的硬约束
+- 你愿意承担部署、监控、升级与容量规划的成本

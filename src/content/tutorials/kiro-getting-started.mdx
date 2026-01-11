@@ -1,0 +1,89 @@
+---
+slug: kiro-getting-started
+title: Kiro 上手实操：用“Spec→代码→验收”跑通一次最小闭环
+description: 30-45 分钟在一个真实仓库里跑通 spec-driven 流程：先写可审查规格（目标/验收/边界）→ 再生成改动 → 最小验证 → 可回滚提交。
+type: getting-started
+difficulty: beginner
+goal: 用 Kiro 完成一次“规格先行”的小改动闭环，并把可复用的规格沉淀下来。
+requiredTools:
+  - Kiro
+  - Git
+  - 一个可本地验证的项目（lint/test/build 任一）
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 25-50 分钟
+stepsOverview:
+  - 安装/登录并打开仓库
+  - 写一份可审查的规格（目标/验收/边界）
+  - 让 AI 先输出计划（文件清单 + 风险 + 验证命令）
+  - 生成并 review 最小改动（小步提交）
+  - 跑最小验证并把规格沉淀为可复用模板
+steps:
+  - step: 1
+    title: 安装并打开仓库
+    description: 以官网与官方文档为准完成安装/登录，打开一个练习仓库。
+    tips:
+      - 官网：https://kiro.dev/
+  - step: 2
+    title: 写规格（Spec）：目标 + 验收 + 边界
+    description: 用 1 页以内把需求写成“可审查、可验证”的规格，再进入实现阶段。
+    tips:
+      - 目标：一句话说明要做什么
+      - 验收：1-3 条可验证结果
+      - 边界：只改哪些文件/不做什么
+  - step: 3
+    title: 先计划，再实现
+    description: 要求先输出计划（文件清单 + 风险点 + 验证命令），你确认后再开始生成改动。
+    warnings:
+      - 计划不清楚就不要进入写入/执行
+  - step: 4
+    title: 小步改动并 Review
+    description: 让 AI 分步骤提交（每步可回滚），你逐步 review，避免一次性大改。
+    tips:
+      - 优先产出可审计 diff/逐文件变更摘要
+  - step: 5
+    title: 最小验证 + 复盘沉淀
+    description: 跑一次最小验证；把有效的 spec/约束沉淀为团队模板或下次复用的起步文档。
+keyTips:
+  - spec-driven 的关键不在“写得长”，而在“可验证 + 可审查”
+  - 验收标准越清晰，AI 产出越稳
+  - 大任务拆成多个 spec 与多个可回滚提交
+safety:
+  checklist:
+    - 永远在新分支操作，保持可回滚
+    - 不要把密钥/令牌/私有链接写进规格或对话
+    - AI 生成的改动必须经 code review 与最小验证
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 规格太泛导致改动发散
+    solution: 缩小范围、补充验收与“只改文件清单”，并要求先出计划
+  - problem: 生成的改动难以合并
+    solution: 拆分成小步提交；先补测试/回归再做重构
+  - problem: 验证失败
+    solution: 把失败日志贴回去，让 AI 先解释原因再给最小修复
+acceptanceCriteria:
+  - 你写出一份可审查 spec（目标/验收/边界）
+  - 你完成一次可回滚的小改动并跑过最小验证
+  - 你能把 spec 复用到下一次任务（或沉淀成团队模板）
+relatedTools:
+  - kiro
+relatedTemplates:
+  - agent-rules-coding-general
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Kiro
+  - Spec-driven
+  - Agent
+  - 验收
+  - 入门
+---
+
+## 下一步
+
+- 了解“先验收再实现”的通用版本：[AI 代码验收清单](/tutorials/ai-code-acceptance-checklist)
+

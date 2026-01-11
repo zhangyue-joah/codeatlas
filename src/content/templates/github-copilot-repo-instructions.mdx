@@ -1,0 +1,56 @@
+---
+slug: github-copilot-repo-instructions
+title: GitHub Copilot 仓库指令
+description: 用仓库级指令约束 Copilot Chat：范围、编码风格、测试与安全边界。
+type: agent-instruction
+applicableTools:
+  - GitHub Copilot
+scenarios:
+  - 仓库规范
+  - 质量控制
+placeholders: []
+dependencies:
+  - GitHub Copilot
+example: |
+  # 最小用法
+  1) 把本模板设置为 Copilot 的仓库级 Custom Instructions
+  2) 在对话里先发一句：“先给计划（文件列表 + 验证命令）再写代码”
+template: |
+  # Repository Instructions for Copilot
+  ## Scope
+  - Keep changes minimal and relevant to the request.
+  - Do not refactor unrelated code or rename files unless asked.
+
+  ## Coding conventions
+  - Follow existing lint/format rules and project patterns.
+  - Prefer small, reviewable commits/patches.
+
+  ## Testing
+  - Suggest the smallest relevant verification command (lint/test/build).
+  - If you did not run commands, say so explicitly.
+
+  ## Security & privacy
+  - Never output or store secrets (API keys, tokens, credentials).
+  - Avoid logging sensitive data; use placeholders and env vars.
+
+  ## Output
+  - Provide a short plan (files to change + why) before writing code.
+notes:
+  - Copilot 的指令文件位置/规则可能随产品更新；以 GitHub 官方文档为准。
+  - 团队场景建议把指令与 PR 模板、CI 校验结合起来，形成闭环。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - GitHub Copilot
+  - 自定义指令
+  - 仓库规范
+---
+
+## 放到哪里
+
+常见做法是在仓库中放置一份“仓库指令”文件（路径以官方文档为准），让 Copilot Chat 在该 repo 下默认遵循。
+
+## 参考链接
+
+- GitHub Copilot 文档：`https://docs.github.com/en/copilot`

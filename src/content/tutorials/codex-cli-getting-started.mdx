@@ -1,0 +1,99 @@
+---
+slug: codex-cli-getting-started
+title: Codex CLI 上手实操：在终端完成一次“计划→补丁→最小验证”（可回滚）
+description: 适合偏 CLI/可审计工作流：新分支开工 → 验收标准 → 先计划 → 生成补丁 → review diff → 最小验证 → 提交。
+type: getting-started
+difficulty: intermediate
+goal: 用 Codex CLI 在一个仓库里完成一次可回滚的改动，并留下最小验证证据。
+requiredTools:
+  - Codex CLI（安装/登录以官方文档为准）
+  - Git
+  - 一个可运行验证命令的项目（lint/test/build 任一）
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 25-45 分钟
+stepsOverview:
+  - 在干净分支上开始（便于回滚）
+  - 写清需求 + 验收标准
+  - 让 AI 先输出计划（文件清单 + 风险点 + 验证命令）
+  - 让 AI 生成可审计的补丁（diff）
+  - review diff 后再应用，并跑最小验证
+steps:
+  - step: 1
+    title: 新建分支并清理工作区
+    description: 确保工作区干净，降低冲突与回滚成本。
+    code: |
+      git checkout -b feat/codex-cli-sop
+  - step: 2
+    title: 写验收标准 + 边界
+    description: 用 1-3 条可验证标准定义“什么算完成”，并明确不做无关重构。
+  - step: 3
+    title: 先计划，再补丁
+    description: 要求输出“改动文件清单/风险/验证命令”，你确认后再生成补丁。
+  - step: 4
+    title: Review diff + 最小验证
+    description: 你 review diff 后再应用，并运行最小验证命令。
+    code: |
+      npm run lint
+  - step: 5
+    title: 提交与复盘
+    description: 把有效的约束固化成规则/模板，减少下次沟通成本。
+keyTips:
+  - CLI Agent 的优势是“git 天然可审计/可回滚”，别把它当黑箱
+  - 让它输出 `git diff` 或逐文件摘要，避免“改完就算”
+  - 失败时先解释日志原因，再给最小修复补丁
+safety:
+  checklist:
+    - 永远在新分支操作，保持可回滚
+    - 不要把 key 写进 shell 历史/日志/截图
+    - 任何改动必须附最小验证命令与结果
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 安装/登录不一致或版本差异
+    solution: 以官方文档为准；先确认能跑通一个最小示例，再回到真实项目
+  - problem: 改动范围过大
+    solution: 明确只改文件列表，并要求先给计划与变更清单
+  - problem: 验证失败
+    solution: 把失败日志作为证据贴回去，让 AI 先解释原因再给最小修复
+acceptanceCriteria:
+  - 你在新分支完成一次可回滚改动
+  - 你 review 了 diff 并跑过最小验证（lint/test/build 任一）
+  - 你能复述“先计划→再补丁→再验证”的流程
+relatedTools:
+  - openai-codex
+relatedTemplates:
+  - agent-rules-coding-general
+  - pr-review-checklist
+  - openai-compatible-env
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Codex
+  - Codex CLI
+  - CLI
+  - 写功能
+  - 改 Bug
+  - 补测试
+---
+
+## 推荐的“开工模板”
+
+无论你用的是哪一种 CLI Agent，建议把开工信息固定成这 5 行（可直接复制）：
+
+1. 需求：\[一句话说明要做什么]
+2. 验收标准（1-3 条）：\[可验证的结果]
+3. 边界：只改 \[文件/目录]；不做无关重构；不新增依赖（如必须新增先申请）
+4. 请先输出计划：文件清单 + 风险点 + 验证命令；我确认后你再生成补丁
+5. 输出格式：优先 `git diff` 或逐文件变更摘要
+
+## 为什么“先补丁后合并”更稳
+
+把“生成改动”和“落地改动”分开：
+
+- AI 负责产出可审计的 diff
+- 你负责 review、应用、验证与提交
+
+这比“一键写入+一键执行”更接近团队真实工作方式，也更可控。

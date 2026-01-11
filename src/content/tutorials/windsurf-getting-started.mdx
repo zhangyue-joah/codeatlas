@@ -1,0 +1,72 @@
+---
+slug: windsurf-getting-started
+title: Windsurf 上手：用 Agentic IDE 跑通一次“计划→改动→验证”闭环
+description: 把需求写成验收标准，再让 Agent 输出文件清单 + 验证命令；分步写入并跑最小验证，最后复查与回滚准备。
+type: getting-started
+difficulty: intermediate
+goal: 在 45 分钟内完成一次可提交改动，并建立“先计划后写入”的习惯。
+requiredTools:
+  - Windsurf（或同类 Agentic IDE）
+requiredCapabilities:
+  - repo-context
+  - read-write
+  - execute
+estimatedTime: 30-45 分钟
+stepsOverview:
+  - 打开项目并完成索引
+  - 写清验收标准与边界
+  - 让 Agent 先给计划（文件清单 + 验证命令）
+  - 小步写入 + 最小验证
+  - 提交前复查与回滚准备
+steps:
+  - step: 1
+    title: 完成 repo 索引
+    description: 让工具先理解项目结构，再开始改动。
+  - step: 2
+    title: 写验收标准
+    description: 3 条以内可验证标准 + 明确不做什么。
+  - step: 3
+    title: 先要计划
+    description: 要求输出“将改哪些文件/为什么/风险/验证命令”，你确认后再写入。
+  - step: 4
+    title: 小步写入 + 最小验证
+    description: 每一步都留下证据（lint/test/build 其一）。
+    code: |
+      npm run lint
+  - step: 5
+    title: 提交前复查
+    description: 对照验收标准检查影响面与回滚路径。
+keyTips:
+  - Agentic IDE 很强，但“越强越要约束”
+  - 让它列出改动文件清单，控制范围与可解释性
+safety:
+  checklist:
+    - 默认只读/建议，逐步开放写入与执行
+    - 执行命令前确认影响范围与回滚方案
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 改动范围过大导致不可控
+    solution: 明确只改哪些文件/模块，并要求先给计划
+  - problem: 自动执行命令引发副作用
+    solution: 禁止破坏性命令；执行前必须解释影响面
+acceptanceCriteria:
+  - 完成一次可提交改动并跑过最小验证
+  - 你能解释清楚改动范围与回滚方式
+relatedTools:
+  - windsurf
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - Windsurf
+  - 写功能
+  - 改 Bug
+  - 补测试
+---
+
+## 适合用 Agentic IDE 的场景
+
+如果你经常需要“改代码 → 跑命令 → 修报错 → 补测试 → 再跑”，这类工具能显著减少上下文切换。但要把权限边界写清楚，尤其是团队场景。

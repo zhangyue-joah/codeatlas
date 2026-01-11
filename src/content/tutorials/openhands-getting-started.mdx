@@ -1,0 +1,137 @@
+---
+slug: openhands-getting-started
+title: OpenHands 入门：开源软件工程 Agent 框架的部署与使用
+description: 30 分钟完成 OpenHands 部署，跑通一次基于任务描述的自动化代码修改。
+type: getting-started
+difficulty: intermediate
+goal: 在 30 分钟内完成 OpenHands 部署，并让它完成一个简单的代码任务。
+requiredTools:
+  - OpenHands
+  - Docker
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+estimatedTime: 30-45 分钟
+stepsOverview:
+  - 克隆 OpenHands 仓库
+  - 使用 Docker 启动服务
+  - 配置 API Key
+  - 分配任务并观察执行
+  - 审查结果
+steps:
+  - step: 1
+    title: 克隆仓库
+    description: 从 GitHub 克隆 OpenHands 项目。
+    code: |
+      git clone https://github.com/All-Hands-AI/OpenHands.git
+      cd OpenHands
+    tips:
+      - GitHub 地址：https://github.com/All-Hands-AI/OpenHands
+  - step: 2
+    title: 使用 Docker 启动
+    description: 使用 Docker Compose 启动 OpenHands 服务。
+    code: |
+      docker compose up -d
+    tips:
+      - 需要安装 Docker 和 Docker Compose
+      - 首次启动会下载镜像，可能需要几分钟
+  - step: 3
+    title: 配置 API Key
+    description: 在 Web 界面中配置模型 API Key。
+    tips:
+      - 访问 http://localhost:3000
+      - 支持 OpenAI、Anthropic 等多种模型
+    warnings:
+      - API Key 不要泄露
+      - Agent 执行会消耗较多 Token
+  - step: 4
+    title: 分配任务
+    description: 用自然语言描述任务，让 Agent 执行。
+    tips:
+      - 从简单任务开始
+      - 提供清晰的需求和验收标准
+  - step: 5
+    title: 审查结果
+    description: 检查 Agent 生成的代码和改动。
+    tips:
+      - 所有代码必须人工审查
+      - 运行测试验证正确性
+keyTips:
+  - OpenHands 是开源的，可以完全自托管
+  - 执行环境隔离在 Docker 中，相对安全
+  - 适合研究和团队定制
+safety:
+  checklist:
+    - 在隔离环境中运行
+    - 不要让 Agent 访问生产环境
+    - 所有改动必须人工审查
+    - 注意 API 调用成本
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: Docker 启动失败
+    solution: 检查 Docker 是否正常运行；查看日志排查问题
+  - problem: Agent 执行超时或卡住
+    solution: 简化任务；检查 API 配置
+  - problem: 生成的代码不正确
+    solution: 优化任务描述；提供更多上下文
+acceptanceCriteria:
+  - OpenHands 部署成功
+  - 至少完成一次任务执行
+  - 理解 Agent 的能力和局限
+relatedTools:
+  - openhands
+  - swe-agent
+relatedTemplates:
+  - agent-rules-coding-general
+relatedTutorials:
+  - swe-agent-getting-started
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - OpenHands
+  - 开源
+  - Agent
+  - 自托管
+  - 入门
+---
+
+## OpenHands 是什么
+
+OpenHands（原 OpenDevin）是一个开源的软件工程 Agent 框架，特点：
+
+- **完全开源**：可以自由部署和定制
+- **Web 界面**：提供可视化的任务管理界面
+- **隔离执行**：Agent 在 Docker 容器中执行，相对安全
+- **可扩展**：支持自定义工具和执行环境
+
+## 与 SWE-agent 对比
+
+| 维度 | OpenHands | SWE-agent |
+|------|-----------|-----------|
+| 界面 | Web UI | CLI |
+| 部署 | Docker Compose | Python |
+| 定位 | 通用 Agent | 研究/基准 |
+| 易用性 | 较高 | 中等 |
+
+## 适用场景
+
+- **研究探索**：学习 Agent 工作原理
+- **团队定制**：基于开源框架构建内部工具
+- **自动化任务**：批量处理简单的代码任务
+
+## 安全注意事项
+
+OpenHands 的 Agent 具有执行能力，务必注意：
+
+1. **隔离运行**：始终在 Docker 中运行
+2. **权限控制**：不要给 Agent 访问敏感资源的权限
+3. **人工审查**：所有改动必须人工审查后再合并
+4. **成本控制**：Agent 执行消耗 Token 较多
+
+## 下一步
+
+- 尝试 [SWE-agent](/tutorials/swe-agent-getting-started) 对比体验
+- 了解 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

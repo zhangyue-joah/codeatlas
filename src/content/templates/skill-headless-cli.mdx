@@ -1,0 +1,239 @@
+---
+slug: skill-headless-cli
+title: 无头 CLI 工具技能
+description: 在 CI/CD、脚本和自动化场景中使用 AI CLI 工具的技能：Claude Code、OpenAI Codex CLI、Gemini CLI 的无头模式配置和使用。
+type: skill
+applicableTools:
+  - Claude Code
+  - Codex CLI
+  - Gemini CLI
+scenarios:
+  - CI/CD 集成
+  - 自动化脚本
+placeholders:
+  - ANTHROPIC_API_KEY
+  - OPENAI_API_KEY
+  - GOOGLE_API_KEY
+dependencies:
+  - Node.js
+  - 对应的 API Key
+template: |
+  # 无头 CLI 工具快速参考
+
+  ## Claude Code 无头模式
+
+  ### 安装
+  ```bash
+  npm install -g @anthropic-ai/claude-code
+  ```
+
+  ### 基本用法
+  ```bash
+  # 单次提问
+  claude -p "解释这段代码的作用" --print
+
+  # 从文件读取提示
+  claude -p "$(cat prompt.txt)" --print
+
+  # 指定输出格式
+  claude -p "生成 JSON 格式的配置" --output-format json
+  ```
+
+  ### CI/CD 集成
+  ```bash
+  # 设置环境变量
+  export ANTHROPIC_API_KEY="your-key"
+
+  # 代码审查
+  git diff HEAD~1 | claude -p "审查这些代码变更" --print
+
+  # 生成提交信息
+  git diff --staged | claude -p "为这些变更生成提交信息" --print
+  ```
+
+  ## Codex CLI（OpenAI）
+
+  ### 安装
+  ```bash
+  npm install -g @openai/codex
+  ```
+
+  ### 基本用法
+  ```bash
+  export OPENAI_API_KEY="your-key"
+  codex "创建一个 Python 函数来排序列表"
+  ```
+
+  ## Gemini CLI
+
+  ### 安装
+  ```bash
+  npm install -g @google/gemini-cli
+  ```
+
+  ### 基本用法
+  ```bash
+  export GOOGLE_API_KEY="your-key"
+  gemini "解释量子计算的基本原理"
+  ```
+example: |
+  # GitHub Actions 中使用 Claude Code
+  name: Code Review
+  on: [pull_request]
+  jobs:
+    review:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Install Claude Code
+          run: npm install -g @anthropic-ai/claude-code
+        - name: Review PR
+          env:
+            ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          run: |
+            git diff origin/main...HEAD | claude -p "审查这个 PR 的代码变更，指出潜在问题" --print
+notes:
+  - 无头模式下 API Key 必须通过环境变量提供
+  - CI/CD 中注意 API 调用频率限制
+  - 敏感信息不要直接写在脚本中
+featured: false
+variables:
+  - name: ANTHROPIC_API_KEY
+    description: Anthropic API 密钥
+    example: sk-ant-xxx
+  - name: OPENAI_API_KEY
+    description: OpenAI API 密钥
+    example: sk-xxx
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - CLI
+  - 无头模式
+  - CI/CD
+  - 自动化
+  - Claude Code
+  - Codex
+  - Gemini
+---
+
+## 何时使用此技能
+
+当需要以下帮助时使用此技能：
+- 在 CI/CD 流水线中集成 AI 工具
+- 编写自动化脚本调用 AI CLI
+- 配置无头模式运行 AI 工具
+- 批量处理任务
+
+## Claude Code 高级用法
+
+### 会话模式
+```bash
+# 启动交互会话
+claude
+
+# 恢复之前的会话
+claude --resume
+```
+
+### 项目上下文
+```bash
+# 指定工作目录
+claude -p "分析这个项目" --cwd /path/to/project
+
+# 使用 CLAUDE.md 配置
+# 在项目根目录创建 CLAUDE.md 文件
+```
+
+### 输出控制
+```bash
+# 仅输出结果
+claude -p "生成代码" --print
+
+# JSON 格式输出
+claude -p "分析代码" --output-format json
+
+# 流式输出
+claude -p "解释概念" --stream
+```
+
+## CI/CD 最佳实践
+
+### GitHub Actions 示例
+```yaml
+name: AI Code Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run Code Review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          DIFF=$(git diff origin/${{ github.base_ref }}...HEAD)
+          echo "$DIFF" | claude -p "审查以下代码变更，关注：
+          1. 潜在的 bug
+          2. 安全问题
+          3. 性能问题
+          4. 代码风格" --print > review.md
+
+      - name: Post Review Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const review = fs.readFileSync('review.md', 'utf8');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: review
+            });
+```
+
+### GitLab CI 示例
+```yaml
+code-review:
+  stage: review
+  image: node:20
+  script:
+    - npm install -g @anthropic-ai/claude-code
+    - git diff origin/main...HEAD | claude -p "审查代码变更" --print
+  variables:
+    ANTHROPIC_API_KEY: $ANTHROPIC_API_KEY
+  only:
+    - merge_requests
+```
+
+## 安全注意事项
+
+1. **API Key 管理**
+   - 使用 CI/CD 平台的 Secrets 功能
+   - 不要在代码中硬编码 API Key
+   - 定期轮换 API Key
+
+2. **输入验证**
+   - 对用户输入进行清理
+   - 限制输入长度
+   - 避免注入攻击
+
+3. **输出处理**
+   - 验证 AI 生成的代码
+   - 不要直接执行未审查的代码
+   - 记录所有 AI 操作日志

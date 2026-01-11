@@ -1,0 +1,213 @@
+---
+slug: skill-postgresql
+title: PostgreSQL 数据库技能
+description: PostgreSQL 数据库操作技能：SQL 查询、表设计、索引优化、事务管理、性能调优等常用模式和最佳实践。
+type: skill
+applicableTools:
+  - Claude Code
+  - 任意 SQL 客户端
+scenarios:
+  - 数据库设计
+  - SQL 查询优化
+placeholders:
+  - table_name
+  - column_name
+dependencies:
+  - PostgreSQL 数据库
+template: |
+  # PostgreSQL 快速参考
+
+  ## 连接数据库
+  ```bash
+  psql -h localhost -U username -d database_name
+  ```
+
+  ## 常用查询模式
+
+  ### 分页查询
+  ```sql
+  SELECT * FROM table_name
+  ORDER BY id
+  LIMIT 20 OFFSET 0;
+  ```
+
+  ### 条件聚合
+  ```sql
+  SELECT
+    COUNT(*) FILTER (WHERE status = 'active') as active_count,
+    COUNT(*) FILTER (WHERE status = 'inactive') as inactive_count
+  FROM users;
+  ```
+
+  ### UPSERT（插入或更新）
+  ```sql
+  INSERT INTO table_name (id, name, value)
+  VALUES (1, 'name', 'value')
+  ON CONFLICT (id)
+  DO UPDATE SET name = EXCLUDED.name, value = EXCLUDED.value;
+  ```
+
+  ### CTE（公共表表达式）
+  ```sql
+  WITH active_users AS (
+    SELECT * FROM users WHERE status = 'active'
+  )
+  SELECT * FROM active_users WHERE created_at > '2024-01-01';
+  ```
+
+  ## 索引优化
+
+  ### 创建索引
+  ```sql
+  CREATE INDEX idx_users_email ON users(email);
+  CREATE INDEX idx_users_status_created ON users(status, created_at);
+  ```
+
+  ### 查看执行计划
+  ```sql
+  EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'test@example.com';
+  ```
+
+  ## 事务管理
+  ```sql
+  BEGIN;
+  -- 操作
+  COMMIT;
+  -- 或 ROLLBACK;
+  ```
+example: |
+  -- 创建表
+  CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(100),
+    status VARCHAR(20) DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+
+  -- 插入数据
+  INSERT INTO users (email, name) VALUES ('test@example.com', 'Test User');
+
+  -- 查询
+  SELECT * FROM users WHERE status = 'active' ORDER BY created_at DESC;
+notes:
+  - 生产环境操作前务必备份数据
+  - 大表添加索引时考虑使用 CONCURRENTLY 选项
+  - 避免在事务中执行长时间操作
+featured: false
+variables:
+  - name: table_name
+    description: 数据库表名
+    example: users
+  - name: column_name
+    description: 列名
+    example: email
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - PostgreSQL
+  - SQL
+  - 数据库
+  - 索引
+  - 查询优化
+---
+
+## 何时使用此技能
+
+当需要以下帮助时使用此技能：
+- 编写 PostgreSQL SQL 查询
+- 设计数据库表结构
+- 优化查询性能
+- 管理索引
+- 处理事务
+
+## 表设计最佳实践
+
+### 主键选择
+```sql
+-- 推荐：使用 SERIAL 或 BIGSERIAL
+id SERIAL PRIMARY KEY
+
+-- 或使用 UUID
+id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+```
+
+### 时间戳字段
+```sql
+created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+```
+
+### 软删除
+```sql
+deleted_at TIMESTAMP WITH TIME ZONE DEFAULT NULL
+```
+
+## 高级查询模式
+
+### 窗口函数
+```sql
+SELECT
+  name,
+  department,
+  salary,
+  RANK() OVER (PARTITION BY department ORDER BY salary DESC) as rank
+FROM employees;
+```
+
+### JSON 操作
+```sql
+-- 提取 JSON 字段
+SELECT data->>'name' as name FROM records;
+
+-- JSON 数组展开
+SELECT jsonb_array_elements(data->'items') as item FROM records;
+```
+
+### 递归查询
+```sql
+WITH RECURSIVE tree AS (
+  SELECT id, parent_id, name, 1 as level
+  FROM categories WHERE parent_id IS NULL
+  UNION ALL
+  SELECT c.id, c.parent_id, c.name, t.level + 1
+  FROM categories c
+  JOIN tree t ON c.parent_id = t.id
+)
+SELECT * FROM tree;
+```
+
+## 性能优化
+
+### 查看慢查询
+```sql
+SELECT query, calls, mean_time, total_time
+FROM pg_stat_statements
+ORDER BY total_time DESC
+LIMIT 10;
+```
+
+### 表统计信息
+```sql
+ANALYZE table_name;
+```
+
+### 清理死元组
+```sql
+VACUUM ANALYZE table_name;
+```
+
+## 备份与恢复
+
+```bash
+# 备份
+pg_dump -h localhost -U username database_name > backup.sql
+
+# 恢复
+psql -h localhost -U username database_name < backup.sql
+```
+
+## 官方文档
+
+- [PostgreSQL 官方文档](https://www.postgresql.org/docs/)

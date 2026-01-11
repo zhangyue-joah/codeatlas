@@ -1,0 +1,100 @@
+---
+slug: llm-api-providers-and-relays
+title: LLM API 提供方清单
+description: 只整理官方、授权聚合与自建网关：给出入口链接、常见接入方式与合规提醒。
+type: prompt-recipe
+applicableTools:
+  - Cursor
+  - Continue
+  - Cline
+  - Aider
+  - OpenAI Compatible
+scenarios:
+  - 提供方评估
+  - 合规接入
+placeholders:
+  - 提供方/路径类型
+  - 地区/预算/合规要求
+dependencies: []
+example: |
+  我准备接入的提供方是（OpenAI），使用方式是（官方 API）。
+  约束：地区（CN），预算（$20/月），是否企业合规（否），是否允许日志/提示词存储（否）。
+template: |
+  # 供应商接入确认清单（复制后逐项回答）
+  我准备接入的提供方是（…），使用方式是（官方 API / 授权聚合 / 自建网关）。
+  约束：地区（…），预算（…），是否企业合规（是/否），是否允许日志/提示词存储（是/否）。
+
+  请你输出：
+  1) 该提供方是否支持 OpenAI-Compatible（baseUrl + /v1 形态）？若不支持，给出替代 SDK/适配方式。
+  2) 我应该设置哪些变量（API_KEY / BASE_URL / MODEL / 组织ID等）？
+  3) 风险点：计费、限流、数据保留、审计、SLA
+  4) 最小验证：一个 list-models 或 chat.completions 的测试请求示例
+notes:
+  - “中转”这件事很容易滑向灰色路径；本站只建议官方、授权聚合或你自建的网关（使用你自己的合法 key）。
+  - 任何“共享账号/代充/绕价/不可追溯 key”都不收录，也不建议使用。
+relatedTutorials:
+  - llm-api-providers-and-gateways
+  - openai-compatible-setup
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: true
+keywords:
+  - API
+  - OpenAI Compatible
+  - OpenRouter
+  - LiteLLM
+  - OneAPI
+---
+
+## 一句话看懂三类路径
+
+1. **官方 API**：直接在官方控制台创建 key（最清晰、最可追溯）
+2. **授权聚合/路由**：一个 key 统一路由到多家模型（适合多模型对比与切换）
+3. **自建网关/中转**：你自己搭一个代理/网关（便于审计、限流、成本分摊；前提是用你的合法 key）
+
+## 官方（第一方）提供方（示例）
+
+- OpenAI：`https://platform.openai.com/docs/`
+- Anthropic（Claude）：`https://docs.anthropic.com/`
+- Google Gemini：`https://ai.google.dev/gemini-api/docs`
+- Microsoft Azure OpenAI：`https://learn.microsoft.com/azure/ai-services/openai/`
+- AWS Bedrock：`https://docs.aws.amazon.com/bedrock/`
+- Mistral：`https://docs.mistral.ai/`
+- Cohere：`https://docs.cohere.com/`
+- xAI：`https://docs.x.ai/`（如入口变更，以官方为准）
+
+## 合规第三方聚合/托管（常见可用作“中转/路由”）
+
+- OpenRouter（多模型路由）：`https://openrouter.ai/docs`
+- Together AI（模型托管/推理）：`https://docs.together.ai/`
+- Fireworks AI：`https://docs.fireworks.ai/`
+- Groq：`https://console.groq.com/docs`
+- DeepInfra：`https://deepinfra.com/docs`
+- Replicate：`https://replicate.com/docs`
+- Cloudflare Workers AI / AI Gateway：`https://developers.cloudflare.com/workers-ai/` / `https://developers.cloudflare.com/ai-gateway/`
+
+## 自建网关/代理（你自己部署）
+
+- LiteLLM Proxy：`https://docs.litellm.ai/docs/proxy/quick_start`（GitHub：`https://github.com/BerriAI/litellm`）
+- OneAPI（OpenAI 接口聚合）：`https://github.com/songquanpeng/one-api`
+
+## 国内常见模型厂商（官方入口示例）
+
+不同厂商的 OpenAI-Compatible 支持程度不一，优先以官方文档为准：
+
+- 阿里云通义千问（Qwen）：`https://www.aliyun.com/product/bailian`（或 DashScope 官方入口）
+- DeepSeek：`https://www.deepseek.com/`
+- 智谱 AI（GLM）：`https://open.bigmodel.cn/`
+- Moonshot（Kimi）：`https://www.moonshot.cn/`
+- 百度智能云千帆：`https://cloud.baidu.com/product/wenxinworkshop`（入口可能调整）
+- 腾讯混元：`https://cloud.tencent.com/product/hunyuan`
+- MiniMax：`https://www.minimax.chat/`
+
+## 选型时必问的 6 件事
+
+1. 支持哪些模型与上下文长度？是否支持你要的工具调用/结构化输出？
+2. 计费口径（输入/输出 token、缓存、工具调用）与是否有透明账单？
+3. 限流/并发、峰值稳定性、SLA
+4. 数据保留期限、日志策略、是否支持企业合规条款
+5. 是否支持按项目/团队隔离 key 与审计
+6. 是否支持 OpenAI-Compatible（能直接用在 Cursor/Continue/Aider 等工具里）

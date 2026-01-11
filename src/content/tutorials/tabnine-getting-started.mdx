@@ -1,0 +1,124 @@
+---
+slug: tabnine-getting-started
+title: Tabnine 入门：老牌 AI 代码补全工具的企业级使用
+description: 15 分钟完成 Tabnine 安装配置，体验企业级代码补全和私有化部署选项。
+type: getting-started
+difficulty: beginner
+goal: 在 15 分钟内完成 Tabnine 安装，并体验其代码补全能力。
+requiredTools:
+  - Tabnine
+  - VS Code 或其他主流 IDE
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 15-20 分钟
+stepsOverview:
+  - 安装 Tabnine 扩展
+  - 注册并登录账号
+  - 体验代码补全
+  - 了解企业功能
+steps:
+  - step: 1
+    title: 安装 Tabnine 扩展
+    description: 在 IDE 扩展市场搜索 "Tabnine" 并安装。
+    tips:
+      - 支持 VS Code、JetBrains、Vim、Emacs 等 15+ IDE
+      - 官网：https://www.tabnine.com
+  - step: 2
+    title: 注册登录
+    description: 首次使用需要注册 Tabnine 账号。
+    tips:
+      - 有免费版可以试用
+      - Pro 版 $12/月，企业版按需定价
+  - step: 3
+    title: 体验代码补全
+    description: 打开代码文件，开始编码，观察 AI 补全建议。
+    tips:
+      - Tabnine 会学习你的编码风格
+      - 支持整行和多行补全
+  - step: 4
+    title: 了解企业功能
+    description: 了解 Tabnine 的企业级特性。
+    tips:
+      - 支持私有化部署
+      - 可以在本地训练模型
+      - 完善的团队管理和审计功能
+keyTips:
+  - Tabnine 是最早的 AI 代码补全工具之一，稳定性好
+  - 企业版支持私有化部署，适合对数据安全要求高的团队
+  - 可以基于团队代码训练专属模型
+safety:
+  checklist:
+    - 了解数据安全策略
+    - 企业场景考虑私有化部署
+    - AI 生成的代码仍需人工审查
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 补全响应慢
+    solution: 检查网络连接；考虑使用本地模型
+  - problem: 补全质量不理想
+    solution: 使用一段时间让 Tabnine 学习你的风格；尝试 Pro 版
+  - problem: 与其他补全工具冲突
+    solution: 禁用其他补全插件；调整补全优先级
+acceptanceCriteria:
+  - Tabnine 安装成功
+  - 至少体验一次代码补全
+  - 了解企业版特性
+relatedTools:
+  - tabnine
+  - codeium
+  - github-copilot
+relatedTemplates:
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Tabnine
+  - 代码补全
+  - 企业
+  - 私有化部署
+  - 入门
+---
+
+## Tabnine 是什么
+
+Tabnine 是最早的 AI 代码补全工具之一（2018 年推出），核心特点：
+
+- **历史悠久**：经过多年迭代，稳定性和兼容性好
+- **私有化部署**：支持完全本地运行，数据不出企业
+- **团队定制**：可以基于团队代码训练专属模型
+- **广泛兼容**：支持 15+ IDE 和 20+ 编程语言
+
+## 版本对比
+
+| 功能 | 免费版 | Pro ($12/月) | 企业版 |
+|------|--------|--------------|--------|
+| 基础补全 | ✅ | ✅ | ✅ |
+| 整行补全 | 有限 | ✅ | ✅ |
+| 自然语言转代码 | ❌ | ✅ | ✅ |
+| 私有化部署 | ❌ | ❌ | ✅ |
+| 团队模型训练 | ❌ | ❌ | ✅ |
+| 管理控制台 | ❌ | ❌ | ✅ |
+
+## 与其他工具对比
+
+| 维度 | Tabnine | GitHub Copilot | Codeium |
+|------|---------|----------------|---------|
+| 历史 | 2018 | 2021 | 2022 |
+| 私有化 | ✅ 企业版 | ❌ | ❌ |
+| 免费版 | 有限功能 | ❌ | ✅ 完整 |
+| 本地模型 | ✅ | ❌ | ❌ |
+
+## 适用场景
+
+- **企业合规**：对数据安全要求高，需要私有化部署
+- **稳定优先**：需要成熟稳定的补全工具
+- **团队定制**：希望基于团队代码训练专属模型
+
+## 下一步
+
+- 对比 [Codeium](/tutorials/codeium-getting-started) 的免费方案
+- 了解 [GitHub Copilot](/tutorials/github-copilot-getting-started) 的功能
+- 查看 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

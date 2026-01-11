@@ -1,0 +1,61 @@
+---
+slug: mcp-config-claude-desktop
+title: Claude Desktop MCP 配置
+description: 一份可复制的 `claude_desktop_config.json` 示例：把 GitHub / Filesystem 等 MCP Server 接入 Claude Desktop。
+type: mcp-config
+applicableTools:
+  - Claude Desktop
+  - MCP
+scenarios:
+  - MCP 接入
+  - Claude Desktop
+placeholders:
+  - GITHUB_TOKEN
+  - /ABSOLUTE/PATH/TO/WORKSPACE
+dependencies:
+  - Claude Desktop
+  - Node.js（npx）
+example: |
+  # 1) 准备环境变量（示例）
+  export GITHUB_TOKEN="YOUR_GITHUB_TOKEN"
+
+  # 2) 把 mcpServers 配置粘贴到 Claude Desktop 的配置文件后重启应用
+template: |
+  {
+    "mcpServers": {
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+        }
+      },
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/ABSOLUTE/PATH/TO/WORKSPACE"]
+      }
+    }
+  }
+notes:
+  - MCP Server 具备访问外部系统的能力，务必最小权限、可审计、可回滚。
+  - 示例使用 `npx` 拉取 server 包；企业环境可改为固定版本与离线镜像。
+relatedTutorials:
+  - mcp-starter-kit
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - MCP
+  - Claude Desktop
+  - 配置
+  - GitHub
+---
+
+## 放到哪里
+
+Claude Desktop 的配置文件位置随平台不同而不同；以官方文档与应用内提示为准。
+
+## 参考链接
+
+- MCP 官方站：`https://modelcontextprotocol.io/`
+- `@modelcontextprotocol/server-github`（npm）：`https://www.npmjs.com/package/@modelcontextprotocol/server-github`
+- `@modelcontextprotocol/server-filesystem`（npm）：`https://www.npmjs.com/package/@modelcontextprotocol/server-filesystem`

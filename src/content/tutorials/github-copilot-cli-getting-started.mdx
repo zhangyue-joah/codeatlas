@@ -1,0 +1,167 @@
+---
+slug: github-copilot-cli-getting-started
+title: GitHub Copilot CLI 入门：在终端中使用 AI 生成和解释命令
+description: 10 分钟完成 GitHub Copilot CLI 配置，在终端中跑通一次命令生成和解释。
+type: getting-started
+difficulty: beginner
+goal: 在 10 分钟内完成 GitHub Copilot CLI 配置，并用 AI 生成或解释一条命令。
+requiredTools:
+  - GitHub Copilot CLI
+  - GitHub CLI (gh)
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 10-15 分钟
+stepsOverview:
+  - 确认 GitHub Copilot 订阅
+  - 安装 GitHub CLI 和 Copilot 扩展
+  - 配置认证
+  - 使用 AI 生成命令
+  - 使用 AI 解释命令
+steps:
+  - step: 1
+    title: 确认 Copilot 订阅
+    description: GitHub Copilot CLI 需要有效的 Copilot 订阅。
+    tips:
+      - 个人版 $10/月，企业版 $19/月
+      - 学生和开源维护者可免费使用
+  - step: 2
+    title: 安装 GitHub CLI
+    description: 首先安装 GitHub CLI (gh)。
+    code: |
+      # macOS
+      brew install gh
+
+      # Windows
+      winget install GitHub.cli
+
+      # Linux (Debian/Ubuntu)
+      sudo apt install gh
+  - step: 3
+    title: 安装 Copilot 扩展
+    description: 安装 GitHub Copilot CLI 扩展。
+    code: |
+      gh extension install github/gh-copilot
+    tips:
+      - 需要先登录 GitHub CLI：gh auth login
+  - step: 4
+    title: 使用 AI 生成命令
+    description: 用自然语言描述你想做什么，让 AI 生成命令。
+    code: |
+      # 生成 shell 命令
+      gh copilot suggest "查找当前目录下所有大于 100MB 的文件"
+
+      # 生成 git 命令
+      gh copilot suggest -t git "撤销最近一次提交但保留更改"
+
+      # 生成 gh 命令
+      gh copilot suggest -t gh "列出我参与的所有 PR"
+    tips:
+      - 使用 -t 参数指定命令类型：shell、git、gh
+  - step: 5
+    title: 使用 AI 解释命令
+    description: 让 AI 解释复杂命令的含义。
+    code: |
+      gh copilot explain "find . -name '*.log' -mtime +30 -delete"
+    tips:
+      - 对于不熟悉的命令，先解释再执行更安全
+keyTips:
+  - Copilot CLI 生成的命令需要确认后才会执行
+  - 可以用 alias 简化命令，如 alias '??'='gh copilot suggest'
+  - 复杂命令建议先用 explain 理解再执行
+safety:
+  checklist:
+    - 执行前仔细检查生成的命令
+    - 危险命令（如 rm -rf）要特别小心
+    - 不要在生产环境直接执行未验证的命令
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 提示未授权或订阅问题
+    solution: 确认 Copilot 订阅有效；重新运行 gh auth login
+  - problem: 生成的命令不准确
+    solution: 优化描述，添加更多上下文；尝试指定命令类型
+  - problem: 扩展安装失败
+    solution: 更新 gh 到最新版本；检查网络连接
+acceptanceCriteria:
+  - GitHub Copilot CLI 安装成功
+  - 至少用 suggest 生成一条命令
+  - 至少用 explain 解释一条命令
+relatedTools:
+  - github-copilot-cli
+  - github-copilot
+relatedTemplates:
+  - agent-rules-coding-general
+relatedTutorials:
+  - github-copilot-getting-started
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - GitHub Copilot CLI
+  - gh copilot
+  - 终端
+  - 命令行
+  - 入门
+---
+
+## GitHub Copilot CLI 是什么
+
+GitHub Copilot CLI 是 GitHub Copilot 的终端扩展，让你可以：
+
+- **生成命令**：用自然语言描述，AI 生成对应的 shell/git/gh 命令
+- **解释命令**：让 AI 解释复杂命令的含义
+- **安全执行**：生成的命令需要确认后才会执行
+
+## 核心命令
+
+| 命令 | 功能 | 示例 |
+|------|------|------|
+| `gh copilot suggest` | 生成命令 | `gh copilot suggest "压缩这个目录"` |
+| `gh copilot explain` | 解释命令 | `gh copilot explain "tar -czvf"` |
+
+## 命令类型
+
+使用 `-t` 参数指定命令类型：
+
+- `shell`：通用 shell 命令（默认）
+- `git`：Git 相关命令
+- `gh`：GitHub CLI 命令
+
+```bash
+# 生成 git 命令
+gh copilot suggest -t git "合并 feature 分支到 main"
+
+# 生成 gh 命令
+gh copilot suggest -t gh "创建一个 issue"
+```
+
+## 设置别名
+
+为了更方便使用，可以设置别名：
+
+```bash
+# 添加到 ~/.bashrc 或 ~/.zshrc
+alias '??'='gh copilot suggest'
+alias '?!'='gh copilot explain'
+
+# 使用
+?? "查找所有 TODO 注释"
+?! "grep -rn TODO ."
+```
+
+## 与 Claude Code 对比
+
+| 维度 | Copilot CLI | Claude Code |
+|------|-------------|-------------|
+| 功能 | 命令生成/解释 | 完整 Agent |
+| 范围 | 单条命令 | 多步任务 |
+| 执行 | 需确认 | 可自动 |
+| 价格 | 含在 Copilot 订阅 | 按量付费 |
+
+Copilot CLI 适合快速生成单条命令，Claude Code 适合复杂的多步任务。
+
+## 下一步
+
+- 了解 [GitHub Copilot](/tutorials/github-copilot-getting-started) 在 IDE 中的使用
+- 尝试 [Claude Code](/tutorials/claude-code-getting-started) 获得更强的 Agent 能力

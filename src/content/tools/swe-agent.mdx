@@ -1,0 +1,82 @@
+---
+slug: swe-agent
+title: SWE-agent
+description: "面向软件工程任务的开源 Agent：常用于 issue/bugfix 自动化与基准实验（以项目说明为准）。"
+logo: /logos/default.svg
+website: "https://github.com/SWE-agent/SWE-agent"
+productType:
+  - cli
+category:
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+  - read-write
+  - execute
+useCases:
+  - "自动修复：围绕 issue/失败用例做迭代修补并产出补丁"
+  - "研究/基准：对比不同模型/提示词/策略的效果（以你的实验设计为准）"
+  - "工程化改造：把 Agent 的执行环境与约束收敛到可复现流程"
+pros:
+  - "开源可控，便于研究与二次开发"
+  - "更适合把“执行流程”做成可复现的工程产物"
+  - "适合作为团队 Agent 化的参考实现/基座"
+cons:
+  - "需要较多工程投入：环境、数据、运维与约束"
+  - "执行能力强：必须隔离、最小权限与审计"
+  - "效果高度依赖任务、模型与提示词设计"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: free
+  free: true
+  hasEducation: false
+  hasTeam: false
+  hasEnterprise: false
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://github.com/SWE-agent/SWE-agent"
+  sources:
+    -
+      label: "SWE-agent GitHub"
+      url: "https://github.com/SWE-agent/SWE-agent"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "取决于你所使用的模型/服务"
+  localProcessing: true
+  enterpriseCompliance: []
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - SWE-agent
+  - "开源"
+  - Agent
+  - "研究"
+  - "AI 编程"
+---
+
+
+
+## 适合用 SWE-agent 的一个判断
+
+如果你更关注“可复现的 Agent 执行流程”与“围绕 issue 的自动修复/实验”，而不是单纯补全，SWE-agent 更偏研究与工程结合路线。
+
+## 使用建议（工程化优先）
+
+- 先把执行环境隔离好，再谈自动化：默认不要让它触达生产与敏感数据
+- 把验收标准写成可运行的验证（测试/构建/复现步骤），否则很难闭环

@@ -1,0 +1,87 @@
+---
+slug: warp-getting-started
+title: Warp 入门：用 AI 在终端完成一次“生成命令→解释→安全执行”
+description: 15 分钟安装 Warp 并开启 AI 功能：先让 AI 生成命令，再解释风险点，最后用安全方式执行并保存为可复用片段。
+type: getting-started
+difficulty: beginner
+goal: 在 Warp 中完成一次“命令生成 + 命令解释 + 安全执行”的最小闭环。
+requiredTools:
+  - Warp
+  - 一个本地终端环境（macOS/Linux/Windows 以官方支持为准）
+requiredCapabilities:
+  - local-command
+estimatedTime: 10-20 分钟
+stepsOverview:
+  - 安装 Warp 并完成登录/初始化
+  - 进入一个安全的练习目录（或项目目录）
+  - 让 AI 生成一条命令（带 dry-run/只读）
+  - 让 AI 解释命令与风险点（确认后再执行）
+  - 把常用命令保存为片段/工作流，便于复用
+steps:
+  - step: 1
+    title: 安装并初始化
+    description: 以官网与官方文档为准完成安装与初始化。
+    tips:
+      - 官网：https://www.warp.dev/
+  - step: 2
+    title: 选择一个“安全练习目录”
+    description: 先在不会误删/误改的目录里练习，再迁移到真实项目。
+    tips:
+      - 避免一上来就在生产机器/关键目录上试命令
+  - step: 3
+    title: 让 AI 生成命令（先只读/先 dry-run）
+    description: 用自然语言描述你要做的事，并要求先给“只读/不删除”的版本。
+    tips:
+      - 示例：查找 30 天前的日志文件（先列出不删除）
+    code: |
+      # 示例（先只列出，再决定是否删除）
+      find . -name "*.log" -mtime +30 -print
+  - step: 4
+    title: 让 AI 解释命令与风险点
+    description: 让 AI 把命令逐段解释清楚，并指出潜在风险与替代方案。
+    tips:
+      - 任何包含 `rm` / `-delete` / 重定向覆盖的命令都要特别小心
+  - step: 5
+    title: 确认后再执行，并固化为可复用片段
+    description: 你确认命令没问题后再执行；把常用命令保存成片段/笔记，减少下次风险。
+keyTips:
+  - “先解释再执行”是终端 AI 的默认安全姿势
+  - 危险动作先 dry-run：先 `-print` 再 `-delete`
+  - 把命令当作“可审计的补丁”：执行前必须能复述它会做什么
+safety:
+  checklist:
+    - 对 `rm -rf`、`-delete`、覆盖重定向等危险命令保持二次确认
+    - 不在生产环境直接执行未验证的命令
+    - 命令涉及密钥/凭据时，避免写入 shell 历史与日志
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: AI 功能不可用或无响应
+    solution: 检查登录状态与网络；按官方文档确认功能开关
+  - problem: 生成的命令不适配当前系统
+    solution: 明确你的系统（macOS/Linux/Windows）与 shell（bash/zsh/pwsh），让 AI 生成对应版本
+  - problem: 命令结果不符合预期
+    solution: 先缩小范围（目录/文件匹配条件），再逐步扩大
+acceptanceCriteria:
+  - Warp 安装成功并能正常打开终端会话
+  - 至少完成一次“生成命令 + 解释命令 + 安全执行”
+  - 你能描述并遵守终端命令的安全检查点
+relatedTools:
+  - warp
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Warp
+  - 终端
+  - 命令行
+  - 安全
+  - 入门
+---
+
+## 下一步
+
+- 需要更强的终端“命令生成/解释”：看 [GitHub Copilot CLI 入门](/tutorials/github-copilot-cli-getting-started)
+

@@ -1,0 +1,75 @@
+---
+slug: codereviewbot
+title: "CodeReviewBot"
+description: "接入 GitHub PR 的 AI Code Review Bot：在拉取请求里给出改进建议与问题提示，用审查流程兜底风险。"
+logo: /logos/default.svg
+website: "https://codereviewbot.ai/"
+productType:
+  - web-app
+category:
+  - code-review
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "完全不走 PR/审查流程的团队（无法发挥优势）"
+capabilities:
+  - external-system
+  - read-only
+useCases:
+  - "PR Review：指出潜在 bug、边界条件、可读性问题"
+  - "一致性：在团队内形成稳定的 review 提示基线"
+  - "节省时间：把低价值的重复建议自动化"
+pros:
+  - "把输出收敛到 PR 流程，便于审查与追溯"
+  - "适合团队提升 review 覆盖与一致性"
+cons:
+  - "不替代人工审查，关键改动仍需测试/验收"
+  - "对私有仓库与合规要求需结合官方策略评估"
+onboardingTime: "10-20 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "GitHub / Git 平台账号与仓库权限"
+pricing:
+  model: subscription
+  free: false
+  startingPrice: ''
+  currency: ''
+  billingCycle: monthly
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://codereviewbot.ai/"
+  updatedAt: "2025-12-31"
+  sources:
+    -
+      label: "CodeReviewBot 官网"
+      url: "https://codereviewbot.ai/"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance: []
+  updatedAt: "2025-12-31"
+relatedTools:
+  - coderabbit
+  - qodo
+relatedTutorials: []
+relatedCompares: []
+updatedAt: "2025-12-31"
+version: "2025-12"
+keywords:
+  - "CodeReviewBot"
+  - "PR Review"
+  - GitHub
+  - "AI 编程"
+---
+
+## 使用建议（团队落地）
+
+- 让它先做“建议/提醒”，把合并权限仍然交给人类与 CI。
+- 针对误报/漏报建立反馈机制（规则、忽略列表、输出格式）。
+

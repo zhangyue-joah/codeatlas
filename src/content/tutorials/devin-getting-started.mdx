@@ -1,0 +1,165 @@
+---
+slug: devin-getting-started
+title: Devin 入门：体验"AI 软件工程师"的端到端任务交付
+description: 了解 Devin 的核心能力，学会如何给它分配任务并审查交付结果。
+type: getting-started
+difficulty: beginner
+goal: 理解 Devin 的工作方式，学会分配任务、跟踪进度、审查交付。
+requiredTools:
+  - Devin
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 20-30 分钟
+stepsOverview:
+  - 申请 Devin 访问权限
+  - 了解 Devin 的工作界面
+  - 分配第一个任务
+  - 跟踪执行过程
+  - 审查交付结果
+steps:
+  - step: 1
+    title: 申请访问权限
+    description: Devin 目前需要申请才能使用，访问官网加入等待列表。
+    tips:
+      - 官网：https://www.cognition-labs.com/devin
+      - 企业用户可以联系销售获得优先访问
+  - step: 2
+    title: 了解工作界面
+    description: Devin 提供 Web 界面，包含对话、代码编辑器、终端、浏览器等面板。
+    tips:
+      - 可以实时观看 Devin 的操作过程
+      - 支持随时介入和调整方向
+  - step: 3
+    title: 分配第一个任务
+    description: 用自然语言描述任务，Devin 会自动规划和执行。
+    tips:
+      - 从简单任务开始，比如"修复这个 bug"或"添加一个简单功能"
+      - 提供清晰的需求和验收标准
+    warnings:
+      - 复杂任务建议拆分成多个小任务
+  - step: 4
+    title: 跟踪执行过程
+    description: 观察 Devin 的执行过程，必要时提供反馈或调整方向。
+    tips:
+      - Devin 会展示它的思考过程和操作步骤
+      - 发现方向偏离时及时纠正
+  - step: 5
+    title: 审查交付结果
+    description: 仔细审查 Devin 生成的代码和改动。
+    tips:
+      - 所有代码必须人工审查
+      - 运行测试验证功能正确性
+      - 检查是否引入安全问题
+keyTips:
+  - Devin 是"AI 软件工程师"，但仍需人工监督和审查
+  - 任务描述越清晰，交付质量越高
+  - 适合重复性、规则明确的任务
+safety:
+  checklist:
+    - 所有交付代码必须人工审查
+    - 不要让 Devin 访问生产环境
+    - 敏感信息和密钥需要妥善管理
+    - 了解数据安全策略
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 任务执行偏离预期
+    solution: 及时介入纠正；优化任务描述；拆分复杂任务
+  - problem: 生成的代码质量不高
+    solution: 提供更多上下文和约束；明确代码规范要求
+  - problem: 执行时间过长
+    solution: 简化任务范围；检查是否陷入循环
+acceptanceCriteria:
+  - 了解 Devin 的核心能力和工作方式
+  - 能够分配任务并跟踪执行
+  - 理解人工审查的重要性
+relatedTools:
+  - devin
+  - swe-agent
+  - openhands
+relatedTemplates:
+  - agent-rules-coding-general
+relatedTutorials:
+  - ai-coding-product-map
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Devin
+  - AI 软件工程师
+  - Agent
+  - 自动化
+  - 入门
+---
+
+## Devin 是什么
+
+Devin 是 Cognition Labs 推出的"AI 软件工程师"，它可以：
+
+- **端到端执行任务**：从需求理解到代码交付
+- **自主规划和执行**：自动拆解任务、编写代码、调试问题
+- **使用完整开发环境**：代码编辑器、终端、浏览器一应俱全
+- **实时可观察**：你可以看到它的每一步操作
+
+## Devin vs 其他 AI 编程工具
+
+| 维度 | Devin | Cursor/Copilot | Claude Code |
+|------|-------|----------------|-------------|
+| 定位 | AI 软件工程师 | AI 编程助手 | CLI Agent |
+| 自主性 | 高（端到端） | 低（辅助为主） | 中（交互式） |
+| 人工介入 | 可选 | 必须 | 推荐 |
+| 适合任务 | 完整功能/修复 | 代码片段/补全 | 多步任务 |
+| 价格 | 较高 | 中等 | 按量付费 |
+
+## 适用场景
+
+- **Bug 修复**：给出 Issue 描述，让 Devin 定位并修复
+- **功能开发**：描述需求，让 Devin 实现完整功能
+- **代码迁移**：批量更新代码风格或框架版本
+- **文档生成**：根据代码生成文档
+
+## 不适用场景
+
+- **核心业务逻辑**：需要深度领域知识的复杂决策
+- **架构设计**：需要全局视角和权衡的设计工作
+- **安全敏感代码**：涉及认证、加密等关键代码
+- **紧急修复**：需要快速响应的生产问题
+
+## 任务描述技巧
+
+好的任务描述应该包含：
+
+1. **背景**：为什么要做这个任务
+2. **目标**：具体要实现什么
+3. **约束**：有什么限制或要求
+4. **验收标准**：怎么判断任务完成
+
+```
+# 好的任务描述示例
+背景：用户反馈登录页面在移动端显示异常
+目标：修复登录页面的移动端适配问题
+约束：
+- 只修改 src/pages/Login 相关文件
+- 保持桌面端样式不变
+- 使用现有的 Tailwind CSS 类
+验收标准：
+- 在 375px 宽度下正常显示
+- 表单元素可正常交互
+- 通过现有的 E2E 测试
+```
+
+## 审查清单
+
+Devin 交付的代码，务必检查：
+
+- [ ] 功能是否符合需求
+- [ ] 代码风格是否符合规范
+- [ ] 是否引入安全漏洞
+- [ ] 测试是否通过
+- [ ] 是否有不必要的改动
+
+## 下一步
+
+- 尝试开源替代方案 [SWE-agent](/tutorials/swe-agent-getting-started) 或 [OpenHands](/tutorials/openhands-getting-started)
+- 了解 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

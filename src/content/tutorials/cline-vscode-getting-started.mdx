@@ -1,0 +1,84 @@
+---
+slug: cline-vscode-getting-started
+title: Cline（VS Code）上手实操：先计划，再写入，再执行（可控 Agent）
+description: 40 分钟跑通一次可提交改动：验收标准 + 回滚方案 → 文件清单 + 风险点 → 分步写入 → 最小验证留证据。
+type: getting-started
+difficulty: intermediate
+goal: 在 40 分钟内完成一次可提交的改动，并确保执行命令/写入权限可控。
+requiredTools:
+  - VS Code
+  - Cline 扩展
+  - 一个可用的 LLM 渠道（官方/云平台/合规聚合/本地）
+requiredCapabilities:
+  - repo-context
+  - read-write
+  - execute
+estimatedTime: 30-45 分钟
+stepsOverview:
+  - 配置模型渠道与权限（读写/执行）
+  - 先写验收标准与回滚方案
+  - 让 Agent 输出计划（文件清单 + 风险点 + 验证命令）
+  - 分步执行：先写入，再运行最小验证
+  - 复盘：把提示词与规则固化成模板
+steps:
+  - step: 1
+    title: 权限先收紧
+    description: 初次使用先只读/建议；确认工作流后再开写入与执行。
+  - step: 2
+    title: 验收标准 + 回滚方案
+    description: 写清完成标准与回滚方式（例如撤销提交/恢复文件）。
+  - step: 3
+    title: 先要计划
+    description: 要求输出“将改哪些文件/为什么/风险/验证命令”，你确认后才允许写入。
+    warnings:
+      - 不接受“先改再说”的工作方式
+  - step: 4
+    title: 分步执行（写入 → 验证）
+    description: 先让它生成补丁并检查 diff，再运行最小验证命令。
+    code: |
+      npm run lint
+  - step: 5
+    title: 复盘与固化
+    description: 把这次有效的约束与提示词骨架保存下来，减少下次沟通成本。
+keyTips:
+  - Agent 的核心价值是“多步闭环”，核心风险也是“多步自动化”
+  - 永远要求“先计划”，并把验证命令写进计划里
+  - 失败时先解释日志原因，再给最小修复补丁
+safety:
+  checklist:
+    - 执行命令前确认影响范围（尤其是 rm、数据库迁移、发布相关）
+    - 不要在提示词里粘贴密钥、令牌、私有链接
+    - 写入/执行要有回滚路径（git checkout / revert 等）
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: Agent 误执行破坏性命令
+    solution: 默认禁止破坏性命令；执行前必须二次确认，并要求给出影响分析
+  - problem: 改动后测试失败
+    solution: 把失败日志作为证据贴给 AI，让它先解释原因再修
+acceptanceCriteria:
+  - 你完成一次可提交的改动并跑过最小验证
+  - 你能描述清楚写入/执行权限边界与回滚方式
+relatedTools:
+  - cline
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - Cline
+  - 写功能
+  - 改 Bug
+  - 补测试
+  - VS Code
+---
+
+## 建议的“计划输出格式”
+
+让 Agent 按下面结构输出计划（你确认后再写入）：
+
+1. **改动文件清单**（逐个说明原因）
+2. **风险点**（兼容性/影响面/回滚）
+3. **验证命令**（最小可行：lint/test/build 其一）
+4. **分步执行顺序**（每一步的检查点）

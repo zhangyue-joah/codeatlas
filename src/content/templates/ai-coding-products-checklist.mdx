@@ -1,0 +1,100 @@
+---
+slug: ai-coding-products-checklist
+title: AI 编程产品清单
+description: 一页把主流 AI 编程产品按“你要完成的任务”分类，并给出可复制的选型提问模板。
+type: prompt-recipe
+applicableTools: []
+scenarios:
+  - 选型
+  - 提问模板
+placeholders:
+  - 角色/身份
+  - 语言/栈/任务/预算
+dependencies: []
+example: |
+  我是（独立开发者），主要语言/栈是（TypeScript + Next.js）。
+  我最常做的任务是（修 bug / 补测试）。
+  约束：预算（$20/月），是否可用外网（是），是否需要企业合规（否），是否允许代码外发（是）。
+template: |
+  # 选型提问（复制后把括号内容替换掉）
+  我是（独立开发者/团队工程师/技术负责人），主要语言/栈是（…）。
+  我最常做的任务是（写功能/修 bug/补测试/PR review/Repo chat/生成文档/DevOps）。
+  约束：预算（…），是否可用外网（是/否），是否需要企业合规（是/否），是否允许代码外发（是/否）。
+
+  请给我 3 个推荐方案：
+  - 方案 A：低接入成本（在现有 IDE 上加插件）
+  - 方案 B：Agent 闭环（能规划+写代码+最小验证）
+  - 方案 C：本地/自建优先（可控/可审计）
+
+  对每个方案输出：
+  - 适用产品（列出候选）
+  - 优缺点与风险
+  - 上手步骤（最小 SOP）
+  - 预计月成本（个人/团队）
+  - 你建议我先跑的 1 次“最小任务闭环”
+notes:
+  - 产品更替非常快：优先看“你要完成的任务”和“权限/合规边界”，不要只看热度。
+  - 本站不收录账号共享、代充、绕价方案；购买与接入必须可追溯。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: true
+keywords:
+  - 选型
+  - 产品清单
+  - AI 编程
+  - Cursor
+  - Copilot
+---
+
+## 一句话分类：你要完成什么任务？
+
+- **轻量补全/建议**：在现有 IDE 里更快写代码
+- **Agent 闭环**：从需求→计划→改代码→补测试→最小验证→可提交
+- **Repo Chat/代码搜索**：围绕代码库问答、定位、解释
+- **PR Review/质量**：审查、静态检查、自动修复建议
+- **本地/自建**：优先可控、可审计、低数据外发
+
+## 常见产品（不完全清单，持续补齐）
+
+### IDE / 编辑器（偏“Agent 闭环”）
+
+- Cursor：`https://www.cursor.com/`
+- Windsurf（Codeium）：`https://codeium.com/windsurf`
+- JetBrains AI Assistant：`https://www.jetbrains.com/ai/`
+- Zed（含 AI 功能）：`https://zed.dev/`
+
+### IDE 插件 / 聊天（偏“低接入成本”）
+
+- GitHub Copilot：`https://github.com/features/copilot`
+- Codeium：`https://codeium.com/`
+- Tabnine：`https://www.tabnine.com/`
+- Amazon Q Developer：`https://aws.amazon.com/q/developer/`
+- Gemini Code Assist：`https://codeassist.google/`（如入口变更，以 Google 官方为准）
+- Sourcegraph Cody：`https://sourcegraph.com/cody`
+- Continue（开源）：`https://github.com/continuedev/continue`
+- Cline（开源）：`https://github.com/cline/cline`
+- Tabby（开源，本地优先）：`https://github.com/TabbyML/tabby`
+
+### CLI / 终端 Agent（偏“可脚本化 + 可控”）
+
+- Aider（开源）：`https://github.com/Aider-AI/aider`
+- Claude Code（Anthropic）：`https://www.anthropic.com/`（以官方发布为准）
+
+### PR/Issue 自动化（偏“工程流程”）
+
+- Sweep（开源）：`https://github.com/sweepai/sweep`
+- CodeRabbit（商业）：`https://coderabbit.ai/`
+
+### Web 端“从需求到应用”（偏“生成式 UI/原型”）
+
+- Replit Agent / Ghostwriter：`https://replit.com/`
+- Bolt.new：`https://bolt.new/`
+- v0（Vercel）：`https://v0.dev/`
+- Lovable：`https://lovable.dev/`
+
+## 参考链接（用于补全清单/验证热度）
+
+- GitHub 搜索（AI coding assistant）：`https://github.com/search?q=ai%20coding%20assistant&type=repositories`
+- GitHub Topics：`https://github.com/topics/ai-coding-assistant`
+-（手动）知乎搜索：`https://www.zhihu.com/search?type=content&q=AI%20%E7%BC%96%E7%A8%8B%20%E5%B7%A5%E5%85%B7`

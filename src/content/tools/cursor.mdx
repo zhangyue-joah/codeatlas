@@ -1,0 +1,149 @@
+---
+slug: cursor
+title: Cursor
+description: "AI-first 代码编辑器：Tab 补全 + Composer（Ask/Edit/Agent）+ 多步任务 Agent，适合把任务推进到可提交改动。"
+logo: /logos/cursor.svg
+website: "https://www.cursor.com"
+productType:
+  - ide
+category:
+  - code-completion
+  - repo-chat
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强内网/离线环境且无法合规接入的团队"
+  - "只想要“轻量补全”不想改编辑器的人"
+capabilities:
+  - repo-context
+  - agent-execution
+  - mcp-server
+  - skills-plugins
+  - local-command
+  - external-system
+  - read-write
+  - execute
+useCases:
+  - "Tab 补全 + Inline Edit：写样板/补函数/做小步改动"
+  - "Ask/Edit：理解代码 → 精准改动 → 一键应用（可审查）"
+  - "Agent：多文件重构/按需求实现功能/跨文件排障（产出可提交改动）"
+pros:
+  - "Tab/Cmd+K/Composer（Ask/Edit/Agent）一体化，上下文切换成本低"
+  - "Context 体系（索引/@引用/Rules/MCP）让输出更贴近仓库与团队约束"
+  - "多模型可选，适合按成本/效果做组合（以官方为准）"
+cons:
+  - "默认云端能力与联网依赖，团队需先过隐私/合规与账号策略"
+  - "Agent/工具调用可能带来大范围改动，必须用 review + 测试兜底"
+  - "模型/计费随版本变化，需结合 usage/plans 定期核对"
+onboardingTime: "30-60 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作"
+externalSystems:
+  - GitHub
+externalSystemIntegrations:
+  -
+    name: GitHub
+    permission: read-write
+    url: "https://github.com"
+    notes: "可通过 MCP Server 接入 GitHub 上下文（PR/Issue 等取决于所用 server 能力）"
+mcpServers:
+  - GitHub
+mcpServerExamples:
+  -
+    name: GitHub
+    url: "https://github.com"
+    notes: "示例：通过 MCP Server 提供 repo/issue/PR 等上下文与工具（以官方文档与 server 能力为准）"
+pricing:
+  model: subscription
+  free: false
+  startingPrice: "20"
+  currency: USD
+  billingCycle: monthly
+  hasEducation: true
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: true
+  supportsContract: true
+purchase:
+  officialUrl: "https://www.cursor.com/pricing"
+  updatedAt: "2025-12-24"
+  sources:
+    -
+      label: "Cursor 官方定价页"
+      url: "https://www.cursor.com/pricing"
+    -
+      label: "Cursor 文档：Introduction"
+      url: "https://docs.cursor.ac.cn/get-started/introduction"
+  notes:
+    - "购买前先确认团队数据策略与权限边界"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance:
+    - "SOC 2（如适用）"
+  policyUrl: "https://www.cursor.com/privacy"
+  updatedAt: "2025-12-24"
+relatedTools:
+  - github-copilot
+relatedTutorials:
+  - cursor-getting-started
+  - cursor-project-rules
+  - mcp-starter-kit
+relatedCompares:
+  - cursor-vs-github-copilot
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+keywords:
+  - Cursor
+  - Tab
+  - CMD-K
+  - Composer
+  - "Ask/Edit/Agent"
+  - Context
+  - MCP
+  - "API Keys"
+  - "AI 编程"
+  - Agent
+  - "写功能"
+  - "PR Review"
+---
+
+
+
+## 适合用 Cursor 的一个判断
+
+如果你的目标是“把一件事做完并产出可提交的改动”，而不是只要补全几行代码，那么 Cursor 的整体体验通常更贴近这个诉求。
+
+## 官方怎么介绍自己（抓重点）
+
+Cursor 官方在「Introduction」里把核心能力概括为 3 件事：
+
+- **AI code completion**：基于代码上下文的 Tab 补全（行/函数/样板），并会逐步适配你的编码习惯。
+- **Conversation interface**：统一 AI 交互界面（Ask/Edit/Agent）用于理解、修改代码并应用改动。
+- **Intelligent tools**：面向复杂任务的工作流（多文件改动、重构、排障等）。
+
+官方入口（从低成本到高收益）：
+
+- `Tab`：智能补全
+- `Cmd/Ctrl + K`：Inline Edit（就地改代码）
+- `⌘I`：打开 Composer（Ask/Edit/Agent）
+
+## Context：让它“懂你仓库”的关键
+
+官方强调 Context 是所有 AI 功能的底座，核心点包括：
+
+- 打开仓库后会进行 codebase indexing（让代码可被当作上下文使用）。
+- 用 `@files` / `@folders` / `@web` / `@git` 精确控制提供的上下文。
+- 用 Rules（rules for AI）把团队约束固化，降低扩范围与返工。
+- 需要外部上下文/工具时可接 MCP（Model Context Protocol）。
+
+## 使用建议（安全第一）
+
+- 先用只读/建议模式跑通 SOP，再逐步开放写入与执行权限
+- 所有 Agent 产出都要走代码审查与测试验证
+- 如果接入 MCP：默认保留“执行前确认”，谨慎开启自动执行（如 Yolo mode）

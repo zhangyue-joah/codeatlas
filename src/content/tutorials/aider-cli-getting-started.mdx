@@ -1,0 +1,80 @@
+---
+slug: aider-cli-getting-started
+title: Aider 入门：在终端把需求变成可回滚的 git 补丁（SOP）
+description: 适合偏 CLI/可审计工作流：新分支开工 → 限定上下文 → 先计划再补丁 → review diff → 跑一次最小验证。
+type: getting-started
+difficulty: intermediate
+goal: 用 Aider 生成一次可回滚的 git 改动，并完成最小验证。
+requiredTools:
+  - Git
+  - Aider（CLI）
+  - 一个可用的 LLM 渠道（官方/云平台/合规聚合/本地）
+requiredCapabilities:
+  - read-write
+  - execute
+estimatedTime: 25-45 分钟
+stepsOverview:
+  - 在干净分支上开始（便于回滚）
+  - 把关键文件加入上下文（少而精）
+  - 先写验收标准，再让它提出补丁计划
+  - 生成补丁后先 review diff，再运行最小验证
+  - 用 git 记录与回滚
+steps:
+  - step: 1
+    title: 新建分支并清理工作区
+    description: 保证工作区干净，降低回滚成本。
+    code: |
+      git checkout -b feat/aider-sop
+  - step: 2
+    title: 限定上下文文件
+    description: 只把与任务相关的文件交给它，避免误改其他区域。
+  - step: 3
+    title: 先验收，再计划
+    description: 要求先给“要改哪些文件/为什么/风险/验证命令”，再生成补丁。
+  - step: 4
+    title: Review diff + 最小验证
+    description: diff 过一遍再跑最小验证命令。
+    code: |
+      npm run lint
+  - step: 5
+    title: 提交与回滚
+    description: 提交后如果发现问题，用 revert/重置回滚。
+keyTips:
+  - CLI 工具的优势是“git 天然可审计/可回滚”
+  - 上下文要少而精：先让它总结现状再动手
+  - 把验证命令写进计划，避免“改完就算”
+safety:
+  checklist:
+    - 永远在新分支操作，保持可回滚
+    - 不要把 Key 写进 shell 历史/日志
+    - diff 复核后再运行命令/提交
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 误改不相关文件
+    solution: 只把必要文件加入上下文，并在提示词中明确“只改这些文件”
+  - problem: 反复修改但无法通过验证
+    solution: 让 AI 先解释错误原因，再给最小修复补丁，并把验证命令固定下来
+acceptanceCriteria:
+  - 生成的改动可在 git 中审计与回滚
+  - 至少运行一次最小验证（lint/test/build 任意一种）
+relatedTools:
+  - aider
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - Aider
+  - 写功能
+  - 改 Bug
+  - 补测试
+  - CLI
+---
+
+## 一个实用约束（建议固定）
+
+- 只改：\[文件列表]
+- 不改：\[目录/依赖/接口]
+- 先输出计划（文件清单 + 风险 + 验证命令），我确认后再生成补丁

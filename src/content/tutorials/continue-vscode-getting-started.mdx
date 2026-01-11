@@ -1,0 +1,78 @@
+---
+slug: continue-vscode-getting-started
+title: Continue（开源）上手：在 VS Code 跑通一次“需求→改动→验证”闭环
+description: 把开源助手用到能交付：配置模型渠道 → 限定上下文 → 先计划再补丁 → 最小验证；附可复制提示词约束。
+type: getting-started
+difficulty: intermediate
+goal: 在 30 分钟内跑通一次小需求闭环，并把模型配置固化成可复用方案。
+requiredTools:
+  - VS Code
+  - Continue 扩展
+  - 一个可用的 LLM 渠道（官方/云平台/本地）
+requiredCapabilities:
+  - repo-context
+  - read-write
+estimatedTime: 25-40 分钟
+stepsOverview:
+  - 安装 Continue 并配置模型提供方
+  - 让它索引 repo（或在关键文件范围内工作）
+  - 先让 AI 给计划（文件清单 + 风险点）
+  - 小步改动 + 最小验证命令
+  - 固化你的提示词骨架与团队约束
+steps:
+  - step: 1
+    title: 配置模型渠道
+    description: 先把模型/Key 配好，再开始任务；团队建议用项目级 Key + 限额。
+  - step: 2
+    title: 限定上下文范围
+    description: 先告诉它“只看哪些目录/文件”，避免把大仓库一次性塞满上下文。
+  - step: 3
+    title: 先要计划
+    description: 让它输出“要改哪些文件/为什么/风险”，确认后再生成补丁。
+  - step: 4
+    title: 小步改动 + 验证
+    description: 每次只做一个提交点，跑一次 lint/test/build（任选其一）。
+    code: |
+      npm run lint
+  - step: 5
+    title: 固化 SOP 模板
+    description: 把你的“需求+验收+约束”写成固定模板，下次直接复用。
+keyTips:
+  - 开源工具的关键是“你能控制模型渠道与数据边界”
+  - 要求 AI 给出“文件/函数级别引用”，减少泛泛建议
+  - 失败时先把日志当证据，让 AI 解释原因再修
+safety:
+  checklist:
+    - Key 不进仓库，日志脱敏
+    - 写入前先计划；执行命令要可控且可回滚
+    - 至少一次最小验证作为证据
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 模型配置不稳定或频繁超时
+    solution: 准备官方/云平台/本地的备选渠道，并设置合理重试与限额
+  - problem: 上下文过大导致答非所问
+    solution: 限定目录/文件范围，让它先总结再动手
+acceptanceCriteria:
+  - 你能用 Continue 在 VS Code 完成一次小改动闭环
+  - 你能解释自己的模型渠道与成本控制方式
+relatedTools:
+  - continue
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - Continue
+  - 写功能
+  - 改 Bug
+  - 补测试
+  - VS Code
+---
+
+## 建议把这段约束固定下来
+
+- 只改：\[目录/文件清单]
+- 不改：\[数据库/接口/依赖版本 等]
+- 输出格式：先给计划（文件清单 + 改动点 + 风险），我确认后再写补丁

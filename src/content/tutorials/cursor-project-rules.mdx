@@ -1,0 +1,109 @@
+---
+slug: cursor-project-rules
+title: Cursor Rules 实战：用一份项目规则让 Agent 不扩范围（可复制）
+description: 把“只改哪些/如何验证/什么算完成/怎么回滚”写进仓库，减少 Cursor 乱改与返工，适合团队与个人长期维护。
+type: team-practice
+difficulty: beginner
+goal: 在仓库落地一份 Cursor 项目规则，并用一次小改动验证“先计划 + 小步 + 最小验证”。
+requiredTools:
+  - Cursor
+  - 一个有 Git 的项目仓库
+requiredCapabilities:
+  - repo-context
+  - read-write
+estimatedTime: 15-30 分钟
+stepsOverview:
+  - 明确边界：只改哪些文件/不改哪些
+  - 复制一份规则模板到仓库
+  - 追加项目级约束：风格/验证命令/提交要求
+  - 用一个小改动回归：看它是否“先计划再写入”
+  - 迭代：把常见坑写进规则
+steps:
+  - step: 1
+    title: 先把“范围”写清楚
+    description: 把“只改哪些文件/目录”“不做哪些事”写成可执行约束。
+    tips:
+      - 规则不求全，先求能约束住扩范围
+  - step: 2
+    title: 加上质量门禁（最小验证）
+    description: 固定 1 条最小验证命令（lint/test/build 任意一种），要求写进计划里。
+    code: |
+      npm run lint
+  - step: 3
+    title: 加上安全与回滚
+    description: 明确不写密钥、不跑破坏性命令；改动必须可回滚（git revert/checkout）。
+  - step: 4
+    title: 放进仓库并让 Cursor 重新索引
+    description: 把规则文件提交到仓库（或至少进入工作区），确保工具能读到。
+  - step: 5
+    title: 用一次小改动验证
+    description: 让 Agent 先给计划（文件清单+风险+验证命令），你确认后再写入。
+keyTips:
+  - 规则越短越好：先能约束住“范围/验证/安全”
+  - 把“必须做”的事写成可验证动作（命令/清单）
+  - 团队场景把规则当代码：评审、版本化、定期更新
+safety:
+  checklist:
+    - 规则里禁止写入密钥/令牌/私有链接
+    - 默认只读/建议；需要写入时先明确回滚方案
+    - 任何改动必须附最小验证命令与结果
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 规则太长，Agent 选择性忽略
+    solution: 先保留 10-20 行关键规则，其他拆到模板/文档，逐步迭代
+  - problem: 只写“不要做什么”，没有“怎么验收”
+    solution: 加上验收标准与最小验证命令，要求写进计划并执行
+  - problem: 团队每个人一套规则
+    solution: 统一放 repo，走 code review；必要时分模块拆成多文件
+acceptanceCriteria:
+  - 仓库里新增并提交了规则文件（可追溯）
+  - Agent 的输出包含计划（文件清单+验证命令）后再写入
+  - 至少跑过一次最小验证（lint/test/build 任意一种）
+relatedTools:
+  - cursor
+relatedTemplates:
+  - cursor-project-rules
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Cursor
+  - Cursor Rules
+  - .cursorrules
+  - 团队规范
+  - 质量控制
+---
+
+## 为什么要写“项目规则”
+
+Cursor 的 Agent 能力越强，越容易出现两类问题：
+
+- **扩范围**：顺手重构、改风格、动无关文件
+- **无证据**：改完就算，没有验证命令、没有回滚路径
+
+“项目规则”的目标不是把 AI 管死，而是把它的输出**变得稳定、可审计、可回滚**。
+
+## 直接复制一份模板（推荐）
+
+- 先用这份模板起步：`/templates/cursor-project-rules`
+- 不要一上来写 200 行规则：先用 10–20 行把“范围/验证/安全”三件事钉死
+
+## 一套最小可用结构（建议固定成 4 段）
+
+1. **Scope（范围）**：只改哪些、不改哪些；需要扩范围必须先申请
+2. **Code Style（风格）**：遵循现有 lint/format/命名；不引入新风格体系
+3. **Quality Gate（验证）**：必须给出并执行最小验证命令
+4. **Safety（安全）**：不写密钥、不跑破坏性命令；一切可回滚
+
+## 验证方法（跑一次就够）
+
+挑一个**可回滚的小改动**（比如修一个边界 case、补一个最小测试），让 Agent 按下面顺序输出：
+
+1. 计划（文件清单 + 风险 + 验证命令）
+2. 变更摘要（每个文件做了什么、为什么）
+3. 最小验证结果（如果无法执行，要明确说明）
+
+只要它能稳定做到上面三点，这份规则就“活”了。下一步再慢慢加细节。
+

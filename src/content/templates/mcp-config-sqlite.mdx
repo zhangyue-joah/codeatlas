@@ -1,0 +1,131 @@
+---
+slug: mcp-config-sqlite
+title: MCP SQLite 配置
+description: 将本地 SQLite 数据库接入 Claude 的 MCP 配置示例，适合开发环境和小型项目。
+type: mcp-config
+applicableTools:
+  - Claude Desktop
+  - Claude Code
+  - MCP
+scenarios:
+  - 本地数据库
+  - 开发调试
+placeholders:
+  - DATABASE_PATH
+dependencies:
+  - SQLite 数据库文件
+  - Node.js（npx）
+template: |
+  {
+    "mcpServers": {
+      "sqlite": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sqlite",
+          "/absolute/path/to/database.db"
+        ]
+      }
+    }
+  }
+example: |
+  # macOS 示例
+  {
+    "mcpServers": {
+      "sqlite": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sqlite",
+          "/Users/username/projects/myapp/data.db"
+        ]
+      }
+    }
+  }
+
+  # Windows 示例
+  {
+    "mcpServers": {
+      "sqlite": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sqlite",
+          "C:\\Users\\username\\projects\\myapp\\data.db"
+        ]
+      }
+    }
+  }
+notes:
+  - 路径必须是绝对路径
+  - 确保 Claude 有读取数据库文件的权限
+  - SQLite 适合开发环境，生产环境建议使用 PostgreSQL
+featured: false
+variables:
+  - name: DATABASE_PATH
+    description: SQLite 数据库文件的绝对路径
+    example: /Users/username/projects/myapp/data.db
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - MCP
+  - SQLite
+  - 本地数据库
+  - 开发环境
+---
+
+## 适用场景
+
+SQLite MCP Server 适合以下场景：
+- 本地开发和调试
+- 小型项目和原型
+- 分析本地数据文件
+- 学习和实验
+
+## 配置步骤
+
+1. 确认 SQLite 数据库文件路径
+2. 使用绝对路径配置 MCP Server
+3. 重启 Claude Desktop
+
+## 可用功能
+
+配置完成后，Claude 可以：
+- 执行 SQL 查询
+- 查看表结构
+- 分析数据
+- 导出查询结果
+
+## 使用示例
+
+```
+"列出数据库中的所有表"
+"查询 products 表的前 10 条记录"
+"统计每个分类的商品数量"
+```
+
+## 多数据库配置
+
+可以同时配置多个 SQLite 数据库：
+
+```json
+{
+  "mcpServers": {
+    "app-db": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "/path/to/app.db"]
+    },
+    "analytics-db": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "/path/to/analytics.db"]
+    }
+  }
+}
+```
+
+## 注意事项
+
+- SQLite 是单文件数据库，确保文件未被其他进程锁定
+- 对于大型数据库，查询可能较慢
+- 生产环境建议使用 PostgreSQL 或 MySQL

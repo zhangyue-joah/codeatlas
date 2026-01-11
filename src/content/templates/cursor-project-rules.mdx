@@ -1,0 +1,65 @@
+---
+slug: cursor-project-rules
+title: Cursor 项目规则模板
+description: 把“边界、风格、验证方式、提交要求”写进仓库，让 Cursor 更稳定地产出可提交改动。
+type: agent-instruction
+applicableTools:
+  - Cursor
+scenarios:
+  - 仓库规则
+  - 质量门
+placeholders: []
+dependencies:
+  - Cursor
+example: |
+  # 最小用法
+  1) 把模板保存为 `/.cursorrules`（仓库根目录）
+  2) 在 Cursor 中发起任务时先要求输出计划与验证命令
+template: |
+  # Cursor Project Rules (drop into your repo)
+  # 目标：让 Agent 不扩范围、遵循风格、必须验证、输出可追溯结果。
+
+  ## Scope
+  - 只实现当前需求；不做无关重构、不改无关文件。
+  - 需要新增依赖/改架构时：先解释理由 + 给替代方案 + 等待确认。
+
+  ## Code Style
+  - 遵循现有项目的 lint/format/命名约定；不要引入新的风格体系。
+  - TypeScript/React 项目：优先保持组件拆分与 hooks 习惯一致。
+
+  ## Quality Gate
+  - 修改后必须给出最小验证命令（lint/test/build 任选其一，优先项目已有脚本）。
+  - 若你无法执行命令：明确说明“未运行”，并给出应该运行的命令与预期结果。
+
+  ## Safety
+  - 不写入任何密钥/令牌/私有 URL；使用占位符并提醒通过环境变量配置。
+  - 涉及读写/执行权限时，先给风险点与回滚方案。
+
+  ## Output
+  - 先给计划：文件列表 + 关键改动点 + 风险 + 验证命令
+  - 再输出变更摘要：每个文件做了什么、为什么
+notes:
+  - Cursor 的“项目规则”文件位置/命名可能随版本变化；以官方文档为准。
+  - 建议把规则拆成“范围/风格/验证/安全”四段，便于长期维护。
+relatedTutorials:
+  - cursor-getting-started
+  - cursor-project-rules
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Cursor
+  - Project Rules
+  - .cursorrules
+  - 团队规范
+---
+
+## 放到哪里
+
+常见做法（不同版本可能略有差异）：
+
+- `/.cursorrules`（根目录）
+- `/.cursor/rules/*.md`（按主题拆分）
+
+## 参考链接
+
+- Cursor 文档：`https://cursor.com/docs`

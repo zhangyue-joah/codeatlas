@@ -1,0 +1,147 @@
+---
+slug: prompt-bug-fix
+title: Bug 修复提示词模板
+description: 让 AI 帮助定位和修复 Bug 的通用提示词模板，包含问题描述、复现步骤、期望行为。
+type: prompt-recipe
+applicableTools:
+  - Claude Code
+  - Cursor
+  - GitHub Copilot
+  - ChatGPT
+scenarios:
+  - Bug 修复
+  - 问题排查
+placeholders:
+  - CODE_SNIPPET
+  - ERROR_MESSAGE
+  - EXPECTED_BEHAVIOR
+  - ACTUAL_BEHAVIOR
+dependencies: []
+template: |
+  请帮我修复以下 Bug：
+
+  ## 问题代码
+  ```
+  {{CODE_SNIPPET}}
+  ```
+
+  ## 错误信息
+  {{ERROR_MESSAGE}}
+
+  ## 期望行为
+  {{EXPECTED_BEHAVIOR}}
+
+  ## 实际行为
+  {{ACTUAL_BEHAVIOR}}
+
+  请：
+  1. 分析 Bug 的根本原因
+  2. 提供修复方案
+  3. 解释修复原理
+  4. 建议如何避免类似问题
+example: |
+  请帮我修复以下 Bug：
+
+  ## 问题代码
+  ```javascript
+  function findUser(users, id) {
+    return users.find(user => user.id == id);
+  }
+
+  const users = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }];
+  console.log(findUser(users, '1')); // 期望找到 Alice
+  ```
+
+  ## 错误信息
+  无错误，但行为不符合预期
+
+  ## 期望行为
+  传入字符串 '1' 时不应该匹配到 id 为数字 1 的用户
+
+  ## 实际行为
+  传入 '1' 时匹配到了 id 为 1 的用户（类型不严格）
+
+  请：
+  1. 分析 Bug 的根本原因
+  2. 提供修复方案
+  3. 解释修复原理
+  4. 建议如何避免类似问题
+notes:
+  - 提供完整的复现步骤有助于定位问题
+  - 包含相关的错误日志和堆栈信息
+  - 说明问题首次出现的时间和环境
+featured: true
+variables:
+  - name: CODE_SNIPPET
+    description: 有问题的代码片段
+    example: "见示例"
+  - name: ERROR_MESSAGE
+    description: 错误信息或日志
+    example: "TypeError: Cannot read property 'x' of undefined"
+  - name: EXPECTED_BEHAVIOR
+    description: 期望的正确行为
+    example: "应该返回用户对象"
+  - name: ACTUAL_BEHAVIOR
+    description: 实际的错误行为
+    example: "返回 undefined"
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - Bug 修复
+  - 调试
+  - 问题排查
+  - 错误处理
+---
+
+## Bug 分类模板
+
+### 运行时错误
+```
+错误类型：运行时错误
+错误信息：[具体错误信息]
+堆栈跟踪：[堆栈信息]
+触发条件：[什么操作触发了错误]
+```
+
+### 逻辑错误
+```
+错误类型：逻辑错误
+输入数据：[输入]
+期望输出：[期望结果]
+实际输出：[实际结果]
+差异说明：[哪里不对]
+```
+
+### 性能问题
+```
+问题类型：性能问题
+症状：[卡顿/内存泄漏/CPU 高]
+触发条件：[什么情况下出现]
+性能指标：[响应时间/内存占用等]
+```
+
+### 并发问题
+```
+问题类型：并发/竞态条件
+症状：[间歇性错误/数据不一致]
+复现概率：[偶发/必现]
+并发场景：[多线程/异步操作]
+```
+
+## 调试检查清单
+
+- [ ] 能否稳定复现问题？
+- [ ] 问题首次出现是什么时候？
+- [ ] 最近有什么代码变更？
+- [ ] 是否只在特定环境出现？
+- [ ] 是否与特定数据相关？
+- [ ] 错误日志是否完整？
+
+## 常见 Bug 模式
+
+1. **空值引用** - 未检查 null/undefined
+2. **类型错误** - 类型不匹配或隐式转换
+3. **边界错误** - 数组越界、off-by-one
+4. **异步问题** - 竞态条件、回调顺序
+5. **状态问题** - 状态未正确更新或同步

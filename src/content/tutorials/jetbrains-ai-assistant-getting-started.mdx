@@ -1,0 +1,74 @@
+---
+slug: jetbrains-ai-assistant-getting-started
+title: JetBrains AI Assistant 上手：在 IntelliJ/PyCharm 小步完成一次需求（含最小验证）
+description: 适合 JetBrains 用户：先写验收标准，再让它给文件/函数级计划，小步改动并跑一次验证，最终形成可复用约束。
+type: getting-started
+difficulty: beginner
+goal: 在不改变 JetBrains 工作流的前提下，完成一次可提交改动并保留验证证据。
+requiredTools:
+  - IntelliJ IDEA / PyCharm / WebStorm 等 JetBrains IDE
+  - JetBrains AI Assistant（按你的订阅与地区策略）
+requiredCapabilities:
+  - repo-context
+  - read-write
+estimatedTime: 20-40 分钟
+stepsOverview:
+  - 在 IDE 内确认 AI Assistant 可用（登录/订阅/网络）
+  - 写清“需求 + 验收标准 + 约束”
+  - 让 AI 先给改动计划（文件/符号级别）
+  - 小步改动：一次只做一个提交点
+  - 用 IDE 的运行/测试配置完成最小验证
+steps:
+  - step: 1
+    title: 先用 IDE 的“导航能力”定位上下文
+    description: 先把目标文件/调用链找出来，再让 AI 解释与提出改动点。
+  - step: 2
+    title: 写验收标准 + 约束
+    description: 3 条以内可验证标准 + “不做什么”，避免扩大范围。
+  - step: 3
+    title: 先要计划（文件清单 + 风险点）
+    description: 让 AI 输出将改动的类/函数/文件，确认后再动手。
+  - step: 4
+    title: 小步实现 + 小步验证
+    description: 每改一段就跑一次最小验证（单测或运行配置）。
+  - step: 5
+    title: 提交前复查（diff + 影响面）
+    description: 对照验收标准逐条过一遍，必要时补测试或文档。
+keyTips:
+  - JetBrains 的强项是“结构化导航 + 重构”，让 AI 做“建议”，让 IDE 做“落地与校验”
+  - 让 AI 引用符号（类/方法）而不是泛泛描述
+  - 复杂改动用“拆分提交点”的方式降低回滚成本
+safety:
+  checklist:
+    - 不要把敏感信息放入提示词或共享日志
+    - 写入前先看计划与 diff；团队默认只读
+    - 最少跑一次测试/运行配置作为证据
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: AI 给出的建议不符合项目风格
+    solution: 让它先总结现有代码风格（命名/结构/异常处理）再写
+  - problem: 改动后引入循环依赖/重构风险
+    solution: 用 IDE 的重构与分析工具先做静态检查，再让 AI 修补
+acceptanceCriteria:
+  - 改动符合验收标准并能在 IDE 中运行或通过测试
+  - 变更范围可解释，diff 可读
+relatedTools:
+  - jetbrains-ai-assistant
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: false
+author: CodeAtlas
+keywords:
+  - JetBrains
+  - 写功能
+  - 改 Bug
+  - 补测试
+---
+
+## 推荐的“先读后写”提问方式
+
+1. “请先总结这个类/模块的职责与边界（引用具体方法）”
+2. “根据验收标准，给出最小改动方案：改哪些方法、为什么、风险点”
+3. “按步骤实施，每一步都给出可验证的检查点（跑哪个测试/怎么验证）”

@@ -1,0 +1,168 @@
+---
+slug: gpt-engineer-getting-started
+title: GPT Engineer 入门：用自然语言生成完整项目代码
+description: 20 分钟完成 GPT Engineer 安装配置，从一段需求描述生成可运行的项目代码。
+type: getting-started
+difficulty: beginner
+goal: 在 20 分钟内完成 GPT Engineer 安装，并从需求描述生成一个可运行的项目。
+requiredTools:
+  - GPT Engineer
+  - Python 3.8+
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 20-30 分钟
+stepsOverview:
+  - 安装 GPT Engineer
+  - 配置 OpenAI API Key
+  - 编写需求描述
+  - 运行生成并审查代码
+steps:
+  - step: 1
+    title: 安装 GPT Engineer
+    description: 使用 pip 安装 GPT Engineer。
+    code: |
+      pip install gpt-engineer
+
+      # 或从源码安装
+      git clone https://github.com/AntonOsika/gpt-engineer.git
+      cd gpt-engineer
+      pip install -e .
+    tips:
+      - 需要 Python 3.8+ 环境
+      - 建议在虚拟环境中安装
+  - step: 2
+    title: 配置 API Key
+    description: 设置 OpenAI API Key 环境变量。
+    code: |
+      export OPENAI_API_KEY="your-api-key"
+    warnings:
+      - API Key 不要提交到版本控制
+      - 生成完整项目会消耗较多 Token，注意成本
+  - step: 3
+    title: 编写需求描述
+    description: 创建项目目录，编写 prompt 文件描述你的需求。
+    code: |
+      mkdir my-project
+      cd my-project
+
+      # 创建 prompt 文件
+      cat > prompt << 'EOF'
+      创建一个简单的待办事项 Web 应用：
+      - 使用 React + TypeScript
+      - 支持添加、删除、标记完成
+      - 数据存储在 localStorage
+      - 简洁美观的 UI
+      EOF
+    tips:
+      - 需求描述越清晰，生成效果越好
+      - 可以指定技术栈、功能点、UI 风格等
+  - step: 4
+    title: 运行生成
+    description: 执行 GPT Engineer 生成代码。
+    code: |
+      gpte my-project
+    tips:
+      - 生成过程中 AI 可能会问你一些澄清问题
+      - 可以交互式回答或直接回车使用默认
+  - step: 5
+    title: 审查并运行
+    description: 检查生成的代码，尝试运行项目。
+    code: |
+      # 查看生成的文件
+      ls -la my-project/
+
+      # 安装依赖并运行（以 React 项目为例）
+      cd my-project
+      npm install
+      npm start
+keyTips:
+  - GPT Engineer 适合快速生成项目骨架，不适合复杂业务逻辑
+  - 生成的代码需要人工审查和调整
+  - 需求描述的质量直接影响生成效果
+safety:
+  checklist:
+    - 生成的代码必须人工审查后再使用
+    - 注意检查安全漏洞（如 XSS、注入等）
+    - API Key 消耗较大，注意成本控制
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 生成的代码无法运行
+    solution: 检查需求描述是否清晰；手动修复明显错误；尝试重新生成
+  - problem: 生成内容与预期不符
+    solution: 优化需求描述，添加更多细节和约束
+  - problem: API 调用失败或超时
+    solution: 检查 API Key 和网络；尝试使用代理
+acceptanceCriteria:
+  - GPT Engineer 安装成功
+  - 至少生成一个可运行的项目
+  - 理解工具的能力边界和局限性
+relatedTools:
+  - gpt-engineer
+  - lovable
+  - bolt-new
+relatedTemplates:
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - GPT Engineer
+  - 代码生成
+  - 开源
+  - 项目生成
+  - 入门
+---
+
+## GPT Engineer 是什么
+
+GPT Engineer 是一个开源工具，可以从自然语言需求描述生成完整的项目代码。它的核心理念是：
+
+- **需求驱动**：用自然语言描述你想要什么
+- **完整项目**：生成可运行的项目，不只是代码片段
+- **交互式**：生成过程中可以回答 AI 的澄清问题
+
+## 适用场景
+
+- **快速原型**：验证想法，快速生成 MVP
+- **学习参考**：看 AI 如何组织项目结构
+- **项目骨架**：生成基础代码，再手动完善
+
+## 不适用场景
+
+- 复杂业务逻辑（需要大量领域知识）
+- 对现有项目的修改（更适合从零开始）
+- 生产级代码（需要大量人工审查和优化）
+
+## 与其他工具对比
+
+| 工具 | 定位 | 特点 |
+|------|------|------|
+| GPT Engineer | 项目生成 | 开源、CLI、从零生成 |
+| Lovable | Web 应用生成 | 在线、可视化、托管部署 |
+| Bolt.new | 全栈应用 | 在线、实时预览、一键部署 |
+| v0 | UI 组件 | Vercel 出品、专注前端 |
+
+## 需求描述技巧
+
+好的需求描述应该包含：
+
+1. **功能点**：具体要实现什么功能
+2. **技术栈**：使用什么语言/框架
+3. **约束条件**：有什么限制或要求
+4. **UI 风格**：界面的大致风格
+
+```
+# 好的需求描述示例
+创建一个博客系统：
+- 技术栈：Next.js + TypeScript + Tailwind CSS
+- 功能：文章列表、文章详情、Markdown 渲染
+- 数据：使用本地 JSON 文件作为数据源
+- UI：简洁现代，支持暗色模式
+```
+
+## 下一步
+
+- 尝试 [Lovable](/tutorials/lovable-getting-started) 获得更好的可视化体验
+- 了解 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

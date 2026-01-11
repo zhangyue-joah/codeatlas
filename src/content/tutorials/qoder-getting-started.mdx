@@ -1,0 +1,100 @@
+---
+slug: qoder-getting-started
+title: Qoder 上手实操：跑通一次“计划→改动→最小验证”（可回滚）
+description: 30 分钟在一个真实仓库里跑通最小闭环：写验收标准 → 要计划 → 小步改动 → 最小验证 → 可回滚提交。
+type: getting-started
+difficulty: beginner
+goal: 用 Qoder 在一个仓库里完成一次可回滚的小改动，并留下最小验证证据。
+requiredTools:
+  - Qoder
+  - Git
+  - 一个可本地验证的项目（lint/test/build 任一）
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 20-40 分钟
+stepsOverview:
+  - 安装/登录并打开一个练习仓库
+  - 写清需求 + 验收标准（1-3 条）
+  - 让 AI 先输出计划（文件清单 + 风险 + 验证命令）
+  - 小步改动并保留可审计痕迹（git diff/commit）
+  - 跑最小验证并提交（可回滚）
+steps:
+  - step: 1
+    title: 安装并登录
+    description: 以官网与官方文档为准完成安装/登录，先确保能打开仓库。
+    tips:
+      - 官网：https://qoder.com/
+  - step: 2
+    title: 在新分支开工（降低回滚成本）
+    description: 保持工作区干净并新建分支，避免把实验性改动混进主分支。
+    code: |
+      git status
+      git checkout -b feat/qoder-sop
+  - step: 3
+    title: 写验收标准 + 边界
+    description: 用 1-3 条可验证标准定义“什么算完成”，并明确不做无关重构。
+    tips:
+      - 先验收，再实现
+      - 明确“只改哪些文件/模块”
+  - step: 4
+    title: 先计划，再改动
+    description: 要求先输出“文件清单 + 风险点 + 验证命令”，你确认后再开始改。
+    warnings:
+      - 不接受“先改再说”
+  - step: 5
+    title: 小步改动 + 最小验证 + 提交
+    description: 每次只做一小步，随时能回退；跑一次最小验证并提交。
+    tips:
+      - 让 AI 输出 `git diff` 或逐文件变更摘要，方便你 review
+      - 验证命令用项目自带的 lint/test/build 任一
+keyTips:
+  - 把它当“计划 + 补丁生成器”：你负责 review、验证与合并
+  - 变更范围越小，成功率越高；大任务拆成多个可回滚提交
+  - 失败先贴日志，让 AI 先解释原因再给最小修复
+safety:
+  checklist:
+    - 永远在新分支操作，保持可回滚
+    - 不在对话里粘贴密钥、令牌与私有链接
+    - AI 生成的改动必须经代码审查与最小验证
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 索引/上下文不完整导致乱改
+    solution: 手动指定关键文件/目录；先让 AI 输出“将改哪些文件”再写代码
+  - problem: 改动范围过大
+    solution: 明确边界与文件列表；要求先出计划与变更清单
+  - problem: 验证失败
+    solution: 把失败日志作为证据贴回去，让 AI 先解释原因再给最小修复
+acceptanceCriteria:
+  - 你在新分支完成一次可回滚改动（有 commit 或可审计 diff）
+  - 你 review 了变更并跑过最小验证（lint/test/build 任一）
+  - 你能复述“先计划→小步改动→最小验证”的流程
+relatedTools:
+  - qoder
+relatedTemplates:
+  - agent-rules-coding-general
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Qoder
+  - Agent
+  - 入门
+  - SOP
+  - 可回滚
+---
+
+## 推荐的开工提示词（复制就能用）
+
+1. 需求：\[一句话说明要做什么]
+2. 验收标准（1-3 条）：\[可验证结果]
+3. 边界：只改 \[文件/目录]；不做无关重构；不新增依赖（如必须新增先申请）
+4. 请先输出计划：改动文件清单 + 风险点 + 验证命令；我确认后你再开始改动
+
+## 下一步
+
+- 做质量兜底：[AI 代码验收清单](/tutorials/ai-code-acceptance-checklist)
+- 做 PR 流程：[AI 辅助 PR Review 工作流](/tutorials/ai-pr-review-workflow)
+

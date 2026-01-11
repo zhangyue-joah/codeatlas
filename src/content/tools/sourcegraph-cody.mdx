@@ -1,0 +1,81 @@
+---
+slug: sourcegraph-cody
+title: "Cody (Sourcegraph)"
+description: "结合代码搜索与仓库上下文的编程助手：适合大仓库理解、定位与基于证据的改动建议。"
+logo: /logos/placeholder.svg
+website: "https://sourcegraph.com/cody"
+productType:
+  - ide-extension
+category:
+  - repo-chat
+  - code-completion
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - skills-plugins
+  - read-only
+useCases:
+  - "大仓库理解：定位入口、调用链与关键约定"
+  - "基于搜索的问答：要求引用文件/符号/片段作为证据"
+  - "改动建议：先给计划与影响面，再由你落地与验证"
+pros:
+  - "对大仓库定位与理解更友好（结合搜索/索引）"
+  - "更容易要求“引用证据”来降低胡写"
+  - "适合作为团队知识入口（按权限与策略）"
+cons:
+  - "对索引/权限/网络依赖较强，企业落地要先打通策略"
+  - "关键代码仍需测试/审查兜底"
+  - "效果与可用性依赖配置与数据策略（以官方为准）"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: subscription
+  free: true
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: true
+  supportsContract: true
+purchase:
+  officialUrl: "https://sourcegraph.com/pricing"
+  sources:
+    -
+      label: "Sourcegraph Pricing"
+      url: "https://sourcegraph.com/pricing"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance: []
+  policyUrl: "https://sourcegraph.com/privacy"
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Cody
+  - Sourcegraph
+  - "Repo Chat"
+  - "AI 编程"
+---
+
+
+
+## 适合用 Cody 的一个判断
+
+如果你经常面对“大仓库/多模块”，最需要的是“快速定位 + 解释 + 给出可落地的改动计划”，Cody 这类“搜索 + 上下文”的组合更有优势。
+
+## 使用建议
+
+- 让它引用证据：要求回答必须带文件/符号/调用链引用，再给建议
+- 改动不要直接落地：先计划、后 diff、再最小验证

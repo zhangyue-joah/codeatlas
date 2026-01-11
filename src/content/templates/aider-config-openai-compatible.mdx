@@ -1,0 +1,57 @@
+---
+slug: aider-config-openai-compatible
+title: Aider OpenAI-Compatible 配置
+description: 适用于想在终端里稳定跑“计划→改动→验证”的人：把 key/baseUrl 放进环境变量与配置文件。
+type: mcp-config
+applicableTools:
+  - Aider
+  - OpenAI Compatible
+scenarios:
+  - CLI 接入
+  - OpenAI-Compatible
+placeholders:
+  - OPENAI_API_KEY
+  - OPENAI_BASE_URL
+  - OPENAI_MODEL
+dependencies:
+  - Aider
+  - OpenAI-Compatible 提供方/网关
+example: |
+  # .env（示例）
+  OPENAI_API_KEY="YOUR_KEY"
+  OPENAI_BASE_URL="https://api.openai.com/v1"
+  OPENAI_MODEL="gpt-4.1-mini"
+
+  # 运行
+  aider --model "$OPENAI_MODEL"
+template: |
+  # .env (example)
+  OPENAI_API_KEY="YOUR_KEY"
+  OPENAI_BASE_URL="https://api.openai.com/v1"
+  OPENAI_MODEL="gpt-4.1-mini"
+
+  # .aider.conf.yml (example)
+  model: "${OPENAI_MODEL}"
+  openai-api-base: "${OPENAI_BASE_URL}"
+notes:
+  - Aider 的参数名/配置键可能随版本变化；以官方 README 为准。
+  - 自建网关（如 LiteLLM/OneAPI）建议加上审计、限流与按项目隔离，避免“一个 key 走天下”。
+relatedTutorials:
+  - openai-compatible-setup
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Aider
+  - OpenAI Compatible
+  - CLI
+  - 配置
+---
+
+## 适用场景
+
+- 你想把 AI 编程流程脚本化（在 terminal 里可复现、可记录）
+- 你需要可控的接入方式（环境变量/自建网关/可审计）
+
+## 参考链接
+
+- Aider 仓库：`https://github.com/Aider-AI/aider`

@@ -1,0 +1,133 @@
+---
+slug: roo-code-getting-started
+title: Roo Code 入门：在 VS Code 中配置开源 Agent 工作流
+description: 20 分钟完成 Roo Code 安装配置，跑通一次多步任务的 Agent 工作流。
+type: getting-started
+difficulty: beginner
+goal: 在 20 分钟内完成 Roo Code 安装、模型配置，并跑通一次多文件修改任务。
+requiredTools:
+  - Roo Code
+  - VS Code
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+estimatedTime: 20-30 分钟
+stepsOverview:
+  - 在 VS Code 中安装 Roo Code 扩展
+  - 配置 AI 模型（OpenAI/Anthropic/本地模型）
+  - 跑通一次简单的 Agent 任务
+  - 理解权限边界与安全设置
+steps:
+  - step: 1
+    title: 安装 Roo Code 扩展
+    description: 在 VS Code 扩展市场搜索 "Roo Code" 或从 GitHub 安装。
+    code: |
+      # 从 VS Code 扩展市场安装
+      # 或从 GitHub 下载 VSIX 手动安装
+    tips:
+      - GitHub 地址：https://github.com/RooVetGit/Roo-Code
+      - 确认安装后侧边栏出现 Roo Code 图标
+  - step: 2
+    title: 配置 AI 模型
+    description: 打开 Roo Code 设置，配置你的模型提供商和 API Key。
+    tips:
+      - 支持 OpenAI、Anthropic、Azure、本地模型等
+      - 推荐使用 Claude Sonnet 或 GPT-4o 获得更好的 Agent 效果
+    warnings:
+      - API Key 请妥善保管
+      - 注意 Token 消耗，Agent 模式消耗较大
+  - step: 3
+    title: 理解权限设置
+    description: Roo Code 支持读写文件和执行命令，需要明确权限边界。
+    tips:
+      - 建议初次使用时开启"确认模式"，每步操作前需你确认
+      - 可以配置禁止执行的命令列表
+    warnings:
+      - 不要让 Agent 执行 rm -rf、git push --force 等危险命令
+  - step: 4
+    title: 跑通第一个 Agent 任务
+    description: 用自然语言描述一个简单任务，让 Agent 完成。
+    tips:
+      - 从小任务开始，比如"给这个组件添加一个 loading 状态"
+      - 观察 Agent 的计划和执行过程
+  - step: 5
+    title: 审查与验证
+    description: 检查 Agent 的改动，运行测试验证。
+    code: |
+      git diff
+      npm run lint && npm run test
+keyTips:
+  - Roo Code 是 Cline 的社区分支，功能类似但更新节奏不同
+  - 开源可控，适合需要定制化的团队
+  - Agent 模式消耗 Token 较多，注意成本控制
+safety:
+  checklist:
+    - 首次使用建议开启"确认模式"
+    - 配置危险命令黑名单
+    - 所有改动在 git 分支上进行，便于回滚
+    - API Key 不要提交到版本控制
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: Agent 执行卡住或超时
+    solution: 检查网络连接和 API 配置；尝试简化任务描述
+  - problem: 改动范围超出预期
+    solution: 明确任务边界，使用"只改这个文件"等约束
+  - problem: 执行了不该执行的命令
+    solution: 配置命令黑名单；开启确认模式
+acceptanceCriteria:
+  - Roo Code 安装成功并完成模型配置
+  - 至少跑通一次 Agent 任务
+  - 理解权限设置和安全边界
+relatedTools:
+  - roo-code
+  - cline
+relatedTemplates:
+  - agent-rules-coding-general
+relatedTutorials:
+  - cline-vscode-getting-started
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Roo Code
+  - VS Code
+  - Agent
+  - 开源
+  - 入门
+---
+
+## Roo Code 是什么
+
+Roo Code 是 Cline 的社区分支，是一个开源的 VS Code Agent 插件。它可以：
+
+- 理解整个代码库的上下文
+- 自动规划和执行多步任务
+- 读写文件、执行命令
+- 支持多种模型提供商
+
+## Roo Code vs Cline
+
+| 维度 | Roo Code | Cline |
+|------|----------|-------|
+| 开源 | ✅ 完全开源 | ✅ 开源 |
+| 更新 | 社区驱动 | 官方维护 |
+| 定制 | 更灵活 | 相对标准 |
+| 文档 | 社区贡献 | 官方文档 |
+
+如果你需要深度定制或想参与社区开发，Roo Code 是不错的选择。
+
+## 模型选择建议
+
+| 场景 | 推荐模型 | 理由 |
+|------|----------|------|
+| 复杂 Agent 任务 | Claude Sonnet | 指令遵循能力强 |
+| 日常编码 | GPT-4o-mini | 成本低、速度快 |
+| 本地部署 | DeepSeek Coder | 开源、可私有化 |
+
+## 下一步
+
+- 尝试 [Cline](/tutorials/cline-vscode-getting-started) 对比体验
+- 了解 [MCP 配置](/tutorials/mcp-starter-kit) 扩展工具能力
+- 配置 [项目规则](/tutorials/cursor-project-rules) 提升输出质量

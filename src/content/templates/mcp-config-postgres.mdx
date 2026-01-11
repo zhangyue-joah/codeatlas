@@ -1,0 +1,145 @@
+---
+slug: mcp-config-postgres
+title: MCP PostgreSQL 配置
+description: 将 PostgreSQL 数据库接入 Claude 的 MCP 配置示例，支持执行 SQL 查询、查看表结构等操作。
+type: mcp-config
+applicableTools:
+  - Claude Desktop
+  - Claude Code
+  - MCP
+scenarios:
+  - 数据库查询
+  - 数据分析
+placeholders:
+  - POSTGRES_HOST
+  - POSTGRES_PORT
+  - POSTGRES_USER
+  - POSTGRES_PASSWORD
+  - POSTGRES_DATABASE
+dependencies:
+  - PostgreSQL 数据库
+  - Node.js（npx）
+template: |
+  {
+    "mcpServers": {
+      "postgres": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres"],
+        "env": {
+          "POSTGRES_HOST": "localhost",
+          "POSTGRES_PORT": "5432",
+          "POSTGRES_USER": "your_username",
+          "POSTGRES_PASSWORD": "your_password",
+          "POSTGRES_DATABASE": "your_database"
+        }
+      }
+    }
+  }
+example: |
+  # 使用连接字符串的替代配置
+  {
+    "mcpServers": {
+      "postgres": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres"],
+        "env": {
+          "DATABASE_URL": "postgresql://user:password@localhost:5432/database"
+        }
+      }
+    }
+  }
+notes:
+  - 强烈建议使用只读账号连接生产数据库
+  - 不要在配置文件中硬编码密码，使用环境变量
+  - 考虑使用 SSL 连接
+  - 限制账号只能访问必要的表和视图
+featured: false
+variables:
+  - name: POSTGRES_HOST
+    description: 数据库主机地址
+    example: localhost
+  - name: POSTGRES_PORT
+    description: 数据库端口
+    example: "5432"
+  - name: POSTGRES_USER
+    description: 数据库用户名
+    example: readonly_user
+  - name: POSTGRES_PASSWORD
+    description: 数据库密码
+    example: your_secure_password
+  - name: POSTGRES_DATABASE
+    description: 数据库名称
+    example: myapp_production
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - MCP
+  - PostgreSQL
+  - 数据库
+  - SQL
+---
+
+## 创建只读数据库用户
+
+**强烈建议**：为 MCP 连接创建专用的只读用户：
+
+```sql
+-- 创建只读用户
+CREATE USER mcp_readonly WITH PASSWORD 'secure_password';
+
+-- 授予连接权限
+GRANT CONNECT ON DATABASE your_database TO mcp_readonly;
+
+-- 授予 schema 使用权限
+GRANT USAGE ON SCHEMA public TO mcp_readonly;
+
+-- 授予所有表的只读权限
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO mcp_readonly;
+
+-- 对未来创建的表也授予只读权限
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO mcp_readonly;
+```
+
+## 使用 SSL 连接
+
+对于远程数据库，建议使用 SSL：
+
+```json
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://user:password@host:5432/database?sslmode=require"
+      }
+    }
+  }
+}
+```
+
+## 可用功能
+
+配置完成后，Claude 可以：
+- 执行 SQL 查询
+- 查看表结构和索引
+- 分析查询执行计划
+- 探索数据库 schema
+
+## 使用示例
+
+```
+"查询 users 表中最近注册的 10 个用户"
+"分析 orders 表的结构"
+"统计每个月的订单数量"
+```
+
+## 安全最佳实践
+
+1. **使用只读账号** - 永远不要使用有写权限的账号
+2. **限制表访问** - 只授权必要的表
+3. **使用 SSL** - 加密数据库连接
+4. **审计日志** - 开启数据库查询日志
+5. **网络隔离** - 使用 VPN 或私有网络
+6. **密码管理** - 使用环境变量，不要硬编码

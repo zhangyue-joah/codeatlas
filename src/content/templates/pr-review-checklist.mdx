@@ -1,0 +1,97 @@
+---
+slug: pr-review-checklist
+title: PR Review 检查清单（AI 辅助）
+description: 给 AI 或人工 Reviewer 的可复制检查清单：范围、风险、测试、文档与回滚，保证“可审计 + 可验证”再合并。
+type: prompt-recipe
+applicableTools:
+  - GitHub Copilot
+  - Claude Code
+  - OpenAI Codex
+  - Cursor
+  - PR-Agent
+  - CodeRabbit
+scenarios:
+  - PR Review
+  - 质量稳定
+placeholders:
+  - PR 链接/分支
+  - 变更目标/验收标准
+  - 验证命令与结果
+dependencies:
+  - 可获取 diff/变更摘要（PR 页面或 git diff）
+  - 至少 1 个最小验证方式（lint/test/build 任一）
+example: |
+  请按下面的 checklist Review 这个 PR：
+  - PR: https://github.com/org/repo/pull/123
+  - 目标/验收：修复登录页 500；新增回归测试覆盖该场景
+  - 验证：`npm test`（已通过）
+template: |
+  # PR Review Checklist（AI 辅助）
+  你是资深软件工程师与代码审查者。你的目标：帮助我在合并前判断“是否安全、是否可维护、是否可回滚”。
+
+  ## 输入（如缺失先提问）
+  - PR 链接或 diff/变更摘要
+  - 目标/验收标准（1-3 条可验证）
+  - 变更范围限制（只改哪些文件/模块）
+  - 验证命令与结果（lint/test/build 任一）
+
+  ## 工作流（必须遵守）
+  1) 先总结：用 3-6 行复述“这次改动做了什么/不做什么”。
+  2) 再列清单：按下面 checklist 逐项检查；不确定就标注“需要证据/需要补充信息”。
+  3) 最后给结论：明确是否建议合并，并给出“必须改/建议改/可后续”的分级。
+
+  ## Checklist（逐项输出）
+  ### 1. 变更范围（Scope）
+  - 是否只改了与目标直接相关的文件？
+  - 是否存在“顺手重构/无关格式化/引入新依赖”的扩大范围？
+
+  ### 2. 行为与兼容性（Behavior）
+  - 是否有破坏性变更？是否需要迁移或兼容处理？
+  - 错误处理/边界条件是否覆盖？
+
+  ### 3. 测试与验证（Tests）
+  - 是否有最小验证（lint/test/build 任一）？缺失则给出最小命令建议。
+  - 新增/修改逻辑是否补了回归测试？如果没补，说明原因与风险。
+
+  ### 4. 安全与隐私（Security）
+  - 是否引入敏感信息（key/token/私有 URL）或日志泄露？
+  - 输入是否需要校验/转义？是否存在注入/路径遍历等明显风险点？
+
+  ### 5. 可维护性（Maintainability）
+  - 命名/结构是否清晰？是否有重复逻辑可收敛？
+  - 是否需要补文档/注释（仅在必要处）？
+
+  ### 6. 可回滚与发布（Rollback）
+  - 是否能安全回滚？是否需要 feature flag/降级策略？
+  - 是否影响配置/环境变量/数据库？如有，是否提供回滚步骤？
+
+  ## 输出格式（固定）
+  - 结论：建议合并 / 不建议合并（原因 1-3 条）
+  - 必须改（Blocking）：[ ] …
+  - 建议改（Nice-to-have）：[ ] …
+  - 需要补充的证据：[ ] …
+  - 最小验证建议：`...`
+notes:
+  - 优先做“可验证”的审查：没有证据就要求补验证命令/日志，不要靠猜。
+  - 如果 AI 参与写代码，建议附上“变更清单 + 风险点 + 回滚方式”，并走正常 code review。
+relatedTutorials:
+  - ai-pr-review-workflow
+  - ai-code-acceptance-checklist
+  - pr-agent-getting-started
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+keywords:
+  - PR Review
+  - Checklist
+  - 代码审查
+  - 验收
+  - 风险控制
+---
+
+## 怎么用（最短路径）
+
+1. 把 `template` 全部复制到你的 AI 工具里
+2. 补齐“输入”四项（至少给 diff/PR + 验收 + 最小验证）
+3. 按“必须改/建议改”处理完再合并
+

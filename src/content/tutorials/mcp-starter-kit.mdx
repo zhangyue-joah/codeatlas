@@ -1,0 +1,119 @@
+---
+slug: mcp-starter-kit
+title: MCP 上手实操：用 GitHub + Filesystem 跑通一次“读 → 计划 → 审计”（最小权限）
+description: 30-45 分钟把 MCP 接到 Claude Desktop（或其他客户端），从只读 + 单目录开始，避免一上来就授权全盘。
+type: automation
+difficulty: intermediate
+goal: 在本机跑通 2 个 MCP Server（GitHub/Filesystem）的最小闭环，并能描述清楚权限边界与回滚策略。
+requiredTools:
+  - Claude Desktop（或支持 MCP 的客户端）
+  - Node.js（用于 npx 拉起 server）
+  - GitHub Token（可选；建议最小权限）
+requiredCapabilities:
+  - mcp-server
+  - external-system
+  - local-command
+  - read-only
+estimatedTime: 20-45 分钟
+stepsOverview:
+  - 选择一个“练习用仓库”与本地路径（只授权单目录）
+  - 准备 GitHub Token（建议只读）
+  - 配置 mcpServers（GitHub + Filesystem）
+  - 验证：列仓库信息/读取文件（只读）
+  - 复盘：密钥管理、权限收紧、审计与禁令
+steps:
+  - step: 1
+    title: 先定权限边界（只读 + 单目录）
+    description: Filesystem 只授权一个项目目录；GitHub token 从只读开始。
+  - step: 2
+    title: 准备 Token 与环境变量
+    description: Token 不要写进仓库/截图；优先放环境变量或系统密钥管理。
+  - step: 3
+    title: 复制一份 mcpServers 配置
+    description: 直接用模板页的 Starter Kit，替换 token 与绝对路径。
+  - step: 4
+    title: 做一次最小验证（只读）
+    description: 让 AI 通过 MCP 读取 README/列 issue，并输出“它做了哪些外部请求”。
+  - step: 5
+    title: 加护栏：禁止破坏性动作
+    description: 把“禁止写入/禁止全盘访问/禁止上传密钥”等约束写进规则与团队 SOP。
+keyTips:
+  - MCP 的价值是“让 AI 触达外部系统”，风险也是“触达外部系统”
+  - 默认最小权限：只读 + 单目录 + 可审计
+  - 任何写入/执行都要有回滚路径与二次确认
+safety:
+  checklist:
+    - GitHub token 最小权限（优先只读）且可随时撤销/轮换
+    - Filesystem 只授权一个项目目录，不授权 `~` 或 `/`
+    - 禁止把 token 写进配置仓库或对话截图
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: MCP Server 无法启动（npx/Node 环境）
+    solution: 确认本机 Node 版本与网络；企业环境建议固定版本与镜像源
+  - problem: 权限过大导致误操作风险
+    solution: 从只读开始，逐步放开；每次放开都补回滚与审计
+  - problem: token 泄露或被滥用
+    solution: 立即撤销旧 token，轮换并改用密钥管理；排查日志与截图传播
+acceptanceCriteria:
+  - 客户端能成功调用 GitHub 与 Filesystem 的 MCP Server（至少一次）
+  - 你能解释清楚：授权了哪些目录/权限，如何撤销与回滚
+  - 你的 token 未出现在仓库、日志或截图中
+relatedTools:
+  - cursor
+  - continue
+  - cline
+relatedTemplates:
+  - mcp-config-starter-kit
+  - mcp-config-claude-desktop
+  - mcp-server-discovery
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - MCP
+  - Claude
+  - GitHub
+  - Filesystem
+  - 自动化
+  - 合规
+  - 安全
+---
+
+## 你要达到的“最小闭环”
+
+不要一上来追求“能帮我写代码”。先跑通一次最小闭环：
+
+1. AI **能通过 MCP 读取外部信息**（GitHub/本地文件）
+2. AI **能基于证据给计划**（要改哪些、风险点、验证命令）
+3. 你 **能审计与回滚**（知道它访问了什么、能撤销 token、能回退改动）
+
+## 直接复制配置（推荐）
+
+用这两个模板页起步：
+
+- Starter Kit：`/templates/mcp-config-starter-kit`
+- Claude Desktop 单独示例：`/templates/mcp-config-claude-desktop`
+
+把里面的两处内容替换掉：
+
+- `GITHUB_TOKEN`：换成你自己的 token（建议只读权限起步）
+- `/ABSOLUTE/PATH/...`：换成你要授权的**单个项目目录**
+
+## 最小验证提示词（可直接用）
+
+把下面这段发给客户端（必要时改仓库信息）：
+
+1. 读取这个目录的 `README`，总结项目是做什么的（不要改文件）
+2. 列出你调用了哪些 MCP 工具（GitHub / filesystem），每次调用的目的是什么
+3. 基于你读到的内容，给一个“只读”的改动计划：要改哪些文件、风险点、验证命令（先不要写入）
+
+## 下一步：什么时候才开放写入/执行？
+
+满足这些条件再考虑：
+
+- 你能稳定拿到“计划 + 文件清单 + 验证命令”
+- 你知道每个 server 的权限边界，并且能快速撤销
+- 团队有审计与回滚约定（至少用 git）
+
+否则就把 MCP 当成“更强的只读数据源”，已经能解决 80% 的提效场景。

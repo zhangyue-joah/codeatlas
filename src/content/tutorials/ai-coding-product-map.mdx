@@ -1,0 +1,174 @@
+---
+slug: ai-coding-product-map
+title: AI 编程工具怎么选？15 分钟跑通选型：产品地图 + 可复制 SOP（2025）
+description: 从任务出发：选工具形态、选模型渠道、定权限边界，最后跑通一次最小工作流；附主流产品入口链接与避坑清单。
+type: how-to
+difficulty: beginner
+goal: 选出 1-2 个主力工具 + 1 个可持续的模型/接口渠道，并能跑通一次最小工作流。
+requiredTools:
+  - 任意编辑器（VS Code / JetBrains / Cursor 等）
+  - 一个可用的 LLM（官方或合规渠道）
+requiredCapabilities: []
+estimatedTime: 10-20 分钟
+stepsOverview:
+  - 明确你要解决的“任务类型”（写功能/改 Bug/补测试/PR Review）
+  - 选择工具形态（IDE、插件、CLI Agent、App Builder）
+  - 选择模型与接口渠道（官方/云平台/聚合/自托管）
+  - 设定权限边界（只读 → 读写 → 执行）并跑通一次 SOP
+steps:
+  - step: 1
+    title: 先选任务，再选工具
+    description: 只要你能说清“要写功能/改 Bug/补测试/做 Review”，选型就不会跑偏。
+    tips:
+      - 先确定你最常做的 1 件事，再决定是否需要 Agent 能力
+  - step: 2
+    title: 选工具形态（从低风险开始）
+    description: 优先从 IDE 插件/只读建议开始；只有当你需要“多步闭环”再上 Agent 执行。
+    warnings:
+      - 团队环境不要一上来就开“自动写入 + 执行命令”
+  - step: 3
+    title: 选接口渠道（合规、稳定、可追溯）
+    description: 优先官方与云平台渠道；第三方聚合/中转要确认 ToS、数据策略与账单可追溯。
+  - step: 4
+    title: 跑通一次最小工作流
+    description: 用“需求 + 验收标准 + 最小验证命令”跑通一次小改动闭环。
+    code: |
+      npm run lint
+  - step: 5
+    title: 把工作流固化成模板
+    description: 把你最常用的“需求描述 + 验收标准 + 风险边界”固化成团队模板。
+keyTips:
+  - 选型的核心不是“最好”，而是“能稳定跑通 + 可控风险”
+  - 先把权限收紧（只读/建议），跑通后再逐步开放
+  - 模型/接口要可追溯：账号、账单、数据策略、审计能力缺一不可
+safety:
+  checklist:
+    - 不要把密钥/令牌/私有仓库链接写进对话或日志
+    - 团队默认只读；需要写入/执行时走审批与审计
+    - 任何生成代码必须通过测试/构建/审查其中至少一项
+  notes:
+    - “第三方中转/聚合”请优先选择具备明确 ToS、账单与数据策略的服务；避免不明来源的密钥/代充渠道
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 只因为“别人都在用”就换编辑器/工作流
+    solution: 先用插件/CLI 叠加现有 IDE，验证收益后再迁移
+  - problem: 一开始就开放执行权限导致误操作
+    solution: 先只读/建议；再读写；最后才考虑执行命令
+  - problem: 接口渠道不稳定或账单不可控
+    solution: 优先官方/云平台；第三方聚合也要能限额、可追溯、可审计
+acceptanceCriteria:
+  - 你能说清自己的主要任务类型，并选出对应工具形态
+  - 你有一个可持续的模型/接口渠道（官方/云平台/合规聚合/自托管其一）
+  - 你能用 AI 跑通一次“需求→改动→最小验证”的闭环
+relatedTools: []
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: true
+author: CodeAtlas
+keywords:
+  - 选型
+  - 写功能
+  - 改 Bug
+  - 补测试
+  - PR Review
+  - AI 编程
+---
+
+## 一句话选型：你需要哪一类产品？
+
+- **只想提升日常编码速度（低风险）**：IDE 插件/补全（如 GitHub Copilot、Codeium、Tabnine、JetBrains AI Assistant、Amazon Q、Gemini Code Assist）
+- **想把“多步任务”跑到可提交（中风险）**：Agentic IDE / VS Code Agent / CLI Agent（如 Cursor、Windsurf、Cline、Continue、Aider、Claude Code、OpenAI Codex CLI）
+- **想“从想法到应用”快速搭原型（高变更）**：App Builder（如 Bolt.new、v0、Lovable、Replit Agent）
+- **想把质量关卡“自动化”（团队落地）**：PR Review / 测试 / 安全工具（如 CodeRabbit、Snyk/CodeQL 相关、各类 PR Review Bot）
+
+## 常见 AI 编程产品清单（按形态）
+
+下表是“常见且经常被用来做开发”的产品/项目清单，用于快速定位（不代表推荐顺序）。
+
+| 形态 | 常见产品（示例） | 适合人群/任务 |
+| --- | --- | --- |
+| Agentic IDE | Cursor、Windsurf、Trae（不同地区可能有差异） | 需要“多步闭环”：写功能/重构/补测试 |
+| IDE 插件 | GitHub Copilot、JetBrains AI Assistant、Amazon Q Developer、Gemini Code Assist、Codeium、Tabnine | 不想换编辑器，追求低接入成本 |
+| VS Code Agent | Cline、Continue、Roo Code、各种 Chat/Agent 扩展 | 想在 VS Code 内实现“计划→改动→验证” |
+| CLI Agent | Aider、Claude Code、OpenAI Codex CLI、SWE-agent、OpenHands | 偏终端工作流、可控脚本化、可集成 CI |
+| 代码搜索/理解 | Sourcegraph Cody、（各家 IDE 内置的 repo chat） | 大仓库理解、定位调用链、答疑 |
+| App Builder | Bolt.new、v0、Lovable、Replit Agent | 快速做 Demo/原型，接受大幅自动生成 |
+| 自托管助手 | Tabby、Ollama + 各类编辑器插件、vLLM | 内网/合规要求强、希望本地推理或自控部署 |
+
+## 常见产品与入口链接（官方/开源）
+
+以下链接用于快速到达官方/开源入口（用于“找对入口、看对文档”，不代表推荐顺序）：
+
+### Agentic IDE / 编辑器
+
+- [Cursor](/tools/cursor)（官网：https://www.cursor.com/）
+- [Windsurf](/tools/windsurf)（官网：https://windsurf.com/）
+- VS Code：https://code.visualstudio.com/
+- JetBrains IDEs：https://www.jetbrains.com/
+- [Zed](/tools/zed-ai)（官网：https://zed.dev/）
+
+### IDE 插件 / 助手
+
+- [GitHub Copilot](/tools/github-copilot)（官网：https://github.com/features/copilot）
+- [JetBrains AI Assistant](/tools/jetbrains-ai-assistant)（官网：https://www.jetbrains.com/ai/）
+- [Amazon Q Developer](/tools/amazon-q-developer)（官网：https://aws.amazon.com/q/developer/）
+- [Gemini Code Assist](/tools/gemini-code-assist)（官网：https://cloud.google.com/products/gemini/code-assist）
+- [Codeium](/tools/codeium)（官网：https://codeium.com/）
+- [Tabnine](/tools/tabnine)（官网：https://www.tabnine.com/）
+- [Sourcegraph Cody](/tools/sourcegraph-cody)（官网：https://about.sourcegraph.com/cody）
+
+### VS Code Agent / 开源插件
+
+- [Continue](/tools/continue)（开源：https://github.com/continuedev/continue）
+- [Cline](/tools/cline)（开源：https://github.com/cline/cline）
+- [Roo Code](/tools/roo-code)（开源：https://github.com/RooVetGit/Roo-Code）
+- avante.nvim（Neovim）：https://github.com/yetone/avante.nvim
+
+### CLI / Coding Agents（开源为主）
+
+- [Aider](/tools/aider)（官网：https://aider.chat/）
+- [OpenHands](/tools/openhands)（开源：https://github.com/All-Hands-AI/OpenHands）
+- [SWE-agent](/tools/swe-agent)（开源：https://github.com/SWE-agent/SWE-agent）
+- [Sweep](/tools/sweep)（官网：https://sweep.dev/）
+
+### App Builder / 原型工具
+
+- [Bolt.new](/tools/bolt-new)（官网：https://bolt.new/）
+- [v0](/tools/vercel-v0)（官网：https://v0.dev/）
+- [Lovable](/tools/lovable)（官网：https://lovable.dev/）
+- [Replit](/tools/replit-ai)（官网：https://replit.com/）
+
+### 其他常见补充（按功能）
+
+- [Supermaven](/tools/supermaven)（补全：https://supermaven.com/）
+- [Phind](/tools/phind)（搜索/开发问答：https://www.phind.com/）
+- [Blackbox AI](/tools/blackbox-ai)（代码/搜索：https://www.blackbox.ai/）
+- [CodeRabbit](/tools/coderabbit)（PR Review：https://coderabbit.ai/）
+- [Devin](/tools/devin)（Coding Agent：https://www.cognition.ai/）
+
+> 说明：CodeAtlas 的 `Tools` 列表**不收录泛用对话产品**（避免和“AI 编程产品”混在一起）。如果你只是需要一个可用的模型入口，可参考：
+>
+> - ChatGPT：https://chatgpt.com/
+> - Claude：https://claude.ai/
+> - Gemini：https://gemini.google.com/
+>
+> 若需要“编程产品形态”，优先选择对应的开发者产品（如 Claude Code、Gemini Code Assist、OpenAI Codex CLI 等）。
+
+### 自托管/本地推理（常见）
+
+- [Tabby](/tools/tabby)（自托管：https://tabby.tabbyml.com/）
+- Ollama：https://ollama.com/
+- vLLM：https://github.com/vllm-project/vllm
+
+## 组合建议（常用“1+1”）
+
+- **插件补全 + Chat/Agent**：Copilot/Codeium + Cline/Continue（低门槛，循序渐进）
+- **Agentic IDE 单核**：Cursor/Windsurf（更顺滑，但要明确权限边界）
+- **CLI Agent + CI**：Aider/Claude Code + 预提交钩子/CI（更可控、可审计）
+
+## 下一步
+
+- 想把渠道一次性讲清楚：看 [LLM 接口渠道：官方/云平台/第三方聚合（中转）与自托管](/tutorials/llm-api-providers-and-gateways)
+- 想直接上手：从你当前 IDE 对应的入门 SOP 开始（Copilot / JetBrains / VS Code Agent / CLI）

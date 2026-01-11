@@ -1,0 +1,117 @@
+---
+slug: openai-compatible-setup
+title: OpenAI-Compatible 接入实操：一个 Key 让 Cursor/Continue/Cline/Aider 跑起来（含避坑）
+description: 用“baseUrl + /v1 + API_KEY + MODEL”的方式统一接入：先做最小请求验通，再把配置写进工具与团队护栏。
+type: automation
+difficulty: intermediate
+goal: 配好一个可追溯的模型渠道，并让至少 1 个客户端成功调用；同时补齐密钥、限额与审计的护栏。
+requiredTools:
+  - 一个合规的模型渠道（官方/云平台/授权聚合/自建网关）
+  - 至少 1 个客户端（Cursor / Continue / Cline / Aider 等）
+requiredCapabilities:
+  - external-system
+estimatedTime: 20-45 分钟
+stepsOverview:
+  - 选“主渠道 + 备选渠道”（避免单点）
+  - 配置环境变量（API_KEY / BASE_URL / MODEL）
+  - 做最小验证（一个 /v1/models 或一次对话请求）
+  - 配置到工具（Continue/Cline/Aider 其一）
+  - 加护栏：限额、审计、密钥轮换与按项目隔离
+steps:
+  - step: 1
+    title: 先选渠道（合规优先）
+    description: 优先官方/云平台；第三方聚合/网关要能解释 ToS、数据策略与账单可追溯。
+    warnings:
+      - 避免共享 Key/代充/绕过限制等灰色路径
+  - step: 2
+    title: 统一环境变量（先别写进仓库）
+    description: 先把 key/baseUrl/model 统一为环境变量，避免每个工具各配一套。
+    code: |
+      export OPENAI_API_KEY="YOUR_KEY"
+      export OPENAI_BASE_URL="https://example.com/v1"
+      export OPENAI_MODEL="gpt-4o-mini"
+  - step: 3
+    title: 最小验证（先验通再接工具）
+    description: 用一次最小请求验证：能连通、能鉴权、能拿到响应。
+    code: |
+      curl -s "$OPENAI_BASE_URL/models" -H "Authorization: Bearer $OPENAI_API_KEY" | head
+  - step: 4
+    title: 配置到一个客户端
+    description: 先选 1 个工具跑通（Continue/Cline/Aider 任一），确认无误后再复制到其他工具。
+    tips:
+      - 推荐直接用站内模板页的配置片段
+  - step: 5
+    title: 加护栏（团队必做）
+    description: 按项目拆分 key、设置限额/告警、启用审计与轮换策略。
+keyTips:
+  - baseUrl 最常见坑：忘了带 `/v1`（导致 404 或路径不对）
+  - 先验通再接工具：把问题切成“鉴权/网络/模型名/工具配置”四类
+  - 团队优先“项目级 key + 限额 + 审计”，不要“一个 key 走天下”
+safety:
+  checklist:
+    - Key 只放环境变量/密钥管理，不进仓库不进日志不进截图
+    - 给每个项目设置限额与告警，避免账单失控
+    - 记录渠道选择依据与 ToS/数据策略要点（可追溯）
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 401/鉴权失败
+    solution: 核对 key 是否有效、是否有权限、是否用对 Header；必要时先在控制台测试
+  - problem: 404/路径不对
+    solution: 检查 baseUrl 是否包含 `/v1`，以及工具是否会自动拼接 `/v1`
+  - problem: 模型名不支持或拼写错误
+    solution: 先请求一次 models 列表；或按提供方文档核对模型 ID
+  - problem: 工具里能连通但响应不稳定
+    solution: 设置限流/重试；准备备选渠道；把失败日志留证据再定位
+acceptanceCriteria:
+  - 你能用最小请求拿到响应（models/对话其一）
+  - 至少 1 个客户端成功调用，并能说明用的 baseUrl/model/key 来自哪里
+  - 你的 key 没有出现在仓库、日志或截图中
+relatedTools:
+  - cursor
+  - continue
+  - cline
+  - aider
+relatedTemplates:
+  - openai-compatible-env
+  - llm-api-providers-and-relays
+  - continue-config-openai-compatible
+  - aider-config-openai-compatible
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - OpenAI Compatible
+  - 配置
+  - 模型渠道
+  - 成本
+  - 合规
+---
+
+## 推荐的落地顺序（别反过来）
+
+很多“接不通/不稳定”的问题，本质是把四件事搅在一起了：
+
+1. 渠道是否可用（网络/鉴权）
+2. 模型是否存在（模型 ID）
+3. 工具怎么读配置（环境变量/配置文件）
+4. 预算与风险（限额/审计/轮换）
+
+所以建议顺序固定为：**先验通渠道 → 再接一个工具 → 再复制到其他工具 → 最后做团队护栏**。
+
+## 配置片段直接用（站内模板）
+
+- 环境变量模板：`/templates/openai-compatible-env`
+- Continue 配置：`/templates/continue-config-openai-compatible`
+- Aider 配置：`/templates/aider-config-openai-compatible`
+- 供应商清单：`/templates/llm-api-providers-and-relays`
+
+## 一个“定位问题”的提问方式
+
+当你遇到 401/404/超时等问题，把下面这段贴给 AI（别贴 key）：
+
+1. 我使用的渠道类型：官方/云平台/授权聚合/自建网关（选一个）
+2. baseUrl 形式：`https://…/v1`（是否包含 /v1）
+3. 失败请求与响应（脱敏后的 curl 日志）
+4. 我当前要接入的工具是：Cursor/Continue/Cline/Aider（选一个）
+5. 请你把问题归类为：鉴权/路径/模型名/网络，并给出最小修复步骤

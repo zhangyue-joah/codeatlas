@@ -1,0 +1,102 @@
+---
+slug: mcp-config-slack
+title: MCP Slack 配置
+description: 将 Slack 接入 Claude 的 MCP 配置示例，支持发送消息、读取频道、搜索历史等操作。
+type: mcp-config
+applicableTools:
+  - Claude Desktop
+  - Claude Code
+  - MCP
+scenarios:
+  - Slack 集成
+  - 团队协作
+placeholders:
+  - SLACK_BOT_TOKEN
+  - SLACK_TEAM_ID
+dependencies:
+  - Slack Bot Token（需要 OAuth 权限）
+  - Node.js（npx）
+template: |
+  {
+    "mcpServers": {
+      "slack": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-slack"],
+        "env": {
+          "SLACK_BOT_TOKEN": "xoxb-your-bot-token",
+          "SLACK_TEAM_ID": "T0123456789"
+        }
+      }
+    }
+  }
+example: |
+  # 1) 创建 Slack App 并获取 Bot Token
+  # 访问 https://api.slack.com/apps 创建应用
+  # 在 OAuth & Permissions 中添加以下 scopes:
+  #   - channels:history
+  #   - channels:read
+  #   - chat:write
+  #   - users:read
+
+  # 2) 安装应用到工作区，获取 Bot Token (xoxb-...)
+
+  # 3) 配置环境变量
+  export SLACK_BOT_TOKEN="xoxb-your-bot-token"
+  export SLACK_TEAM_ID="T0123456789"
+
+  # 4) 将配置添加到 Claude Desktop 配置文件
+notes:
+  - Bot Token 需要适当的 OAuth scopes
+  - 建议使用最小权限原则，只授予必要的 scopes
+  - 不要在公开仓库中提交 Token
+featured: false
+variables:
+  - name: SLACK_BOT_TOKEN
+    description: Slack Bot OAuth Token
+    example: xoxb-1234567890-1234567890123-abcdefghijklmnop
+  - name: SLACK_TEAM_ID
+    description: Slack 工作区 ID
+    example: T0123456789
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - MCP
+  - Slack
+  - 消息
+  - 团队协作
+---
+
+## 获取 Slack Bot Token
+
+1. 访问 [Slack API](https://api.slack.com/apps) 创建新应用
+2. 选择 "From scratch"，输入应用名称和工作区
+3. 在 "OAuth & Permissions" 中添加 Bot Token Scopes：
+   - `channels:history` - 读取频道消息历史
+   - `channels:read` - 读取频道列表
+   - `chat:write` - 发送消息
+   - `users:read` - 读取用户信息
+4. 安装应用到工作区
+5. 复制 "Bot User OAuth Token"（以 `xoxb-` 开头）
+
+## 获取 Team ID
+
+Team ID 可以在 Slack 工作区 URL 中找到，或通过以下方式获取：
+1. 在 Slack 中点击工作区名称
+2. 选择 "Settings & administration" > "Workspace settings"
+3. 在 URL 中找到 Team ID（格式：`T0123456789`）
+
+## 可用功能
+
+配置完成后，Claude 可以：
+- 列出频道和用户
+- 读取频道消息历史
+- 发送消息到频道
+- 搜索消息
+
+## 安全建议
+
+- 使用专用的 Bot 账号，不要使用个人 Token
+- 定期轮换 Token
+- 限制 Bot 可访问的频道
+- 监控 Bot 的 API 调用日志

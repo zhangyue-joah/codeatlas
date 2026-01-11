@@ -1,0 +1,212 @@
+---
+slug: ai-bug-fixing-workflow
+title: 用 AI 工具改 Bug：从定位到修复的完整 SOP
+description: 一套可复制的 AI 辅助 Bug 修复流程，从问题定位到验证修复的完整闭环。
+type: how-to
+difficulty: intermediate
+goal: 掌握用 AI 工具高效定位和修复 Bug 的完整工作流。
+requiredTools:
+  - Cursor 或 Claude Code 或其他 AI 编程工具
+  - Git
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 20-40 分钟（视 Bug 复杂度）
+stepsOverview:
+  - 收集 Bug 信息和复现步骤
+  - 用 AI 分析可能的原因
+  - 定位问题代码
+  - 让 AI 生成修复方案
+  - 验证修复并提交
+steps:
+  - step: 1
+    title: 收集 Bug 信息
+    description: 整理 Bug 的完整信息，包括错误日志、复现步骤、预期行为。
+    tips:
+      - 错误日志越完整越好
+      - 记录复现步骤和环境信息
+      - 明确预期行为和实际行为的差异
+  - step: 2
+    title: 新建分支
+    description: 在干净的分支上进行修复，便于回滚和审查。
+    code: |
+      git checkout -b fix/bug-description
+  - step: 3
+    title: 用 AI 分析原因
+    description: 把 Bug 信息提供给 AI，让它分析可能的原因。
+    tips:
+      - 提供完整的错误日志
+      - 描述复现步骤
+      - 让 AI 列出可能的原因和排查方向
+  - step: 4
+    title: 定位问题代码
+    description: 根据 AI 的分析，定位具体的问题代码。
+    tips:
+      - 使用 @codebase 或 @file 引用相关代码
+      - 让 AI 解释代码逻辑，确认理解正确
+  - step: 5
+    title: 生成修复方案
+    description: 让 AI 生成修复方案，要求先给计划再改代码。
+    tips:
+      - 要求 AI 先解释修复思路
+      - 明确修复范围，避免过度修改
+      - 要求给出变更清单
+    warnings:
+      - 不接受"先改再说"的方案
+  - step: 6
+    title: 审查修复代码
+    description: 仔细审查 AI 生成的修复代码。
+    code: |
+      git diff
+    tips:
+      - 检查修复逻辑是否正确
+      - 确认没有引入新问题
+      - 检查边界情况
+  - step: 7
+    title: 验证修复
+    description: 运行测试和手动验证，确认 Bug 已修复。
+    code: |
+      npm run test
+      npm run lint
+    tips:
+      - 按原来的复现步骤验证
+      - 运行相关的单元测试
+      - 检查是否影响其他功能
+  - step: 8
+    title: 提交修复
+    description: 确认修复有效后，提交代码。
+    code: |
+      git add .
+      git commit -m "fix: 修复问题描述"
+keyTips:
+  - 把 AI 当作"分析助手"，最终判断由你做
+  - 修复前先理解问题，不要盲目让 AI 改代码
+  - 小步验证，每次只修复一个问题
+safety:
+  checklist:
+    - 在独立分支上修复
+    - 修复后必须验证
+    - 检查是否引入新问题
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: AI 的分析方向错误
+    solution: 提供更多上下文；尝试不同的描述方式；手动排查后再让 AI 辅助
+  - problem: 修复引入新问题
+    solution: 缩小修复范围；增加测试覆盖；仔细审查变更
+  - problem: 无法复现 Bug
+    solution: 收集更多环境信息；检查数据状态；尝试在不同环境复现
+acceptanceCriteria:
+  - Bug 按原复现步骤不再出现
+  - 相关测试通过
+  - 没有引入新问题
+relatedTools:
+  - cursor
+  - claude-code
+  - cline
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+author: CodeAtlas
+keywords:
+  - Bug 修复
+  - 调试
+  - AI 辅助
+  - SOP
+---
+
+## 为什么用 AI 改 Bug
+
+AI 工具在 Bug 修复中的价值：
+
+- **快速分析**：根据错误日志快速定位可能的原因
+- **代码理解**：解释复杂代码逻辑，帮助理解问题
+- **方案生成**：生成修复方案供参考
+- **减少遗漏**：提醒可能忽略的边界情况
+
+## 提示词模板
+
+### 分析 Bug 原因
+
+```
+我遇到了一个 Bug：
+
+错误信息：
+[粘贴错误日志]
+
+复现步骤：
+1. [步骤1]
+2. [步骤2]
+3. [步骤3]
+
+预期行为：[描述预期]
+实际行为：[描述实际]
+
+请分析可能的原因，并给出排查方向。
+```
+
+### 请求修复方案
+
+```
+我已经定位到问题在 [文件名] 的 [函数名]。
+
+问题原因：[描述原因]
+
+请给出修复方案：
+1. 先解释修复思路
+2. 列出需要修改的文件
+3. 给出具体的代码变更
+
+约束：
+- 只修复这个问题，不做无关重构
+- 保持向后兼容
+```
+
+## 常见 Bug 类型的处理
+
+### 空指针/未定义错误
+
+```
+错误：Cannot read property 'x' of undefined
+
+排查方向：
+1. 检查变量初始化
+2. 检查异步数据加载时序
+3. 检查条件判断是否完整
+```
+
+### 类型错误
+
+```
+错误：Type 'X' is not assignable to type 'Y'
+
+排查方向：
+1. 检查类型定义是否正确
+2. 检查数据转换是否完整
+3. 检查泛型参数是否匹配
+```
+
+### 逻辑错误
+
+```
+现象：功能行为与预期不符
+
+排查方向：
+1. 添加日志追踪执行流程
+2. 检查条件判断逻辑
+3. 检查边界情况处理
+```
+
+## 修复后的检查清单
+
+- [ ] Bug 不再复现
+- [ ] 相关单元测试通过
+- [ ] 没有引入新的 lint 错误
+- [ ] 代码变更范围合理
+- [ ] 提交信息清晰描述修复内容
+
+## 下一步
+
+- 学习 [用 AI 工具补测试](/tutorials/ai-testing-workflow) 提高代码质量
+- 了解 [AI 生成代码验收清单](/tutorials/ai-code-acceptance-checklist) 确保修复质量

@@ -1,0 +1,82 @@
+---
+slug: roo-code
+title: "Roo Code"
+description: "VS Code 的 Agent 工作流插件：强调工具调用与多步任务闭环（模型渠道由你配置）。"
+logo: /logos/default.svg
+website: "https://github.com/RooVetGit/Roo-Code"
+productType:
+  - ide-extension
+category:
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+  - read-write
+  - execute
+useCases:
+  - "任务闭环：计划 → 改多文件 → 最小验证（按权限边界）"
+  - "工具调用：读写文件、更新配置、生成补丁与说明"
+  - "以 VS Code 为主的团队试点：把约束与提示词模板固化"
+pros:
+  - "开源可控，适合按团队规则定制与治理"
+  - "更贴近“多步任务闭环”的工作方式"
+  - "便于与 git/CI 流程结合（先计划、留证据）"
+cons:
+  - "需要你负责模型渠道与成本控制"
+  - "执行能力强：必须明确破坏性命令禁令与回滚路径"
+  - "复杂任务仍要人工验收与代码审查"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: free
+  free: true
+  hasEducation: false
+  hasTeam: false
+  hasEnterprise: false
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://github.com/RooVetGit/Roo-Code"
+  sources:
+    -
+      label: "Roo Code GitHub"
+      url: "https://github.com/RooVetGit/Roo-Code"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "取决于你所使用的模型/服务"
+  localProcessing: false
+  enterpriseCompliance: []
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - "Roo Code"
+  - "VS Code"
+  - Agent
+  - "开源"
+---
+
+
+
+## 一句话建议
+
+- 先用“只读/建议模式”跑通一个小任务，再逐步开放写入与执行权限（如适用）。
+- 价格/条款以官方为准；团队场景优先走可追溯采购路径。
+
+## 购买与合规提示
+
+- 优先官方/授权渠道；企业场景尽量使用可开票/可签合同的路径。
+- 对第三方聚合/路由平台：评估审计、数据边界与 SLA。

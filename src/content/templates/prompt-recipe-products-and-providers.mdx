@@ -1,0 +1,165 @@
+---
+slug: prompt-recipe-products-and-providers
+title: AI 编程 Prompt 配方
+description: 把常见 AI 编程产品按任务分类，并把“官方/合规第三方/聚合/自建网关（中转）”的接入路径整理成可复用的确认清单与可复制 prompt。
+type: prompt-recipe
+applicableTools:
+  - Cursor
+  - GitHub Copilot
+  - Continue
+  - Cline
+  - Aider
+  - Claude
+scenarios:
+  - 接入确认
+  - 合规路径
+placeholders:
+  - 提供方/路径类型
+  - 预算/合规要求
+dependencies: []
+example: |
+  我准备接入的路径类型是（官方 API）。
+  我准备使用的提供方/服务是（OpenAI）。
+  使用场景：（个人开发），地区/合规要求（CN），预算（$20/月），是否允许代码外发（是）。
+template: |
+  # 接入确认清单（复制后把括号内容替换掉）
+  我准备接入的路径类型是（官方 API / 授权聚合或路由 / 自建网关）。
+  我准备使用的提供方/服务是（…）。
+  使用场景：（个人开发/团队/企业），地区/合规要求（…），预算（…），是否允许代码外发（是/否）。
+
+  请按下面格式输出结论（必须引用官方/权威链接，缺失就标注“不确定”）：
+  1) 合规与可追溯：是否需要实名/合同/发票？key 是否绑定到我自己的官方账号？是否可审计？
+  2) 接入方式：是否支持 OpenAI-Compatible（baseUrl + /v1）？不支持的话用什么 SDK/适配？
+  3) 计费与限流：计费口径、速率限制、并发、失败重试、是否有用量仪表盘。
+  4) 数据与隐私：日志/提示词/输出是否会被存储？保留多久？是否可关闭/脱敏？
+  5) 风险提示：哪些做法不建议（共享账号/代充/绕价/不可追溯 key/灰色中转）。
+  6) 最小验证：给一个最小请求示例（list models 或一次 chat），并说明成功标准。
+
+  ---
+  # 一句话提示词模板（通用，适配 IDE/插件/CLI/Agent）
+  目标：（一句话）
+  验收标准：（1-3 条可验证标准）
+  约束：（只改哪些文件/不做什么/必须跑哪个验证命令）
+  风险：（权限、数据、依赖、迁移）
+
+  请你先输出计划（文件列表 + 为什么 + 风险点 + 验证命令），我确认后再开始改代码。
+notes:
+  - 本模板只整理“官方/授权/自建合规网关”的路径；任何共享账号、代充、绕价、不可追溯 key 的中转都不收录/不建议。
+  - 产品迭代很快：先用“任务类型 + 权限/合规边界”筛选，再看体验与价格。
+  - 需要“提示词/工作模式固化”时，优先用各工具的 repo 规则/Chat Modes/模板系统，而不是每次手写一遍。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - AI Coding
+  - 产品清单
+  - Providers
+  - 网关
+  - 合规
+  - OpenAI Compatible
+  - MCP
+  - Chat Modes
+---
+
+## 1) 市面常见 AI 编程产品（按任务分类）
+
+### IDE / 编辑器（偏“Agent 闭环”）
+
+- Cursor：`https://cursor.com/docs`
+- Windsurf（Codeium）：`https://codeium.com/windsurf`
+- JetBrains AI Assistant：`https://www.jetbrains.com/ai/`
+- Zed：`https://zed.dev/`
+
+### IDE 插件 / Chat（偏“低接入成本”）
+
+- GitHub Copilot：`https://github.com/features/copilot`
+- Codeium：`https://codeium.com/`
+- Continue（开源）：`https://continue.dev/`（GitHub：`https://github.com/continuedev/continue`）
+- Cline（开源）：`https://cline.bot/`（GitHub：`https://github.com/cline/cline`）
+- Amazon Q Developer：`https://aws.amazon.com/q/developer/`
+- Gemini Code Assist：`https://codeassist.google/`
+- Sourcegraph Cody：`https://about.sourcegraph.com/cody`
+- Tabnine：`https://www.tabnine.com/`
+- Tabby（自建/本地优先，开源）：`https://github.com/TabbyML/tabby`
+- Refact.ai（开源）：`https://github.com/refact-ai/refact`
+- CodiumAI / Qodo（测试与质量）：`https://www.qodo.ai/`
+
+### CLI / 终端 Agent（偏“可脚本化 + 可控”）
+
+- Aider（开源）：`https://github.com/Aider-AI/aider`
+- Claude Code（官方入口）：`https://www.anthropic.com/claude-code`
+- OpenAI Codex CLI（官方入口）：`https://help.openai.com/en/articles/11096431-openai-codex-cli-getting-started`
+
+### PR Review / 工程流自动化
+
+- CodeRabbit：`https://coderabbit.ai/`
+- Sweep（开源）：`https://github.com/sweepai/sweep`
+- PR Agent（Qodo / Codium，开源）：`https://github.com/qodo-ai/pr-agent`
+
+### Web 端“从需求到应用”（偏原型/生成式 UI）
+
+- v0（Vercel）：`https://v0.dev/`
+- Bolt.new：`https://bolt.new/`
+- Replit Ghostwriter：`https://replit.com/site/ghostwriter`
+- Lovable：`https://lovable.dev/`
+
+### Agent 框架/自动修复（偏“自动跑任务”）
+
+- OpenHands（开源）：`https://github.com/OpenHands/OpenHands`
+- SWE-agent（开源）：`https://github.com/SWE-agent/SWE-agent`
+
+> 补充来源（GitHub 清单，持续更新）：`https://github.com/sourcegraph/awesome-code-ai`
+
+## 2) 提供方 / 授权聚合 / 自建网关（中转）清单
+
+### 官方（第一方）提供方（示例）
+
+- OpenAI：`https://platform.openai.com/docs/`
+- Anthropic（Claude）：`https://docs.anthropic.com/`
+- Google Gemini：`https://ai.google.dev/gemini-api/docs`
+- Microsoft Azure OpenAI：`https://learn.microsoft.com/azure/ai-services/openai/`
+- AWS Bedrock：`https://docs.aws.amazon.com/bedrock/`
+- Mistral：`https://docs.mistral.ai/`
+- Cohere：`https://docs.cohere.com/`
+
+### 合规第三方（授权聚合/路由/托管，示例）
+
+- OpenRouter（多模型路由）：`https://openrouter.ai/docs`
+- Together AI：`https://docs.together.ai/`
+- Fireworks AI：`https://docs.fireworks.ai/`
+- Groq：`https://console.groq.com/docs`
+- Replicate：`https://replicate.com/docs`
+- Cloudflare AI Gateway：`https://developers.cloudflare.com/ai-gateway/`
+
+### 自建网关 / 中转（你自己部署，使用你自己的合法 key）
+
+- LiteLLM Proxy：`https://docs.litellm.ai/docs/proxy/quick_start`（GitHub：`https://github.com/BerriAI/litellm`）
+- OneAPI（OpenAI 接口聚合，开源）：`https://github.com/songquanpeng/one-api`
+- Helicone（网关/观测，开源）：`https://github.com/Helicone/helicone`
+
+## 2.1) MCP / Skills / Plugins（把“能力”接进工具）
+
+### MCP：通用外部工具协议（建议优先走 Registry）
+
+- MCP Registry（找 server）：`https://registry.modelcontextprotocol.io/`
+- MCP Servers（参考实现/资源）：`https://github.com/modelcontextprotocol/servers`
+
+常见（高频）能力类别（按最小权限逐步开放）：
+
+- **代码仓库**：GitHub / GitLab / Git
+- **本地文件**：Filesystem（只授权单项目目录）
+- **数据与检索**：PostgreSQL / SQLite / Redis / 向量库（优先只读）
+- **浏览器/抓取**：Fetch / Browser automation（谨慎权限与速率）
+
+### 提示词/工作模式固化（示例来源，避免每次手写）
+
+- VS Code Copilot Chat Modes（官方文档）：`https://code.visualstudio.com/docs/copilot/chat/chat-modes`
+- Awesome Copilot Chat Modes（GitHub 清单）：`https://github.com/dfinke/awesome-copilot-chatmodes`
+- Claude Code Templates（社区模板，含 agents/commands/hooks/MCP）：`https://github.com/davila7/claude-code-templates`
+- AI Coding Techniques（方法论/流程清单）：`https://github.com/inmve/awesome-ai-coding-techniques`
+
+## 3) 不收录 / 不建议（合规底线）
+
+- 共享账号、代充、绕价、可疑低价“包月”、不可追溯 key。
+- 声称“随便填 baseUrl 就能用”的灰色中转（无主体、无条款、无审计、无稳定 SLA）。
+- 要求你把官方 key 交给第三方保管，且无法提供明确的权限隔离/审计/撤销方式。

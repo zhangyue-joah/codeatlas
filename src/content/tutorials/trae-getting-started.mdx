@@ -1,0 +1,106 @@
+---
+slug: trae-getting-started
+title: Trae 入门：字节跳动 AI IDE 的第一次使用
+description: 15 分钟下载安装 Trae，跑通一次 AI 辅助编码的最小闭环。
+type: getting-started
+difficulty: beginner
+goal: 在 15 分钟内完成 Trae 安装，并用 AI 完成一个小任务。
+requiredTools:
+  - Trae
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 15-25 分钟
+stepsOverview:
+  - 下载并安装 Trae
+  - 打开项目并熟悉界面
+  - 用 AI Chat 完成一个小任务
+  - 体验 Agent 模式（如支持）
+steps:
+  - step: 1
+    title: 下载安装 Trae
+    description: 访问 Trae 官网下载对应系统的安装包。
+    code: |
+      # macOS 用户也可通过 Homebrew 安装（如官方支持）
+      # brew install --cask trae
+    tips:
+      - 官网地址：https://www.trae.ai
+      - 支持 macOS、Windows、Linux
+  - step: 2
+    title: 打开项目并索引
+    description: 用 Trae 打开一个本地项目，等待 AI 完成代码索引。
+    tips:
+      - 首次打开大项目可能需要几分钟索引
+      - 索引完成后 AI 才能理解整个代码库
+  - step: 3
+    title: 用 AI Chat 完成小任务
+    description: 在 Chat 面板描述一个简单任务，让 AI 给出方案或直接生成代码。
+    tips:
+      - 先从小任务开始，比如"给这个函数加个参数校验"
+      - 观察 AI 是否正确理解了代码上下文
+  - step: 4
+    title: 体验 Agent 模式
+    description: 如果 Trae 支持 Agent 模式，尝试让它自动完成多步任务。
+    warnings:
+      - Agent 模式会自动修改文件，建议先在新分支操作
+      - 执行前确认 AI 的改动计划
+  - step: 5
+    title: 验证与复盘
+    description: 检查 AI 生成的代码，运行测试或构建验证。
+    code: |
+      npm run lint && npm run test
+keyTips:
+  - Trae 基于 VS Code 架构，大部分 VS Code 快捷键和习惯可以复用
+  - 先用只读/建议模式熟悉工具，再逐步开放写入权限
+  - 关注 AI 的上下文理解是否准确，不准确时手动指定文件
+safety:
+  checklist:
+    - 敏感代码/密钥不要直接发给 AI
+    - Agent 模式操作前先确认改动范围
+    - 团队使用需明确数据策略
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 索引时间过长或失败
+    solution: 检查项目大小和网络连接；尝试排除 node_modules 等大目录
+  - problem: AI 理解上下文不准确
+    solution: 手动 @file 引用相关文件；缩小问题范围
+  - problem: Agent 改动范围过大
+    solution: 明确任务边界，要求先给计划再执行
+acceptanceCriteria:
+  - Trae 安装成功并能打开项目
+  - 至少用 AI Chat 完成一次代码相关任务
+  - 了解 Agent 模式的基本用法和注意事项
+relatedTools:
+  - trae
+relatedTemplates:
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Trae
+  - 字节跳动
+  - AI IDE
+  - 入门
+---
+
+## Trae 是什么
+
+Trae 是字节跳动推出的 AI IDE，基于 VS Code 架构，内置 AI 编程能力。它的定位是"端到端任务协作"，强调从需求到代码的完整工作流。
+
+## 与 Cursor 的区别
+
+| 维度 | Trae | Cursor |
+|------|------|--------|
+| 背景 | 字节跳动 | 独立公司 |
+| 模型 | 豆包大模型为主 | Claude/GPT 为主 |
+| 中文支持 | 原生优化 | 一般 |
+| 生态 | 发展中 | 较成熟 |
+
+如果你主要用中文开发、或在字节系技术栈内，Trae 可能是更顺手的选择。
+
+## 下一步
+
+- 对比 [Cursor](/tutorials/cursor-getting-started) 看哪个更适合你
+- 了解 [AI 编程工具选型](/tutorials/ai-coding-product-map) 的整体思路

@@ -1,0 +1,89 @@
+---
+slug: continue
+title: Continue
+description: "开源的 IDE 编程助手：可自选模型渠道并按团队规则配置，适合追求可控落地的 VS Code 工作流。"
+logo: /logos/default.svg
+website: "https://www.continue.dev/"
+productType:
+  - ide-extension
+category:
+  - repo-chat
+  - code-completion
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - skills-plugins
+  - read-write
+useCases:
+  - "仓库问答：定位入口、调用链与关键约定（建议要求引用证据）"
+  - "可控改动：把建议转成补丁并由你 review 后写入"
+  - "模型渠道可控：官方/云平台/本地模型按团队策略切换"
+pros:
+  - "开源可控，适合团队做统一配置与治理"
+  - "模型渠道可自选，便于满足合规/成本/稳定性约束"
+  - "更容易把提示词与规则固化成团队资产"
+cons:
+  - "需要你维护配置与模型渠道，初期投入更高"
+  - "关键代码仍需测试/审查兜底"
+  - "不同模型/配置的效果波动，需要先试点"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: free
+  free: true
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://www.continue.dev/"
+  sources:
+    -
+      label: "Continue 官网"
+      url: "https://www.continue.dev/"
+    -
+      label: "Continue GitHub"
+      url: "https://github.com/continuedev/continue"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "取决于你所使用的模型/服务与本地日志策略"
+  localProcessing: false
+  enterpriseCompliance: []
+  policyUrl: "https://www.continue.dev/privacy"
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - continue-vscode-getting-started
+  - openai-compatible-setup
+  - mcp-starter-kit
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Continue
+  - "开源"
+  - "VS Code"
+  - Agent
+  - "AI 编程"
+---
+
+
+
+## 适合用 Continue 的一个判断
+
+如果你想要“开源 + 可控模型渠道”，并且愿意自己把提示词、模型与团队约束配置好，Continue 更适合作为长期可控的 VS Code 方案。
+
+## 使用建议
+
+- 先把模型渠道与限额跑通：主渠道优先官方/云平台，准备备选渠道
+- 让回答引用证据：要求指明文件/符号/调用链，再给改动建议

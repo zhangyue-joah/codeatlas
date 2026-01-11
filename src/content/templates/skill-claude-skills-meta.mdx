@@ -1,0 +1,160 @@
+---
+slug: skill-claude-skills-meta
+title: Claude Skills 创建指南
+description: 学习如何将领域知识（文档/API/代码/规范）提取为可复用的 Claude Skill，包含 SKILL.md 结构、触发条件设计、质量检查清单。
+type: skill
+applicableTools:
+  - Claude Code
+  - Claude Desktop
+scenarios:
+  - 创建新 Skill
+  - 重构现有 Skill
+placeholders:
+  - skill-name
+  - domain-name
+dependencies:
+  - Claude Code 或 Claude Desktop
+template: |
+  ---
+  name: my-skill
+  description: "[领域] 能力：包含 [能力1]、[能力2]。当 [触发条件] 时使用。"
+  ---
+
+  # my-skill Skill
+
+  一句话说明边界和交付物。
+
+  ## 何时使用此技能
+
+  当以下任一条件满足时触发：
+  - [触发条件 1：具体任务/关键词]
+  - [触发条件 2]
+  - [触发条件 3]
+
+  ## 不适用场景 / 边界
+
+  - 此技能不会做什么（防止误触发和过度承诺）
+  - 必需输入；如缺失则询问 1-3 个问题
+
+  ## 快速参考
+
+  ### 常见模式
+
+  **模式 1：** 一行说明
+  ```text
+  [可直接粘贴运行的命令/代码片段]
+  ```
+
+  ## 示例
+
+  ### 示例 1
+  - 输入：
+  - 步骤：
+  - 预期输出 / 验收标准：
+
+  ## 参考文档
+
+  - `references/index.md`：导航索引
+  - `references/...`：按主题拆分的详细文档
+
+  ## 维护
+
+  - 来源：文档/仓库/规范（不要编造）
+  - 最后更新：YYYY-MM-DD
+  - 已知限制：明确超出范围的内容
+example: |
+  # 创建一个新 Skill
+  ./scripts/create-skill.sh my-skill --full --output skills
+
+  # 验证 Skill
+  ./scripts/validate-skill.sh skills/my-skill --strict
+notes:
+  - Skill 的 name 必须匹配 ^[a-z][a-z0-9-]*$ 正则，且应与目录名一致
+  - description 必须包含"做什么 + 何时用"，带具体触发关键词
+  - 快速参考保持 <= 20 个模式，每个都可直接使用
+  - 必须有 >= 3 个可复现的示例
+featured: true
+variables:
+  - name: skill-name
+    description: Skill 的名称，用于目录和 frontmatter
+    example: postgresql
+  - name: domain-name
+    description: 领域名称，如数据库、API、框架等
+    example: 数据库
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - Claude Skill
+  - 元技能
+  - SKILL.md
+  - 技能创建
+---
+
+## Skill 目录结构
+
+```
+skill-name/
+├── SKILL.md              # 必需：入口文件，含 YAML frontmatter
+├── references/           # 可选：详细文档/证据/索引
+│   └── index.md          # 推荐：导航索引
+├── scripts/              # 可选：辅助脚本/自动化
+└── assets/               # 可选：模板/配置/静态资源
+```
+
+最小版本只需要 `SKILL.md`（后续可添加 `references/`）。
+
+## YAML Frontmatter 规则
+
+```yaml
+---
+name: skill-name
+description: "做什么 + 何时使用（触发条件）"
+---
+```
+
+- `name` 必须匹配 `^[a-z][a-z0-9-]*$`，应与目录名一致
+- `description` 必须可判定（不是"帮助处理 X"），包含具体触发关键词
+
+## 创作规则（不可协商）
+
+1. **快速参考用于短小、可直接使用的模式**
+   - 保持 <= 20 个模式
+   - 需要段落解释的内容放到 `references/`
+
+2. **触发必须可判定**
+   - frontmatter `description` 应说明"做什么 + 何时用"，带具体关键词
+   - "何时使用"必须列出具体任务/输入/目标，不是模糊的帮助文本
+   - "不适用场景 / 边界"是可靠性的必要条件
+
+3. **不要在外部细节上虚张声势**
+   - 如果材料没有证明，就说明并提供验证路径
+
+## 工作流程（材料 → Skill）
+
+不要跳过步骤：
+
+1. **范围**：写 MUST/SHOULD/NEVER（三句话即可）
+2. **提取模式**：选择 10-20 个高频模式（命令/代码片段/流程）
+3. **添加示例**：>= 3 个端到端示例（输入 → 步骤 → 验收）
+4. **定义边界**：超出范围的内容 + 必需输入
+5. **拆分参考**：长文本移到 `references/` + 写 `references/index.md`
+6. **应用质量门**：运行检查清单和验证器
+
+## 质量门（交付前检查清单）
+
+1. `name` 匹配 `^[a-z][a-z0-9-]*$` 且与目录名一致
+2. `description` 说明"做什么 + 何时用"，带具体触发关键词
+3. 有"何时使用此技能"，带可判定的触发条件
+4. 有"不适用场景 / 边界"以减少误触发
+5. 快速参考 <= 20 个模式，每个都可直接使用
+6. 有 >= 3 个可复现的示例
+7. 长内容在 `references/`，`references/index.md` 可导航
+8. 不确定的声明包含验证路径（不虚张声势）
+9. 读起来像操作手册，不是文档堆砌
+
+## 官方参考
+
+- [什么是 Skills](https://support.claude.com/en/articles/12512176-what-are-skills)
+- [在 Claude 中使用 Skills](https://support.claude.com/en/articles/12512180-using-skills-in-claude)
+- [创建自定义 Skills](https://support.claude.com/en/articles/12512198-creating-custom-skills)

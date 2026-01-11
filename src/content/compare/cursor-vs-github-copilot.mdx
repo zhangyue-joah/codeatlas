@@ -1,0 +1,131 @@
+---
+slug: cursor-vs-github-copilot
+title: Cursor vs GitHub Copilot：如何选
+description: 一个偏“任务闭环/Agent”，一个偏“补全/集成”，按场景选更省钱。
+toolA:
+  slug: cursor
+  name: Cursor
+  logo: /logos/cursor.svg
+toolB:
+  slug: github-copilot
+  name: GitHub Copilot
+  logo: /logos/github-copilot.svg
+conclusions:
+  forBeginners:
+    recommendation: toolB
+    reason: 先用低改动成本的补全建立习惯，再决定是否迁移到 AI-first 编辑器。
+  forProfessionals:
+    recommendation: toolA
+    reason: 如果你经常做多步任务（重构/补测试/PR），Agent 闭环更省时间。
+  forTeams:
+    recommendation: toolA
+    reason: 更适合把 SOP 固化成工作流，但前提是权限与流程治理到位。
+dimensions:
+  - dimension: 上下文能力
+    toolA:
+      score: 8
+      description: 更偏 repo 级任务理解，适合跨文件/跨模块协作
+    toolB:
+      score: 6
+      description: 依赖 IDE/扩展与配置，强项在“当前编辑上下文”
+  - dimension: Agent 能力
+    toolA:
+      score: 8
+      description: 适合多步任务推进（拆解→实现→验证→收口）
+    toolB:
+      score: 4
+      description: 以补全/建议为主，多步闭环能力相对弱
+  - dimension: 扩展能力生态
+    toolA:
+      score: 7
+      description: 插件/集成思路清晰，适合把工作流串起来
+    toolB:
+      score: 7
+      description: 生态成熟，适合在现有 IDE 上“叠加能力”
+  - dimension: 可控性
+    toolA:
+      score: 7
+      description: 能力强但需要约束（计划→小步→验收），否则容易扩大范围
+    toolB:
+      score: 8
+      description: “建议为主”的交互更可控，迁移风险更低
+  - dimension: IDE / CLI 集成
+    toolA:
+      score: 7
+      description: 以编辑器体验为中心，适合深度使用
+    toolB:
+      score: 9
+      description: 覆盖主流 IDE/平台，接入成本最低
+  - dimension: 团队功能
+    toolA:
+      score: 7
+      description: 更适合把 SOP 固化成工作流，但前提是权限与流程治理到位
+    toolB:
+      score: 8
+      description: 团队部署更标准化，适合大规模推广
+  - dimension: 隐私与合规
+    toolA:
+      score: 6
+      description: 需要明确数据策略与权限边界（尤其是写入/执行能力）
+    toolB:
+      score: 7
+      description: 规则相对清晰，但仍需按企业合规要求核对
+  - dimension: 稳定性
+    toolA:
+      score: 7
+      description: 整体可用性良好，但强依赖网络/配额时要准备兜底
+    toolB:
+      score: 8
+      description: 大厂生态支撑更稳，适合把补全作为“长期底座”
+  - dimension: 价格与性价比
+    toolA:
+      score: 7
+      description: 适合“多步任务”人群，省的是时间成本
+    toolB:
+      score: 8
+      description: 入门成本更低，适合把预算放在“先建立习惯”
+scenarios:
+  - scenario: 写功能 + 补测试
+    description: 需要多步规划与验证
+    winner: toolA
+    reason: 更适合按 SOP 逐步推进并产出可提交改动
+  - scenario: 轻量补全
+    description: 需要低成本集成
+    winner: toolB
+    reason: 集成成本更低，适合快速上手
+costAnalysis:
+  toolA:
+    monthlyIndividual: "$20+"
+    monthlyTeam: "$30+/seat"
+    hiddenCosts:
+      - 权限治理与流程建设成本
+  toolB:
+    monthlyIndividual: "$10+"
+    monthlyTeam: "$20+/seat"
+    hiddenCosts:
+      - 高级场景可能需要叠加其他工具
+finalVerdict: 先看你的任务复杂度与团队治理能力；做多步任务就偏 Cursor，只要补全就偏 Copilot。
+riskAnalysis:
+  checklist:
+    - 先核对权限等级与审计能力（只读/读写/执行）
+    - 团队落地前先跑通最小 SOP（含一次验证）
+  complianceNotes:
+    - 优先官方/授权渠道购买，避免不可追溯路径
+    - 核对数据策略与保留期限，必要时走企业条款
+  updatedAt: "2025-12-24"
+  sources:
+    - label: 官方定价/购买入口（示例）
+      url: https://www.cursor.com/pricing
+updatedAt: "2025-12-24"
+version: "2025-12"
+featured: true
+keywords:
+  - Cursor
+  - GitHub Copilot
+  - 对比
+  - 选型
+---
+
+## 场景建议
+
+如果你想要“从需求到 PR”的闭环体验，建议优先试用 Cursor；如果你只想在现有 IDE 里快速获得补全，Copilot 往往更合适。

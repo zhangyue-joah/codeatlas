@@ -1,0 +1,155 @@
+---
+slug: prompt-test-generate
+title: 测试生成提示词模板
+description: 让 AI 为代码生成单元测试、集成测试的通用提示词模板，支持多种测试框架。
+type: prompt-recipe
+applicableTools:
+  - Claude Code
+  - Cursor
+  - GitHub Copilot
+  - ChatGPT
+scenarios:
+  - 测试编写
+  - TDD
+placeholders:
+  - CODE_SNIPPET
+  - TEST_FRAMEWORK
+  - COVERAGE_GOAL
+dependencies: []
+template: |
+  请为以下代码生成测试：
+
+  ```
+  {{CODE_SNIPPET}}
+  ```
+
+  测试框架：{{TEST_FRAMEWORK}}
+  覆盖目标：{{COVERAGE_GOAL}}
+
+  要求：
+  1. 覆盖正常路径（happy path）
+  2. 覆盖边界情况（edge cases）
+  3. 覆盖错误处理（error cases）
+  4. 测试命名清晰，描述测试意图
+  5. 使用 AAA 模式（Arrange-Act-Assert）
+example: |
+  请为以下代码生成测试：
+
+  ```typescript
+  function divide(a: number, b: number): number {
+    if (b === 0) {
+      throw new Error('Division by zero');
+    }
+    return a / b;
+  }
+  ```
+
+  测试框架：Jest
+  覆盖目标：100% 分支覆盖
+
+  要求：
+  1. 覆盖正常路径（happy path）
+  2. 覆盖边界情况（edge cases）
+  3. 覆盖错误处理（error cases）
+  4. 测试命名清晰，描述测试意图
+  5. 使用 AAA 模式（Arrange-Act-Assert）
+notes:
+  - 测试应该独立、可重复、快速
+  - 避免测试实现细节，测试行为
+  - Mock 外部依赖
+featured: true
+variables:
+  - name: CODE_SNIPPET
+    description: 需要测试的代码
+    example: "见示例"
+  - name: TEST_FRAMEWORK
+    description: 测试框架
+    example: Jest / Pytest / JUnit
+  - name: COVERAGE_GOAL
+    description: 覆盖率目标
+    example: 100% 分支覆盖
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - 单元测试
+  - 测试生成
+  - Jest
+  - Pytest
+  - TDD
+---
+
+## 测试框架模板
+
+### Jest (JavaScript/TypeScript)
+```javascript
+describe('functionName', () => {
+  it('should return expected result for normal input', () => {
+    // Arrange
+    const input = ...;
+    // Act
+    const result = functionName(input);
+    // Assert
+    expect(result).toBe(expected);
+  });
+
+  it('should throw error for invalid input', () => {
+    expect(() => functionName(invalidInput)).toThrow('Error message');
+  });
+});
+```
+
+### Pytest (Python)
+```python
+import pytest
+
+def test_function_normal_case():
+    # Arrange
+    input_data = ...
+    # Act
+    result = function_name(input_data)
+    # Assert
+    assert result == expected
+
+def test_function_raises_error():
+    with pytest.raises(ValueError):
+        function_name(invalid_input)
+```
+
+### JUnit (Java)
+```java
+@Test
+void shouldReturnExpectedResult() {
+    // Arrange
+    var input = ...;
+    // Act
+    var result = functionName(input);
+    // Assert
+    assertEquals(expected, result);
+}
+
+@Test
+void shouldThrowExceptionForInvalidInput() {
+    assertThrows(IllegalArgumentException.class, () -> {
+        functionName(invalidInput);
+    });
+}
+```
+
+## 测试类型
+
+### 单元测试
+- 测试单个函数/方法
+- 隔离外部依赖
+- 快速执行
+
+### 集成测试
+- 测试模块间交互
+- 可能涉及数据库/API
+- 验证端到端流程
+
+### 边界测试
+- 空值/null
+- 空数组/空字符串
+- 最大/最小值
+- 特殊字符

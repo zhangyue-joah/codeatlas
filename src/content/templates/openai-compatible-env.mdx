@@ -1,0 +1,58 @@
+---
+slug: openai-compatible-env
+title: OpenAI-Compatible 环境变量
+description: 给 Cursor / Continue / Cline / Aider 等工具准备一套通用占位符，避免把 key 写进代码。
+type: mcp-config
+applicableTools:
+  - OpenAI Compatible
+  - Cursor
+  - Continue
+  - Cline
+  - Aider
+scenarios:
+  - 环境变量
+  - 多工具通用
+placeholders:
+  - OPENAI_API_KEY
+  - OPENAI_BASE_URL
+  - OPENAI_MODEL
+dependencies:
+  - OpenAI-Compatible 提供方/网关
+example: |
+  # .env（示例）
+  OPENAI_API_KEY="YOUR_KEY"
+  OPENAI_BASE_URL="https://api.openai.com/v1"
+  OPENAI_MODEL="gpt-4.1-mini"
+template: |
+  # .env (do NOT commit)
+  OPENAI_API_KEY="YOUR_KEY"
+  OPENAI_BASE_URL="https://api.openai.com/v1"
+  OPENAI_MODEL="gpt-4.1-mini"
+
+  # Optional (provider-specific)
+  OPENAI_ORG=""
+  OPENAI_PROJECT=""
+notes:
+  - 永远不要把 `.env` 提交到 Git；确保 `.gitignore` 已忽略。
+  - BASE_URL 是否需要包含 `/v1` 取决于具体提供方；以官方文档为准。
+relatedTutorials:
+  - openai-compatible-setup
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - OpenAI Compatible
+  - BASE_URL
+  - API Key
+  - .env
+---
+
+## 适用场景
+
+- 你在多个客户端之间切换（IDE/插件/CLI），希望用同一套变量管理 key 与 baseUrl
+- 你要接入官方 API、授权聚合（如 OpenRouter）或自建网关（如 LiteLLM/OneAPI）
+
+## 参考链接
+
+- OpenAI API Docs：`https://platform.openai.com/docs/`
+- OpenRouter Docs：`https://openrouter.ai/docs`
+- LiteLLM Proxy：`https://docs.litellm.ai/docs/proxy/quick_start`

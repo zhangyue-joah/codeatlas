@@ -1,0 +1,101 @@
+---
+slug: claude-code-getting-started
+title: Claude Code 上手实操：在终端跑通一次“计划→补丁→验证”（先只读）
+description: 30-45 分钟跑通一次最小闭环：写验收标准 → 要计划 → 生成补丁 → 你 review 后应用 → 最小验证留证据。
+type: getting-started
+difficulty: beginner
+goal: 在 30-45 分钟内完成一次可回滚的小改动，并保留最小验证证据。
+requiredTools:
+  - Claude Code
+  - Git
+  - 一个可本地验证的项目（lint/test/build 任一）
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 25-45 分钟
+stepsOverview:
+  - 进入 repo，确认 git 状态干净并新建分支
+  - 写清需求 + 验收标准（1-3 条）
+  - 让 AI 先输出计划（文件清单 + 风险 + 验证命令）
+  - 让 AI 生成补丁/差异（diff）
+  - 你 review 后应用，并跑最小验证
+steps:
+  - step: 1
+    title: 新建分支并清理工作区
+    description: 保持工作区干净，降低回滚与冲突成本。
+    code: |
+      git checkout -b feat/claude-code-sop
+  - step: 2
+    title: 写验收标准 + 边界
+    description: 用 1-3 条可验证标准定义“什么算完成”，并明确不做无关重构。
+    tips:
+      - 先验收，再实现
+  - step: 3
+    title: 先计划，再补丁
+    description: 要求先输出“将改哪些文件/为什么/风险/验证命令”，你确认后再生成补丁。
+    warnings:
+      - 不接受“先改再说”
+  - step: 4
+    title: Review diff + 最小验证
+    description: 你 review diff 后再应用，并运行最小验证命令。
+    code: |
+      npm run lint
+  - step: 5
+    title: 提交与复盘
+    description: 记录改动摘要与验证证据；把有效的约束固化成团队模板/规则。
+keyTips:
+  - 把它当“补丁生成器”：你是合并者
+  - 要求输出 `git diff` 或逐文件变更摘要，避免黑箱改动
+  - 失败先解释日志原因，再给最小修复补丁
+safety:
+  checklist:
+    - 默认只读；写入/执行前先确认回滚方式
+    - 不在对话里粘贴密钥、令牌与私有链接
+    - 所有变更必须可在 git 中审计与回滚
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: AI 改动范围过大
+    solution: 明确“只改文件列表”，并要求先给计划与变更清单
+  - problem: diff 无法应用或冲突
+    solution: 保持工作区干净，让 AI 基于当前分支重新生成补丁
+  - problem: 验证失败
+    solution: 把失败日志作为证据贴回去，让 AI 先解释原因再给最小修复
+acceptanceCriteria:
+  - 你在新分支完成一次可回滚改动
+  - 你 review 了 diff 并跑过最小验证（lint/test/build 任一）
+  - 你能复述“先计划→再补丁→再验证”的流程
+relatedTools:
+  - claude-code
+relatedTemplates:
+  - agent-rules-coding-general
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - Claude Code
+  - CLI
+  - 写功能
+  - 改 Bug
+  - 补测试
+---
+
+## 推荐的提示词骨架（复制就能用）
+
+把下面这段当作“开工模板”：
+
+1. 需求：\[一句话说明要做什么]
+2. 验收标准（1-3 条）：\[可验证的结果]
+3. 边界：只改 \[文件/目录]；不做无关重构；不新增依赖（如必须新增先申请）
+4. 请先输出计划：改动文件清单 + 风险点 + 验证命令；我确认后你再生成 `git diff`
+
+## 为什么建议“先只读”
+
+终端 Agent 很容易给人一种“它能直接把项目修好”的错觉，但第一天最重要的是：
+
+- 你能否稳定拿到**可审计的补丁**
+- 你能否稳定留出**最小验证证据**
+
+只要这两点跑通了，后面再逐步开放写入/执行权限才有意义。
+

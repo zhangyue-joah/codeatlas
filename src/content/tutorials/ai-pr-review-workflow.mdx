@@ -1,0 +1,199 @@
+---
+slug: ai-pr-review-workflow
+title: 用 AI 工具做 PR Review：提升代码审查效率的完整 SOP
+description: 一套可复制的 AI 辅助代码审查流程，从自动化审查到人工复核的完整闭环。
+type: how-to
+difficulty: intermediate
+goal: 掌握用 AI 工具高效进行代码审查的完整工作流。
+requiredTools:
+  - PR-Agent 或 CodeRabbit 或其他 AI Review 工具
+  - GitHub/GitLab
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 15-30 分钟
+stepsOverview:
+  - 配置 AI Review 工具
+  - 触发自动审查
+  - 理解审查报告
+  - 人工复核和补充
+  - 与作者沟通
+steps:
+  - step: 1
+    title: 配置 AI Review 工具
+    description: 选择并配置适合团队的 AI Review 工具。
+    tips:
+      - PR-Agent：开源、可自托管
+      - CodeRabbit：功能全面、易用
+      - GitHub Copilot：集成在 GitHub 中
+  - step: 2
+    title: 触发自动审查
+    description: 在 PR 上触发 AI 审查。
+    code: |
+      # PR-Agent 命令
+      /review        # 代码审查
+      /describe      # 生成 PR 描述
+      /improve       # 改进建议
+    tips:
+      - 可配置为 PR 创建时自动触发
+      - 也可手动在评论中触发
+  - step: 3
+    title: 理解审查报告
+    description: 阅读 AI 生成的审查报告。
+    tips:
+      - 关注风险评估和安全问题
+      - 查看代码质量建议
+      - 注意潜在的 Bug 和逻辑问题
+  - step: 4
+    title: 人工复核
+    description: AI 审查是辅助，人工复核是必须。
+    tips:
+      - AI 可能误报或漏报
+      - 关注业务逻辑正确性
+      - 检查架构和设计决策
+    warnings:
+      - 不要完全依赖 AI 审查
+  - step: 5
+    title: 与作者沟通
+    description: 基于审查结果与 PR 作者沟通。
+    tips:
+      - 区分 AI 建议和人工意见
+      - 对 AI 的建议进行筛选
+      - 保持建设性的沟通
+keyTips:
+  - AI Review 是辅助工具，不能替代人工审查
+  - 关注 AI 容易发现的问题：安全、性能、代码风格
+  - 人工关注 AI 难以判断的问题：业务逻辑、架构设计
+safety:
+  checklist:
+    - AI 审查结果需要人工确认
+    - 敏感代码仓库注意数据安全
+    - 不要盲目接受所有 AI 建议
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: AI 审查结果过于宽泛或不准确
+    solution: 调整配置，明确审查重点；结合人工审查
+  - problem: 团队过度依赖 AI 审查
+    solution: 明确 AI 是辅助工具；保持人工审查流程
+  - problem: AI 建议与团队规范冲突
+    solution: 自定义审查规则；过滤不适用的建议
+acceptanceCriteria:
+  - AI 审查正常运行
+  - 人工复核流程建立
+  - 团队理解 AI 审查的价值和局限
+relatedTools:
+  - codium-pr-agent
+  - coderabbit
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+author: CodeAtlas
+keywords:
+  - PR Review
+  - 代码审查
+  - AI 辅助
+  - SOP
+---
+
+## 为什么用 AI 做 PR Review
+
+AI 工具在代码审查中的价值：
+
+- **快速初筛**：几秒钟完成初步审查
+- **一致性**：每次审查标准一致
+- **覆盖全面**：不会因为疲劳遗漏问题
+- **减轻负担**：让人工审查聚焦高价值问题
+
+## AI 擅长发现的问题
+
+| 问题类型 | AI 能力 | 示例 |
+|----------|---------|------|
+| 安全漏洞 | 强 | SQL 注入、XSS、敏感信息泄露 |
+| 代码风格 | 强 | 命名规范、格式问题 |
+| 常见 Bug | 中 | 空指针、边界条件 |
+| 性能问题 | 中 | 明显的性能反模式 |
+| 业务逻辑 | 弱 | 需要领域知识的判断 |
+| 架构设计 | 弱 | 需要全局视角的决策 |
+
+## AI 审查 + 人工审查的分工
+
+```
+AI 审查（自动）
+├── 安全扫描
+├── 代码风格检查
+├── 常见问题检测
+└── PR 描述生成
+
+人工审查（必须）
+├── 业务逻辑正确性
+├── 架构和设计决策
+├── 测试覆盖充分性
+└── 最终合并决策
+```
+
+## 工具对比
+
+| 工具 | 开源 | 自托管 | 价格 | 特点 |
+|------|------|--------|------|------|
+| PR-Agent | ✅ | ✅ | 免费/Pro | 开源、可定制 |
+| CodeRabbit | 部分 | 企业版 | 免费/付费 | 功能全面 |
+| GitHub Copilot | ❌ | ❌ | 含在订阅 | 原生集成 |
+
+## 配置建议
+
+### PR-Agent 配置示例
+
+```toml
+# .pr_agent.toml
+[pr_reviewer]
+require_focused_review = true
+require_tests = true
+extra_instructions = """
+重点关注：
+- 安全问题
+- 性能影响
+- 错误处理
+"""
+
+[pr_description]
+publish_labels = true
+```
+
+### 审查规则定制
+
+```yaml
+# 自定义审查规则
+rules:
+  - name: "检查敏感信息"
+    pattern: "(password|secret|api_key)\\s*="
+    severity: high
+    message: "可能包含敏感信息，请检查"
+
+  - name: "检查 TODO"
+    pattern: "TODO|FIXME"
+    severity: low
+    message: "包含未完成的 TODO"
+```
+
+## 审查清单
+
+### AI 审查后人工检查
+
+- [ ] AI 发现的问题是否准确
+- [ ] 是否有 AI 遗漏的问题
+- [ ] 业务逻辑是否正确
+- [ ] 测试是否充分
+- [ ] 是否符合架构规范
+
+### 常见误报处理
+
+- 标记为误报，避免重复提醒
+- 调整规则，减少噪音
+- 记录误报模式，优化配置
+
+## 下一步
+
+- 配置 [PR-Agent](/tutorials/pr-agent-getting-started) 开始自动化审查
+- 了解 [AI 生成代码验收清单](/tutorials/ai-code-acceptance-checklist) 确保代码质量

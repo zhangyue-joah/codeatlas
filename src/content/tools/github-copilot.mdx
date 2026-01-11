@@ -1,0 +1,84 @@
+---
+slug: github-copilot
+title: "GitHub Copilot"
+description: "低接入成本的代码补全/建议工具，适合在现有 IDE 里快速提升日常编码效率。"
+logo: /logos/github-copilot.svg
+website: "https://github.com/features/copilot"
+productType:
+  - ide-extension
+category:
+  - code-completion
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "需要“多步任务闭环/自动执行”的重度 Agent 工作流人群（更适合叠加其他工具）"
+capabilities:
+  - repo-context
+  - skills-plugins
+  - read-only
+useCases:
+  - "日常编码补全：函数/样板代码/常见模式快速生成"
+  - "代码理解辅助：读代码时给出解释与建议"
+  - "PR Review 辅助：给出改进点与潜在问题（仍需人工复核）"
+pros:
+  - "集成成本低，覆盖主流 IDE"
+  - "适合把 AI 当作“长期底座能力”"
+cons:
+  - "多步任务闭环能力有限，复杂工作流需要额外工具/流程"
+  - "团队落地仍需关注权限、审计与数据策略"
+onboardingTime: "10-20 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作"
+pricing:
+  model: subscription
+  free: false
+  startingPrice: "10"
+  currency: USD
+  billingCycle: monthly
+  hasEducation: true
+  hasTeam: true
+  hasEnterprise: true
+  supportsInvoice: true
+  supportsContract: true
+purchase:
+  officialUrl: "https://github.com/features/copilot#pricing"
+  updatedAt: "2025-12-24"
+  sources:
+    -
+      label: "GitHub Copilot 官方定价页"
+      url: "https://github.com/features/copilot#pricing"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance:
+    - "SOC 2（如适用）"
+  policyUrl: "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+  updatedAt: "2025-12-24"
+relatedTools:
+  - cursor
+relatedTutorials:
+  - github-copilot-getting-started
+relatedCompares:
+  - cursor-vs-github-copilot
+updatedAt: "2025-12-24"
+version: "2025-12"
+keywords:
+  - "GitHub Copilot"
+  - "代码补全"
+  - "AI 编程"
+  - "选型"
+---
+
+
+
+## 适合用 Copilot 的一个判断
+
+如果你的目标是“在现有 IDE 里立刻获得更好的补全/建议”，并且不想大幅改变工作流，Copilot 往往是更省心的起点。
+
+## 使用建议（稳一点）
+
+- 把它当作“建议生成器”，关键代码仍以测试/审查作为最终准入
+- 团队场景先把权限、审计与数据策略讲清楚，再扩大使用范围

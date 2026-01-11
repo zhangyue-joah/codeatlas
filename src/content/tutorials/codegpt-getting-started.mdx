@@ -1,0 +1,122 @@
+---
+slug: codegpt-getting-started
+title: CodeGPT 入门：在 VS Code 中配置多模型 AI 编程助手
+description: 15 分钟完成 CodeGPT 安装配置，跑通一次代码补全与仓库问答的最小闭环。
+type: getting-started
+difficulty: beginner
+goal: 在 15 分钟内完成 CodeGPT 安装、模型配置，并跑通一次代码补全或仓库问答。
+requiredTools:
+  - CodeGPT
+  - VS Code
+requiredCapabilities:
+  - repo-context
+  - skills-plugins
+estimatedTime: 15-25 分钟
+stepsOverview:
+  - 在 VS Code 中安装 CodeGPT 扩展
+  - 配置 AI 模型（官方或自定义 API）
+  - 跑通一次代码补全
+  - 尝试仓库问答功能
+steps:
+  - step: 1
+    title: 安装 CodeGPT 扩展
+    description: 在 VS Code 扩展市场搜索 "CodeGPT" 并安装官方扩展。
+    code: |
+      # 或通过命令行安装
+      code --install-extension codegpt.codegpt
+    tips:
+      - 确认安装的是官方 CodeGPT 扩展（发布者为 CodeGPT）
+  - step: 2
+    title: 配置 AI 模型
+    description: 打开 CodeGPT 侧边栏，选择模型提供商并配置 API Key。
+    tips:
+      - 支持 OpenAI、Anthropic、Google、Azure 等多种模型
+      - 也可使用 CodeGPT Plus 官方服务（无需自备 Key）
+    warnings:
+      - API Key 请妥善保管，不要提交到代码仓库
+  - step: 3
+    title: 跑通代码补全
+    description: 打开任意代码文件，开始输入代码，观察 AI 补全建议。
+    code: |
+      // 示例：输入函数签名，等待补全建议
+      function calculateTotal(items) {
+        // 按 Tab 接受补全建议
+      }
+    tips:
+      - 按 Tab 接受建议，按 Esc 忽略
+      - 可在设置中调整补全触发时机
+  - step: 4
+    title: 尝试仓库问答
+    description: 使用 CodeGPT Chat 功能，针对当前项目提问。
+    tips:
+      - 选中代码后右键可快速发起对话
+      - 支持 @file 引用特定文件作为上下文
+  - step: 5
+    title: 验证与复盘
+    description: 确认功能正常后，记录配置要点，便于团队复用。
+keyTips:
+  - 把它当作"建议生成器"，关键代码仍需人工审查
+  - 多模型切换时注意 Token 消耗和成本
+  - 团队使用前先明确 API Key 管理与数据策略
+safety:
+  checklist:
+    - API Key 不要硬编码或提交到版本控制
+    - 敏感代码/数据不要直接粘贴给 AI
+    - 团队场景需明确数据流向与合规要求
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 补全不触发或响应慢
+    solution: 检查网络连接和 API Key 配置；尝试切换模型或降低补全频率
+  - problem: 上下文理解不准确
+    solution: 使用 @file 显式引用相关文件；缩小问题范围
+  - problem: API 调用报错
+    solution: 检查 API Key 余额和权限；查看 CodeGPT 输出面板的错误日志
+acceptanceCriteria:
+  - CodeGPT 扩展安装成功并完成模型配置
+  - 至少跑通一次代码补全或对话问答
+  - 了解基本的安全与成本注意事项
+relatedTools:
+  - codegpt
+relatedTemplates:
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - CodeGPT
+  - VS Code
+  - 多模型
+  - 代码补全
+  - 入门
+---
+
+## 为什么选 CodeGPT
+
+CodeGPT 的核心优势是**多模型统一接入**：你可以在同一个扩展里切换 OpenAI、Claude、Gemini 等不同模型，不用为每个模型装一个插件。
+
+适合以下场景：
+- 想在 VS Code 里快速体验多种 AI 模型
+- 团队需要统一的 AI 编程入口，但模型选择灵活
+- 已有 API Key，想直接接入而非使用特定厂商的官方插件
+
+## 配置要点
+
+### 模型选择建议
+
+| 场景 | 推荐模型 | 理由 |
+|------|----------|------|
+| 日常补全 | GPT-4o-mini / Claude Haiku | 响应快、成本低 |
+| 复杂问答 | GPT-4o / Claude Sonnet | 理解能力更强 |
+| 代码生成 | Claude Sonnet / GPT-4o | 代码质量较高 |
+
+### 成本控制
+
+- 补全场景建议用小模型，问答场景再用大模型
+- 关注 Token 消耗，避免大文件整体发送
+- 团队场景建议设置用量上限或使用企业账户
+
+## 下一步
+
+- 尝试 [Cursor](/tutorials/cursor-getting-started) 或 [Cline](/tutorials/cline-vscode-getting-started) 获得更强的 Agent 能力
+- 了解 [MCP 配置](/tutorials/mcp-starter-kit) 扩展工具连接能力

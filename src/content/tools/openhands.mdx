@@ -1,0 +1,81 @@
+---
+slug: openhands
+title: OpenHands
+description: "开源的软件工程 Agent 框架：强调可扩展的工具调用与可复现的任务执行流程。"
+logo: /logos/default.svg
+website: "https://github.com/All-Hands-AI/OpenHands"
+productType:
+  - web-app
+category:
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - agent-execution
+  - local-command
+  - read-write
+  - execute
+useCases:
+  - "自动化任务：基于 issue/任务描述完成多步改动并给出证据"
+  - "修复与迭代：根据失败日志反复定位与修补（强调可复现）"
+  - "把 Agent 接入流程：把执行环境、工具与约束标准化"
+pros:
+  - "开源可控，便于自定义执行环境与约束"
+  - "适合把“工具调用/执行”流程化、工程化"
+  - "更适合研究与团队改造（而非只求补全）"
+cons:
+  - "部署与运维成本较高，需要工程能力支撑"
+  - "执行能力强：必须做好隔离、权限与审计"
+  - "效果依赖任务描述与项目质量门槛（测试/审查）"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: free
+  free: true
+  hasEducation: false
+  hasTeam: false
+  hasEnterprise: false
+  supportsInvoice: false
+  supportsContract: false
+purchase:
+  officialUrl: "https://github.com/All-Hands-AI/OpenHands"
+  sources:
+    -
+      label: "OpenHands GitHub"
+      url: "https://github.com/All-Hands-AI/OpenHands"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "由部署方决定"
+  localProcessing: true
+  enterpriseCompliance: []
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - OpenHands
+  - "开源"
+  - Agent
+  - "AI 编程"
+---
+
+
+
+## 适合用 OpenHands 的一个判断
+
+如果你需要一个“可运行的开源软件工程 Agent”，并且愿意为执行环境、权限边界与可复现流程负责，OpenHands 这类项目更合适。
+
+## 使用建议（风险优先）
+
+- 默认在隔离环境运行：不要让 Agent 直接触达生产资源或敏感数据
+- 明确“允许的命令白名单/禁止清单”，并把验证命令写进计划

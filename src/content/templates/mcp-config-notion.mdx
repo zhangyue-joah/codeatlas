@@ -1,0 +1,104 @@
+---
+slug: mcp-config-notion
+title: MCP Notion 配置
+description: 将 Notion 接入 Claude 的 MCP 配置示例，支持读取页面、查询数据库、创建内容等操作。
+type: mcp-config
+applicableTools:
+  - Claude Desktop
+  - Claude Code
+  - MCP
+scenarios:
+  - Notion 集成
+  - 知识库管理
+placeholders:
+  - NOTION_API_KEY
+dependencies:
+  - Notion Integration Token
+  - Node.js（npx）
+template: |
+  {
+    "mcpServers": {
+      "notion": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-notion"],
+        "env": {
+          "NOTION_API_KEY": "secret_your_integration_token"
+        }
+      }
+    }
+  }
+example: |
+  # 1) 创建 Notion Integration
+  # 访问 https://www.notion.so/my-integrations 创建集成
+
+  # 2) 获取 Integration Token (secret_...)
+
+  # 3) 在 Notion 中授权集成访问页面/数据库
+  # 打开页面 → 点击右上角 ··· → Connections → 添加你的集成
+
+  # 4) 配置环境变量
+  export NOTION_API_KEY="secret_your_integration_token"
+
+  # 5) 将配置添加到 Claude Desktop 配置文件
+notes:
+  - Integration 需要在每个要访问的页面/数据库中单独授权
+  - 建议创建专用的 Integration，不要使用个人 Token
+  - 注意 API 调用频率限制
+featured: false
+variables:
+  - name: NOTION_API_KEY
+    description: Notion Integration Token
+    example: secret_abc123def456...
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - MCP
+  - Notion
+  - 知识库
+  - 文档管理
+---
+
+## 创建 Notion Integration
+
+1. 访问 [Notion Integrations](https://www.notion.so/my-integrations)
+2. 点击 "New integration"
+3. 填写名称，选择关联的工作区
+4. 设置 Capabilities（建议按需选择）：
+   - Read content
+   - Update content
+   - Insert content
+5. 提交后复制 "Internal Integration Token"
+
+## 授权 Integration 访问页面
+
+**重要**：创建 Integration 后，需要在每个要访问的页面/数据库中手动授权：
+
+1. 打开 Notion 页面或数据库
+2. 点击右上角 `···` 菜单
+3. 选择 "Connections"
+4. 搜索并添加你的 Integration
+
+## 可用功能
+
+配置完成后，Claude 可以：
+- 读取页面内容
+- 查询数据库
+- 创建新页面
+- 更新页面内容
+- 搜索内容
+
+## 数据库查询示例
+
+```
+"查询 Notion 数据库中状态为'进行中'的任务"
+"在 Notion 中创建一个新的会议记录页面"
+"搜索 Notion 中包含'项目计划'的页面"
+```
+
+## 安全建议
+
+- 只授权必要的页面和数据库
+- 使用只读权限，除非确实需要写入
+- 定期审查 Integration 的访问权限
+- 不要在公开仓库中提交 Token

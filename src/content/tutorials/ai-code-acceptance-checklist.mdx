@@ -1,0 +1,389 @@
+---
+slug: ai-code-acceptance-checklist
+title: AI 生成代码验收清单：确保代码质量的完整检查流程
+description: 一套可复制的 AI 生成代码验收流程，从功能正确性到安全性的完整检查清单。
+type: quality-control
+difficulty: intermediate
+goal: 掌握验收 AI 生成代码的完整方法论，确保代码质量和安全性。
+requiredTools:
+  - AI 编程工具（Cursor/Copilot/Claude Code 等）
+  - 代码审查工具
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 10-20 分钟（每次验收）
+stepsOverview:
+  - 理解生成的代码
+  - 功能正确性检查
+  - 安全性检查
+  - 代码质量检查
+  - 测试验证
+steps:
+  - step: 1
+    title: 理解生成的代码
+    description: 在接受代码前，先确保自己理解代码逻辑。
+    tips:
+      - 逐行阅读代码，理解每部分的作用
+      - 如果不理解，让 AI 解释
+      - 不理解的代码不要提交
+    warnings:
+      - 不要盲目接受 AI 生成的代码
+  - step: 2
+    title: 功能正确性检查
+    description: 验证代码是否正确实现了预期功能。
+    tips:
+      - 检查核心逻辑是否正确
+      - 验证边界情况处理
+      - 确认错误处理完善
+  - step: 3
+    title: 安全性检查
+    description: 检查代码是否存在安全漏洞。
+    tips:
+      - 检查输入验证
+      - 检查注入风险
+      - 检查敏感信息处理
+  - step: 4
+    title: 代码质量检查
+    description: 确保代码符合团队规范和最佳实践。
+    tips:
+      - 检查命名规范
+      - 检查代码风格
+      - 检查是否过度复杂
+  - step: 5
+    title: 测试验证
+    description: 通过测试验证代码的正确性。
+    tips:
+      - 运行现有测试
+      - 补充必要的测试用例
+      - 手动测试关键路径
+keyTips:
+  - AI 生成的代码必须人工审查
+  - 不理解的代码不要提交
+  - 安全性检查不能省略
+safety:
+  checklist:
+    - 检查是否存在安全漏洞
+    - 确认没有敏感信息泄露
+    - 验证权限控制正确
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 代码看起来正确但逻辑有问题
+    solution: 仔细阅读代码；编写测试验证；故意破坏代码确认测试有效
+  - problem: 安全漏洞被忽略
+    solution: 使用安全检查清单；运行安全扫描工具；关注 OWASP Top 10
+  - problem: 代码风格不一致
+    solution: 运行 Linter；对照团队规范检查；使用自动格式化工具
+acceptanceCriteria:
+  - 代码逻辑正确且可理解
+  - 通过安全性检查
+  - 符合代码质量标准
+  - 测试验证通过
+relatedTools:
+  - cursor
+  - github-copilot
+  - claude-code
+relatedTemplates:
+  - pr-review-checklist
+  - agent-rules-coding-general
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+author: CodeAtlas
+keywords:
+  - 代码验收
+  - 质量控制
+  - 安全检查
+  - AI 生成代码
+---
+
+## 为什么需要验收清单
+
+AI 生成的代码存在以下风险：
+
+- **逻辑错误**：看起来正确但实际有 Bug
+- **安全漏洞**：可能引入注入、XSS 等问题
+- **质量问题**：不符合团队规范或最佳实践
+- **理解障碍**：开发者不理解代码就提交
+
+验收清单帮助你系统性地检查这些问题。
+
+## 完整验收清单
+
+### 第一关：理解检查
+
+```markdown
+## 理解检查清单
+
+- [ ] 我能解释这段代码的作用
+- [ ] 我理解每个函数/方法的职责
+- [ ] 我知道数据是如何流转的
+- [ ] 我理解为什么这样实现（而不是其他方式）
+- [ ] 如果有不理解的部分，已经让 AI 解释清楚
+
+⚠️ 如果任何一项无法确认，不要接受代码
+```
+
+### 第二关：功能正确性
+
+```markdown
+## 功能正确性清单
+
+### 核心逻辑
+- [ ] 主要功能按预期工作
+- [ ] 返回值/输出正确
+- [ ] 状态变更正确
+
+### 边界情况
+- [ ] 空值/null 处理正确
+- [ ] 边界值处理正确（0、负数、最大值等）
+- [ ] 空数组/空对象处理正确
+
+### 错误处理
+- [ ] 异常情况有适当处理
+- [ ] 错误信息清晰有用
+- [ ] 不会因错误导致程序崩溃
+
+### 异步逻辑（如适用）
+- [ ] Promise/async-await 使用正确
+- [ ] 并发情况处理正确
+- [ ] 超时和取消逻辑正确
+```
+
+### 第三关：安全性检查
+
+```markdown
+## 安全性清单
+
+### 输入验证
+- [ ] 用户输入已验证和清洗
+- [ ] 参数类型检查正确
+- [ ] 长度和范围限制合理
+
+### 注入防护
+- [ ] SQL 查询使用参数化
+- [ ] 命令执行已转义
+- [ ] HTML 输出已编码（防 XSS）
+
+### 认证授权
+- [ ] 权限检查正确
+- [ ] 敏感操作需要认证
+- [ ] 不存在越权访问
+
+### 敏感信息
+- [ ] 没有硬编码密钥/密码
+- [ ] 敏感信息不会记录到日志
+- [ ] 错误信息不泄露内部细节
+
+### 常见漏洞
+- [ ] 没有路径遍历风险
+- [ ] 没有不安全的反序列化
+- [ ] 没有 SSRF 风险
+```
+
+### 第四关：代码质量
+
+```markdown
+## 代码质量清单
+
+### 可读性
+- [ ] 命名清晰有意义
+- [ ] 代码结构清晰
+- [ ] 复杂逻辑有注释
+
+### 规范性
+- [ ] 符合团队代码规范
+- [ ] 通过 Linter 检查
+- [ ] 格式化正确
+
+### 简洁性
+- [ ] 没有冗余代码
+- [ ] 没有过度抽象
+- [ ] 逻辑直接明了
+
+### 可维护性
+- [ ] 易于理解和修改
+- [ ] 依赖关系清晰
+- [ ] 没有魔法数字/字符串
+```
+
+### 第五关：测试验证
+
+```markdown
+## 测试验证清单
+
+### 现有测试
+- [ ] 所有现有测试通过
+- [ ] 没有破坏其他功能
+
+### 新增测试
+- [ ] 核心功能有测试覆盖
+- [ ] 边界情况有测试
+- [ ] 错误处理有测试
+
+### 测试质量
+- [ ] 测试真的在测试目标代码
+- [ ] 故意破坏代码时测试会失败
+- [ ] 测试描述清晰
+
+### 手动验证
+- [ ] 关键路径手动测试通过
+- [ ] UI/交互符合预期（如适用）
+```
+
+## 快速检查版本
+
+对于简单的代码变更，可以使用简化版清单：
+
+```markdown
+## 快速验收清单
+
+- [ ] 我理解这段代码
+- [ ] 核心逻辑正确
+- [ ] 没有明显的安全问题
+- [ ] 符合代码规范
+- [ ] 测试通过
+```
+
+## 常见问题模式
+
+### AI 代码的典型问题
+
+| 问题类型 | 表现 | 检查方法 |
+|----------|------|----------|
+| 幻觉 API | 调用不存在的方法 | 查阅文档确认 |
+| 过时写法 | 使用废弃的 API | 检查版本兼容性 |
+| 逻辑漏洞 | 边界情况未处理 | 编写边界测试 |
+| 安全漏洞 | 缺少输入验证 | 安全清单检查 |
+| 过度工程 | 不必要的复杂度 | 简化代码 |
+
+### 高风险代码类型
+
+以下类型的 AI 生成代码需要特别仔细检查：
+
+1. **认证授权代码**
+   - 登录/注册逻辑
+   - 权限检查
+   - Token 处理
+
+2. **数据处理代码**
+   - 数据库操作
+   - 文件读写
+   - 用户输入处理
+
+3. **加密安全代码**
+   - 密码处理
+   - 加密解密
+   - 签名验证
+
+4. **金融相关代码**
+   - 金额计算
+   - 支付流程
+   - 账户操作
+
+## 验收流程示例
+
+### 示例：验收一个用户注册函数
+
+```typescript
+// AI 生成的代码
+async function registerUser(email: string, password: string) {
+  const user = await db.users.create({
+    email,
+    password: hashPassword(password),
+    createdAt: new Date()
+  });
+  return user;
+}
+```
+
+**验收过程**：
+
+1. **理解检查** ✅
+   - 功能：创建新用户
+   - 流程：接收邮箱密码 → 哈希密码 → 存入数据库
+
+2. **功能正确性** ⚠️
+   - 缺少：邮箱格式验证
+   - 缺少：密码强度检查
+   - 缺少：重复邮箱检查
+
+3. **安全性检查** ⚠️
+   - 密码哈希 ✅
+   - 缺少：邮箱验证
+   - 缺少：速率限制
+
+4. **改进后的代码**：
+
+```typescript
+async function registerUser(email: string, password: string) {
+  // 输入验证
+  if (!isValidEmail(email)) {
+    throw new ValidationError('Invalid email format');
+  }
+  if (!isStrongPassword(password)) {
+    throw new ValidationError('Password too weak');
+  }
+
+  // 检查重复
+  const existing = await db.users.findByEmail(email);
+  if (existing) {
+    throw new ConflictError('Email already registered');
+  }
+
+  // 创建用户
+  const user = await db.users.create({
+    email: normalizeEmail(email),
+    password: await hashPassword(password),
+    createdAt: new Date()
+  });
+
+  return user;
+}
+```
+
+## 团队协作建议
+
+### PR 审查时的验收
+
+```markdown
+## AI 生成代码 PR 审查要点
+
+### 必须确认
+- [ ] 作者声明了哪些代码是 AI 生成的
+- [ ] AI 生成的代码已经过作者审查
+- [ ] 关键逻辑作者能够解释
+
+### 重点关注
+- 安全相关的代码变更
+- 核心业务逻辑
+- 数据处理和存储
+
+### 不因 AI 生成而降低标准
+- 代码质量要求不变
+- 测试覆盖要求不变
+- 安全标准不变
+```
+
+### 建立团队规范
+
+```markdown
+## 团队 AI 代码验收规范
+
+1. **声明要求**
+   - PR 中标注 AI 生成的代码范围
+   - 说明使用的 AI 工具
+
+2. **验收要求**
+   - 必须完成验收清单
+   - 高风险代码需要额外审查
+
+3. **责任归属**
+   - 提交者对代码质量负责
+   - AI 是工具，人是责任人
+```
+
+## 下一步
+
+- 学习 [用 AI 工具做 PR Review](/tutorials/ai-pr-review-workflow) 提升审查效率
+- 了解 [团队 AI 编程工具落地指南](/tutorials/ai-team-adoption-guide) 建立团队规范
+- 查看 [用 AI 工具补测试](/tutorials/ai-testing-workflow) 提高测试覆盖

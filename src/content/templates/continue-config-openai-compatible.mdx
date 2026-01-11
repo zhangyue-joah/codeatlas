@@ -1,0 +1,60 @@
+---
+slug: continue-config-openai-compatible
+title: Continue OpenAI-Compatible 配置
+description: 以 Continue 的配置文件为例，展示如何接入任意 OpenAI-Compatible 的 baseUrl 与模型名。
+type: mcp-config
+applicableTools:
+  - Continue
+  - VS Code
+  - OpenAI Compatible
+scenarios:
+  - IDE 接入
+  - OpenAI-Compatible
+placeholders:
+  - OPENAI_API_KEY
+  - OPENAI_BASE_URL
+dependencies:
+  - Continue（VS Code）
+  - OpenAI-Compatible 提供方/网关
+example: |
+  # .env（示例）
+  OPENAI_API_KEY="YOUR_KEY"
+  OPENAI_BASE_URL="https://api.openai.com/v1"
+
+  # Continue：在 config 中引用 $OPENAI_API_KEY / $OPENAI_BASE_URL
+template: |
+  // Continue config (example)
+  // 说明：Continue 的配置格式可能随版本变化，以官方文档为准。
+  {
+    "models": [
+      {
+        "title": "OpenAI-Compatible",
+        "provider": "openai",
+        "model": "gpt-4.1-mini",
+        "apiKey": "$OPENAI_API_KEY",
+        "apiBase": "$OPENAI_BASE_URL"
+      }
+    ]
+  }
+notes:
+  - 先用最小模型/最小上下文跑通一次，再逐步升级到更大模型与更复杂工作流。
+  - 如果提供方不支持 OpenAI-Compatible，优先用 Continue 官方支持的 provider 适配方式。
+relatedTutorials:
+  - openai-compatible-setup
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Continue
+  - VS Code
+  - OpenAI Compatible
+  - 配置
+---
+
+## 最小验证建议
+
+- 在 Continue 中做一次最小对话（让它解释当前文件的一个函数），确认能正常返回，再继续接入 Agent/工具调用。
+
+## 参考链接
+
+- Continue 文档：`https://docs.continue.dev/`
+- Continue 仓库：`https://github.com/continuedev/continue`

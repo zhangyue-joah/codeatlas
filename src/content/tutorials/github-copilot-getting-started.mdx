@@ -1,0 +1,90 @@
+---
+slug: github-copilot-getting-started
+title: GitHub Copilot 30 分钟上手：在 VS Code 写完一个小功能（含最小验证）
+description: 不讲概念，直接跑闭环：3 条验收标准 → 文件清单与风险 → 小步实现 → 跑一次 lint/test/build；附可复制提示词骨架。
+type: getting-started
+difficulty: beginner
+goal: 30 分钟内完成一次可提交的改动（含最小验证命令）。
+requiredTools:
+  - VS Code
+  - GitHub Copilot（含 Chat）
+requiredCapabilities:
+  - repo-context
+  - read-write
+estimatedTime: 20-30 分钟
+stepsOverview:
+  - 安装/登录 Copilot，并确认 Chat 可用
+  - 写清“需求 + 验收标准 + 约束”
+  - 让 Copilot 先给计划（要改哪些文件）
+  - 小步实现 + 小步验证（lint/test/build 其一）
+  - 提交前复查变更范围与风险点
+steps:
+  - step: 1
+    title: 确认 Copilot Chat 可用
+    description: 先确保扩展安装、账号登录、Chat 能正常对话（避免把时间浪费在环境上）。
+  - step: 2
+    title: 写验收标准（3 条以内）
+    description: 用可验证的标准描述“什么算完成”，并加上边界条件（不做什么）。
+    tips:
+      - 例：输入 X 返回 Y；错误输入返回 400；不改动数据库结构
+  - step: 3
+    title: 先要计划，再要改动
+    description: 让 Copilot 先输出“文件清单 + 改动点 + 风险”，你确认后再生成代码。
+    warnings:
+      - 计划不清楚就不要让它直接改文件
+  - step: 4
+    title: 小步实现 + 最小验证
+    description: 先实现最小可用，再跑一次 lint/test/build（任选其一）作为证据。
+    code: |
+      npm run lint
+  - step: 5
+    title: 提交前复盘
+    description: 对照验收标准逐条自检，确保变更范围可控，必要时补文档/测试。
+keyTips:
+  - Copilot 更适合“补全/建议 + 人工把关”，复杂闭环建议叠加 Agent 工具
+  - 每次只做一件事：一个需求对应一个提交
+  - 让它引用代码位置（文件/函数）再给建议，减少胡写
+safety:
+  checklist:
+    - 不要把 Token/私有链接贴进 Chat
+    - 默认只让它给建议；写入前先看计划与 diff
+    - 运行最小验证命令，避免“看起来对”但不可运行
+  updatedAt: "2025-12-28"
+commonFailures:
+  - problem: 生成的改动范围过大
+    solution: 明确“只改哪些文件/函数”，并要求先给计划
+  - problem: 代码能编译但行为不对
+    solution: 把验收标准写成测试或最小复现步骤，再让它修
+  - problem: 提交后才发现漏改边界条件
+    solution: 在验收标准里显式写“不做什么”，并在提交前复查
+acceptanceCriteria:
+  - 需求已实现且符合验收标准
+  - 运行过一次最小验证（lint/test/build 任意一种）
+  - 变更范围清晰，可在 PR 中解释清楚
+relatedTools:
+  - github-copilot
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2025-12-28"
+version: "2025-12"
+featured: true
+author: CodeAtlas
+keywords:
+  - GitHub Copilot
+  - 写功能
+  - 补测试
+  - VS Code
+---
+
+## 推荐的提示词骨架（直接替换方括号）
+
+> 我要在这个 repo 里实现：\[一句话需求]  
+> 验收标准：  
+> 1) \[可验证标准 1]  
+> 2) \[可验证标准 2]  
+> 3) \[可验证标准 3]  
+> 约束：只改 \[文件/目录]；不改 \[明确不改的内容]；先给“文件清单 + 改动点 + 风险”，我确认后再写代码。  
+
+## 什么时候要升级到 Agent？
+
+如果你的任务经常是“改完代码还要补测试、跑命令、修报错、再提 PR”，建议在 Copilot 之上加一个 Agent 工具（如 Cursor / VS Code Agent / CLI Agent），把多步闭环做得更稳。

@@ -1,0 +1,126 @@
+---
+slug: prompt-code-refactor
+title: 代码重构提示词模板
+description: 让 AI 帮助重构代码的通用提示词模板，支持不同重构目标（可读性、性能、可维护性）。
+type: prompt-recipe
+applicableTools:
+  - Claude Code
+  - Cursor
+  - GitHub Copilot
+  - ChatGPT
+scenarios:
+  - 代码重构
+  - 代码优化
+placeholders:
+  - CODE_SNIPPET
+  - REFACTOR_GOAL
+dependencies: []
+template: |
+  请重构以下代码：
+
+  ```
+  {{CODE_SNIPPET}}
+  ```
+
+  重构目标：{{REFACTOR_GOAL}}
+
+  要求：
+  1. 保持功能不变（行为等价）
+  2. 解释每处修改的原因
+  3. 如有多种方案，说明各自优缺点
+  4. 标注可能影响的测试用例
+example: |
+  请重构以下代码：
+
+  ```javascript
+  function processData(data) {
+    let result = [];
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].status === 'active') {
+        if (data[i].value > 100) {
+          result.push({
+            id: data[i].id,
+            name: data[i].name,
+            value: data[i].value * 1.1
+          });
+        }
+      }
+    }
+    return result;
+  }
+  ```
+
+  重构目标：提高可读性，使用现代 JavaScript 语法
+
+  要求：
+  1. 保持功能不变（行为等价）
+  2. 解释每处修改的原因
+  3. 如有多种方案，说明各自优缺点
+  4. 标注可能影响的测试用例
+notes:
+  - 重构前确保有测试覆盖
+  - 大规模重构建议分步进行
+  - 保留原代码作为对比参考
+featured: true
+variables:
+  - name: CODE_SNIPPET
+    description: 需要重构的代码片段
+    example: "见示例"
+  - name: REFACTOR_GOAL
+    description: 重构目标
+    example: 提高可读性
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - 代码重构
+  - 代码优化
+  - 可读性
+  - 性能优化
+---
+
+## 常见重构目标
+
+### 可读性重构
+```
+重构目标：提高可读性
+- 使用有意义的变量名
+- 减少嵌套层级
+- 提取复杂条件为命名函数
+- 添加必要的注释
+```
+
+### 性能重构
+```
+重构目标：优化性能
+- 减少不必要的循环
+- 优化数据结构选择
+- 减少内存分配
+- 使用缓存/记忆化
+```
+
+### 可维护性重构
+```
+重构目标：提高可维护性
+- 遵循单一职责原则
+- 减少代码重复（DRY）
+- 降低模块耦合度
+- 提高内聚性
+```
+
+### 现代化重构
+```
+重构目标：使用现代语法
+- 使用 ES6+ 特性（箭头函数、解构、展开运算符）
+- 使用 async/await 替代回调
+- 使用 TypeScript 类型
+- 使用现代 API
+```
+
+## 重构检查清单
+
+- [ ] 重构前有测试覆盖
+- [ ] 重构后所有测试通过
+- [ ] 功能行为完全等价
+- [ ] 代码审查通过
+- [ ] 性能没有明显下降

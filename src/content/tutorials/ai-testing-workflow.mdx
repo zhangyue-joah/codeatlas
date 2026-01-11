@@ -1,0 +1,233 @@
+---
+slug: ai-testing-workflow
+title: 用 AI 工具补测试：快速提升代码测试覆盖率的 SOP
+description: 一套可复制的 AI 辅助测试编写流程，从分析代码到生成高质量测试用例。
+type: how-to
+difficulty: intermediate
+goal: 掌握用 AI 工具高效编写单元测试和集成测试的完整工作流。
+requiredTools:
+  - Cursor 或 GitHub Copilot 或其他 AI 编程工具
+  - 测试框架（Jest/Vitest/Pytest 等）
+requiredCapabilities:
+  - repo-context
+  - agent-execution
+estimatedTime: 15-30 分钟
+stepsOverview:
+  - 分析待测试代码
+  - 确定测试策略
+  - 让 AI 生成测试用例
+  - 审查和完善测试
+  - 运行测试并补充边界情况
+steps:
+  - step: 1
+    title: 分析待测试代码
+    description: 理解代码的功能、输入输出和边界情况。
+    tips:
+      - 先阅读代码，理解其功能
+      - 识别关键路径和边界条件
+      - 注意依赖关系和副作用
+  - step: 2
+    title: 确定测试策略
+    description: 决定测试类型和覆盖范围。
+    tips:
+      - 纯函数优先写单元测试
+      - 有副作用的代码考虑 Mock
+      - 关键流程补充集成测试
+  - step: 3
+    title: 让 AI 生成测试用例
+    description: 提供代码和上下文，让 AI 生成测试。
+    tips:
+      - 指定测试框架和风格
+      - 要求覆盖正常情况和边界情况
+      - 要求生成有意义的测试描述
+  - step: 4
+    title: 审查测试用例
+    description: 检查 AI 生成的测试是否正确和完整。
+    tips:
+      - 检查断言是否正确
+      - 确认边界情况是否覆盖
+      - 检查 Mock 是否合理
+    warnings:
+      - AI 可能生成看起来正确但实际无效的测试
+  - step: 5
+    title: 运行测试
+    description: 运行测试，确保全部通过。
+    code: |
+      npm run test
+    tips:
+      - 检查测试是否真的在测试目标代码
+      - 故意破坏代码，确认测试会失败
+  - step: 6
+    title: 补充边界情况
+    description: 根据运行结果，补充遗漏的测试用例。
+    tips:
+      - 检查覆盖率报告
+      - 补充未覆盖的分支
+      - 添加错误处理测试
+keyTips:
+  - AI 生成的测试需要人工审查，可能存在逻辑错误
+  - 好的测试应该在代码出错时失败
+  - 测试描述要清晰，说明测试的是什么场景
+safety:
+  checklist:
+    - 测试不应依赖外部服务或真实数据
+    - 测试应该可以独立运行
+    - 避免测试中的硬编码敏感信息
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 测试通过但没有真正测试目标代码
+    solution: 故意破坏代码，确认测试会失败；检查断言是否正确
+  - problem: Mock 过度导致测试无意义
+    solution: 只 Mock 外部依赖；保留核心逻辑的真实执行
+  - problem: 测试不稳定（时而通过时而失败）
+    solution: 避免依赖时间、随机数等不确定因素；使用固定的测试数据
+acceptanceCriteria:
+  - 测试覆盖主要功能路径
+  - 测试覆盖关键边界情况
+  - 所有测试通过且稳定
+relatedTools:
+  - cursor
+  - github-copilot
+  - cline
+relatedTemplates:
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: true
+author: CodeAtlas
+keywords:
+  - 单元测试
+  - 测试覆盖率
+  - AI 辅助
+  - SOP
+---
+
+## 为什么用 AI 补测试
+
+AI 工具在测试编写中的价值：
+
+- **快速生成**：几秒钟生成基础测试框架
+- **覆盖全面**：提醒你可能忽略的边界情况
+- **减少重复**：自动生成相似的测试用例
+- **学习参考**：展示测试的最佳实践
+
+## 提示词模板
+
+### 生成单元测试
+
+```
+请为以下函数生成单元测试：
+
+[粘贴代码]
+
+要求：
+1. 使用 [Jest/Vitest/Pytest] 框架
+2. 覆盖正常情况和边界情况
+3. 包含错误处理测试
+4. 测试描述要清晰说明测试场景
+5. 遵循 AAA 模式（Arrange-Act-Assert）
+```
+
+### 生成集成测试
+
+```
+请为以下 API 端点生成集成测试：
+
+[粘贴代码或 API 描述]
+
+要求：
+1. 测试成功响应
+2. 测试错误响应（400、401、404、500）
+3. 测试边界情况
+4. Mock 外部依赖
+```
+
+### 补充边界情况
+
+```
+以下是现有的测试用例：
+
+[粘贴现有测试]
+
+请分析还有哪些边界情况没有覆盖，并生成补充测试。
+```
+
+## 测试类型指南
+
+### 纯函数测试
+
+```typescript
+// 被测函数
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+// AI 生成的测试
+describe('add', () => {
+  it('should add two positive numbers', () => {
+    expect(add(1, 2)).toBe(3);
+  });
+
+  it('should handle negative numbers', () => {
+    expect(add(-1, 1)).toBe(0);
+  });
+
+  it('should handle zero', () => {
+    expect(add(0, 0)).toBe(0);
+  });
+});
+```
+
+### 异步函数测试
+
+```typescript
+// 被测函数
+async function fetchUser(id: string): Promise<User> {
+  const response = await api.get(`/users/${id}`);
+  return response.data;
+}
+
+// AI 生成的测试
+describe('fetchUser', () => {
+  it('should return user data', async () => {
+    const mockUser = { id: '1', name: 'Test' };
+    vi.spyOn(api, 'get').mockResolvedValue({ data: mockUser });
+
+    const result = await fetchUser('1');
+
+    expect(result).toEqual(mockUser);
+  });
+
+  it('should throw on API error', async () => {
+    vi.spyOn(api, 'get').mockRejectedValue(new Error('Not found'));
+
+    await expect(fetchUser('invalid')).rejects.toThrow('Not found');
+  });
+});
+```
+
+## 测试质量检查清单
+
+- [ ] 测试描述清晰说明测试场景
+- [ ] 断言检查了正确的值
+- [ ] 覆盖了正常路径
+- [ ] 覆盖了边界情况
+- [ ] 覆盖了错误处理
+- [ ] Mock 只用于外部依赖
+- [ ] 测试可以独立运行
+- [ ] 故意破坏代码时测试会失败
+
+## 常见边界情况
+
+| 数据类型 | 边界情况 |
+|----------|----------|
+| 字符串 | 空字符串、超长字符串、特殊字符、Unicode |
+| 数字 | 0、负数、小数、最大值、最小值、NaN |
+| 数组 | 空数组、单元素、大数组、嵌套数组 |
+| 对象 | 空对象、缺少字段、额外字段、null |
+| 日期 | 无效日期、时区、闰年、边界日期 |
+
+## 下一步
+
+- 学习 [用 AI 工具改 Bug](/tutorials/ai-bug-fixing-workflow) 的完整流程
+- 了解 [AI 生成代码验收清单](/tutorials/ai-code-acceptance-checklist) 确保代码质量

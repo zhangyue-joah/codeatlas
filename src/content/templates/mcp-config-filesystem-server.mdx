@@ -1,0 +1,47 @@
+---
+slug: mcp-config-filesystem-server
+title: MCP Filesystem 配置
+description: 让 MCP 客户端只访问你指定的目录：推荐“单仓库/单项目”最小授权，避免全盘暴露。
+type: mcp-config
+applicableTools:
+  - MCP
+  - Claude Desktop
+  - Cursor
+  - Continue
+  - Cline
+scenarios:
+  - 文件访问
+  - 最小权限
+placeholders:
+  - /ABSOLUTE/PATH/TO/PROJECT
+dependencies:
+  - 支持 MCP 的客户端
+  - Node.js（npx）
+example: |
+  # 把路径替换成你的项目绝对路径
+  /ABSOLUTE/PATH/TO/PROJECT="/Users/you/work/my-repo"
+template: |
+  {
+    "mcpServers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/ABSOLUTE/PATH/TO/PROJECT"]
+      }
+    }
+  }
+notes:
+  - 只授权到“一个项目目录”，不要把整个 home 目录或磁盘根目录暴露给 MCP。
+  - 团队环境建议结合沙箱/容器与审计日志，确保外部访问可追溯。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - MCP
+  - Filesystem
+  - 最小权限
+---
+
+## 参考链接
+
+- `@modelcontextprotocol/server-filesystem`（npm）：`https://www.npmjs.com/package/@modelcontextprotocol/server-filesystem`
+- MCP 官方站：`https://modelcontextprotocol.io/`

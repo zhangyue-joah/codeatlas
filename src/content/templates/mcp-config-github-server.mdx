@@ -1,0 +1,61 @@
+---
+slug: mcp-config-github-server
+title: MCP GitHub 配置
+description: 把“读 repo/issue/PR”能力接入支持 MCP 的客户端：给出最小 token 权限与配置样例。
+type: mcp-config
+applicableTools:
+  - MCP
+  - Claude Desktop
+  - Cursor
+  - Continue
+  - Cline
+scenarios:
+  - GitHub 接入
+  - 最小权限
+placeholders:
+  - GITHUB_TOKEN
+dependencies:
+  - GitHub PAT（最小权限）
+  - 支持 MCP 的客户端
+  - Node.js（npx）
+example: |
+  # 1) 准备 token（示例）
+  export GITHUB_TOKEN="YOUR_GITHUB_TOKEN"
+
+  # 2) 把 mcpServers.github 配置粘贴到你的 MCP 客户端配置中
+template: |
+  {
+    "mcpServers": {
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN"
+        }
+      }
+    }
+  }
+notes:
+  - Token 权限建议从“只读”开始，确认流程与审计再逐步放开。
+  - 不要把 token 写进仓库；用系统 keychain/环境变量/密钥管理服务。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - MCP
+  - GitHub
+  - Server
+  - token
+---
+
+## 推荐的最小权限（参考）
+
+- 只做 repo chat / PR 阅读：优先只读（read-only）
+- 需要创建 issue/评论/写回建议：再逐步增加权限并配合审计
+
+具体 scope 以 GitHub 官方与团队安全要求为准。
+
+## 参考链接
+
+- `@modelcontextprotocol/server-github`（npm）：`https://www.npmjs.com/package/@modelcontextprotocol/server-github`
+- GitHub Token 文档：`https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token`

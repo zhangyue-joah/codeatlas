@@ -1,0 +1,97 @@
+---
+slug: codebuddy-getting-started
+title: CodeBuddy 入门：在 IDE 里跑通一次“补全 + Repo 问答”（先建议模式）
+description: 20 分钟完成插件安装/登录，在一个真实仓库里跑通：代码补全 → 选中代码提问 → 给出可执行改动建议 → 你手动落地并最小验证。
+type: getting-started
+difficulty: beginner
+goal: 安装并配置 CodeBuddy，并在一个仓库里完成一次“补全 + 问答 + 最小改动落地”。
+requiredTools:
+  - CodeBuddy
+  - VS Code 或 JetBrains IDE
+  - 一个可本地验证的项目（lint/test/build 任一）
+requiredCapabilities:
+  - repo-context
+  - read-only
+estimatedTime: 15-30 分钟
+stepsOverview:
+  - 安装 IDE 插件并完成登录/授权
+  - 打开仓库并等待索引完成
+  - 跑通一次代码补全（Tab 接受/撤销）
+  - 选中一段代码做 Repo 问答（解释/定位/调用链）
+  - 让 AI 给“最小改动建议”，你手动落地并跑最小验证
+steps:
+  - step: 1
+    title: 安装插件并登录
+    description: 在 IDE 插件市场搜索并安装 CodeBuddy，按提示完成登录/授权。
+    tips:
+      - 官网：https://codebuddy.ai/
+      - 团队场景先确认数据策略与权限边界
+  - step: 2
+    title: 打开仓库并完成索引
+    description: 打开一个真实项目，等待索引/扫描完成后再开始问答。
+    tips:
+      - 首次索引大仓库可能需要几分钟
+      - 排除 `node_modules`、`dist` 等大目录可显著提速
+  - step: 3
+    title: 跑通一次“代码补全”
+    description: 在一个函数里输入几行，让 AI 给出补全建议并体验接受/撤销。
+    code: |
+      // 示例：输入函数签名，观察补全建议
+      function isValidEmail(email: string) {
+        // ...
+      }
+  - step: 4
+    title: 跑通一次“Repo 问答”
+    description: 选中一段代码，提问它在做什么、入口在哪里、会被谁调用。
+    tips:
+      - “请解释这段逻辑，并指出关键分支与边界条件”
+      - “这个函数的上游入口在哪些文件？给我文件清单”
+  - step: 5
+    title: 做一次最小改动（你手动落地）
+    description: 让 AI 给出“改哪些文件/怎么改/风险点/验证命令”，你确认后手动修改并跑最小验证。
+    warnings:
+      - 不要直接照抄大段代码；先要“文件清单 + 变更摘要”
+keyTips:
+  - 先让它输出“文件清单/调用链/风险点”，再让它给实现建议
+  - 对不确定的建议，优先要求“最小 diff”而不是整段重写
+  - 永远以项目的最小验证（lint/test/build）作为准入
+safety:
+  checklist:
+    - 敏感代码与密钥不要直接发给工具
+    - AI 产出必须走代码审查与最小验证
+    - 任务范围不清时先问清楚再改
+  updatedAt: "2026-01-11"
+commonFailures:
+  - problem: 索引慢或问答不贴近代码
+    solution: 等索引完成；缩小提问范围并显式引用文件/函数名
+  - problem: 建议过于宽泛
+    solution: 要求输出“文件清单 + 变更摘要 + 验证命令”，不满足就继续追问
+  - problem: 补全不触发
+    solution: 检查插件是否启用、网络是否可用；尝试重启 IDE
+acceptanceCriteria:
+  - CodeBuddy 安装成功并可在仓库里使用
+  - 至少完成一次代码补全与一次 Repo 问答
+  - 你能把 AI 建议落地为一次最小改动，并完成最小验证
+relatedTools:
+  - codebuddy
+relatedTemplates:
+  - prompt-code-explain
+  - prompt-code-refactor
+  - pr-review-checklist
+updatedAt: "2026-01-11"
+version: "2026-01"
+featured: false
+author: CodeAtlas
+keywords:
+  - CodeBuddy
+  - 腾讯云
+  - 代码补全
+  - Repo Chat
+  - 入门
+---
+
+## 下一步
+
+- 需要更强“闭环执行”：看 [Cursor 上手实操](/tutorials/cursor-getting-started)
+- 想把问答变得更稳：用 [代码解释提示词](/templates/prompt-code-explain)
+

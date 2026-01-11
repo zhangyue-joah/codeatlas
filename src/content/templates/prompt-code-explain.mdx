@@ -1,0 +1,103 @@
+---
+slug: prompt-code-explain
+title: 代码解释提示词模板
+description: 让 AI 解释代码逻辑、架构设计、算法原理的通用提示词模板，支持不同深度和受众。
+type: prompt-recipe
+applicableTools:
+  - Claude Code
+  - Cursor
+  - GitHub Copilot
+  - ChatGPT
+scenarios:
+  - 代码理解
+  - 代码审查
+placeholders:
+  - CODE_SNIPPET
+  - AUDIENCE_LEVEL
+dependencies: []
+template: |
+  请解释以下代码：
+
+  ```
+  {{CODE_SNIPPET}}
+  ```
+
+  要求：
+  1. 概述：用一句话说明这段代码的核心功能
+  2. 逐行/逐块解释：解释关键逻辑和设计决策
+  3. 数据流：描述输入如何转换为输出
+  4. 潜在问题：指出可能的 bug、性能问题或改进点
+
+  受众级别：{{AUDIENCE_LEVEL}}（初学者/中级/高级）
+example: |
+  请解释以下代码：
+
+  ```python
+  def quicksort(arr):
+      if len(arr) <= 1:
+          return arr
+      pivot = arr[len(arr) // 2]
+      left = [x for x in arr if x < pivot]
+      middle = [x for x in arr if x == pivot]
+      right = [x for x in arr if x > pivot]
+      return quicksort(left) + middle + quicksort(right)
+  ```
+
+  要求：
+  1. 概述：用一句话说明这段代码的核心功能
+  2. 逐行/逐块解释：解释关键逻辑和设计决策
+  3. 数据流：描述输入如何转换为输出
+  4. 潜在问题：指出可能的 bug、性能问题或改进点
+
+  受众级别：初学者
+notes:
+  - 根据受众级别调整解释深度
+  - 对于复杂代码，可以要求分模块解释
+  - 可以追问具体细节或要求更简洁的解释
+featured: true
+variables:
+  - name: CODE_SNIPPET
+    description: 需要解释的代码片段
+    example: "function add(a, b) { return a + b; }"
+  - name: AUDIENCE_LEVEL
+    description: 受众技术水平
+    example: 初学者
+relatedTutorials: []
+updatedAt: "2025-01-11"
+version: "2025-01"
+keywords:
+  - 代码解释
+  - 代码理解
+  - 学习
+  - 提示词
+---
+
+## 变体模板
+
+### 架构解释版
+```
+请从架构角度解释这段代码：
+1. 设计模式：使用了哪些设计模式？
+2. 职责划分：各模块/类的职责是什么？
+3. 依赖关系：模块间如何交互？
+4. 扩展性：如何扩展或修改功能？
+```
+
+### 算法解释版
+```
+请解释这个算法：
+1. 算法名称和类型
+2. 时间复杂度和空间复杂度
+3. 核心思想和步骤
+4. 边界情况处理
+5. 与其他算法的对比
+```
+
+### 安全审查版
+```
+请从安全角度审查这段代码：
+1. 输入验证：是否有未验证的用户输入？
+2. 注入风险：SQL/命令/XSS 注入风险？
+3. 认证授权：权限检查是否完整？
+4. 敏感数据：是否有数据泄露风险？
+```

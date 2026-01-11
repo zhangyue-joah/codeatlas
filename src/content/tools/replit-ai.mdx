@@ -1,0 +1,82 @@
+---
+slug: replit-ai
+title: "Replit AI"
+description: "浏览器内的 AI 编程与部署体验，适合快速原型与在线协作。"
+logo: /logos/placeholder.svg
+website: "https://replit.com/ai"
+productType:
+  - web-app
+category:
+  - agent-coding
+targetUsers:
+  - "前端"
+  - "后端"
+  - "全栈"
+notFor:
+  - "强合规/离线环境且无法接入的团队（需先评估）"
+capabilities:
+  - repo-context
+  - agent-execution
+  - read-write
+  - execute
+useCases:
+  - "在线原型：在浏览器里生成/运行/迭代一个可工作的 Demo"
+  - "协作开发：把环境、运行与分享收敛到一个在线工作区"
+  - "从运行结果反推需求：用可运行版本驱动下一步拆解"
+pros:
+  - "从写代码到运行/部署的路径更短，适合快速验证"
+  - "在线环境降低搭环境成本，便于协作与分享"
+  - "适合把“先跑起来”作为第一优先级"
+cons:
+  - "生成代码需要二次治理：结构、测试、安全与依赖需要补齐"
+  - "对数据与密钥要求高：在线环境要严格控制敏感信息"
+  - "复杂系统仍需要工程拆解与验收"
+onboardingTime: "10-30 分钟"
+dependencies:
+  - "网络可用（按工具策略）"
+  - "Git 基础操作（如涉及仓库改动）"
+pricing:
+  model: freemium
+  free: true
+  hasEducation: false
+  hasTeam: true
+  hasEnterprise: false
+  supportsInvoice: true
+  supportsContract: false
+purchase:
+  officialUrl: "https://replit.com/pricing"
+  sources:
+    -
+      label: "Replit Pricing"
+      url: "https://replit.com/pricing"
+  updatedAt: "2025-12-28"
+privacy:
+  dataRetention: "以官方政策为准"
+  localProcessing: false
+  enterpriseCompliance: []
+  policyUrl: "https://replit.com/site/privacy"
+  updatedAt: "2025-12-28"
+relatedTools: []
+relatedTutorials:
+  - replit-agent-getting-started
+  - ai-coding-product-map
+relatedCompares: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - Replit
+  - Ghostwriter
+  - "AI 编程"
+  - "在线 IDE"
+---
+
+
+
+## 适合用 Replit AI 的一个判断
+
+如果你要的是“快速得到一个能跑的原型”，并且愿意后续再把代码迁出做工程化治理，Replit AI 这类在线 IDE + Agent 形态更合适。
+
+## 使用建议（安全第一）
+
+- 不要在原型环境里放生产密钥/真实数据；用假的 Key、mock 数据与最小权限
+- 尽早迁出到本地仓库：补 lint/test/CI，并把关键逻辑抽离样板
