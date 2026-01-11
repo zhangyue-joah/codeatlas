@@ -39,7 +39,7 @@ export function BuyDetailView({ slug, tool }: IBuyDetailViewProps) {
         <div className="space-y-8">
           {/* 头部：标题 + 描述 */}
           <div className="flex items-start gap-4">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/50 bg-muted/60">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border-subtle bg-muted/60">
               <Image
                 src={tool.logo || '/logos/default.svg'}
                 alt=""
@@ -72,7 +72,7 @@ export function BuyDetailView({ slug, tool }: IBuyDetailViewProps) {
           <HowToChooseCard id="how-to-choose" tool={tool} language={language} />
 
           {/* 底部链接 */}
-          <div className="flex flex-wrap items-center gap-4 border-t border-border/50 pt-6">
+          <div className="flex flex-wrap items-center gap-4 border-t border-border-subtle pt-6">
             <Link
               href={`/tools/${slug}`}
               className="text-sm font-medium text-primary hover:underline"
@@ -114,7 +114,7 @@ function PricingOverviewCard({ id, tool, language }: { id?: string; tool: IToolF
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {/* 计费模式 */}
-        <div className="rounded-xl border border-border/70 bg-card p-4">
+        <div className="rounded-xl border border-border bg-card p-4">
           <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
             {isZh ? '计费模式' : 'Pricing Model'}
           </div>
@@ -122,7 +122,7 @@ function PricingOverviewCard({ id, tool, language }: { id?: string; tool: IToolF
         </div>
 
         {/* 起步价 */}
-        <div className="rounded-xl border border-border/70 bg-card p-4">
+        <div className="rounded-xl border border-border bg-card p-4">
           <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
             {isZh ? '起步价' : 'Starting Price'}
           </div>
@@ -132,7 +132,7 @@ function PricingOverviewCard({ id, tool, language }: { id?: string; tool: IToolF
         </div>
 
         {/* 免费层 */}
-        <div className="rounded-xl border border-border/70 bg-card p-4">
+        <div className="rounded-xl border border-border bg-card p-4">
           <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
             {isZh ? '免费层' : 'Free Tier'}
           </div>
@@ -236,7 +236,7 @@ function PurchaseOptionsCard({ id, tool, language }: { id?: string; tool: IToolF
               )}
             </div>
             <p className="mt-2 text-sm text-muted-foreground">{channel.description}</p>
-            <p className="mt-2 text-xs text-muted-foreground/80">{channel.recommendation}</p>
+            <p className="mt-2 text-xs text-muted-foreground">{channel.recommendation}</p>
             <a
               href={channel.href}
               target="_blank"

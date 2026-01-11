@@ -38,7 +38,7 @@ export function CompareDetailView({ compare, content }: ICompareDetailViewProps)
           <DimensionSection compare={compare} language={language} />
           <ScenarioSection compare={compare} language={language} />
           <CostSection compare={compare} language={language} />
-          <div id="details" className="mt-10 scroll-mt-24 rounded-2xl border border-border/70 bg-card shadow-card">
+          <div id="details" className="mt-10 scroll-mt-24 rounded-2xl border border-border bg-card shadow-card">
             <MdxRenderer source={content} />
           </div>
           <div className="mt-8">

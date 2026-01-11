@@ -9,7 +9,7 @@ export function TrustStatement() {
     <section className="bg-background py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <div className="rounded-3xl bg-muted/15 p-8 ring-1 ring-border/40 sm:p-10">
+          <div className="rounded-3xl bg-muted/15 p-8 ring-1 ring-border-subtle sm:p-10">
             <h2 className="text-center font-display text-xl font-medium tracking-tight text-foreground sm:text-2xl">
               {tServer('home.trust.title')}
             </h2>
@@ -48,8 +48,8 @@ function TrustItem({
   description: string;
 }) {
   return (
-    <div className="flex flex-col items-center rounded-2xl bg-background/80 p-6 text-center ring-1 ring-border/40">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-muted/50 text-foreground/70 ring-1 ring-border/40">
+    <div className="flex flex-col items-center rounded-2xl bg-background/80 p-6 text-center ring-1 ring-border-subtle">
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-muted/50 text-foreground/70 ring-1 ring-border-subtle">
         {icon}
       </span>
       <h3 className="mt-4 text-sm font-medium text-foreground">{title}</h3>

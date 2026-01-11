@@ -144,13 +144,13 @@ export function CustomCompareTable({ language, tools }: ICustomCompareTableProps
   ];
 
   return (
-    <div className="overflow-x-auto rounded-2xl bg-background ring-1 ring-border/35">
+    <div className="overflow-x-auto rounded-2xl bg-background ring-1 ring-border-subtle">
       <table className="min-w-[860px] w-full border-separate border-spacing-0">
         <thead>
           <tr>
             <th
               scope="col"
-              className="sticky left-0 z-10 w-[180px] border-b border-border/50 bg-background px-4 py-4 text-left text-xs font-semibold text-muted-foreground"
+              className="sticky left-0 z-10 w-[180px] border-b border-border-subtle bg-background px-4 py-4 text-left text-xs font-semibold text-muted-foreground"
             >
               {isZh ? '维度' : 'Dimension'}
             </th>
@@ -158,7 +158,7 @@ export function CustomCompareTable({ language, tools }: ICustomCompareTableProps
               <th
                 key={tool.slug}
                 scope="col"
-                className="border-b border-border/50 bg-background px-4 py-4 text-left"
+                className="border-b border-border-subtle bg-background px-4 py-4 text-left"
               >
                 <div className="min-w-[220px]">
                   <div className="flex items-start justify-between gap-3">
@@ -183,12 +183,12 @@ export function CustomCompareTable({ language, tools }: ICustomCompareTableProps
             <tr key={row.label} className="align-top">
               <th
                 scope="row"
-                className="sticky left-0 z-10 border-b border-border/40 bg-background px-4 py-4 text-left text-xs font-semibold text-foreground/80"
+                className="sticky left-0 z-10 border-b border-border-subtle bg-background px-4 py-4 text-left text-xs font-semibold text-foreground/70"
               >
                 {row.label}
               </th>
               {tools.map((tool) => (
-                <td key={`${row.label}-${tool.slug}`} className="border-b border-border/40 px-4 py-4">
+                <td key={`${row.label}-${tool.slug}`} className="border-b border-border-subtle px-4 py-4">
                   {row.render(tool.frontmatter)}
                 </td>
               ))}

@@ -9,7 +9,7 @@ interface IEmptyStateProps {
 
 export function EmptyState({ title, description, actionLabel, actionHref }: IEmptyStateProps) {
   return (
-    <div className="rounded-2xl border border-border/70 bg-card p-8 text-center shadow-card">
+    <div className="rounded-2xl border border-border bg-card p-8 text-center shadow-card">
       <h2 className="text-base font-semibold text-foreground">{title}</h2>
       <p className="mt-2 text-sm text-muted-foreground">{description}</p>
       {actionLabel && actionHref && (

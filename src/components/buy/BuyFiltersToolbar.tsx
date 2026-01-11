@@ -68,7 +68,7 @@ export function BuyFiltersToolbar({
   };
 
   return (
-    <div className="rounded-2xl bg-muted/10 p-4 ring-1 ring-border/35">
+    <div className="rounded-2xl bg-muted/10 p-4 ring-1 ring-border-subtle">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap">
           <PillMultiSelect

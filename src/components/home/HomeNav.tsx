@@ -124,7 +124,7 @@ function HomeWhatCard({
     <Link
       href={href}
       className={cn(
-        'group relative block h-full rounded-3xl bg-background p-8 ring-1 ring-border/60 transition-all sm:p-10',
+        'group relative block h-full rounded-3xl bg-background p-8 ring-1 ring-border-subtle transition-all sm:p-10',
         'hover:bg-muted/30 hover:shadow-lg hover:ring-border hover:-translate-y-1',
         'active:bg-muted/40',
         'focus-visible:bg-muted/30 focus-visible:shadow-lg focus-visible:ring-border focus-visible:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
@@ -142,9 +142,9 @@ function HomeWhatCard({
         <p className="mt-3 text-balance text-sm leading-6 text-foreground/70 sm:text-base">
           {summary}
         </p>
-        <div className="mt-4 flex flex-wrap items-center gap-x-2 text-xs text-foreground/50 sm:text-sm">
+        <div className="mt-4 flex flex-wrap items-center gap-x-2 text-xs text-muted-foreground sm:text-sm">
           <span>{highlights[0]}</span>
-          <span className="text-foreground/30" aria-hidden="true">
+          <span className="opacity-50" aria-hidden="true">
             ·
           </span>
           <span>{highlights[1]}</span>
@@ -154,7 +154,7 @@ function HomeWhatCard({
       {/* 箭头指示器 - 始终可见但 hover 时增强 */}
       <span
         className={cn(
-          'absolute right-6 top-1/2 -translate-y-1/2 text-foreground/40 transition-all',
+          'absolute right-6 top-1/2 -translate-y-1/2 text-muted-foreground transition-all',
           'group-hover:translate-x-1 group-hover:text-foreground/70',
           'group-focus-visible:translate-x-1 group-focus-visible:text-foreground/70',
           'sm:right-8'

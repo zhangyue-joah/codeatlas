@@ -32,17 +32,17 @@ interface IBadgeProps {
 
 /** 变体样式映射 */
 const variantStyles: Record<TBadgeVariant, string> = {
-  default: 'border-border/60 bg-muted/60 text-foreground/70',
+  default: 'border-border-subtle bg-muted/60 text-foreground/70',
   primary: 'border-primary/25 bg-primary/10 text-primary font-semibold',
-  secondary: 'border-border/50 bg-muted/50 text-foreground/65',
+  secondary: 'border-border-subtle bg-muted/50 text-foreground/70',
   outline: 'border-border bg-transparent text-muted-foreground',
-  success: 'border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
-  warning: 'border-amber-500/25 bg-amber-500/10 text-amber-600 dark:text-amber-500',
+  success: 'border-success/25 bg-success/10 text-success dark:text-success',
+  warning: 'border-warning/25 bg-warning/10 text-warning dark:text-warning',
 };
 
 /** 尺寸样式映射 */
 const sizeStyles: Record<TBadgeSize, string> = {
-  sm: 'px-2 py-0.5 text-[11px]',
+  sm: 'px-2 py-0.5 text-2xs',
   md: 'px-2.5 py-0.5 text-xs',
 };
 

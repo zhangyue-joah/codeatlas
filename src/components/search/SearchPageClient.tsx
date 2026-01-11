@@ -40,7 +40,7 @@ export function SearchPageClient({ initialQuery, initialType }: ISearchPageClien
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-card">
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex-1">
             <label htmlFor="site-search-input" className="sr-only">
@@ -72,12 +72,12 @@ export function SearchPageClient({ initialQuery, initialType }: ISearchPageClien
 
       <div className="space-y-2">
         {!loading && visibleItems.length === 0 && (
-          <div className="rounded-2xl border border-border/70 bg-card p-8 text-center text-sm text-muted-foreground shadow-card">
+          <div className="rounded-2xl border border-border bg-card p-8 text-center text-sm text-muted-foreground shadow-card">
             {t('search.emptyHint')}
           </div>
         )}
         {visibleItems.map((item) => (
-          <div key={`${item.type}:${item.slug}`} className={cn('rounded-2xl border border-border/70 bg-card shadow-card')}>
+          <div key={`${item.type}:${item.slug}`} className={cn('rounded-2xl border border-border bg-card shadow-card')}>
             <SearchResultLink item={item} query={query} />
           </div>
         ))}

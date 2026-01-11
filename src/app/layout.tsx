@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { getRequestLanguage } from '@/i18n/server';
 import { LanguageProvider } from '@/components/layout/LanguageProvider';
+import { siteConfig } from '@/config/site';
 
 export function generateMetadata(): Metadata {
   const language = getRequestLanguage();
@@ -23,6 +24,7 @@ export function generateMetadata(): Metadata {
     : ['AI编程工具', 'Cursor', 'GitHub Copilot', 'Claude Code', '代码补全', 'AI编程对比'];
 
   return {
+    metadataBase: new URL(siteConfig.url),
     title: {
       default: titleDefault,
       template: '%s | CodeAtlas',
@@ -33,8 +35,8 @@ export function generateMetadata(): Metadata {
     openGraph: {
       type: 'website',
       locale: isEn ? 'en_US' : 'zh_CN',
-      url: 'https://codeatlas.dev',
-      siteName: 'CodeAtlas',
+      url: siteConfig.url,
+      siteName: siteConfig.name,
       title: titleDefault,
       description,
     },

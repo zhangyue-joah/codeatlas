@@ -1,0 +1,83 @@
+---
+slug: pr-review-rule-strict
+title: PR Review 规则（严格版）：依赖/迁移/安全/测试/可观测性
+description: 在"通用检查清单"之上补齐工程化门槛：依赖变更、数据迁移、权限与安全、回滚与观测，适合团队与生产环境。
+type: agent-instruction
+applicableTools:
+  - GitHub
+  - GitHub Copilot
+  - Cursor
+scenarios:
+  - PR Review
+  - 代码审查
+placeholders:
+  - 风险等级
+  - 验证命令
+dependencies:
+  - 可获取 diff/变更摘要
+example: |
+  请按下面的 checklist Review 这个 PR：
+  - PR: https://github.com/org/repo/pull/456
+  - 风险等级：中（涉及依赖升级）
+  - 验证：`npm test && npm run build`
+template: |
+  # PR Review Rules (Strict)
+  适用：生产代码、团队协作、涉及依赖/权限/数据的变更。
+
+  ## 0) 概览（必须一眼看懂）
+  - 变更目标（1–2 句）：
+  - 影响范围（模块/接口/用户面）：
+  - 风险等级（低/中/高）与理由：
+  - 验证方式（必须可执行）：
+
+  ## 1) 变更范围与可维护性
+  - [ ] 只改必要文件；无关重构/格式化已拆分或说明原因
+  - [ ] 关键路径有清晰注释/文档（仅在必要处）
+  - [ ] 复杂逻辑有对应的测试或可复现步骤
+
+  ## 2) 依赖与供应链
+  - [ ] 新增/升级依赖已说明理由与替代方案
+  - [ ] 依赖变更已检查许可/维护状态/安全公告（引用链接或说明来源）
+  - [ ] lockfile 变更可解释（避免无意的大范围升级）
+
+  ## 3) 安全与隐私
+  - [ ] 不包含密钥/Token/凭据/私有 URL（必要时使用 env 占位符）
+  - [ ] 权限最小化（尤其是 filesystem/exec/network 相关能力）
+  - [ ] 日志不泄露敏感信息（PII/密钥/业务数据）；必要时脱敏
+
+  ## 4) 数据与迁移（如适用）
+  - [ ] 有迁移脚本/步骤，且可回滚（或明确不可回滚与缓解方案）
+  - [ ] 对线上数据量/耗时/锁表风险有评估
+
+  ## 5) 运行与可观测性
+  - [ ] 有失败降级策略（feature flag / fallback / safe default）
+  - [ ] 关键行为有可观测信号（日志/指标/告警触发条件，至少其一）
+
+  ## 6) 验收标准（合并门槛）
+  - [ ] CI 必须通过（lint/test/build）
+  - [ ] 关键路径已手动验证或给出可复现步骤
+variables:
+  - name: "<RISK_LEVEL>"
+    description: 风险等级（低/中/高）
+    example: 中
+  - name: "<VERIFICATION_CMD>"
+    description: 最小可执行验证命令
+    example: npm run test
+notes:
+  - 严格版不是“更苛刻”，而是把高风险变更的隐藏成本前置到评审阶段。
+  - 任何涉及模型 key/代理/网关的改动，都必须可追溯、可撤销、可审计；灰色中转一律不建议。
+relatedTutorials: []
+updatedAt: "2025-12-28"
+version: "2025-12"
+keywords:
+  - PR Review
+  - Code Review
+  - 安全
+  - 依赖
+  - 迁移
+  - 可观测性
+---
+
+## 参考链接
+
+- GitHub：关于拉取请求（Pull requests）：`https://docs.github.com/en/pull-requests`

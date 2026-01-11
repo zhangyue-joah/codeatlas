@@ -62,7 +62,7 @@ export function PageHeader({
 
   if (variant === 'inline') {
     return (
-      <div className={center ? 'border-b border-border/50 pb-6 text-center' : 'border-b border-border/50 pb-6'}>
+      <div className={center ? 'border-b border-border-subtle pb-6 text-center' : 'border-b border-border-subtle pb-6'}>
         {useDescriptionHeadline ? <h1 className="sr-only">{title}</h1> : null}
         {useDescriptionHeadline ? (
           <p className={headingClassName}>{description}</p>
@@ -82,7 +82,7 @@ export function PageHeader({
   }
 
   return (
-    <div className="border-b border-border/50 bg-background">
+    <div className="border-b border-border-subtle bg-background">
       <div className={containerPadding}>
         {useDescriptionHeadline ? <h1 className="sr-only">{title}</h1> : null}
         {useDescriptionHeadline ? (

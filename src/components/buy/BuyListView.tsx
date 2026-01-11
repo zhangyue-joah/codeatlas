@@ -128,7 +128,7 @@ export function BuyListView({
   return (
     <div className="space-y-1.5">
       {/* 筛选区域 - 与产品列表页保持一致 */}
-      <div className="rounded-2xl bg-muted/30 p-4 ring-1 ring-border/50">
+      <div className="rounded-2xl bg-muted/30 p-4 ring-1 ring-border-subtle">
         <div className="flex flex-wrap items-center justify-between gap-3">
           {/* 左侧：筛选器组 */}
           <div className="flex flex-wrap items-center gap-2">
@@ -256,7 +256,7 @@ function BuyListItemCard({
   };
 
   const cardClassName = cn(
-    'relative block rounded-2xl border border-border/70 bg-card p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6'
+    'relative block rounded-2xl border border-border bg-card p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6'
   );
 
   return (
@@ -264,7 +264,7 @@ function BuyListItemCard({
       {/* 头部区域：图标 + 标题 + 计费标签 */}
       <div className="flex items-start gap-3.5">
         {/* 统一图标容器样式 */}
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/50 bg-muted/60">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border-subtle bg-muted/60">
           <Image
             src={tool.logo || '/logos/default.svg'}
             alt=""
@@ -290,7 +290,7 @@ function BuyListItemCard({
             </Badge>
           </div>
           {/* 描述 */}
-          <p className="mt-1.5 min-h-[2.75rem] text-sm leading-relaxed text-muted-foreground/90 line-clamp-2">
+          <p className="mt-1.5 min-h-[2.75rem] text-sm leading-relaxed text-muted-foreground line-clamp-2">
             {tool.description}
           </p>
         </div>
@@ -317,16 +317,16 @@ function BuyListItemCard({
       </div>
 
       {/* 元信息区域 */}
-      <div className="mt-3.5 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5 border-t border-border/50 pt-3.5 text-xs">
+      <div className="mt-3.5 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5 border-t border-border-subtle pt-3.5 text-xs">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-          <span className="text-foreground/60">
+          <span className="text-muted-foreground">
             {isZh ? '更新：' : 'Updated: '}
             {formatDate(tool.purchase?.updatedAt ?? tool.updatedAt, language)}
           </span>
           {tool.pricing.hasEnterprise && (
             <>
-              <span className="text-border/80" aria-hidden="true">|</span>
-              <span className="text-foreground/50">
+              <span className="text-border" aria-hidden="true">|</span>
+              <span className="text-muted-foreground">
                 {isZh ? '支持企业采购' : 'Enterprise available'}
               </span>
             </>

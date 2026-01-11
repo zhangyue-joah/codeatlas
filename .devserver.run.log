@@ -1,0 +1,126 @@
+
+> codeatlas@0.1.0 dev:clean
+> npm run clean:dev && next dev -H 127.0.0.1
+
+
+> codeatlas@0.1.0 clean:dev
+> node -e "require('fs').rmSync('.next-dev',{recursive:true,force:true})"
+
+  ▲ Next.js 14.2.35
+  - Local:        http://127.0.0.1:3000
+  - Network:      http://127.0.0.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 1747ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1378ms (640 modules)
+ GET / 200 in 1537ms
+ ✓ Compiled in 168ms (285 modules)
+ GET / 200 in 24ms
+ ✓ Compiled /tools/[slug] in 204ms (655 modules)
+ GET /tools/github-copilot 200 in 683ms
+ ✓ Compiled /tools in 251ms (719 modules)
+ ✓ Compiled /tutorials in 166ms (726 modules)
+ ✓ Compiled /templates in 149ms (737 modules)
+ ✓ Compiled /buy in 143ms (733 modules)
+ ✓ Compiled / in 74ms (434 modules)
+ ✓ Compiled in 185ms (758 modules)
+ ✓ Compiled in 131ms (758 modules)
+ ✓ Compiled in 85ms (719 modules)
+ ✓ Compiled /api/search-index in 142ms (438 modules)
+ GET /api/search-index 200 in 196ms
+ ✓ Compiled in 96ms (748 modules)
+ ✓ Compiled in 81ms (719 modules)
+ ✓ Compiled /tools/[slug] in 86ms (434 modules)
+ ✓ Compiled in 199ms (753 modules)
+ GET /tools 200 in 100ms
+ ✓ Compiled /tutorials in 85ms (434 modules)
+ GET /tools 200 in 50ms
+ GET /tools 200 in 23ms
+ ✓ Compiled in 95ms (324 modules)
+ ✓ Compiled in 81ms (324 modules)
+ ✓ Compiled /templates/[slug] in 163ms (747 modules)
+ GET /tools 200 in 42ms
+ GET /tools 200 in 24ms
+ GET /tools?page=2 200 in 23ms
+ GET /tools?page=2 200 in 21ms
+ GET /templates 200 in 47ms
+ GET /tools 200 in 23ms
+ GET /tools?page=2 200 in 21ms
+ GET /tools?page=3 200 in 18ms
+ GET /tools?page=4 200 in 19ms
+ GET /tools?page=5 200 in 18ms
+ GET /tools?page=6 200 in 14ms
+ GET /tools?page=7 200 in 17ms
+ ✓ Compiled /buy in 70ms (430 modules)
+ ✓ Compiled in 157ms (728 modules)
+ ✓ Compiled in 144ms (742 modules)
+ ✓ Compiled in 172ms (742 modules)
+ ✓ Compiled in 147ms (742 modules)
+ GET /tools 200 in 92ms
+ GET /tools?page=3 200 in 21ms
+ ✓ Compiled / in 71ms (428 modules)
+ ✓ Compiled in 167ms (741 modules)
+ ✓ Compiled in 128ms (324 modules)
+ ✓ Compiled in 92ms (324 modules)
+ ✓ Compiled /tools in 88ms (427 modules)
+ GET /tools 200 in 190ms
+ GET /tools 200 in 26ms
+ GET /tools 200 in 27ms
+ GET /tools 200 in 25ms
+ GET /tools 200 in 21ms
+ GET /tools 200 in 23ms
+ GET /tools?sort=github 200 in 26ms
+ ✓ Compiled in 172ms (741 modules)
+ ✓ Compiled in 130ms (741 modules)
+ ✓ Compiled /tools in 79ms (427 modules)
+ GET /templates 200 in 93ms
+ ✓ Compiled /tools/[slug] in 61ms (433 modules)
+ ✓ Compiled in 89ms (324 modules)
+ ✓ Compiled in 93ms (738 modules)
+ ✓ Compiled in 95ms (324 modules)
+ ✓ Compiled in 95ms (324 modules)
+ ✓ Compiled in 198ms (752 modules)
+ ✓ Compiled in 87ms (738 modules)
+ ✓ Compiled in 101ms (324 modules)
+ ✓ Compiled in 244ms (752 modules)
+ ✓ Compiled in 73ms (324 modules)
+ ✓ Compiled in 69ms (324 modules)
+ ✓ Compiled /buy in 105ms (433 modules)
+ ✓ Compiled in 214ms (757 modules)
+ ✓ Compiled /buy/[slug] in 226ms (759 modules)
+ ✓ Compiled in 187ms (741 modules)
+ ✓ Compiled /api/search-index in 93ms (459 modules)
+ GET /api/search-index 200 in 164ms
+ ✓ Compiled /search in 175ms (748 modules)
+ ✓ Compiled /api/search-index in 58ms (464 modules)
+ GET /api/search-index 200 in 110ms
+ GET /api/search-index 200 in 12ms
+ ✓ Compiled in 158ms (791 modules)
+ ✓ Compiled in 183ms (762 modules)
+ ✓ Compiled in 153ms (762 modules)
+ ✓ Compiled /api/search-index in 103ms (454 modules)
+ GET /api/search-index 200 in 166ms
+ ✓ Compiled /tutorials/[slug] in 180ms (773 modules)
+ ✓ Compiled in 157ms (787 modules)
+ ✓ Compiled in 171ms (758 modules)
+ GET /tutorials 200 in 106ms
+ ✓ Compiled /api/search-index in 111ms (454 modules)
+ GET /api/search-index 200 in 173ms
+ ✓ Compiled in 185ms (752 modules)
+ ✓ Compiled in 186ms (752 modules)
+ ✓ Compiled in 160ms (752 modules)
+ ✓ Compiled in 168ms (752 modules)
+ GET /tutorials 200 in 100ms
+ ✓ Compiled /api/search-index in 89ms (454 modules)
+ GET /api/search-index 200 in 158ms
+ ✓ Compiled in 190ms (752 modules)
+ ✓ Compiled in 147ms (752 modules)
+ GET /tutorials 200 in 86ms
+ ✓ Compiled /api/search-index in 59ms (454 modules)
+ GET /api/search-index 200 in 130ms
+ ✓ Compiled in 183ms (752 modules)
+ ✓ Compiled in 187ms (752 modules)
+ ✓ Compiled in 102ms (738 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[?25h

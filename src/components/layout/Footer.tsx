@@ -27,9 +27,9 @@ type TFooterNavItem = {
  */
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-background">
+    <footer className="border-t border-border-subtle bg-background">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-muted/10 p-8 ring-1 ring-border/35 sm:p-10">
+        <div className="rounded-3xl bg-muted/10 p-8 ring-1 ring-border-subtle sm:p-10">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
             <FooterBrand />
             <FooterNavSection titleKey="footer.sections.content" items={FOOTER_NAVIGATION.main} />
@@ -59,7 +59,7 @@ function FooterBrand() {
 function FooterNavSection({ titleKey, items }: { titleKey: string; items: TFooterNavItem[] }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold tracking-wide text-foreground/80">{tServer(titleKey)}</h3>
+      <h3 className="text-xs font-semibold tracking-wide text-foreground/70">{tServer(titleKey)}</h3>
       <ul className="mt-4 space-y-2">
         {items.map((item) => (
           <li key={item.href}>
@@ -112,7 +112,7 @@ function FooterFeedback() {
 
 function FooterCopyright() {
   return (
-    <div className="mt-10 border-t border-border/60 pt-8">
+    <div className="mt-10 border-t border-border-subtle pt-8">
       <p className="text-center text-sm text-muted-foreground">
         {tServer('footer.copyright', { year: new Date().getFullYear() })}
       </p>

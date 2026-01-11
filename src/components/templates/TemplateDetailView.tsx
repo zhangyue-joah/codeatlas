@@ -83,7 +83,7 @@ export function TemplateDetailView({ template, content }: ITemplateDetailViewPro
           <h2 className="mb-4 text-xl font-semibold text-foreground">
             {isZh ? '详细说明' : 'Details'}
           </h2>
-          <div className="rounded-2xl border border-border/70 bg-card shadow-card">
+          <div className="rounded-2xl border border-border bg-card shadow-card">
             <MdxRenderer source={content} />
           </div>
         </section>
@@ -113,11 +113,11 @@ function TemplateDetailHeader({
   const typeLabel = getTemplateTypeLabel(language, template.type);
 
   return (
-    <div className="flex flex-col gap-6 rounded-2xl border border-border/70 bg-card p-6 shadow-card sm:flex-row sm:items-start sm:justify-between">
+    <div className="flex flex-col gap-6 rounded-2xl border border-border bg-card p-6 shadow-card sm:flex-row sm:items-start sm:justify-between">
       {/* 左侧：图标 + 信息 */}
       <div className="flex gap-5">
         {/* 大图标 */}
-        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-muted/40">
+        <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-border-subtle bg-muted/40">
           <TemplateTypeIconLarge type={template.type} />
         </div>
 
@@ -237,7 +237,7 @@ function TemplateNotes({ template }: { template: ITemplateFrontmatter }) {
       <TemplateSection title={t(language, 'template.detail.notes.usage')} items={[template.description]} />
       <TemplateSection title={t(language, 'template.detail.notes.cautions')} items={template.notes} />
       {template.variables && template.variables.length > 0 && (
-        <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-card">
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
           <h3 className="font-semibold text-card-foreground">{t(language, 'template.detail.variables')}</h3>
           <ul className="mt-3 space-y-2 text-sm">
             {template.variables.map((v) => (
@@ -277,7 +277,7 @@ function TemplateRelatedTutorials({ slugs, tutorialTitleIndex }: { slugs: string
       <h2 className="mb-4 text-xl font-semibold text-foreground">
         {isZh ? '相关教程' : 'Related Tutorials'}
       </h2>
-      <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-card">
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
         <div className="flex flex-wrap gap-3">
           {slugs.map((slug) => (
             <Link

@@ -29,7 +29,7 @@ export function CompareResultModal({ language, tools, onClose }: ICompareResultM
         aria-label={isZh ? '关闭对比弹窗' : 'Close compare dialog'}
         onClick={onClose}
       />
-      <div className="absolute inset-x-0 top-10 mx-auto w-[min(1100px,calc(100vw-2rem))] rounded-3xl bg-background p-4 shadow-modal ring-1 ring-border/40 sm:top-16 sm:p-6">
+      <div className="absolute inset-x-0 top-10 mx-auto w-[min(1100px,calc(100vw-2rem))] rounded-3xl bg-background p-4 shadow-modal ring-1 ring-border-subtle sm:top-16 sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <div className="text-base font-semibold text-foreground">{isZh ? '对比结果' : 'Compare'}</div>

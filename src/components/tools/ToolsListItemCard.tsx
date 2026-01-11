@@ -54,7 +54,7 @@ function HeatIndicator({ score, language }: { score: number; language: TLanguage
     >
       <FireIcon className={cn(
         'h-3.5 w-3.5',
-        level >= 4 ? 'text-orange-500' : level >= 2 ? 'text-amber-400' : 'text-muted-foreground/60'
+        level >= 4 ? 'text-orange-500' : level >= 2 ? 'text-amber-400' : 'text-muted-foreground'
       )} />
       <span className={cn(
         'text-xs',
@@ -62,7 +62,7 @@ function HeatIndicator({ score, language }: { score: number; language: TLanguage
       )}>
         {labels[level]}
       </span>
-      <span className="text-xs tabular-nums text-muted-foreground/70">· {score}</span>
+      <span className="text-xs tabular-nums text-muted-foreground">· {score}</span>
     </div>
   );
 }
@@ -102,7 +102,7 @@ export function ToolsListItemCard({
   };
 
   const cardClassName = cn(
-    'relative block rounded-2xl border border-border/70 bg-card p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6',
+    'relative block rounded-2xl border border-border bg-card p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6',
     selected && 'ring-2 ring-primary'
   );
 
@@ -140,7 +140,7 @@ export function ToolsListItemCard({
           {/* 头部区域：图标 + 标题 + 类型标签 */}
           <div className="flex items-start gap-3.5">
             {/* 统一图标容器样式 - 使用一致的浅灰背景 */}
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/50 bg-muted/60">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border-subtle bg-muted/60">
               <Image
                 src={tool.logo || '/logos/default.svg'}
                 alt=""
@@ -168,7 +168,7 @@ export function ToolsListItemCard({
                 ) : null}
               </div>
               {/* 描述 */}
-              <p className="mt-1.5 min-h-[2.75rem] text-sm leading-relaxed text-muted-foreground/90 line-clamp-2">
+              <p className="mt-1.5 min-h-[2.75rem] text-sm leading-relaxed text-muted-foreground line-clamp-2">
                 {tool.description}
               </p>
             </div>
@@ -201,17 +201,17 @@ export function ToolsListItemCard({
           </div>
 
           {/* 元信息区域 - 提高对比度 */}
-          <div className="mt-3.5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 border-t border-border/50 pt-3.5 text-xs">
+          <div className="mt-3.5 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 border-t border-border-subtle pt-3.5 text-xs">
             <HeatIndicator score={heatScore} language={language} />
             {heatScore > 0 && <span className="text-border/80" aria-hidden="true">|</span>}
-            <span className="text-foreground/60">{processingLabel}</span>
-            <span className="text-border/80" aria-hidden="true">|</span>
-            <span className="text-foreground/60">
+            <span className="text-muted-foreground">{processingLabel}</span>
+            <span className="text-border" aria-hidden="true">|</span>
+            <span className="text-muted-foreground">
               {isZh ? '权限：' : 'Permissions: '}
               {permissionLabel}
             </span>
-            <span className="text-border/80" aria-hidden="true">|</span>
-            <span className="text-foreground/50">
+            <span className="text-border" aria-hidden="true">|</span>
+            <span className="text-muted-foreground">
               {isZh ? '更新：' : 'Updated: '}
               {formatDate(tool.updatedAt, language)}
             </span>

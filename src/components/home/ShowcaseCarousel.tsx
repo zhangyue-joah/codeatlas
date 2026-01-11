@@ -115,7 +115,7 @@ export function ShowcaseCarousel({
             onClick={() => scrollByCardGroup('prev')}
             aria-label={t('common.prev')}
             title={t('common.prev')}
-            className="absolute -left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/95 shadow-lg ring-1 ring-border/30 backdrop-blur-sm transition-all hover:scale-105 hover:bg-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex"
+            className="absolute -left-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/95 shadow-lg ring-1 ring-border-subtle backdrop-blur-sm transition-all hover:scale-105 hover:bg-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex"
           >
             <ArrowIcon direction="left" />
           </button>
@@ -125,7 +125,7 @@ export function ShowcaseCarousel({
             onClick={() => scrollByCardGroup('next')}
             aria-label={t('common.next')}
             title={t('common.next')}
-            className="absolute -right-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/95 shadow-lg ring-1 ring-border/30 backdrop-blur-sm transition-all hover:scale-105 hover:bg-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex"
+            className="absolute -right-2 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/95 shadow-lg ring-1 ring-border-subtle backdrop-blur-sm transition-all hover:scale-105 hover:bg-background focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:inline-flex"
           >
             <ArrowIcon direction="right" />
           </button>
@@ -166,7 +166,7 @@ function ShowcaseCard({ item, index = 0 }: { item: TShowcaseItem; index?: number
         'hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
         tone === 'dark'
           ? 'border-transparent bg-gradient-to-br from-zinc-900 to-zinc-700 text-zinc-50'
-          : `border-border/50 ${CARD_ACCENT.border}`
+          : `border-border-subtle ${CARD_ACCENT.border}`
       )}
     >
       {/* 渐变装饰背景 */}
@@ -204,7 +204,7 @@ function ShowcaseCard({ item, index = 0 }: { item: TShowcaseItem; index?: number
       {item.meta && (
         <div className={cn(
           'relative mt-4 flex items-center gap-2 border-t pt-4 text-xs',
-          tone === 'dark' ? 'border-white/10 text-zinc-300' : 'border-border/50 text-muted-foreground'
+          tone === 'dark' ? 'border-white/10 text-zinc-300' : 'border-border-subtle text-muted-foreground'
         )}>
           <ClockIcon className="h-3.5 w-3.5" />
           <span>{item.meta}</span>

@@ -247,7 +247,7 @@ function TemplatesListItemCard({
   };
 
   const cardClassName = cn(
-    'relative block rounded-2xl border border-border/70 bg-card p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6'
+    'relative block rounded-2xl border border-border bg-card p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6'
   );
 
   return (
@@ -255,7 +255,7 @@ function TemplatesListItemCard({
       {/* 头部区域：标题 + 类型标签 */}
       <div className="flex items-start gap-3.5">
         {/* 图标容器 - 使用模版类型图标 */}
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/50 bg-muted/60">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border-subtle bg-muted/60">
           <TemplateTypeIcon type={template.type} />
         </div>
         <div className="min-w-0 flex-1">
@@ -274,7 +274,7 @@ function TemplatesListItemCard({
             </Badge>
           </div>
           {/* 描述 */}
-          <p className="mt-1.5 min-h-[2.75rem] text-sm leading-relaxed text-muted-foreground/90 line-clamp-2">
+          <p className="mt-1.5 min-h-[2.75rem] text-sm leading-relaxed text-muted-foreground line-clamp-2">
             {template.description}
           </p>
         </div>
@@ -304,16 +304,16 @@ function TemplatesListItemCard({
       </div>
 
       {/* 元信息区域 */}
-      <div className="mt-3.5 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5 border-t border-border/50 pt-3.5 text-xs">
+      <div className="mt-3.5 flex flex-wrap items-center justify-between gap-x-2.5 gap-y-1.5 border-t border-border-subtle pt-3.5 text-xs">
         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
-          <span className="text-foreground/60">
+          <span className="text-muted-foreground">
             {isZh ? '更新：' : 'Updated: '}
             {formatDate(template.updatedAt, language)}
           </span>
           {template.scenarios && template.scenarios.length > 0 && (
             <>
-              <span className="text-border/80" aria-hidden="true">|</span>
-              <span className="text-foreground/50">
+              <span className="text-border" aria-hidden="true">|</span>
+              <span className="text-muted-foreground">
                 {template.scenarios.slice(0, 2).join(isZh ? '、' : ', ')}
               </span>
             </>

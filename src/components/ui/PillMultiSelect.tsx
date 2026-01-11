@@ -162,7 +162,7 @@ export function PillMultiSelect({
           aria-activedescendant={activeIndex >= 0 ? optionIds[activeIndex] : undefined}
           tabIndex={0}
           ref={listRef}
-          className="absolute left-0 top-[calc(100%+0.5rem)] z-40 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-border/70 bg-background shadow-modal focus:outline-none"
+          className="absolute left-0 top-[calc(100%+0.5rem)] z-40 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-border bg-background shadow-modal focus:outline-none"
           onKeyDown={(event) => {
             if (event.key === 'Escape') {
               event.preventDefault();
@@ -256,5 +256,5 @@ function CheckMiniIcon() {
 }
 
 function EmptyBox() {
-  return <span className="h-4 w-4 rounded border border-border/70" aria-hidden="true" />;
+  return <span className="h-4 w-4 rounded border border-border" aria-hidden="true" />;
 }

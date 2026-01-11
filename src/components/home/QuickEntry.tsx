@@ -24,7 +24,7 @@ export function QuickEntry() {
   return (
     <section className="bg-background py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-3xl bg-muted/15 p-6 ring-1 ring-border/40 sm:p-8">
+        <div className="mx-auto max-w-5xl rounded-3xl bg-muted/15 p-6 ring-1 ring-border-subtle sm:p-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-balance font-display text-xl font-medium tracking-tight text-foreground sm:text-2xl">
               {tServer('home.quickEntry.title')}
@@ -104,7 +104,7 @@ function ChipLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-muted-foreground ring-1 ring-border/40 transition-colors hover:bg-background hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      className="inline-flex items-center rounded-full bg-background/80 px-4 py-2 text-sm font-medium text-muted-foreground ring-1 ring-border-subtle transition-colors hover:bg-background hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
     >
       <span className="max-w-[14rem] truncate whitespace-nowrap">{label}</span>
     </Link>

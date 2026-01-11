@@ -14,7 +14,7 @@ export function Header() {
   const { language, toggleLanguage, t } = useT();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <header className="sticky top-0 z-50 w-full border-b border-border-subtle bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex flex-1 items-center gap-8">
           <HeaderBrand />

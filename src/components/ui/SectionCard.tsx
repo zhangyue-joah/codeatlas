@@ -18,7 +18,7 @@ export function SectionCard({ id, title, description, headerRight, children, cla
     <section
       id={id}
       className={cn(
-        'rounded-2xl border border-border/70 bg-card p-6 shadow-card sm:p-7',
+        'rounded-2xl border border-border bg-card p-6 shadow-card sm:p-7',
         id && 'scroll-mt-24',
         className
       )}

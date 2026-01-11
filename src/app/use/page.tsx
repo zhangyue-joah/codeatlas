@@ -156,7 +156,7 @@ export default function UsePage() {
 
 function FeatureCard({ title, description, href, linkLabel }: { title: string; description: string; href: string; linkLabel: string }) {
   return (
-    <div className="rounded-xl border border-border/70 bg-card p-4">
+    <div className="rounded-xl border border-border bg-card p-4">
       <h3 className="font-semibold text-card-foreground">{title}</h3>
       <p className="mt-1 text-sm text-muted-foreground">{description}</p>
       <Link href={href} className="mt-3 inline-block text-sm font-medium text-primary hover:underline">
@@ -168,7 +168,7 @@ function FeatureCard({ title, description, href, linkLabel }: { title: string; d
 
 function ScenarioItem({ number, title, steps, href, linkLabel }: { number: string; title: string; steps: string[]; href: string; linkLabel: string }) {
   return (
-    <div className="rounded-xl border border-border/70 bg-muted/30 p-4">
+    <div className="rounded-xl border border-border bg-muted/30 p-4">
       <div className="flex items-start gap-3">
         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
           {number}

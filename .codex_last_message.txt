@@ -1,0 +1,11 @@
+1) 新增/更新模板（slug）
+- 新增：`agent-instruction-repo-instructions-pack`、`mcp-config-starter-kit`、`prompt-recipe-products-and-providers`、`pr-review-rule-strict`
+- 更新：`pr-review-checklist`
+
+2) 覆盖的产品与提供方类别
+- AI 编程产品：IDE/编辑器、IDE 插件/Chat、CLI/终端 Agent、PR Review/工程流自动化、Web 端生成/原型
+- 提供方与接入路径：官方（第一方）API、合规第三方（授权聚合/路由/托管）、自建网关/中转（明确“不收录/不建议”账号共享/代充/绕价/不可追溯 key/灰色中转）
+
+3) 构建结果
+- 运行命令：`npm run build`
+- 结果摘要：`next build` 编译/类型检查/静态生成均通过（`Compiled successfully`）。

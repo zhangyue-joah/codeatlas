@@ -236,7 +236,7 @@ export function RulesConfigPageClient({ language, items, initialQuery, initialTa
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-border/70 bg-card p-6 shadow-card">
+      <section className="rounded-2xl border border-border bg-card p-6 shadow-card">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-2">
             <div className="text-base font-semibold text-card-foreground">{isZh ? '批量复制 / 导出' : 'Export & copy'}</div>
@@ -378,7 +378,7 @@ function ConfigItemCard({ language, template }: { language: TLanguage; template:
   const combinedText = `${normalizeText(template.template).trimEnd()}\n\n---\n\n${normalizeText(template.example).trimEnd()}\n`;
 
   return (
-    <section className="rounded-2xl border border-border/70 bg-card p-6 shadow-card">
+    <section className="rounded-2xl border border-border bg-card p-6 shadow-card">
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0">
@@ -406,7 +406,7 @@ function ConfigItemCard({ language, template }: { language: TLanguage; template:
           </div>
         </div>
 
-        <div className="rounded-xl border border-border/70 bg-muted/10 p-4">
+        <div className="rounded-xl border border-border bg-muted/10 p-4">
           <div className="text-sm font-semibold text-foreground">{isZh ? '使用前说明' : 'Before use'}</div>
           <div className="mt-2 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
             <div>

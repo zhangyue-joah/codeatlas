@@ -76,7 +76,7 @@ export function TemplatesListToolbar({
   }, [draftQuery, query, router, tools, type]);
 
   return (
-    <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-card">
+    <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="relative flex-1">

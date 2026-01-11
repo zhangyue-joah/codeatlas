@@ -11,6 +11,7 @@ export function generateMetadata(): Metadata {
   return {
     title: t(language, 'search.page.title'),
     description: t(language, 'search.page.desc'),
+    robots: { index: false, follow: true },
   };
 }
 

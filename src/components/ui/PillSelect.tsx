@@ -122,7 +122,7 @@ export function PillSelect({ label, value, options, disabled = false, onChange }
           aria-activedescendant={activeIndex >= 0 ? optionIds[activeIndex] : undefined}
           tabIndex={0}
           ref={listRef}
-          className="absolute left-0 top-[calc(100%+0.5rem)] z-40 w-[min(18rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-border/70 bg-background shadow-modal focus:outline-none"
+          className="absolute left-0 top-[calc(100%+0.5rem)] z-40 w-[min(18rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-border bg-background shadow-modal focus:outline-none"
           onKeyDown={(event) => {
             if (event.key === 'Escape') {
               event.preventDefault();

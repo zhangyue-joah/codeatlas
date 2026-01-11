@@ -65,7 +65,7 @@ export function TutorialDetailView({ tutorial, content }: ITutorialDetailViewPro
           <TutorialSopSummary tutorial={tutorial} language={language} />
           {tutorial.steps && tutorial.steps.length > 0 && <SopSteps steps={tutorial.steps} />}
           <TutorialSafetySection tutorial={tutorial} />
-          <div className="mt-10 rounded-2xl border border-border/70 bg-card shadow-card">
+          <div className="mt-10 rounded-2xl border border-border bg-card shadow-card">
             <MdxRenderer source={content} />
           </div>
           <TutorialFailures tutorial={tutorial} language={language} />
@@ -195,13 +195,13 @@ function TutorialPrevNext({ tutorial, language }: { tutorial: ITutorialFrontmatt
       {prev ? (
         <Link
           href={`/tutorials/${prev}`}
-          className="rounded-2xl border border-border/70 bg-card p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           <div className="text-xs text-muted-foreground">{t(language, 'tutorial.detail.prev')}</div>
           <div className="mt-1 text-sm font-semibold text-foreground">{prev}</div>
         </Link>
       ) : (
-        <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-card opacity-50">
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-card opacity-50">
           <div className="text-xs text-muted-foreground">{t(language, 'tutorial.detail.prev')}</div>
           <div className="mt-1 text-sm font-semibold text-foreground">{t(language, 'tutorial.detail.none')}</div>
         </div>
@@ -210,13 +210,13 @@ function TutorialPrevNext({ tutorial, language }: { tutorial: ITutorialFrontmatt
       {next ? (
         <Link
           href={`/tutorials/${next}`}
-          className="rounded-2xl border border-border/70 bg-card p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           <div className="text-xs text-muted-foreground">{t(language, 'tutorial.detail.next')}</div>
           <div className="mt-1 text-sm font-semibold text-foreground">{next}</div>
         </Link>
       ) : (
-        <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-card opacity-50">
+        <div className="rounded-2xl border border-border bg-card p-6 shadow-card opacity-50">
           <div className="text-xs text-muted-foreground">{t(language, 'tutorial.detail.next')}</div>
           <div className="mt-1 text-sm font-semibold text-foreground">{t(language, 'tutorial.detail.none')}</div>
         </div>

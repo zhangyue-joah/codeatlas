@@ -106,7 +106,7 @@ export function ToolsListToolbar({
   return (
     <div className="space-y-3">
       {/* 筛选区域 - 优化视觉层次 */}
-      <div className="rounded-2xl bg-muted/30 p-4 ring-1 ring-border/50">
+      <div className="rounded-2xl bg-muted/30 p-4 ring-1 ring-border-subtle">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <ToolbarFilters
             isZh={isZh}

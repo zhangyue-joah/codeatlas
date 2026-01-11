@@ -33,7 +33,7 @@ export function TemplateMarketCard({ language, slug, template, className }: ITem
   return (
     <div
       className={cn(
-        'rounded-2xl border border-border/70 bg-card p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover',
+        'rounded-2xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover',
         className
       )}
     >
@@ -64,7 +64,7 @@ export function TemplateMarketCard({ language, slug, template, className }: ITem
         ) : null}
       </div>
 
-      <details className="mt-4 overflow-hidden rounded-xl border border-border/70 bg-muted/10">
+      <details className="mt-4 overflow-hidden rounded-xl border border-border bg-muted/10">
         <summary className="flex cursor-pointer items-center justify-between gap-3 px-4 py-3 text-sm font-medium text-foreground hover:bg-muted/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
           <span className="flex items-center gap-2">
             <span>{isZh ? '预览' : 'Preview'}</span>
@@ -74,7 +74,7 @@ export function TemplateMarketCard({ language, slug, template, className }: ITem
           </span>
           <span className="text-xs text-muted-foreground">{isZh ? '展开' : 'Expand'}</span>
         </summary>
-        <div className="border-t border-border/70 px-4 py-3">
+        <div className="border-t border-border px-4 py-3">
           <pre className="max-h-48 overflow-auto rounded-lg bg-background p-3 text-xs text-foreground">
             <code>{previewText}</code>
           </pre>
