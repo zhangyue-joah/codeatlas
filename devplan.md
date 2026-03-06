@@ -81,6 +81,7 @@
 - [x] 失败自动告警：巡检失败自动创建/追加 Issue
 - [x] 依赖自动更新：新增 `.github/dependabot.yml`
 - [x] 运维文档：新增 `docs/automation-operations.md`
+- [x] 生产阻断修复：升级 `next-mdx-remote` 到 `6.x` 以通过 Vercel 安全策略
 
 ## 6. 风险评估
 
