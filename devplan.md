@@ -73,7 +73,14 @@
 - [x] 分支保护建议：新增 `docs/github-branch-protection.md`
 - [x] 发布后健康检查：新增脚本 `scripts/post-deploy-healthcheck.mjs`
 - [x] 自动触发：新增工作流 `.github/workflows/post-deploy-healthcheck.yml`
-- [ ] 补仓库变量 `PRODUCTION_BASE_URL`（待在 GitHub 仓库 Variables 配置）
+- [x] 补仓库变量 `PRODUCTION_BASE_URL`（GitHub Variables）
+
+### M4：持续自动化迭代（本轮新增）
+
+- [x] 定时生产巡检：新增 `.github/workflows/scheduled-production-healthcheck.yml`
+- [x] 失败自动告警：巡检失败自动创建/追加 Issue
+- [x] 依赖自动更新：新增 `.github/dependabot.yml`
+- [x] 运维文档：新增 `docs/automation-operations.md`
 
 ## 6. 风险评估
 

@@ -1,0 +1,101 @@
+name: Scheduled Production Healthcheck
+
+on:
+  schedule:
+    # UTC 时间，每 6 小时巡检一次
+    - cron: '15 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: scheduled-production-healthcheck
+  cancel-in-progress: false
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Resolve base URL
+        env:
+          VAR_BASE_URL: ${{ vars.PRODUCTION_BASE_URL }}
+        run: |
+          if [ -z "$VAR_BASE_URL" ]; then
+            echo "PRODUCTION_BASE_URL 未配置，无法执行生产巡检。"
+            exit 1
+          fi
+          echo "BASE_URL=$VAR_BASE_URL" >> "$GITHUB_ENV"
+
+      - name: Run scheduled healthcheck
+        id: healthcheck
+        continue-on-error: true
+        env:
+          HEALTHCHECK_TIMEOUT_MS: '10000'
+          HEALTHCHECK_MAX_LATENCY_MS: '4000'
+          HEALTHCHECK_RETRIES: '4'
+          HEALTHCHECK_RETRY_DELAY_MS: '8000'
+          HEALTHCHECK_PATHS: '/,/robots.txt,/sitemap.xml'
+        run: node scripts/post-deploy-healthcheck.mjs
+
+      - name: Create or update alert issue when failed
+        if: steps.healthcheck.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const title = "生产健康检查失败（自动告警）";
+            const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
+            const now = new Date().toISOString();
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: "open",
+              per_page: 100
+            });
+
+            const existing = issues.find((issue) => issue.title === title);
+            const body = [
+              "检测到生产健康检查失败，请尽快排查。",
+              "",
+              `- 时间: ${now}`,
+              `- 工作流: ${context.workflow}`,
+              `- 运行链接: ${runUrl}`,
+              `- 分支: ${context.ref}`
+            ].join("\n");
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body
+              });
+              core.info(`已追加告警到现有 Issue #${existing.number}`);
+              return;
+            }
+
+            const created = await github.rest.issues.create({
+              owner,
+              repo,
+              title,
+              body
+            });
+            core.info(`已创建告警 Issue #${created.data.number}`);
+
+      - name: Fail workflow when healthcheck failed
+        if: steps.healthcheck.outcome == 'failure'
+        run: exit 1
