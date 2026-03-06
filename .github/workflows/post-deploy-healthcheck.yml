@@ -1,6 +1,15 @@
 name: Post Deploy Healthcheck
 
 on:
+  pull_request:
+    branches:
+      - main
+      - master
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
   workflow_run:
     workflows:
       - CI
@@ -17,6 +26,7 @@ jobs:
   healthcheck:
     if: >
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'pull_request' ||
       (
         github.event.workflow_run.conclusion == 'success' &&
         (
