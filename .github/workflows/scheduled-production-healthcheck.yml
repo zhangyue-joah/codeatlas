@@ -47,18 +47,48 @@ jobs:
           HEALTHCHECK_RETRIES: '4'
           HEALTHCHECK_RETRY_DELAY_MS: '8000'
           HEALTHCHECK_PATHS: '/,/robots.txt,/sitemap.xml'
+          HEALTHCHECK_OUTPUT_FILE: 'healthcheck-report.json'
         run: node scripts/post-deploy-healthcheck.mjs
+
+      - name: Upload healthcheck report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scheduled-healthcheck-report
+          path: healthcheck-report.json
+          if-no-files-found: ignore
 
       - name: Create or update alert issue when failed
         if: steps.healthcheck.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
+            const fs = require("fs");
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const title = "生产健康检查失败（自动告警）";
             const runUrl = `${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`;
             const now = new Date().toISOString();
+            let detailLines = ["- 巡检报告: 未找到 healthcheck-report.json"];
+
+            if (fs.existsSync("healthcheck-report.json")) {
+              const report = JSON.parse(fs.readFileSync("healthcheck-report.json", "utf8"));
+              const failed = (report.results || []).filter((item) => !item.ok);
+              detailLines = [
+                `- 目标地址: ${report.baseUrl || "unknown"}`,
+                `- 检查结果: ${report.summary?.failed || failed.length}/${report.summary?.total || (report.results || []).length} 失败`,
+                `- 检查时间: ${report.checkedAt || now}`
+              ];
+
+              if (failed.length > 0) {
+                detailLines.push("- 失败明细:");
+                for (const item of failed.slice(0, 10)) {
+                  detailLines.push(
+                    `  - ${item.path} status=${item.status ?? "ERR"} latency=${item.latencyMs}ms attempt=${item.attempt} reason=${item.reason || "unknown"}`
+                  );
+                }
+              }
+            }
 
             const { data: issues } = await github.rest.issues.listForRepo({
               owner,
@@ -74,7 +104,8 @@ jobs:
               `- 时间: ${now}`,
               `- 工作流: ${context.workflow}`,
               `- 运行链接: ${runUrl}`,
-              `- 分支: ${context.ref}`
+              `- 分支: ${context.ref}`,
+              ...detailLines
             ].join("\n");
 
             if (existing) {
