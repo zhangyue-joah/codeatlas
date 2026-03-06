@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import process from 'node:process';
 
 const DEFAULT_PATHS = ['/', '/robots.txt', '/sitemap.xml'];
@@ -125,6 +126,17 @@ async function main() {
 
   const results = await Promise.all(paths.map((path) => checkPathWithRetry(baseUrl, path, options)));
   const failedResults = results.filter((result) => !result.ok);
+  const report = {
+    checkedAt: new Date().toISOString(),
+    baseUrl: baseUrl.toString(),
+    options,
+    summary: {
+      total: results.length,
+      failed: failedResults.length,
+      passed: results.length - failedResults.length,
+    },
+    results,
+  };
 
   for (const result of results) {
     const statusText = result.status === null ? 'ERR' : String(result.status);
@@ -132,6 +144,16 @@ async function main() {
     console.log(
       `[${outcome}] ${result.path} status=${statusText} latency=${result.latencyMs}ms attempt=${result.attempt} reason=${result.reason || 'ok'}`
     );
+  }
+
+  const outputFile = process.env.HEALTHCHECK_OUTPUT_FILE;
+  if (outputFile) {
+    try {
+      fs.writeFileSync(outputFile, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+      console.log(`[healthcheck] reportFile=${outputFile}`);
+    } catch (error) {
+      console.warn(`[healthcheck] 写入报告失败: ${error instanceof Error ? error.message : String(error)}`);
+    }
   }
 
   if (failedResults.length > 0) {
