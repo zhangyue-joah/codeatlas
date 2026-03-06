@@ -13,7 +13,8 @@
     "compute:wechat-heat": "node scripts/compute-tool-wechat-heat.mjs",
     "build": "next build",
     "start": "next start -H 127.0.0.1",
-    "lint": "next lint"
+    "lint": "next lint",
+    "healthcheck:post-deploy": "node scripts/post-deploy-healthcheck.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

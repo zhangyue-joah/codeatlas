@@ -1,0 +1,58 @@
+name: Post Deploy Healthcheck
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 覆盖生产 URL（可选，不填则读取仓库变量 PRODUCTION_BASE_URL）
+        required: false
+        type: string
+
+jobs:
+  healthcheck:
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.workflow_run.conclusion == 'success' &&
+        (
+          github.event.workflow_run.head_branch == 'main' ||
+          github.event.workflow_run.head_branch == 'master'
+        )
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Resolve base URL
+        env:
+          INPUT_BASE_URL: ${{ github.event.inputs.base_url }}
+          VAR_BASE_URL: ${{ vars.PRODUCTION_BASE_URL }}
+        run: |
+          BASE_URL="${INPUT_BASE_URL:-$VAR_BASE_URL}"
+          if [ -z "$BASE_URL" ]; then
+            echo "PRODUCTION_BASE_URL 未配置。请在仓库 Variables 设置，或在手动触发时传入 base_url。"
+            exit 1
+          fi
+          echo "BASE_URL=$BASE_URL" >> "$GITHUB_ENV"
+
+      - name: Run post-deploy healthcheck
+        env:
+          HEALTHCHECK_TIMEOUT_MS: '10000'
+          HEALTHCHECK_MAX_LATENCY_MS: '4000'
+          HEALTHCHECK_RETRIES: '4'
+          HEALTHCHECK_RETRY_DELAY_MS: '8000'
+          HEALTHCHECK_PATHS: '/,/robots.txt,/sitemap.xml'
+        run: node scripts/post-deploy-healthcheck.mjs

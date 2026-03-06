@@ -66,6 +66,15 @@
 - [ ] 规范：内容更新 SOP、评测方法学、推广声明模板
 - [ ] 自动化：lint/build 检查；后续引入测试框架（视仓库现状）
 
+### M3：发布门禁与线上巡检（本轮）
+
+- [x] GitHub CI：补齐 `lint + build` 基础门禁
+- [x] 评审门禁：新增 `CODEOWNERS` 与 PR 模板
+- [x] 分支保护建议：新增 `docs/github-branch-protection.md`
+- [x] 发布后健康检查：新增脚本 `scripts/post-deploy-healthcheck.mjs`
+- [x] 自动触发：新增工作流 `.github/workflows/post-deploy-healthcheck.yml`
+- [ ] 补仓库变量 `PRODUCTION_BASE_URL`（待在 GitHub 仓库 Variables 配置）
+
 ## 6. 风险评估
 
 - 内容风险：价格/政策变动频繁 → 必须在页面显著展示 `updatedAt` 与来源入口
@@ -77,4 +86,3 @@
 - 能在本地 `npm run dev` 浏览全部栏目
 - `npm run build` 通过（内容校验失败会阻断构建）
 - 核心页面均显示更新时间与适用版本信息
-

@@ -1,0 +1,6 @@
+# 默认所有文件由仓库所有者负责评审
+* @zhangyue-joah
+
+# 关键自动化与脚本目录
+/.github/ @zhangyue-joah
+/scripts/ @zhangyue-joah
