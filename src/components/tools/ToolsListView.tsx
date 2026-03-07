@@ -104,6 +104,8 @@ export function ToolsListView({
       workflow: string[];
       pricing: string[];
       sort: string;
+      hasTutorials: boolean;
+      hasTemplates: boolean;
     }>
   ) => {
     const nextProductType = next.productType ?? productType;
@@ -111,12 +113,28 @@ export function ToolsListView({
     const nextPricing = next.pricing ?? pricing;
     const nextSort = next.sort ?? sort;
 
+    const nextHasTutorials =
+      typeof next.hasTutorials === 'boolean'
+        ? next.hasTutorials
+        : typeof window !== 'undefined'
+          ? new URLSearchParams(window.location.search).get('hasTutorials') === 'true'
+          : false;
+
+    const nextHasTemplates =
+      typeof next.hasTemplates === 'boolean'
+        ? next.hasTemplates
+        : typeof window !== 'undefined'
+          ? new URLSearchParams(window.location.search).get('hasTemplates') === 'true'
+          : false;
+
     router.push(
       buildSearchHref('/tools', {
         productType: nextProductType,
         workflow: nextWorkflow,
         pricing: nextPricing,
         sort: nextSort && nextSort !== DEFAULT_SORT ? nextSort : undefined,
+        hasTutorials: nextHasTutorials ? 'true' : undefined,
+        hasTemplates: nextHasTemplates ? 'true' : undefined,
       })
     );
   };
@@ -164,15 +182,21 @@ export function ToolsListView({
         onExitCompareMode={exitCompareMode}
         onClearSelected={clearSelected}
         onOpenCompare={() => setIsModalOpen(true)}
-        onReset={() => pushFilters({
-          productType: [],
-          workflow: [],
-          pricing: [],
-        })}
+        onReset={() =>
+          pushFilters({
+            productType: [],
+            workflow: [],
+            pricing: [],
+            hasTutorials: false,
+            hasTemplates: false,
+          })
+        }
         onChangeProductType={(values) => pushFilters({ productType: values })}
         onChangeWorkflow={(values) => pushFilters({ workflow: values })}
         onChangePricing={(values) => pushFilters({ pricing: values })}
         onChangeSort={(value) => pushFilters({ sort: value })}
+        onChangeHasTutorials={(value) => pushFilters({ hasTutorials: value })}
+        onChangeHasTemplates={(value) => pushFilters({ hasTemplates: value })}
       />
 
       <ul role="list" className="space-y-4">

@@ -36,6 +36,8 @@ interface IToolsListToolbarProps {
   onChangeWorkflow: (values: string[]) => void;
   onChangePricing: (values: string[]) => void;
   onChangeSort: (value: string) => void;
+  onChangeHasTutorials: (value: boolean) => void;
+  onChangeHasTemplates: (value: boolean) => void;
 }
 
 export function ToolsListToolbar({
@@ -63,6 +65,8 @@ export function ToolsListToolbar({
   onChangeWorkflow,
   onChangePricing,
   onChangeSort,
+  onChangeHasTutorials,
+  onChangeHasTemplates,
 }: IToolsListToolbarProps) {
   const isZh = language !== 'en';
   const resultsLabel =
@@ -73,10 +77,12 @@ export function ToolsListToolbar({
       : isZh
         ? `${resultCount} 个结果`
         : `${resultCount} ${resultCount === 1 ? 'result' : 'results'}`;
+
   const activeCount =
     (productType.length > 0 ? 1 : 0) +
     (workflow.length > 0 ? 1 : 0) +
     (pricing.length > 0 ? 1 : 0);
+
   const secondaryButtonClassName =
     'inline-flex h-9 items-center justify-center rounded-full border border-input bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring';
   const tertiaryButtonClassName =
@@ -84,23 +90,40 @@ export function ToolsListToolbar({
 
   const sortOptions = isZh
     ? [
-        { value: 'trending', label: '热度' },
-        { value: 'github', label: 'GitHub' },
-        { value: 'updated', label: '更新' },
+        { value: 'trending', label: '热度综合' },
+        { value: 'wechat', label: '公众号热度' },
+        { value: 'github', label: 'GitHub 热度' },
+        { value: 'updated', label: '更新时间' },
         { value: 'name', label: '名称' },
       ]
     : [
-        { value: 'trending', label: 'Trending' },
-        { value: 'github', label: 'GitHub' },
+        { value: 'trending', label: 'Trending (combined)' },
+        { value: 'wechat', label: 'WeChat heat' },
+        { value: 'github', label: 'GitHub mentions' },
         { value: 'updated', label: 'Updated' },
         { value: 'name', label: 'Name' },
       ];
 
   const sortHint = (() => {
-    if (sort === 'github') return isZh ? '排序：GitHub 提及 → 热度 → 更新时间' : 'Sort: GitHub mentions → heat → updated';
-    if (sort === 'updated') return isZh ? '排序：更新时间 → 热度 → GitHub 提及' : 'Sort: updated → heat → GitHub mentions';
-    if (sort === 'name') return isZh ? '排序：名称 → 热度 → GitHub 提及' : 'Sort: name → heat → GitHub mentions';
-    return isZh ? '默认排序：热度（公众号文章数）→ GitHub 提及 → 更新时间' : 'Default: heat (WeChat) → GitHub mentions → updated';
+    if (sort === 'github') {
+      return isZh
+        ? '排序：GitHub 热度 → 公众号热度 → 更新时间 → 名称'
+        : 'Sort: GitHub mentions → WeChat heat → updated → name';
+    }
+    if (sort === 'wechat') {
+      return isZh
+        ? '排序：公众号热度 → GitHub 热度 → 更新时间 → 名称'
+        : 'Sort: WeChat heat → GitHub mentions → updated → name';
+    }
+    if (sort === 'updated') {
+      return isZh ? '排序：更新时间 → 热度 → 名称' : 'Sort: updated → heat → name';
+    }
+    if (sort === 'name') {
+      return isZh ? '排序：名称 → 热度' : 'Sort: name → heat';
+    }
+    return isZh
+      ? '默认排序：热度综合（公众号 + GitHub）→ 更新时间 → 名称'
+      : 'Default: combined heat (WeChat + GitHub) → updated → name';
   })();
 
   return (
@@ -119,7 +142,7 @@ export function ToolsListToolbar({
             productTypeOptions={productTypeOptions}
             workflowOptions={workflowOptions}
             pricingOptions={pricingOptions}
-            resultsBadge={<ToolbarMetaText>{resultsLabel}</ToolbarMetaText>}
+            resultsBadge={<ToolbarMetaText title={sortHint}>{resultsLabel}</ToolbarMetaText>}
             canReset={activeCount > 0}
             isCompareMode={isCompareMode}
             onEnterCompareMode={onEnterCompareMode}
@@ -128,6 +151,8 @@ export function ToolsListToolbar({
             onChangeWorkflow={onChangeWorkflow}
             onChangePricing={onChangePricing}
             onChangeSort={onChangeSort}
+            onChangeHasTutorials={onChangeHasTutorials}
+            onChangeHasTemplates={onChangeHasTemplates}
           />
         </div>
       </div>
@@ -171,6 +196,8 @@ function ToolbarFilters({
   onChangeWorkflow,
   onChangePricing,
   onChangeSort,
+  onChangeHasTutorials,
+  onChangeHasTemplates,
 }: {
   isZh: boolean;
   productType: string[];
@@ -191,6 +218,8 @@ function ToolbarFilters({
   onChangeWorkflow: (values: string[]) => void;
   onChangePricing: (values: string[]) => void;
   onChangeSort: (value: string) => void;
+  onChangeHasTutorials: (value: boolean) => void;
+  onChangeHasTemplates: (value: boolean) => void;
 }) {
   const hasActiveFilters = productType.length > 0 || workflow.length > 0 || pricing.length > 0;
 
@@ -234,6 +263,21 @@ function ToolbarFilters({
             onChange={onChangeSort}
           />
         </div>
+        {/* 只看有教程 / 只看有模板 */}
+        <button
+          type="button"
+          onClick={() => onChangeHasTutorials(true)}
+          className="inline-flex h-9 items-center justify-center rounded-full bg-background px-3 text-xs font-medium text-muted-foreground ring-1 ring-border-subtle transition-colors hover:bg-muted hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          {isZh ? '只看有教程' : 'With guides only'}
+        </button>
+        <button
+          type="button"
+          onClick={() => onChangeHasTemplates(true)}
+          className="inline-flex h-9 items-center justify-center rounded-full bg-background px-3 text-xs font-medium text-muted-foreground ring-1 ring-border-subtle transition-colors hover:bg-muted hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        >
+          {isZh ? '只看有模板' : 'With templates only'}
+        </button>
       </div>
 
       {/* 右侧：结果信息 + 操作按钮组 */}
