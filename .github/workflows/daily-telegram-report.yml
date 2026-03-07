@@ -1,9 +1,6 @@
 name: Daily Telegram Report
 
 on:
-  schedule:
-    # UTC 时间：每天 01:10 运行（北京时区约为 09:10）
-    - cron: '10 1 * * *'
   workflow_dispatch:
 
 permissions:

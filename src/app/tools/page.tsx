@@ -41,9 +41,19 @@ function isPricingModel(value: string): value is TPricingModel {
 
 export function generateMetadata(): Metadata {
   const language = getRequestLanguage();
+  const title = t(language, 'tools.page.title');
+  const description = t(language, 'tools.page.desc');
+
   return {
-    title: t(language, 'tools.page.title'),
-    description: t(language, 'tools.page.desc'),
+    title,
+    description,
+    alternates: {
+      canonical: '/tools',
+    },
+    openGraph: {
+      title,
+      description,
+    },
   };
 }
 

@@ -33,7 +33,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title,
     description,
-    openGraph: { title, description },
+    alternates: {
+      canonical: `/buy/${params.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/buy/${params.slug}`,
+    },
   };
 }
 

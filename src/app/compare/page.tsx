@@ -16,9 +16,19 @@ import { getToolDisplayTitle } from '@/lib/toolDisplay';
 
 export function generateMetadata(): Metadata {
   const language = getRequestLanguage();
+  const title = t(language, 'compare.page.title');
+  const description = t(language, 'compare.page.desc');
+
   return {
-    title: t(language, 'compare.page.title'),
-    description: t(language, 'compare.page.desc'),
+    title,
+    description,
+    alternates: {
+      canonical: '/compare',
+    },
+    openGraph: {
+      title,
+      description,
+    },
   };
 }
 

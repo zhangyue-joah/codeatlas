@@ -12,16 +12,16 @@ export function generateMetadata(): Metadata {
   const isEn = language === 'en';
 
   const titleDefault = isEn
-    ? 'CodeAtlas - AI coding tools: comparisons, guides, buying tips'
-    : 'CodeAtlas - AI 编程工具对比、教程与使用/购买指南';
+    ? 'CodeAtlas - AI coding navigation hub: tools, guides, templates, buying tips'
+    : 'CodeAtlas - AI 编程导航站：工具对比、教程、模板与使用/购买指南';
 
   const description = isEn
-    ? 'Choose the right AI coding tool and workflow. CodeAtlas maps: pick tools → apply capabilities → run SOPs → buy wisely.'
-    : '选对 AI 编程工具，用对工作流。CodeAtlas 是一张从「选工具 → 用能力 → 跑工作流 → 合理购买」的 AI 编程地图。';
+    ? 'CodeAtlas is an AI coding navigation hub. Start from tasks, then navigate to tools, workflows, templates and buying options to build your AI-assisted development stack.'
+    : 'CodeAtlas 是面向中文开发者的 AI 编程导航站，从任务出发导航到合适的工具、教程、模板和购买渠道，帮你搭建自己的 AI 编程工作流。';
 
   const keywords = isEn
-    ? ['AI coding tools', 'Cursor', 'GitHub Copilot', 'Claude Code', 'code completion', 'tool comparison']
-    : ['AI编程工具', 'Cursor', 'GitHub Copilot', 'Claude Code', '代码补全', 'AI编程对比'];
+    ? ['AI coding tools', 'AI coding navigation', 'Cursor', 'GitHub Copilot', 'Claude Code', 'code completion', 'tool comparison']
+    : ['AI编程工具', 'AI 编程导航', 'AI 编程导航站', 'Cursor', 'GitHub Copilot', 'Claude Code', '代码补全', 'AI编程对比'];
 
   return {
     metadataBase: new URL(siteConfig.url),

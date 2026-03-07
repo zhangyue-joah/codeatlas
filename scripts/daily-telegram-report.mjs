@@ -1,5 +1,25 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { setGlobalDispatcher, EnvHttpProxyAgent } from 'undici';
+import { fetchVercelTrafficSummary } from './fetch-vercel-traffic.mjs';
+
+const proxyEnv =
+  process.env.HTTPS_PROXY ||
+  process.env.HTTP_PROXY ||
+  process.env.ALL_PROXY ||
+  process.env.https_proxy ||
+  process.env.http_proxy ||
+  process.env.all_proxy;
+
+if (proxyEnv) {
+  try {
+    const dispatcher = new EnvHttpProxyAgent();
+    setGlobalDispatcher(dispatcher);
+    console.log('[daily-report] Using proxy from environment for HTTP requests.');
+  } catch (err) {
+    console.error('[daily-report] Failed to enable proxy via EnvHttpProxyAgent:', err);
+  }
+}
 
 const ROOT = process.cwd();
 const TOOLS_DIR = path.join(ROOT, 'src', 'content', 'tools');
@@ -90,7 +110,7 @@ async function fetchAutomationMergedPRs() {
     }));
 }
 
-function buildMessage({ stats, topTools, mergedPrs, plan }) {
+function buildMessage({ stats, topTools, mergedPrs, plan, traffic }) {
   const now = new Date();
   const dateStr = now.toISOString().slice(0, 10);
   const lines = [];
@@ -108,6 +128,24 @@ function buildMessage({ stats, topTools, mergedPrs, plan }) {
     lines.push(`- 热度 Top${topTools.length}：${topText}`);
   } else {
     lines.push('- 热度 Top：暂无数据（等待 content-scoreboard 生成）');
+  }
+  lines.push('');
+
+  // 访问概况（Vercel 日志）
+  lines.push('【访问概况（Vercel 日志）】');
+  if (!traffic) {
+    lines.push('- 暂无访问日志数据（可能最近 24 小时没有请求，或 vercel CLI 未登录）。');
+  } else {
+    lines.push(`- 过去 24 小时请求数：${traffic.totalRequests}`);
+    lines.push(`- 错误率：${(traffic.errorRate * 100).toFixed(2)}%`);
+    if (traffic.topPaths && traffic.topPaths.length > 0) {
+      const topPathsText = traffic.topPaths
+        .map((item, idx) => `${idx + 1}. ${item.path}（${item.count} 次）`)
+        .join('； ');
+      lines.push(`- Top 页面：${topPathsText}`);
+    } else {
+      lines.push('- Top 页面：暂无数据');
+    }
   }
   lines.push('');
 
@@ -148,17 +186,56 @@ function buildMessage({ stats, topTools, mergedPrs, plan }) {
   }
 
   lines.push('');
-  lines.push('（本消息由 CodeAtlas 自动生成并通过 GitHub Actions 推送，如有需要可在仓库调整脚本和计划逻辑。）');
+  lines.push('（本消息由 CodeAtlas 自动生成并通过自动化任务推送， 逻辑可在仓库 scripts/daily-telegram-report.mjs 中调整。）');
 
   return lines.join('\n');
 }
 
+async function resolveTelegramChatId(token) {
+  try {
+    const url = `https://api.telegram.org/bot${token}/getUpdates`;
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error('[daily-report] Failed to fetch Telegram updates:', res.status, await res.text());
+      return null;
+    }
+    const data = await res.json();
+    if (!data.ok || !Array.isArray(data.result) || data.result.length === 0) {
+      console.error('[daily-report] No Telegram updates found to infer chat id.');
+      return null;
+    }
+    const last = data.result[data.result.length - 1];
+    const chat =
+      (last.message && last.message.chat) ||
+      (last.channel_post && last.channel_post.chat) ||
+      (last.my_chat_member && last.my_chat_member.chat) ||
+      null;
+    if (!chat || typeof chat.id === 'undefined') {
+      console.error('[daily-report] Telegram chat id not found in updates.');
+      return null;
+    }
+    console.log('[daily-report] Inferred TELEGRAM_CHAT_ID from updates:', chat.id);
+    return chat.id;
+  } catch (err) {
+    console.error('[daily-report] Failed to infer TELEGRAM_CHAT_ID from updates:', err);
+    return null;
+  }
+}
+
 async function sendToTelegram(text) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) {
-    console.error('[daily-report] Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID, skip sending.');
+  let chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token) {
+    console.error('[daily-report] Missing TELEGRAM_BOT_TOKEN, skip sending.');
     return;
+  }
+
+  if (!chatId) {
+    chatId = await resolveTelegramChatId(token);
+    if (!chatId) {
+      console.error('[daily-report] TELEGRAM_CHAT_ID not set and could not be inferred from updates, skip sending.');
+      return;
+    }
   }
 
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -185,8 +262,14 @@ async function main() {
   const topTools = pickTopTools(scoreboard, 3);
   const plan = pickPlanFromScoreboard(scoreboard, 3);
   const mergedPrs = await fetchAutomationMergedPRs();
+  let traffic = null;
+  try {
+    traffic = await fetchVercelTrafficSummary();
+  } catch (err) {
+    console.error('[daily-report] Failed to fetch Vercel traffic summary:', err);
+  }
 
-  const text = buildMessage({ stats, topTools, mergedPrs, plan });
+  const text = buildMessage({ stats, topTools, mergedPrs, plan, traffic });
   console.log(text);
   await sendToTelegram(text);
 }
