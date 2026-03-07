@@ -1,0 +1,3578 @@
+{
+  "generatedAt": "2026-03-07T06:35:14.137Z",
+  "hotLimit": 50,
+  "staleAfterDays": 60,
+  "totals": {
+    "tools": 83,
+    "hotTools": 50,
+    "staleHotTools": 46,
+    "hotWithoutTutorials": 22,
+    "hotWithoutTemplates": 50
+  },
+  "items": {
+    "tools": [
+      {
+        "slug": "github-copilot",
+        "title": "GitHub Copilot",
+        "updatedAt": "2025-12-24",
+        "daysSinceUpdate": 73,
+        "githubScore": 105309,
+        "wechatScore": 782,
+        "combinedScore": 0.8692,
+        "relatedTutorials": [
+          "github-copilot-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "claude-code",
+        "title": "Claude Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21792,
+        "wechatScore": 1000,
+        "combinedScore": 0.6828,
+        "relatedTutorials": [
+          "claude-code-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cursor",
+        "title": "Cursor",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 798,
+        "wechatScore": 832,
+        "combinedScore": 0.5022,
+        "relatedTutorials": [
+          "cursor-getting-started",
+          "cursor-project-rules",
+          "mcp-starter-kit"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "trae",
+        "title": "Trae",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 345,
+        "wechatScore": 528,
+        "combinedScore": 0.3181,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "swe-agent",
+        "title": "SWE-agent",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 343,
+        "wechatScore": 513,
+        "combinedScore": 0.3091,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-cli",
+        "title": "Gemini CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4734,
+        "wechatScore": 447,
+        "combinedScore": 0.2862,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "qoder",
+        "title": "Qoder",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 7,
+        "wechatScore": 414,
+        "combinedScore": 0.2484,
+        "relatedTutorials": [
+          "qoder-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codebuddy",
+        "title": "CodeBuddy",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 54,
+        "wechatScore": 408,
+        "combinedScore": 0.245,
+        "relatedTutorials": [
+          "codebuddy-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gpt-engineer",
+        "title": "GPT Engineer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1118,
+        "wechatScore": 383,
+        "combinedScore": 0.234,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "devin",
+        "title": "Devin",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 380,
+        "combinedScore": 0.2281,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "lovable",
+        "title": "Lovable",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 675,
+        "wechatScore": 343,
+        "combinedScore": 0.2084,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cline",
+        "title": "Cline",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 15,
+        "wechatScore": 319,
+        "combinedScore": 0.1915,
+        "relatedTutorials": [
+          "cline-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegeex",
+        "title": "CodeGeeX",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 303,
+        "combinedScore": 0.1818,
+        "relatedTutorials": [
+          "codegeex-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabnine",
+        "title": "Tabnine",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 17,
+        "wechatScore": 286,
+        "combinedScore": 0.1717,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep-ai",
+        "title": "Sweep",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 22223,
+        "wechatScore": 116,
+        "combinedScore": 0.154,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "warp",
+        "title": "Warp",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 108,
+        "wechatScore": 254,
+        "combinedScore": 0.1528,
+        "relatedTutorials": [
+          "warp-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "github-copilot-cli",
+        "title": "GitHub Copilot CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 679,
+        "wechatScore": 239,
+        "combinedScore": 0.146,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "kiro",
+        "title": "Kiro",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 73,
+        "wechatScore": 219,
+        "combinedScore": 0.1317,
+        "relatedTutorials": [
+          "ai-coding-product-map",
+          "kiro-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "continue",
+        "title": "Continue",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 283,
+        "wechatScore": 217,
+        "combinedScore": 0.1313,
+        "relatedTutorials": [
+          "continue-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "openhands",
+        "title": "OpenHands",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 729,
+        "wechatScore": 214,
+        "combinedScore": 0.1312,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "amazon-q-developer",
+        "title": "Amazon Q Developer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 332,
+        "wechatScore": 208,
+        "combinedScore": 0.1261,
+        "relatedTutorials": [
+          "amazon-q-developer-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "snyk-code",
+        "title": "Snyk Code",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 57,
+        "wechatScore": 192,
+        "combinedScore": 0.1154,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codeium",
+        "title": "Codeium",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 2,
+        "wechatScore": 187,
+        "combinedScore": 0.1122,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "aider",
+        "title": "Aider",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 58,
+        "wechatScore": 146,
+        "combinedScore": 0.0878,
+        "relatedTutorials": [
+          "aider-cli-getting-started",
+          "openai-compatible-setup",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "openai-codex",
+        "title": "OpenAI Codex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1418,
+        "wechatScore": 134,
+        "combinedScore": 0.0858,
+        "relatedTutorials": [
+          "codex-cli-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bito",
+        "title": "Bito",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 28,
+        "wechatScore": 129,
+        "combinedScore": 0.0775,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep",
+        "title": "Sweep",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 116,
+        "combinedScore": 0.0696,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bolt-new",
+        "title": "Bolt.new",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1654,
+        "wechatScore": 104,
+        "combinedScore": 0.0687,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-code-assist",
+        "title": "Gemini Code Assist",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 352,
+        "wechatScore": 110,
+        "combinedScore": 0.0673,
+        "relatedTutorials": [
+          "gemini-code-assist-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "augment-code",
+        "title": "Augment Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 112,
+        "combinedScore": 0.0672,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "roo-code",
+        "title": "Roo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4174,
+        "wechatScore": 77,
+        "combinedScore": 0.0621,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "kilo-code",
+        "title": "Kilo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 96,
+        "combinedScore": 0.0577,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tongyi-lingma",
+        "title": "Tongyi Lingma",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 52,
+        "wechatScore": 91,
+        "combinedScore": 0.0548,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabby",
+        "title": "Tabby",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 91,
+        "combinedScore": 0.0546,
+        "relatedTutorials": [
+          "tabby-self-hosted-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "coderabbit",
+        "title": "CodeRabbit",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 77,
+        "wechatScore": 84,
+        "combinedScore": 0.0507,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "phind",
+        "title": "Phind",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 77,
+        "combinedScore": 0.0463,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "poolside",
+        "title": "Poolside",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 66,
+        "combinedScore": 0.0396,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "blackbox-ai",
+        "title": "Blackbox AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4101,
+        "wechatScore": 28,
+        "combinedScore": 0.0324,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "visual-studio-intellicode",
+        "title": "Visual Studio IntelliCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 96,
+        "wechatScore": 48,
+        "combinedScore": 0.0292,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "marscode",
+        "title": "豆包 MarsCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 45,
+        "combinedScore": 0.027,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "cosine",
+        "title": "Cosine",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 18,
+        "wechatScore": 44,
+        "combinedScore": 0.0265,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "copilot-workspace",
+        "title": "GitHub Copilot Workspace",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 8,
+        "wechatScore": 42,
+        "combinedScore": 0.0252,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegpt",
+        "title": "CodeGPT",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 266,
+        "wechatScore": 40,
+        "combinedScore": 0.025,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcery",
+        "title": "Sourcery",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 41,
+        "combinedScore": 0.0247,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "plandex",
+        "title": "Plandex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21,
+        "wechatScore": 36,
+        "combinedScore": 0.0217,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "vercel-v0",
+        "title": "v0 by Vercel",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 770,
+        "wechatScore": 30,
+        "combinedScore": 0.0209,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "fauxpilot",
+        "title": "FauxPilot",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 22,
+        "wechatScore": 28,
+        "combinedScore": 0.0169,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gru-ai",
+        "title": "Gru.ai",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 417,
+        "wechatScore": 18,
+        "combinedScore": 0.0124,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "replit-ai",
+        "title": "Replit AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 823,
+        "wechatScore": 15,
+        "combinedScore": 0.0121,
+        "relatedTutorials": [
+          "replit-agent-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "greptile",
+        "title": "Greptile",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 6,
+        "wechatScore": 20,
+        "combinedScore": 0.012,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codiga",
+        "title": "Codiga",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 4,
+        "wechatScore": 19,
+        "combinedScore": 0.0114,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "autodoc",
+        "title": "Autodoc",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 1943,
+        "wechatScore": 5,
+        "combinedScore": 0.0104,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "jetbrains-ai-assistant",
+        "title": "JetBrains AI Assistant",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 47,
+        "wechatScore": 14,
+        "combinedScore": 0.0086,
+        "relatedTutorials": [
+          "jetbrains-ai-assistant-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "softgen",
+        "title": "Softgen",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 2,
+        "wechatScore": 13,
+        "combinedScore": 0.0078,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "baidu-comate",
+        "title": "Baidu Comate",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 3,
+        "wechatScore": 11,
+        "combinedScore": 0.0066,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "askcodi",
+        "title": "AskCodi",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 2,
+        "wechatScore": 10,
+        "combinedScore": 0.006,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "mentat",
+        "title": "Mentat",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 15,
+        "wechatScore": 9,
+        "combinedScore": 0.0055,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "qodo",
+        "title": "Qodo (CodiumAI)",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 29,
+        "wechatScore": 9,
+        "combinedScore": 0.0055,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "smol-developer",
+        "title": "Smol Developer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 59,
+        "wechatScore": 8,
+        "combinedScore": 0.005,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcegraph-amp",
+        "title": "Sourcegraph Amp",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 13,
+        "wechatScore": 7,
+        "combinedScore": 0.0042,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "refact-ai",
+        "title": "Refact.ai",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 281,
+        "wechatScore": 3,
+        "combinedScore": 0.0029,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "pieces",
+        "title": "Pieces for Developers",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 734,
+        "wechatScore": 0,
+        "combinedScore": 0.0028,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "safurai",
+        "title": "Safurai",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 4,
+        "combinedScore": 0.0024,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "aicommits",
+        "title": "AICommits",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 35,
+        "wechatScore": 3,
+        "combinedScore": 0.0019,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gitlab-duo",
+        "title": "GitLab Duo",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 37,
+        "wechatScore": 3,
+        "combinedScore": 0.0019,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codecomplete",
+        "title": "CodeComplete",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 3,
+        "combinedScore": 0.0018,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "magic",
+        "title": "Magic",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 466,
+        "wechatScore": 0,
+        "combinedScore": 0.0018,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "windsurf",
+        "title": "Windsurf",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 449,
+        "wechatScore": 0,
+        "combinedScore": 0.0017,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "jetbrains-junie",
+        "title": "JetBrains Junie",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 49,
+        "wechatScore": 1,
+        "combinedScore": 0.0008,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcegraph-cody",
+        "title": "Cody (Sourcegraph)",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 49,
+        "wechatScore": 1,
+        "combinedScore": 0.0008,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "pixee",
+        "title": "Pixee",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 3,
+        "wechatScore": 1,
+        "combinedScore": 0.0006,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "replit-ghostwriter",
+        "title": "Replit Ghostwriter",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4,
+        "wechatScore": 1,
+        "combinedScore": 0.0006,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gitlab-code-suggestions",
+        "title": "GitLab Code Suggestions",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 64,
+        "wechatScore": 0,
+        "combinedScore": 0.0002,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "shell-gpt",
+        "title": "ShellGPT",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 52,
+        "wechatScore": 0,
+        "combinedScore": 0.0002,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "atlassian-rovo",
+        "title": "Atlassian Rovo (Rovo Dev)",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 24,
+        "wechatScore": 0,
+        "combinedScore": 0.0001,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codium-pr-agent",
+        "title": "PR-Agent (Qodo)",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 16,
+        "wechatScore": 0,
+        "combinedScore": 0.0001,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegpt-nvim",
+        "title": "CodeGPT.nvim",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 6,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codereviewbot",
+        "title": "CodeReviewBot",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 2,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "potpie",
+        "title": "potpie",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 11,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "stackspot-ai",
+        "title": "StackSpot AI",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 2,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "supermaven",
+        "title": "Supermaven",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "zed-ai",
+        "title": "Zed (AI)",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "zzzcode-ai",
+        "title": "ZZZ Code AI",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 2,
+        "wechatScore": 0,
+        "combinedScore": 0,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      }
+    ],
+    "hotTools": [
+      {
+        "slug": "github-copilot",
+        "title": "GitHub Copilot",
+        "updatedAt": "2025-12-24",
+        "daysSinceUpdate": 73,
+        "githubScore": 105309,
+        "wechatScore": 782,
+        "combinedScore": 0.8692,
+        "relatedTutorials": [
+          "github-copilot-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "claude-code",
+        "title": "Claude Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21792,
+        "wechatScore": 1000,
+        "combinedScore": 0.6828,
+        "relatedTutorials": [
+          "claude-code-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cursor",
+        "title": "Cursor",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 798,
+        "wechatScore": 832,
+        "combinedScore": 0.5022,
+        "relatedTutorials": [
+          "cursor-getting-started",
+          "cursor-project-rules",
+          "mcp-starter-kit"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "trae",
+        "title": "Trae",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 345,
+        "wechatScore": 528,
+        "combinedScore": 0.3181,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "swe-agent",
+        "title": "SWE-agent",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 343,
+        "wechatScore": 513,
+        "combinedScore": 0.3091,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-cli",
+        "title": "Gemini CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4734,
+        "wechatScore": 447,
+        "combinedScore": 0.2862,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "qoder",
+        "title": "Qoder",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 7,
+        "wechatScore": 414,
+        "combinedScore": 0.2484,
+        "relatedTutorials": [
+          "qoder-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codebuddy",
+        "title": "CodeBuddy",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 54,
+        "wechatScore": 408,
+        "combinedScore": 0.245,
+        "relatedTutorials": [
+          "codebuddy-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gpt-engineer",
+        "title": "GPT Engineer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1118,
+        "wechatScore": 383,
+        "combinedScore": 0.234,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "devin",
+        "title": "Devin",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 380,
+        "combinedScore": 0.2281,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "lovable",
+        "title": "Lovable",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 675,
+        "wechatScore": 343,
+        "combinedScore": 0.2084,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cline",
+        "title": "Cline",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 15,
+        "wechatScore": 319,
+        "combinedScore": 0.1915,
+        "relatedTutorials": [
+          "cline-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegeex",
+        "title": "CodeGeeX",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 303,
+        "combinedScore": 0.1818,
+        "relatedTutorials": [
+          "codegeex-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabnine",
+        "title": "Tabnine",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 17,
+        "wechatScore": 286,
+        "combinedScore": 0.1717,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep-ai",
+        "title": "Sweep",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 22223,
+        "wechatScore": 116,
+        "combinedScore": 0.154,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "warp",
+        "title": "Warp",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 108,
+        "wechatScore": 254,
+        "combinedScore": 0.1528,
+        "relatedTutorials": [
+          "warp-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "github-copilot-cli",
+        "title": "GitHub Copilot CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 679,
+        "wechatScore": 239,
+        "combinedScore": 0.146,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "kiro",
+        "title": "Kiro",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 73,
+        "wechatScore": 219,
+        "combinedScore": 0.1317,
+        "relatedTutorials": [
+          "ai-coding-product-map",
+          "kiro-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "continue",
+        "title": "Continue",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 283,
+        "wechatScore": 217,
+        "combinedScore": 0.1313,
+        "relatedTutorials": [
+          "continue-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "openhands",
+        "title": "OpenHands",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 729,
+        "wechatScore": 214,
+        "combinedScore": 0.1312,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "amazon-q-developer",
+        "title": "Amazon Q Developer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 332,
+        "wechatScore": 208,
+        "combinedScore": 0.1261,
+        "relatedTutorials": [
+          "amazon-q-developer-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "snyk-code",
+        "title": "Snyk Code",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 57,
+        "wechatScore": 192,
+        "combinedScore": 0.1154,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codeium",
+        "title": "Codeium",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 2,
+        "wechatScore": 187,
+        "combinedScore": 0.1122,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "aider",
+        "title": "Aider",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 58,
+        "wechatScore": 146,
+        "combinedScore": 0.0878,
+        "relatedTutorials": [
+          "aider-cli-getting-started",
+          "openai-compatible-setup",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "openai-codex",
+        "title": "OpenAI Codex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1418,
+        "wechatScore": 134,
+        "combinedScore": 0.0858,
+        "relatedTutorials": [
+          "codex-cli-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bito",
+        "title": "Bito",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 28,
+        "wechatScore": 129,
+        "combinedScore": 0.0775,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep",
+        "title": "Sweep",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 116,
+        "combinedScore": 0.0696,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bolt-new",
+        "title": "Bolt.new",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1654,
+        "wechatScore": 104,
+        "combinedScore": 0.0687,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-code-assist",
+        "title": "Gemini Code Assist",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 352,
+        "wechatScore": 110,
+        "combinedScore": 0.0673,
+        "relatedTutorials": [
+          "gemini-code-assist-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "augment-code",
+        "title": "Augment Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 112,
+        "combinedScore": 0.0672,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "roo-code",
+        "title": "Roo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4174,
+        "wechatScore": 77,
+        "combinedScore": 0.0621,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "kilo-code",
+        "title": "Kilo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 96,
+        "combinedScore": 0.0577,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tongyi-lingma",
+        "title": "Tongyi Lingma",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 52,
+        "wechatScore": 91,
+        "combinedScore": 0.0548,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabby",
+        "title": "Tabby",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 91,
+        "combinedScore": 0.0546,
+        "relatedTutorials": [
+          "tabby-self-hosted-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "coderabbit",
+        "title": "CodeRabbit",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 77,
+        "wechatScore": 84,
+        "combinedScore": 0.0507,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "phind",
+        "title": "Phind",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 77,
+        "combinedScore": 0.0463,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "poolside",
+        "title": "Poolside",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 66,
+        "combinedScore": 0.0396,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "blackbox-ai",
+        "title": "Blackbox AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4101,
+        "wechatScore": 28,
+        "combinedScore": 0.0324,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "visual-studio-intellicode",
+        "title": "Visual Studio IntelliCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 96,
+        "wechatScore": 48,
+        "combinedScore": 0.0292,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "marscode",
+        "title": "豆包 MarsCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 45,
+        "combinedScore": 0.027,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "cosine",
+        "title": "Cosine",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 18,
+        "wechatScore": 44,
+        "combinedScore": 0.0265,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "copilot-workspace",
+        "title": "GitHub Copilot Workspace",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 8,
+        "wechatScore": 42,
+        "combinedScore": 0.0252,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegpt",
+        "title": "CodeGPT",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 266,
+        "wechatScore": 40,
+        "combinedScore": 0.025,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcery",
+        "title": "Sourcery",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 41,
+        "combinedScore": 0.0247,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "plandex",
+        "title": "Plandex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21,
+        "wechatScore": 36,
+        "combinedScore": 0.0217,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "vercel-v0",
+        "title": "v0 by Vercel",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 770,
+        "wechatScore": 30,
+        "combinedScore": 0.0209,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "fauxpilot",
+        "title": "FauxPilot",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 22,
+        "wechatScore": 28,
+        "combinedScore": 0.0169,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gru-ai",
+        "title": "Gru.ai",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 417,
+        "wechatScore": 18,
+        "combinedScore": 0.0124,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "replit-ai",
+        "title": "Replit AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 823,
+        "wechatScore": 15,
+        "combinedScore": 0.0121,
+        "relatedTutorials": [
+          "replit-agent-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "greptile",
+        "title": "Greptile",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 6,
+        "wechatScore": 20,
+        "combinedScore": 0.012,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      }
+    ],
+    "staleHotTools": [
+      {
+        "slug": "github-copilot",
+        "title": "GitHub Copilot",
+        "updatedAt": "2025-12-24",
+        "daysSinceUpdate": 73,
+        "githubScore": 105309,
+        "wechatScore": 782,
+        "combinedScore": 0.8692,
+        "relatedTutorials": [
+          "github-copilot-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "claude-code",
+        "title": "Claude Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21792,
+        "wechatScore": 1000,
+        "combinedScore": 0.6828,
+        "relatedTutorials": [
+          "claude-code-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "trae",
+        "title": "Trae",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 345,
+        "wechatScore": 528,
+        "combinedScore": 0.3181,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "swe-agent",
+        "title": "SWE-agent",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 343,
+        "wechatScore": 513,
+        "combinedScore": 0.3091,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-cli",
+        "title": "Gemini CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4734,
+        "wechatScore": 447,
+        "combinedScore": 0.2862,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gpt-engineer",
+        "title": "GPT Engineer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1118,
+        "wechatScore": 383,
+        "combinedScore": 0.234,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "devin",
+        "title": "Devin",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 380,
+        "combinedScore": 0.2281,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "lovable",
+        "title": "Lovable",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 675,
+        "wechatScore": 343,
+        "combinedScore": 0.2084,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cline",
+        "title": "Cline",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 15,
+        "wechatScore": 319,
+        "combinedScore": 0.1915,
+        "relatedTutorials": [
+          "cline-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegeex",
+        "title": "CodeGeeX",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 303,
+        "combinedScore": 0.1818,
+        "relatedTutorials": [
+          "codegeex-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabnine",
+        "title": "Tabnine",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 17,
+        "wechatScore": 286,
+        "combinedScore": 0.1717,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "warp",
+        "title": "Warp",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 108,
+        "wechatScore": 254,
+        "combinedScore": 0.1528,
+        "relatedTutorials": [
+          "warp-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "github-copilot-cli",
+        "title": "GitHub Copilot CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 679,
+        "wechatScore": 239,
+        "combinedScore": 0.146,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "kiro",
+        "title": "Kiro",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 73,
+        "wechatScore": 219,
+        "combinedScore": 0.1317,
+        "relatedTutorials": [
+          "ai-coding-product-map",
+          "kiro-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "continue",
+        "title": "Continue",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 283,
+        "wechatScore": 217,
+        "combinedScore": 0.1313,
+        "relatedTutorials": [
+          "continue-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "openhands",
+        "title": "OpenHands",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 729,
+        "wechatScore": 214,
+        "combinedScore": 0.1312,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "amazon-q-developer",
+        "title": "Amazon Q Developer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 332,
+        "wechatScore": 208,
+        "combinedScore": 0.1261,
+        "relatedTutorials": [
+          "amazon-q-developer-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "snyk-code",
+        "title": "Snyk Code",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 57,
+        "wechatScore": 192,
+        "combinedScore": 0.1154,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codeium",
+        "title": "Codeium",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 2,
+        "wechatScore": 187,
+        "combinedScore": 0.1122,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "aider",
+        "title": "Aider",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 58,
+        "wechatScore": 146,
+        "combinedScore": 0.0878,
+        "relatedTutorials": [
+          "aider-cli-getting-started",
+          "openai-compatible-setup",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "openai-codex",
+        "title": "OpenAI Codex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1418,
+        "wechatScore": 134,
+        "combinedScore": 0.0858,
+        "relatedTutorials": [
+          "codex-cli-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bito",
+        "title": "Bito",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 28,
+        "wechatScore": 129,
+        "combinedScore": 0.0775,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep",
+        "title": "Sweep",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 116,
+        "combinedScore": 0.0696,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bolt-new",
+        "title": "Bolt.new",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1654,
+        "wechatScore": 104,
+        "combinedScore": 0.0687,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-code-assist",
+        "title": "Gemini Code Assist",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 352,
+        "wechatScore": 110,
+        "combinedScore": 0.0673,
+        "relatedTutorials": [
+          "gemini-code-assist-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "augment-code",
+        "title": "Augment Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 112,
+        "combinedScore": 0.0672,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "roo-code",
+        "title": "Roo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4174,
+        "wechatScore": 77,
+        "combinedScore": 0.0621,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "kilo-code",
+        "title": "Kilo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 96,
+        "combinedScore": 0.0577,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tongyi-lingma",
+        "title": "Tongyi Lingma",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 52,
+        "wechatScore": 91,
+        "combinedScore": 0.0548,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabby",
+        "title": "Tabby",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 91,
+        "combinedScore": 0.0546,
+        "relatedTutorials": [
+          "tabby-self-hosted-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "coderabbit",
+        "title": "CodeRabbit",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 77,
+        "wechatScore": 84,
+        "combinedScore": 0.0507,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "phind",
+        "title": "Phind",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 77,
+        "combinedScore": 0.0463,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "poolside",
+        "title": "Poolside",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 66,
+        "combinedScore": 0.0396,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "blackbox-ai",
+        "title": "Blackbox AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4101,
+        "wechatScore": 28,
+        "combinedScore": 0.0324,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "visual-studio-intellicode",
+        "title": "Visual Studio IntelliCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 96,
+        "wechatScore": 48,
+        "combinedScore": 0.0292,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "marscode",
+        "title": "豆包 MarsCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 45,
+        "combinedScore": 0.027,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "cosine",
+        "title": "Cosine",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 18,
+        "wechatScore": 44,
+        "combinedScore": 0.0265,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "copilot-workspace",
+        "title": "GitHub Copilot Workspace",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 8,
+        "wechatScore": 42,
+        "combinedScore": 0.0252,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegpt",
+        "title": "CodeGPT",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 266,
+        "wechatScore": 40,
+        "combinedScore": 0.025,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcery",
+        "title": "Sourcery",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 41,
+        "combinedScore": 0.0247,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "plandex",
+        "title": "Plandex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21,
+        "wechatScore": 36,
+        "combinedScore": 0.0217,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "vercel-v0",
+        "title": "v0 by Vercel",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 770,
+        "wechatScore": 30,
+        "combinedScore": 0.0209,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "fauxpilot",
+        "title": "FauxPilot",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 22,
+        "wechatScore": 28,
+        "combinedScore": 0.0169,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gru-ai",
+        "title": "Gru.ai",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 417,
+        "wechatScore": 18,
+        "combinedScore": 0.0124,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "replit-ai",
+        "title": "Replit AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 823,
+        "wechatScore": 15,
+        "combinedScore": 0.0121,
+        "relatedTutorials": [
+          "replit-agent-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "greptile",
+        "title": "Greptile",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 6,
+        "wechatScore": 20,
+        "combinedScore": 0.012,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      }
+    ],
+    "hotWithoutTutorials": [
+      {
+        "slug": "trae",
+        "title": "Trae",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 345,
+        "wechatScore": 528,
+        "combinedScore": 0.3181,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-cli",
+        "title": "Gemini CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4734,
+        "wechatScore": 447,
+        "combinedScore": 0.2862,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gpt-engineer",
+        "title": "GPT Engineer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1118,
+        "wechatScore": 383,
+        "combinedScore": 0.234,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "devin",
+        "title": "Devin",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 380,
+        "combinedScore": 0.2281,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabnine",
+        "title": "Tabnine",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 17,
+        "wechatScore": 286,
+        "combinedScore": 0.1717,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep-ai",
+        "title": "Sweep",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 22223,
+        "wechatScore": 116,
+        "combinedScore": 0.154,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "github-copilot-cli",
+        "title": "GitHub Copilot CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 679,
+        "wechatScore": 239,
+        "combinedScore": 0.146,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "bito",
+        "title": "Bito",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 28,
+        "wechatScore": 129,
+        "combinedScore": 0.0775,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "augment-code",
+        "title": "Augment Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 112,
+        "combinedScore": 0.0672,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "kilo-code",
+        "title": "Kilo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 96,
+        "combinedScore": 0.0577,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tongyi-lingma",
+        "title": "Tongyi Lingma",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 52,
+        "wechatScore": 91,
+        "combinedScore": 0.0548,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "coderabbit",
+        "title": "CodeRabbit",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 77,
+        "wechatScore": 84,
+        "combinedScore": 0.0507,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "phind",
+        "title": "Phind",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 77,
+        "combinedScore": 0.0463,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "poolside",
+        "title": "Poolside",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 66,
+        "combinedScore": 0.0396,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "visual-studio-intellicode",
+        "title": "Visual Studio IntelliCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 96,
+        "wechatScore": 48,
+        "combinedScore": 0.0292,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "marscode",
+        "title": "豆包 MarsCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 45,
+        "combinedScore": 0.027,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "copilot-workspace",
+        "title": "GitHub Copilot Workspace",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 8,
+        "wechatScore": 42,
+        "combinedScore": 0.0252,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegpt",
+        "title": "CodeGPT",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 266,
+        "wechatScore": 40,
+        "combinedScore": 0.025,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcery",
+        "title": "Sourcery",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 41,
+        "combinedScore": 0.0247,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "plandex",
+        "title": "Plandex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21,
+        "wechatScore": 36,
+        "combinedScore": 0.0217,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "fauxpilot",
+        "title": "FauxPilot",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 22,
+        "wechatScore": 28,
+        "combinedScore": 0.0169,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "greptile",
+        "title": "Greptile",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 6,
+        "wechatScore": 20,
+        "combinedScore": 0.012,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      }
+    ],
+    "hotWithoutTemplates": [
+      {
+        "slug": "github-copilot",
+        "title": "GitHub Copilot",
+        "updatedAt": "2025-12-24",
+        "daysSinceUpdate": 73,
+        "githubScore": 105309,
+        "wechatScore": 782,
+        "combinedScore": 0.8692,
+        "relatedTutorials": [
+          "github-copilot-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "claude-code",
+        "title": "Claude Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21792,
+        "wechatScore": 1000,
+        "combinedScore": 0.6828,
+        "relatedTutorials": [
+          "claude-code-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cursor",
+        "title": "Cursor",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 798,
+        "wechatScore": 832,
+        "combinedScore": 0.5022,
+        "relatedTutorials": [
+          "cursor-getting-started",
+          "cursor-project-rules",
+          "mcp-starter-kit"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "trae",
+        "title": "Trae",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 345,
+        "wechatScore": 528,
+        "combinedScore": 0.3181,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "swe-agent",
+        "title": "SWE-agent",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 343,
+        "wechatScore": 513,
+        "combinedScore": 0.3091,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-cli",
+        "title": "Gemini CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4734,
+        "wechatScore": 447,
+        "combinedScore": 0.2862,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "qoder",
+        "title": "Qoder",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 7,
+        "wechatScore": 414,
+        "combinedScore": 0.2484,
+        "relatedTutorials": [
+          "qoder-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codebuddy",
+        "title": "CodeBuddy",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 54,
+        "wechatScore": 408,
+        "combinedScore": 0.245,
+        "relatedTutorials": [
+          "codebuddy-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gpt-engineer",
+        "title": "GPT Engineer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1118,
+        "wechatScore": 383,
+        "combinedScore": 0.234,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "devin",
+        "title": "Devin",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 380,
+        "combinedScore": 0.2281,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "lovable",
+        "title": "Lovable",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 675,
+        "wechatScore": 343,
+        "combinedScore": 0.2084,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "cline",
+        "title": "Cline",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 15,
+        "wechatScore": 319,
+        "combinedScore": 0.1915,
+        "relatedTutorials": [
+          "cline-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegeex",
+        "title": "CodeGeeX",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 303,
+        "combinedScore": 0.1818,
+        "relatedTutorials": [
+          "codegeex-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabnine",
+        "title": "Tabnine",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 17,
+        "wechatScore": 286,
+        "combinedScore": 0.1717,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep-ai",
+        "title": "Sweep",
+        "updatedAt": "2026-01-11",
+        "daysSinceUpdate": 55,
+        "githubScore": 22223,
+        "wechatScore": 116,
+        "combinedScore": 0.154,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "warp",
+        "title": "Warp",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 108,
+        "wechatScore": 254,
+        "combinedScore": 0.1528,
+        "relatedTutorials": [
+          "warp-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "github-copilot-cli",
+        "title": "GitHub Copilot CLI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 679,
+        "wechatScore": 239,
+        "combinedScore": 0.146,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "kiro",
+        "title": "Kiro",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 73,
+        "wechatScore": 219,
+        "combinedScore": 0.1317,
+        "relatedTutorials": [
+          "ai-coding-product-map",
+          "kiro-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "continue",
+        "title": "Continue",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 283,
+        "wechatScore": 217,
+        "combinedScore": 0.1313,
+        "relatedTutorials": [
+          "continue-vscode-getting-started",
+          "openai-compatible-setup",
+          "mcp-starter-kit",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 4,
+        "templateCount": 0
+      },
+      {
+        "slug": "openhands",
+        "title": "OpenHands",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 729,
+        "wechatScore": 214,
+        "combinedScore": 0.1312,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "amazon-q-developer",
+        "title": "Amazon Q Developer",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 332,
+        "wechatScore": 208,
+        "combinedScore": 0.1261,
+        "relatedTutorials": [
+          "amazon-q-developer-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "snyk-code",
+        "title": "Snyk Code",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 57,
+        "wechatScore": 192,
+        "combinedScore": 0.1154,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "codeium",
+        "title": "Codeium",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 2,
+        "wechatScore": 187,
+        "combinedScore": 0.1122,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "aider",
+        "title": "Aider",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 58,
+        "wechatScore": 146,
+        "combinedScore": 0.0878,
+        "relatedTutorials": [
+          "aider-cli-getting-started",
+          "openai-compatible-setup",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 3,
+        "templateCount": 0
+      },
+      {
+        "slug": "openai-codex",
+        "title": "OpenAI Codex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1418,
+        "wechatScore": 134,
+        "combinedScore": 0.0858,
+        "relatedTutorials": [
+          "codex-cli-getting-started"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bito",
+        "title": "Bito",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 28,
+        "wechatScore": 129,
+        "combinedScore": 0.0775,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sweep",
+        "title": "Sweep",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 116,
+        "combinedScore": 0.0696,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "bolt-new",
+        "title": "Bolt.new",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1654,
+        "wechatScore": 104,
+        "combinedScore": 0.0687,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "gemini-code-assist",
+        "title": "Gemini Code Assist",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 352,
+        "wechatScore": 110,
+        "combinedScore": 0.0673,
+        "relatedTutorials": [
+          "gemini-code-assist-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "augment-code",
+        "title": "Augment Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 112,
+        "combinedScore": 0.0672,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "roo-code",
+        "title": "Roo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4174,
+        "wechatScore": 77,
+        "combinedScore": 0.0621,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "kilo-code",
+        "title": "Kilo Code",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 96,
+        "combinedScore": 0.0577,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tongyi-lingma",
+        "title": "Tongyi Lingma",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 52,
+        "wechatScore": 91,
+        "combinedScore": 0.0548,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "tabby",
+        "title": "Tabby",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 91,
+        "combinedScore": 0.0546,
+        "relatedTutorials": [
+          "tabby-self-hosted-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "coderabbit",
+        "title": "CodeRabbit",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 77,
+        "wechatScore": 84,
+        "combinedScore": 0.0507,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "phind",
+        "title": "Phind",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 20,
+        "wechatScore": 77,
+        "combinedScore": 0.0463,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "poolside",
+        "title": "Poolside",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 0,
+        "wechatScore": 66,
+        "combinedScore": 0.0396,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "blackbox-ai",
+        "title": "Blackbox AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 4101,
+        "wechatScore": 28,
+        "combinedScore": 0.0324,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "visual-studio-intellicode",
+        "title": "Visual Studio IntelliCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 96,
+        "wechatScore": 48,
+        "combinedScore": 0.0292,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "marscode",
+        "title": "豆包 MarsCode",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 1,
+        "wechatScore": 45,
+        "combinedScore": 0.027,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "cosine",
+        "title": "Cosine",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 18,
+        "wechatScore": 44,
+        "combinedScore": 0.0265,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "copilot-workspace",
+        "title": "GitHub Copilot Workspace",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 8,
+        "wechatScore": 42,
+        "combinedScore": 0.0252,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "codegpt",
+        "title": "CodeGPT",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 266,
+        "wechatScore": 40,
+        "combinedScore": 0.025,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "sourcery",
+        "title": "Sourcery",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 19,
+        "wechatScore": 41,
+        "combinedScore": 0.0247,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "plandex",
+        "title": "Plandex",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 21,
+        "wechatScore": 36,
+        "combinedScore": 0.0217,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "vercel-v0",
+        "title": "v0 by Vercel",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 770,
+        "wechatScore": 30,
+        "combinedScore": 0.0209,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "fauxpilot",
+        "title": "FauxPilot",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 22,
+        "wechatScore": 28,
+        "combinedScore": 0.0169,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      },
+      {
+        "slug": "gru-ai",
+        "title": "Gru.ai",
+        "updatedAt": "2025-12-31",
+        "daysSinceUpdate": 66,
+        "githubScore": 417,
+        "wechatScore": 18,
+        "combinedScore": 0.0124,
+        "relatedTutorials": [
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 1,
+        "templateCount": 0
+      },
+      {
+        "slug": "replit-ai",
+        "title": "Replit AI",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 823,
+        "wechatScore": 15,
+        "combinedScore": 0.0121,
+        "relatedTutorials": [
+          "replit-agent-getting-started",
+          "ai-coding-product-map"
+        ],
+        "relatedTemplates": [],
+        "tutorialCount": 2,
+        "templateCount": 0
+      },
+      {
+        "slug": "greptile",
+        "title": "Greptile",
+        "updatedAt": "2025-12-28",
+        "daysSinceUpdate": 69,
+        "githubScore": 6,
+        "wechatScore": 20,
+        "combinedScore": 0.012,
+        "relatedTutorials": [],
+        "relatedTemplates": [],
+        "tutorialCount": 0,
+        "templateCount": 0
+      }
+    ]
+  }
+}

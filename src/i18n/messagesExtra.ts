@@ -19,7 +19,7 @@ export const MESSAGES_ZH_EXTRA: Record<string, string> = {
   'theme.toLight': '切换为浅色模式',
   'theme.toDark': '切换为深色模式',
 
-  'home.brandSuffix': '代码图谱',
+  'home.brandSuffix': 'AI 编程导航站',
 
   'home.what.title': '从这里开始',
   'home.what.desc': '选工具 → 跟教程 → 复制规则 → 合理购买',
@@ -90,7 +90,7 @@ export const MESSAGES_ZH_EXTRA: Record<string, string> = {
   'home.cards.buy.p1': '渠道 · 合规',
   'home.cards.buy.p2': '总成本 · 风险提示',
 
-  'footer.brand.desc': 'AI 编程工具地图',
+  'footer.brand.desc': 'AI 编程导航站',
 
   'tool.detail.back': '返回列表',
   'tool.detail.highlights.fit': '适合谁',
@@ -197,7 +197,7 @@ export const MESSAGES_EN_EXTRA: Record<string, string> = {
   'theme.toLight': 'Switch to light mode',
   'theme.toDark': 'Switch to dark mode',
 
-  'home.brandSuffix': 'Coding Atlas',
+  'home.brandSuffix': 'AI Coding Navigation',
 
   'home.what.title': 'Start here',
   'home.what.desc': 'Pick tools → Follow tutorials → Copy rules → Buy wisely',
@@ -268,7 +268,7 @@ export const MESSAGES_EN_EXTRA: Record<string, string> = {
   'home.cards.buy.p1': 'Channels · compliance',
   'home.cards.buy.p2': 'Cost · risk',
 
-  'footer.brand.desc': 'AI coding tools map.',
+  'footer.brand.desc': 'AI coding navigation hub.',
 
   'tool.detail.back': 'Back to list',
   'tool.detail.highlights.fit': 'Best for',

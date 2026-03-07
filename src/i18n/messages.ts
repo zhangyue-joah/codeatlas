@@ -43,8 +43,8 @@ const MESSAGES_ZH_BASE: Record<string, string> = {
 
   'home.hero.eyebrow': '入门',
   'home.showcase.meta': '每周更新 · CodeAtlas',
-  'home.hero.subtitle': '先选 1 个工具，再跑通 1 篇入门 SOP（带验收标准）；需要时复制模板，最后用定价页把条款与合规核对清楚。',
-  'home.hero.slogan': '选对 AI 编程工具，用对工作流',
+  'home.hero.subtitle': '不用刷完所有评测，从“我要做什么”开始，一步步导航到合适的工具组合、教程 SOP 和配置模板。',
+  'home.hero.slogan': 'AI 编程导航站：从任务出发选工具和工作流',
   'home.hero.cta.products': '开始选型',
   'home.hero.cta.compare': '浏览对比',
   'home.hero.stats': '覆盖 {tools}+ 款工具 · {tutorials}+ 篇教程 · {templates}+ 个模板',
@@ -116,8 +116,8 @@ const MESSAGES_ZH_BASE: Record<string, string> = {
   'templates.meta': '更新于：{date}{versionPart}',
   'templates.meta.versionPart': ' · 适用版本：{version}',
 
-  'use.page.title': '网站使用指南',
-  'use.page.desc': '了解 CodeAtlas 的功能和使用方法，快速找到你需要的内容。',
+  'use.page.title': '使用导航：怎么用这个 AI 编程导航站',
+  'use.page.desc': '从“我要做什么”出发，一步步导航到合适的工具、教程、模板和购买入口。',
 
   'buy.page.title': '购买',
   'buy.page.desc': '官方与第三方平台价格与购买入口汇总（仅跳转，不参与交易）。',
@@ -195,8 +195,8 @@ const MESSAGES_EN_BASE: Record<string, string> = {
 
   'home.hero.eyebrow': 'GET STARTED',
   'home.showcase.meta': 'Updated weekly · CodeAtlas',
-  'home.hero.subtitle': 'Pick 1 tool, run 1 getting-started SOP end-to-end, then scale with templates and pricing checks.',
-  'home.hero.slogan': 'Pick the right AI coding tool. Use the right workflow.',
+  'home.hero.subtitle': 'Start from your task, not the tool: navigate to the right tool combo, SOP guide, templates, and pricing in a few steps.',
+  'home.hero.slogan': 'AI coding navigation hub: start from tasks, not tools.',
   'home.hero.cta.products': 'Browse products',
   'home.hero.cta.compare': 'Compare',
   'home.hero.stats': '{tools}+ tools · {tutorials}+ tutorials · {templates}+ templates',
@@ -268,8 +268,8 @@ const MESSAGES_EN_BASE: Record<string, string> = {
   'templates.meta': 'Updated: {date}{versionPart}',
   'templates.meta.versionPart': ' · Version: {version}',
 
-  'use.page.title': 'Site Guide',
-  'use.page.desc': 'Learn how to use CodeAtlas and quickly find what you need.',
+  'use.page.title': 'Navigation guide',
+  'use.page.desc': 'Start from your task and navigate step by step to the right tools, guides, templates, and pricing.',
 
   'buy.page.title': 'Pricing',
   'buy.page.desc': 'Official & third-party pricing and purchase links (redirect only; no transactions).',

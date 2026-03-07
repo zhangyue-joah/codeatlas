@@ -1,0 +1,59 @@
+name: Weekly Tool Metrics
+
+on:
+  schedule:
+    # UTC 时间：每周一 02:00 运行（北京时间约为 10:00）
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-tool-metrics
+  cancel-in-progress: false
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Recompute GitHub popularity
+        run: npm run compute:popularity
+
+      - name: Recompute WeChat heat
+        run: npm run compute:wechat-heat
+
+      - name: Regenerate content scoreboard
+        run: npm run content:scoreboard
+
+      - name: Create or update metrics PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore: update tool metrics and content scoreboard'
+          branch: chore/update-tool-metrics
+          title: '[Automated] Update tool metrics and content scoreboard'
+          body: |
+            This PR was automatically generated to refresh:
+            - GitHub popularity scores (src/config/toolPopularity.ts)
+            - WeChat heat scores (src/config/toolWeChatHeat.ts)
+            - Content scoreboard (docs/content-scoreboard.{json,md})
+
+            Changes are based on the latest public data and the current MDX tool definitions.
+          labels: |
+            automation
+            content
+          signoff: false
