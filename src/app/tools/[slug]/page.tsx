@@ -28,7 +28,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title,
     description,
     keywords: frontmatter.keywords,
-    openGraph: { title, description },
+    alternates: {
+      canonical: `/tools/${params.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/tools/${params.slug}`,
+    },
   };
 }
 

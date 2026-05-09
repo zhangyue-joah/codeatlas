@@ -22,9 +22,19 @@ const PAGE_SIZE = 12;
 
 export function generateMetadata(): Metadata {
   const language = getRequestLanguage();
+  const title = t(language, 'buy.page.title');
+  const description = t(language, 'buy.page.desc');
+
   return {
-    title: t(language, 'buy.page.title'),
-    description: t(language, 'buy.page.desc'),
+    title,
+    description,
+    alternates: {
+      canonical: '/buy',
+    },
+    openGraph: {
+      title,
+      description,
+    },
   };
 }
 

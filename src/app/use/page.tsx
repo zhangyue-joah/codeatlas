@@ -7,9 +7,19 @@ import { t } from '@/i18n/messages';
 
 export function generateMetadata(): Metadata {
   const language = getRequestLanguage();
+  const title = t(language, 'use.page.title');
+  const description = t(language, 'use.page.desc');
+
   return {
-    title: t(language, 'use.page.title'),
-    description: t(language, 'use.page.desc'),
+    title,
+    description,
+    alternates: {
+      canonical: '/use',
+    },
+    openGraph: {
+      title,
+      description,
+    },
   };
 }
 

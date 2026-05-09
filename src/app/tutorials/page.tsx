@@ -62,9 +62,19 @@ function getTutorialWeChatHeat(relatedTools: string[]): number {
 
 export function generateMetadata(): Metadata {
   const language = getRequestLanguage();
+  const title = t(language, 'tutorials.page.title');
+  const description = t(language, 'tutorials.page.desc');
+
   return {
-    title: t(language, 'tutorials.page.title'),
-    description: t(language, 'tutorials.page.desc'),
+    title,
+    description,
+    alternates: {
+      canonical: '/tutorials',
+    },
+    openGraph: {
+      title,
+      description,
+    },
   };
 }
 
