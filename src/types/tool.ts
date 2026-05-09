@@ -126,6 +126,8 @@ export interface IToolFrontmatter {
   };
   relatedTools: string[];
   relatedTutorials: string[];
+  /** 关联模板（可选）：用于工具页“关联模板”与导航过滤 */
+  relatedTemplates?: string[];
   relatedCompares: string[];
   updatedAt: string;
   version: string;

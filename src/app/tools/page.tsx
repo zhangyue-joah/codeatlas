@@ -22,11 +22,11 @@ import { getToolDisplayTitle } from '@/lib/toolDisplay';
 
 const PAGE_SIZE = 12;
 
-type TToolsSort = 'trending' | 'github' | 'updated' | 'name';
+type TToolsSort = 'trending' | 'github' | 'wechat' | 'updated' | 'name';
 const DEFAULT_SORT: TToolsSort = 'trending';
 
 function isToolsSort(value: string): value is TToolsSort {
-  return value === 'trending' || value === 'github' || value === 'updated' || value === 'name';
+  return value === 'trending' || value === 'github' || value === 'wechat' || value === 'updated' || value === 'name';
 }
 
 function isToolProductType(value: string): value is TToolProductType {
@@ -56,6 +56,8 @@ export default function ToolsPage({
     pricing?: string | string[];
     sort?: string | string[];
     page?: string | string[];
+    hasTutorials?: string | string[];
+    hasTemplates?: string | string[];
   };
 }) {
   const language = getRequestLanguage();
@@ -72,6 +74,11 @@ export default function ToolsPage({
   const sortParam = getStringParam(searchParams?.sort);
   const sort = sortParam && isToolsSort(sortParam) ? sortParam : DEFAULT_SORT;
 
+  const hasTutorialsParam = getStringParam(searchParams?.hasTutorials);
+  const hasTemplatesParam = getStringParam(searchParams?.hasTemplates);
+  const filterHasTutorials = hasTutorialsParam === 'true';
+  const filterHasTemplates = hasTemplatesParam === 'true';
+
   const filtered = tools.filter((item) => {
     if (productType.length > 0 && !productType.some((t) => item.frontmatter.productType.includes(t))) return false;
     if (workflow.length > 0 && !workflow.some((c) => item.frontmatter.category.includes(c))) return false;
@@ -84,16 +91,34 @@ export default function ToolsPage({
       }
     }
     if (freeTier && !item.frontmatter.pricing.free) return false;
+
+    if (filterHasTutorials) {
+      const relatedTutorials = item.frontmatter.relatedTutorials ?? [];
+      if (!Array.isArray(relatedTutorials) || relatedTutorials.length === 0) return false;
+    }
+
+    if (filterHasTemplates) {
+      const relatedTemplates = item.frontmatter.relatedTemplates ?? [];
+      if (!Array.isArray(relatedTemplates) || relatedTemplates.length === 0) return false;
+    }
+
     return true;
   });
 
-  const scored = filtered.map((item) => ({
-    slug: item.slug,
-    frontmatter: item.frontmatter,
-    displayTitle: getToolDisplayTitle(item.frontmatter, language),
-    wechatHeatScore: getToolWeChatHeatScore(item.slug),
-    githubAppearanceScore: getToolGithubAppearanceScore(item.slug),
-  }));
+  const scored = filtered.map((item) => {
+    const wechatHeatScore = getToolWeChatHeatScore(item.slug);
+    const githubAppearanceScore = getToolGithubAppearanceScore(item.slug);
+    const combinedHeatScore = wechatHeatScore + githubAppearanceScore;
+
+    return {
+      slug: item.slug,
+      frontmatter: item.frontmatter,
+      displayTitle: getToolDisplayTitle(item.frontmatter, language),
+      wechatHeatScore,
+      githubAppearanceScore,
+      combinedHeatScore,
+    };
+  });
 
   const productTypeOptions = getToolProductTypeEntries(language).map(([key, label]) => ({ value: key, label }));
   const workflowOptions = getToolCategoryEntries(language)
@@ -111,33 +136,40 @@ export default function ToolsPage({
     .sort((a, b) => {
       const titleDiff = a.displayTitle.localeCompare(b.displayTitle);
       const wechatDiff = b.wechatHeatScore - a.wechatHeatScore;
-      const scoreDiff = b.githubAppearanceScore - a.githubAppearanceScore;
+      const githubDiff = b.githubAppearanceScore - a.githubAppearanceScore;
+      const combinedDiff = b.combinedHeatScore - a.combinedHeatScore;
       const dateDiff = b.frontmatter.updatedAt.localeCompare(a.frontmatter.updatedAt);
 
       if (sort === 'name') {
         if (titleDiff !== 0) return titleDiff;
-        if (wechatDiff !== 0) return wechatDiff;
-        if (scoreDiff !== 0) return scoreDiff;
-        return dateDiff;
+        if (combinedDiff !== 0) return combinedDiff;
+        if (dateDiff !== 0) return dateDiff;
+        return githubDiff;
       }
 
       if (sort === 'updated') {
         if (dateDiff !== 0) return dateDiff;
-        if (wechatDiff !== 0) return wechatDiff;
-        if (scoreDiff !== 0) return scoreDiff;
-        return titleDiff;
+        if (combinedDiff !== 0) return combinedDiff;
+        if (titleDiff !== 0) return titleDiff;
+        return githubDiff;
       }
 
       if (sort === 'github') {
-        if (scoreDiff !== 0) return scoreDiff;
+        if (githubDiff !== 0) return githubDiff;
         if (wechatDiff !== 0) return wechatDiff;
         if (dateDiff !== 0) return dateDiff;
         return titleDiff;
       }
 
-      // Default: trending (WeChat heat -> GitHub -> updatedAt -> title)
-      if (wechatDiff !== 0) return wechatDiff;
-      if (scoreDiff !== 0) return scoreDiff;
+      if (sort === 'wechat') {
+        if (wechatDiff !== 0) return wechatDiff;
+        if (githubDiff !== 0) return githubDiff;
+        if (dateDiff !== 0) return dateDiff;
+        return titleDiff;
+      }
+
+      // Default: trending (combined heat score -> updatedAt -> title)
+      if (combinedDiff !== 0) return combinedDiff;
       if (dateDiff !== 0) return dateDiff;
       return titleDiff;
     });
@@ -192,6 +224,8 @@ export default function ToolsPage({
                   pricing: pricingRaw,
                   sort: sort === DEFAULT_SORT ? undefined : sort,
                   page: page > 1 ? String(page) : undefined,
+                  hasTutorials: filterHasTutorials ? 'true' : undefined,
+                  hasTemplates: filterHasTemplates ? 'true' : undefined,
                 })
               }
             />
